@@ -3,7 +3,7 @@
   import pcsMembers from '../assets/images/pcsMembers.png';
 </script>
 
-<footer class='w-full bg-neutral-800 text-white border-t-primary border-t-8'>
+<footer class='w-full bg-neutral-800 text-white border-t-accent border-t-8'>
   <div class='flex flex-col lg:flex-row items-start text-center justify-center py-16'>
     <div class='w-full flex flex-col items-center pb-12'>
       <div class='pb-4'>

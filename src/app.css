@@ -2,134 +2,217 @@
 @tailwind components;
 @tailwind utilities;
 
-*, *::before, *::after{
-  font-family: torus;
+*,
+*::before,
+*::after {
+	font-family: torus;
 }
 
 @font-face {
-  font-family: torus;
-  src: url('./assets/fonts/torus/TorusNotched-Regular.ttf');
+	font-family: torus;
+	src: url('./assets/fonts/torus/TorusNotched-Regular.ttf');
 }
 
-:root{
-  --body: rgb(24, 24, 24);
+:root {
+	--body: rgb(24, 24, 24);
 }
 
-@layer components{
-  .nav{
-    @apply w-full h-20 bg-gradient-to-b from-nav-gradient absolute top-0 left-0 hidden md:flex justify-between 
+@layer components {
+	.nav {
+		@apply w-full h-20 bg-gradient-to-b from-nav-gradient absolute top-0 left-0 hidden md:flex justify-between 
           items-center px-[5%] transition-all duration-300 ease-in-out;
-  }
+	}
 
-  .nav.scrolled{
-    @apply h-14 bg-primary shadow-nav-shadow from-transparent;
-  }
+	.nav.scrolled {
+		@apply h-14 bg-accent shadow-nav-shadow from-transparent;
+	}
 
-  .nav img{
-    @apply w-16 h-16 transition-all duration-300 ease-in-out;
-  }
+	.nav img {
+		@apply w-16 h-16 transition-all duration-300 ease-in-out;
+	}
 
-  .scrolled img{
-    @apply w-12 h-12;
-  }
+	.scrolled img {
+		@apply w-12 h-12;
+	}
 
-  .nav li{
-    @apply [&>a]:text-white h-full;
-  }
+	.nav li {
+		@apply [&>a]:text-white h-full;
+	}
 
-  .nav ul{
-    @apply hidden md:flex;
-  }
+	.nav ul {
+		@apply hidden md:flex;
+	}
 
-  .nav a{
-    @apply h-full flex items-center px-4;
-  }
+	.nav a {
+		@apply h-full flex items-center px-4;
+	}
 
-  .nav-mobile{
-    @apply w-full h-14 bg-primary flex px-[5%] items-center justify-between md:hidden shadow-nav-shadow from-transparent;
-  }
+	.nav-mobile {
+		@apply w-full h-14 bg-accent flex px-[5%] items-center justify-between md:hidden shadow-nav-shadow from-transparent;
+	}
 
-  .nav-mobile-dropdown{
-    @apply w-full h-full bg-black bg-opacity-75 border-b-4 border-b-primary -z-10 transition-all duration-500 ease-in-out;
-  }
+	.nav-mobile-dropdown {
+		@apply w-full h-full bg-black bg-opacity-75 border-b-4 border-b-accent -z-10 transition-all duration-500 ease-in-out;
+	}
 
-  .nav-mobile-dropdown ul{
-    @apply flex flex-col transition-all duration-500 ease-in-out;
-  }
+	.nav-mobile-dropdown ul {
+		@apply flex flex-col transition-all duration-500 ease-in-out;
+	}
 
-  .nav-mobile-dropdown .item{
-    @apply [&>a]:text-white h-full w-full p-4;
-  }
+	.nav-mobile-dropdown .item {
+		@apply [&>a]:text-white h-full w-full p-4;
+	}
 
-  .nav-mobile-dropdown a{
-    @apply h-full w-full flex;
-  }
+	.nav-mobile-dropdown a {
+		@apply h-full w-full flex;
+	}
 
-  .arrow{
-    @apply text-white flex;
-  }
+	.arrow {
+		@apply text-white flex;
+	}
 
-  .hamburger-menu{
-    @apply md:hidden text-white cursor-pointer;
-  }
+	.hamburger-menu {
+		@apply md:hidden text-white cursor-pointer;
+	}
 
-  .chevron-arrow{
-    @apply w-[20px] h-[20px] text-white cursor-pointer transition-all duration-200;
-  }
+	.chevron-arrow {
+		@apply w-[20px] h-[20px] text-white cursor-pointer transition-all duration-200;
+	}
 
-  .dropdown{
-    @apply flex gap-3 absolute top-20 flex-col text-white transition-all duration-300 ease-in-out;
-  }
+	.dropdown {
+		@apply flex gap-3 absolute top-20 flex-col text-white transition-all duration-300 ease-in-out;
+	}
 
-  .dropdown.scrolled{
-    @apply top-14 pt-2;
-  }
+	.dropdown.scrolled {
+		@apply top-14 pt-2;
+	}
 
-  .dropdown-mobile{
-    @apply flex flex-col text-white transition-all duration-500 ease-in-out overflow-hidden;
-  }
+	.dropdown-mobile {
+		@apply flex flex-col text-white transition-all duration-500 ease-in-out overflow-hidden;
+	}
 
-  .page-wrap{
-    @apply relative px-[5%] lg:px-[20%] py-12;
-  }
+	.page-wrap {
+		@apply relative px-[5%] lg:px-[20%] py-12;
+	}
 
-  .page-content{
-    @apply bg-white px-10 py-5 shadow-lg shadow-black rounded-xl;
-  }
+	.page-content {
+		@apply bg-white px-10 py-5 shadow-lg shadow-black rounded-xl;
+	}
 
-  .page-content h2{
-    @apply text-center text-2xl font-semibold mt-5 mb-2;
-  }
+	.page-content h2 {
+		@apply text-center text-2xl font-semibold mt-5 mb-2;
+	}
 
-  .page-content h3{
-    @apply text-xl font-semibold mt-4 mb-2;
-  }
+	.page-content h3 {
+		@apply text-xl font-semibold mt-4 mb-2;
+	}
 
-  .page-content h4{
-    @apply text-lg font-semibold mt-4 mb-2 pl-3;
-  }
+	.page-content h4 {
+		@apply text-lg font-semibold mt-4 mb-2 pl-3;
+	}
 
-  .page-content ol{
-    @apply list-decimal pl-10;
-  }
-  
-  .page-content ol p{
-    @apply mt-2 mb-4;
-  }
+	.page-content ol {
+		@apply list-decimal pl-10;
+	}
 
-  .page-content ol ol{
-    @apply list-disc;
-  }
+	.page-content ol p {
+		@apply mt-2 mb-4;
+	}
 
-  .page-content ul{
-    @apply list-disc pl-4;
-  }
+	.page-content ol ol {
+		@apply list-disc;
+	}
 
-  footer h2{
-    @apply text-2xl;
-  }
+	.page-content ul {
+		@apply list-disc pl-4;
+	}
 
-  footer p{
-    @apply text-neutral-300;
-  }
+	.programs-container {
+		@apply w-full relative bg-white;
+	}
+
+	.program {
+		@apply w-full h-full shadow-black shadow-md brightness-[60%] cursor-pointer hover:brightness-100 hover:scale-105;
+	}
+
+	.home-container {
+		@apply bg-white text-black text-center flex items-center pt-40 pb-32 px-[10%] md:px-[20%] relative overflow-x-hidden;
+	}
+
+	.curve-white {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		overflow: hidden;
+		line-height: 0;
+	}
+
+	.curve-white svg {
+		position: relative;
+		display: block;
+		width: calc(100% + 1.3px);
+		height: 60px;
+	}
+
+	.curve-white .shape-fill {
+		fill: #ffffff;
+	}
+
+	.curve-accent {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		overflow: hidden;
+		line-height: 0;
+	}
+
+	.curve-accent svg {
+		position: relative;
+		display: block;
+		width: calc(100% + 1.3px);
+
+		@apply h-[40px] md:h-[100px];
+	}
+
+	.curve-accent .shape-fill {
+		fill: #cd7f01;
+	}
+
+	footer h2 {
+		@apply text-2xl;
+	}
+
+	footer p {
+		@apply text-neutral-300;
+	}
+
+	.initial-slide-up {
+		@apply translate-y-full opacity-0 blur-sm;
+	}
+
+	.slide-up {
+		@apply translate-y-0 opacity-100 blur-0;
+	}
+
+	.initial-expand {
+		@apply translate-x-full opacity-0 blur-sm;
+	}
+
+	.expand {
+		@apply translate-x-0 opacity-100 blur-0;
+	}
+
+	.initial-stagger {
+		@apply -translate-x-full opacity-0 blur-sm;
+	}
+
+	.stagger {
+		@apply translate-x-0 opacity-100 blur-0;
+	}
+
+	.transition-1s-in-out {
+		@apply transition-all duration-1000 ease-in-out;
+	}
 }

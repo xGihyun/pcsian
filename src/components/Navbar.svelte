@@ -28,10 +28,10 @@
 <div class="fixed top-0 left-0 w-full z-50">
 	<!-- Navbar large devices -->
 	{#if hovered}
-		<div class="w-full h-80 bg-black bg-opacity-75 border-b-4 border-b-primary" />
+		<div class="w-full h-80 bg-black bg-opacity-75 border-b-4 border-b-accent" />
 	{/if}
 	<nav class={scrolled ? 'nav scrolled' : 'nav'}>
-		<img src={logo} alt="pcs" class="w-16 h-16 fill-white" />
+		<img src={logo} alt="pcs" class="w-16 h-16" />
 		<ul class="h-full flex flex-row">
 			{#each navItems as item, idx (idx)}
 				{#if item.data === 'about' || item.data === 'academics'}

@@ -3,6 +3,7 @@
 </script>
 
 <section class='relative'>
+  <div class="w-full h-20 bg-gradient-to-t from-nav-gradient absolute bottom-0 left-0 z-50" />
   <video src={video} autoPlay loop muted class='w-full h-screen object-cover brightness-[40%]' />
   <div class='text-white absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-center pointer-events-none'>
     <h1 class='text-5xl lg:text-7xl my-10'>Quality Catholic Education</h1>

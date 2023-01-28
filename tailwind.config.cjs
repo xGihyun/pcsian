@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "primary": "rgb(205, 127, 1)"
+        "accent": "rgb(205, 127, 1)"
       },
       boxShadow: {
         "nav-shadow": "rgba(0, 0, 0, 0.25) 0px 3px 8px"
@@ -15,6 +15,12 @@ module.exports = {
       },
       backgroundImage: {
         "pcs": "url('./assets/images/pcsMain.jpg')"
+      },
+      transitionDelay: {
+        "400": "400ms",
+      },
+      transitionProperty: {
+        "transform-opacity-filter": "transform, opacity, filter"
       }
     },
   },
