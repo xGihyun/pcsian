@@ -1,0 +1,179 @@
+{
+  "node_modules/@sveltejs/kit/src/runtime/server/index.js": {
+    "file": "index.js",
+    "src": "node_modules/@sveltejs/kit/src/runtime/server/index.js",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_internal.js"
+    ]
+  },
+  "src/routes/+layout.svelte": {
+    "file": "entries/pages/_layout.svelte.js",
+    "src": "src/routes/+layout.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_index2.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_layout-6f9e75ad.css"
+    ],
+    "assets": [
+      "_app/immutable/assets/pcsQrCode-1e27be45.jpg",
+      "_app/immutable/assets/pcsMembers-783930a5.png",
+      "_app/immutable/assets/pcsLogoBrown-96909997.png",
+      "_app/immutable/assets/TorusNotched-Regular-b25cfa04.ttf"
+    ]
+  },
+  "node_modules/@sveltejs/kit/src/runtime/components/error.svelte": {
+    "file": "entries/fallbacks/error.svelte.js",
+    "src": "node_modules/@sveltejs/kit/src/runtime/components/error.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js"
+    ]
+  },
+  "src/routes/(about)/+layout.svelte": {
+    "file": "entries/pages/(about)/_layout.svelte.js",
+    "src": "src/routes/(about)/+layout.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_TopHeading.js"
+    ]
+  },
+  "src/routes/(academics)/+layout.svelte": {
+    "file": "entries/pages/(academics)/_layout.svelte.js",
+    "src": "src/routes/(academics)/+layout.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_TopHeading.js"
+    ]
+  },
+  "src/routes/+page.svelte": {
+    "file": "entries/pages/_page.svelte.js",
+    "src": "src/routes/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js"
+    ],
+    "assets": [
+      "_app/immutable/assets/pcs-46eabb68.mp4",
+      "_app/immutable/assets/gradeSchool-bde49ee1.gif",
+      "_app/immutable/assets/juniorHigh-da5bbdf7.gif",
+      "_app/immutable/assets/seniorHigh-3bfaf3fd.gif"
+    ]
+  },
+  "src/routes/(about)/goals-cv/+page.svelte": {
+    "file": "entries/pages/(about)/goals-cv/_page.svelte.js",
+    "src": "src/routes/(about)/goals-cv/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_index2.js"
+    ]
+  },
+  "src/routes/(about)/history/+page.svelte": {
+    "file": "entries/pages/(about)/history/_page.svelte.js",
+    "src": "src/routes/(about)/history/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js"
+    ]
+  },
+  "src/routes/(about)/inst-dir/+page.svelte": {
+    "file": "entries/pages/(about)/inst-dir/_page.svelte.js",
+    "src": "src/routes/(about)/inst-dir/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_index2.js"
+    ]
+  },
+  "src/routes/(about)/paascu/+page.svelte": {
+    "file": "entries/pages/(about)/paascu/_page.svelte.js",
+    "src": "src/routes/(about)/paascu/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_index2.js"
+    ]
+  },
+  "src/routes/(about)/philosophy/+page.svelte": {
+    "file": "entries/pages/(about)/philosophy/_page.svelte.js",
+    "src": "src/routes/(about)/philosophy/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_index2.js"
+    ]
+  },
+  "src/routes/(about)/services/+page.svelte": {
+    "file": "entries/pages/(about)/services/_page.svelte.js",
+    "src": "src/routes/(about)/services/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_index2.js"
+    ]
+  },
+  "src/routes/(academics)/grade-school/+page.svelte": {
+    "file": "entries/pages/(academics)/grade-school/_page.svelte.js",
+    "src": "src/routes/(academics)/grade-school/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_index2.js"
+    ]
+  },
+  "src/routes/(academics)/junior-high/+page.svelte": {
+    "file": "entries/pages/(academics)/junior-high/_page.svelte.js",
+    "src": "src/routes/(academics)/junior-high/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_index2.js"
+    ]
+  },
+  "src/routes/(academics)/senior-high/+page.svelte": {
+    "file": "entries/pages/(academics)/senior-high/_page.svelte.js",
+    "src": "src/routes/(academics)/senior-high/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_index2.js"
+    ]
+  },
+  ".svelte-kit/generated/server/internal.js": {
+    "file": "internal.js",
+    "src": ".svelte-kit/generated/server/internal.js",
+    "isEntry": true,
+    "imports": [
+      "_internal.js"
+    ]
+  },
+  "_index.js": {
+    "file": "chunks/index.js"
+  },
+  "_internal.js": {
+    "file": "chunks/internal.js",
+    "imports": [
+      "_index.js"
+    ]
+  },
+  "_index2.js": {
+    "file": "chunks/index2.js"
+  },
+  "_TopHeading.js": {
+    "file": "chunks/TopHeading.js",
+    "imports": [
+      "_index.js"
+    ],
+    "assets": [
+      "_app/immutable/assets/pcsMain-97ad19ef.jpg",
+      "_app/immutable/assets/pcsAnnex2-487c31fd.jpg"
+    ]
+  }
+}
