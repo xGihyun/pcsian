@@ -2,6 +2,7 @@
 	import ChevronRight from '../../assets/icons/ChevronRight.svelte';
 	import { navItems } from '../../constants';
 	import DropdownMobile from './DropdownMobile.svelte';
+  import "../../styles/navbar.css";
 
   // export let style: string;
   // export let ulStyle: string;

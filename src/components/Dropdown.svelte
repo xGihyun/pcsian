@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { dropdownItems } from "../constants";
+  import "../styles/navbar.css";
   export let drop: string;
   export let scrolled: boolean;
 </script>

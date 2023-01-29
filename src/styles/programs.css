@@ -1,0 +1,7 @@
+.programs-container {
+	@apply w-full h-full relative bg-accent flex justify-center items-center;
+}
+
+.program {
+	@apply w-full h-full shadow-black shadow-md brightness-[60%] cursor-pointer hover:brightness-100 hover:scale-105;
+}

@@ -3,6 +3,7 @@ import { d as dropdownItems, n as navItems } from "../../chunks/index2.js";
 const app = "";
 const qrCode = "/_app/immutable/assets/pcsQrCode-1e27be45.jpg";
 const pcsMembers = "/_app/immutable/assets/pcsMembers-783930a5.png";
+const footer = "";
 const Footer = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   return `<footer class="${"w-full bg-neutral-800 text-white border-t-accent border-t-8"}"><div class="${"flex flex-col lg:flex-row items-start text-center justify-center py-16"}"><div class="${"w-full flex flex-col items-center pb-12"}"><div class="${"pb-4"}"><h2>Pateros Catholic School</h2>
         <p>B. Morcilla St, Pateros, 1620 Metro Manila, Philippines</p></div>
@@ -14,6 +15,7 @@ const Footer = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   <img${add_attribute("src", pcsMembers, 0)} alt="${""}" class="${"m-auto"}"></footer>`;
 });
 const logo = "/_app/immutable/assets/pcsLogoBrown-96909997.png";
+const navbar = "";
 const Dropdown = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { drop } = $$props;
   let { scrolled } = $$props;

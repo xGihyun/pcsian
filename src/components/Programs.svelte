@@ -3,20 +3,21 @@
 	import juniorHigh from '../assets/images/juniorHigh.gif';
 	import seniorHigh from '../assets/images/seniorHigh.gif';
 	import { inview } from 'svelte-inview';
+  import "../styles/programs.css";
 
 	const programs = [
 		{
-      title: 'Grade School',
+			title: 'Grade School',
 			image: gradeSchool,
 			path: '/grade-school'
 		},
 		{
-      title: 'Junior High',
+			title: 'Junior High',
 			image: juniorHigh,
 			path: '/junior-high'
 		},
 		{
-      title: 'Senior High',
+			title: 'Senior High',
 			image: seniorHigh,
 			path: '/senior-high'
 		}
@@ -43,7 +44,7 @@
 </script>
 
 <div class="programs-container">
-	<div class="curve-accent">
+	<div class="curve-white">
 		<svg
 			data-name="Layer 1"
 			xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +67,7 @@
 			/>
 		</svg>
 	</div>
-	<div class="flex flex-col lg:flex-row gap-5 px-[10%] pb-[5%] pt-[15%]">
+	<div class="flex flex-col lg:flex-row gap-5 px-[10%] py-40">
 		{#each programs as program, idx (idx)}
 			<a
 				href={program.path}
@@ -79,9 +80,9 @@
 				<img
 					src={program.image}
 					alt="pcs"
-					class={`program pointer-events-none transition-transform-opacity-filter duration-1000 ${delay[idx]} ${
-						isInView ? `md:stagger` : 'md:initial-stagger'
-					}`}
+					class={`program pointer-events-none transition-transform-opacity-filter duration-1000 ${
+						delay[idx]
+					} ${isInView ? `md:stagger` : 'md:initial-stagger'}`}
 				/>
 			</a>
 		{/each}

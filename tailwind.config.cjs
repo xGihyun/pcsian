@@ -5,7 +5,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "accent": "rgb(205, 127, 1)"
+        "accent": "rgb(205, 127, 0)",
+        "accent-dark": "rgb(167, 107, 0)",
       },
       boxShadow: {
         "nav-shadow": "rgba(0, 0, 0, 0.25) 0px 3px 8px"

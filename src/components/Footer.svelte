@@ -1,6 +1,7 @@
 <script lang="ts">
   import qrCode from '../assets/images/pcsQrCode.jpg';
   import pcsMembers from '../assets/images/pcsMembers.png';
+  import "../styles/footer.css";
 </script>
 
 <footer class='w-full bg-neutral-800 text-white border-t-accent border-t-8'>

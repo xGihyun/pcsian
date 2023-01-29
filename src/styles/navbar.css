@@ -1,0 +1,72 @@
+.nav {
+	@apply w-full h-20 bg-gradient-to-b from-nav-gradient absolute top-0 left-0 hidden md:flex justify-between 
+          items-center px-[5%] transition-all duration-300 ease-in-out;
+}
+
+.nav.scrolled {
+	@apply h-14 bg-accent shadow-nav-shadow from-transparent;
+}
+
+.nav img {
+	@apply w-16 h-16 transition-all duration-300 ease-in-out;
+}
+
+.scrolled img {
+	@apply w-12 h-12;
+}
+
+.nav li {
+	@apply [&>a]:text-white h-full;
+}
+
+.nav ul {
+	@apply hidden md:flex;
+}
+
+.nav a {
+	@apply h-full flex items-center px-4;
+}
+
+.nav-mobile {
+	@apply w-full h-14 bg-accent flex px-[5%] items-center justify-between md:hidden shadow-nav-shadow from-transparent;
+}
+
+.nav-mobile-dropdown {
+  @apply w-full h-full bg-black bg-opacity-75 border-b-4 border-b-accent -z-10 transition-all duration-500 ease-in-out;
+}
+
+.nav-mobile-dropdown ul {
+  @apply flex flex-col transition-all duration-500 ease-in-out;
+}
+
+.nav-mobile-dropdown .item {
+  @apply [&>a]:text-white h-full w-full p-4;
+}
+
+.nav-mobile-dropdown a {
+  @apply h-full w-full flex;
+}
+
+.arrow {
+  @apply text-white flex;
+}
+
+.hamburger-menu {
+  @apply md:hidden text-white cursor-pointer;
+}
+
+.chevron-arrow {
+  @apply w-[20px] h-[20px] text-white cursor-pointer transition-all duration-200;
+}
+
+.dropdown {
+  @apply flex gap-3 absolute top-20 flex-col text-white transition-all duration-300 ease-in-out;
+}
+
+.dropdown.scrolled {
+  @apply top-14 pt-2;
+}
+
+.dropdown-mobile {
+  @apply flex flex-col text-white transition-all duration-500 ease-in-out overflow-hidden;
+}

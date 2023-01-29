@@ -1,0 +1,42 @@
+.curve-white {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.curve-white svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  transform: rotateY(180deg);
+
+  @apply h-[40px] md:h-[100px];
+}
+
+.curve-white .shape-fill {
+  fill: #fff;
+}
+
+.curve-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.curve-accent svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+
+  @apply h-[40px] md:h-[100px];
+}
+
+.curve-accent .shape-fill {
+  @apply fill-accent;
+}

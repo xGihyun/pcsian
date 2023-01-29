@@ -5,6 +5,7 @@
 	import { onMount } from 'svelte';
 	import HamburgerMenu from '../assets/icons/HamburgerMenu.svelte';
 	import NavbarMobile from './mobile/NavbarMobile.svelte';
+  import "../styles/navbar.css";
 
 	// Check if user has scrolled
 	let scrolled = false;
