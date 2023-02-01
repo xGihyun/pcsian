@@ -38,5 +38,5 @@
 }
 
 .curve-accent .shape-fill {
-  @apply fill-accent;
+  fill: rgb(205, 127, 0);
 }

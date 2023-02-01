@@ -3,7 +3,6 @@
 	import juniorHigh from '../assets/images/juniorHigh.gif';
 	import seniorHigh from '../assets/images/seniorHigh.gif';
 	import { inview } from 'svelte-inview';
-  import "../styles/programs.css";
 
 	const programs = [
 		{
@@ -43,7 +42,7 @@
 	}
 </script>
 
-<div class="programs-container">
+<div class="bg-accent relative flex h-full w-full items-center justify-center">
 	<div class="curve-white">
 		<svg
 			data-name="Layer 1"
@@ -67,7 +66,7 @@
 			/>
 		</svg>
 	</div>
-	<div class="flex flex-col lg:flex-row gap-5 px-[10%] py-40">
+	<div class="flex flex-col gap-5 px-[10%] py-40 lg:flex-row">
 		{#each programs as program, idx (idx)}
 			<a
 				href={program.path}
@@ -80,9 +79,13 @@
 				<img
 					src={program.image}
 					alt="pcs"
-					class={`program pointer-events-none transition-transform-opacity-filter duration-1000 ${
+					class={`transition-transform-opacity-filter pointer-events-none h-full w-full cursor-pointer shadow-md shadow-black brightness-[60%] duration-1000 hover:scale-105 hover:brightness-100 ${
 						delay[idx]
-					} ${isInView ? `md:stagger` : 'md:initial-stagger'}`}
+					} ${
+						isInView
+							? 'md:translate-x-0 md:opacity-100 md:blur-0'
+							: 'md:-translate-x-full md:opacity-0 md:blur-[2px]'
+					}`}
 				/>
 			</a>
 		{/each}

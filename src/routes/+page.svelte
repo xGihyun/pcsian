@@ -2,8 +2,7 @@
 	import Hero from '../components/Hero.svelte';
 	import Programs from '../components/Programs.svelte';
 	import { inview } from 'svelte-inview';
-  import "../styles/transitions.css";
-  import "../styles/curves.css";
+	import '../styles/curves.css';
 
 	let isInView = [false, false, false];
 
@@ -11,11 +10,15 @@
 </script>
 
 <Hero />
-<div class="home-container">
-	<div class="flex flex-col items-center justify-center pointer-events-none">
+<div
+	class="relative flex items-center overflow-x-hidden bg-white px-[10%] pt-40 pb-32 text-center text-black md:px-[20%]"
+>
+	<div class="pointer-events-none flex flex-col items-center justify-center">
 		<h2
-			class={`text-3xl lg:text-5xl font-bold transition-1s-in-out transform-gpu ${
-				isInView[0] ? 'md:slide-up' : 'md:initial-slide-up'
+			class={`transform-gpu text-3xl font-bold transition-all duration-1000 ease-in-out lg:text-5xl ${
+				isInView[0]
+					? 'md:translate-y-0 md:opacity-100 md:blur-0'
+					: 'md:translate-y-full md:opacity-0 md:blur-[2px]'
 			}`}
 			use:inview={options}
 			on:change={({ detail }) => {
@@ -25,8 +28,8 @@
 			Creating a Brighter Future
 		</h2>
 		<span
-			class={`w-full h-[2px] bg-accent rounded-full my-8 transition-1s-in-out transform-gpu ${
-				isInView[0] ? 'md:expand' : 'md:initial-expand'
+			class={`bg-accent my-8 h-[2px] w-full transform-gpu rounded-full transition-all duration-1000 ease-in-out ${
+				isInView[0] ? 'md:scale-x-100 md:delay-700' : 'md:scale-x-0'
 			}`}
 			use:inview={options}
 			on:change={({ detail }) => {
@@ -34,8 +37,10 @@
 			}}
 		/>
 		<p
-			class={`text-xl md:text-2xl transition-1s-in-out transform-gpu delay-1000 ${
-				isInView[0] ? 'md:slide-up' : 'md:initial-slide-up'
+			class={`transform-gpu text-xl transition-all delay-1000 duration-1000 ease-in-out md:text-2xl ${
+				isInView[0]
+					? 'md:translate-y-0 md:opacity-100 md:blur-0'
+					: 'md:translate-y-full md:opacity-0 md:blur-[2px]'
 			}`}
 		>
 			Pateros Catholic School is more than just a school - it's a life experience. Our unique
@@ -48,10 +53,10 @@
 		</p>
 	</div>
 </div>
-<div class="w-full h-full bg-accent relative">
+<div class="bg-accent relative h-full w-full">
 	<Programs />
 </div>
-<div class="bg-white h-full relative px-[10%] py-40">
+<div class="relative h-full bg-white px-[10%] py-40">
 	<div class="curve-accent">
 		<svg
 			data-name="Layer 1"
@@ -76,8 +81,10 @@
 		</svg>
 	</div>
 	<div
-		class={`home-h2 transition-1s-in-out transform-gpu ${
-			isInView[1] ? 'md:slide-up' : 'md:initial-slide-up'
+		class={`relative mb-5 flex transform-gpu flex-col items-center justify-center whitespace-nowrap text-center text-3xl font-bold transition-all duration-1000 ease-in-out lg:text-5xl ${
+			isInView[1]
+				? 'md:translate-y-0 md:opacity-100 md:blur-0'
+				: 'md:translate-y-full md:opacity-0 md:blur-[2px]'
 		}`}
 		use:inview={options}
 		on:change={({ detail }) => {
@@ -86,8 +93,8 @@
 	>
 		<h2 class="px-10">What's happening?</h2>
 		<span
-			class={`w-full h-[2px] bg-accent rounded-full my-8 transition-1s-in-out transform-gpu ${
-				isInView[1] ? 'md:expand' : 'md:initial-expand'
+			class={`bg-accent my-8 h-[2px] w-full transform-gpu rounded-full transition-all duration-1000 ease-in-out ${
+				isInView[1] ? 'md:scale-x-100 md:delay-700' : 'md:scale-x-0'
 			}`}
 			use:inview={options}
 			on:change={({ detail }) => {
@@ -95,7 +102,7 @@
 			}}
 		/>
 	</div>
-	<div class="flex flex-col lg:flex-row gap-5 justify-center">
+	<div class="flex flex-col justify-center gap-5 lg:flex-row">
 		<iframe
 			src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FPCS.OfficialPage%2Fposts%2Fpfbid02BK1sBRu1PVZ7qiW6TknHHgQbbaT26wcX9XMyJdoMQvkAqNnRoumxfaYg1THzDRCsl&show_text=true&width=500"
 			width="100%"

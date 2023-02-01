@@ -54,12 +54,4 @@
 	.page-content ul {
 		@apply list-disc pl-4;
 	}
-
-	.home-container {
-		@apply bg-white text-black text-center flex items-center pt-40 pb-32 px-[10%] md:px-[20%] relative overflow-x-hidden;
-	}
-
-	.home-h2 {
-		@apply text-center relative text-3xl lg:text-5xl font-bold mb-5 flex flex-col items-center justify-center whitespace-nowrap;
-	}
 }

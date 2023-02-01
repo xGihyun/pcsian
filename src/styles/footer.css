@@ -1,7 +1,0 @@
-footer h2 {
-	@apply text-2xl;
-}
-
-footer p {
-	@apply text-neutral-300;
-}

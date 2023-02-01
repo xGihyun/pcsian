@@ -1,12 +1,8 @@
-<script lang="ts">
-	export let style: string;
-</script>
-
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <svg
 	xmlns="http://www.w3.org/2000/svg"
 	fill="currentColor"
-	class={`bi bi-list ${style}`}
+	class="bi bi-list h-[25px] w-[25px] cursor-pointer text-white"
 	viewBox="0 0 16 16"
 >
 	<path
