@@ -58,7 +58,7 @@ const Navbar = create_ssr_component(($$result, $$props, $$bindings, slots) => {
 });
 const Layout = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   return `${validate_component(Navbar, "Navbar").$$render($$result, {}, {}, {})}
-<main>${slots.default ? slots.default({}) : ``}</main>
+<main class="${"overflow-x-hidden"}">${slots.default ? slots.default({}) : ``}</main>
 ${validate_component(Footer, "Footer").$$render($$result, {}, {}, {})}`;
 });
 export {

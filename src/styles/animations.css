@@ -1,0 +1,18 @@
+.float-shadow {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    filter: drop-shadow(0 20px 10px rgba(0, 0, 0, 0.6));
+    transform: translatey(0px);
+  }
+  50% {
+    filter: drop-shadow(0 40px 10px rgba(0, 0, 0, 0.3));
+    transform: translatey(-20px);
+  }
+  100% {
+    filter: drop-shadow(0 20px 10px rgba(0, 0, 0, 0.6));
+    transform: translatey(0px);
+  }
+}
