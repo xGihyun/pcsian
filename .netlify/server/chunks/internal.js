@@ -64,7 +64,7 @@ ${components[1] ? `${validate_component(components[0] || missing_component, "sve
 ${``}`;
 });
 set_paths({ "base": "", "assets": "" });
-set_version("1675568119549");
+set_version("1675580244653");
 const options = {
   csp: { "mode": "auto", "directives": { "upgrade-insecure-requests": false, "block-all-mixed-content": false }, "reportOnly": { "upgrade-insecure-requests": false, "block-all-mixed-content": false } },
   csrf_check_origin: true,

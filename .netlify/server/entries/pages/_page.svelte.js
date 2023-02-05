@@ -1,11 +1,11 @@
 import { c as create_ssr_component, b as add_attribute, v as validate_component, e as each, d as escape } from "../../chunks/index.js";
 const video = "/_app/immutable/assets/pcs-46eabb68.mp4";
 const Hero = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  return `<section class="${"relative"}"><div class="${"from-nav-gradient absolute bottom-0 left-0 z-20 h-20 w-full bg-gradient-to-t"}"></div>
-	<video${add_attribute("src", video, 0)} autoplay loop muted class="${"h-screen w-full object-cover brightness-[30%]"}"></video>
-	<div class="${"absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-center text-white [&>p]:pointer-events-none [&>h1]:pointer-events-none"}"><h1 class="${"my-10 text-5xl lg:text-7xl"}">Quality Catholic Education</h1>
-		<p class="${"text-base"}">Through Faith, Hope, &amp; Charity</p></div>
-  <a class="${"text-white border-white border-[1px] py-2 px-5 text-xl absolute bottom-[25%] left-[50%] translate-x-[-50%] translate-y-[-50%] hover:bg-accent hover:border-accent transition-all duration-300"}" href="${"https://schoolaide.pcsian.edu.ph/login"}" rel="${"noreferrer"}" target="${"_blank"}" type="${"button"}">Apply Now</a></section>`;
+  return `<section class="${"relative h-screen"}"><span class="${"from-nav-gradient absolute bottom-0 left-0 z-20 h-20 w-full bg-gradient-to-t"}"></span>
+	<video${add_attribute("src", video, 0)} autoplay loop muted class="${"h-screen w-full object-cover brightness-[30%] absolute bottom-0 left-0 -z-10"}"></video>
+  <div class="${"h-full"}"><div class="${"text-center text-white [&>p]:pointer-events-none [&>h1]:pointer-events-none flex flex-col justify-center items-center h-full"}"><h1 class="${"mb-10 text-5xl lg:text-7xl"}">Quality Catholic Education</h1>
+      <p class="${"text-base"}">Through Faith, Hope, &amp; Charity</p></div>
+    <a class="${"hover:bg-accent hover:border-accent absolute bottom-[20%] left-[50%] -translate-x-[50%] -translate-y-[50%] border-[1px] border-white py-3 px-5 text-xl text-white transition-all duration-300"}" href="${"https://schoolaide.pcsian.edu.ph/login"}" rel="${"noreferrer"}" target="${"_blank"}" type="${"button"}">Apply Now</a></div></section>`;
 });
 const gradeSchool = "/_app/immutable/assets/gradeSchool-bde49ee1.gif";
 const juniorHigh = "/_app/immutable/assets/juniorHigh-da5bbdf7.gif";
@@ -13,7 +13,7 @@ const seniorHigh = "/_app/immutable/assets/seniorHigh-3bfaf3fd.gif";
 const kessokuBand = "/_app/immutable/assets/KessokuBand-6ff185c8.png";
 const animations = "";
 const OrangeBlob1 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  return `<div class="${"scale-200 absolute -bottom-20 h-full w-full 2xl:-bottom-10"}"><svg id="${"visual"}" viewBox="${"0 0 900 600"}" xmlns="${"http://www.w3.org/2000/svg"}" xmlns:xlink="${"http://www.w3.org/1999/xlink"}" version="${"1.1"}"><g transform="${"translate(411.0061771322486 274.00080036139434)"}"><path d="${"M268.6 -110.9C320.7 -64.8 316.7 57.8 262.6 120.6C208.4 183.3 104.2 186.2 -1 186.8C-106.2 187.3 -212.5 185.7 -226 146.4C-239.5 107 -160.4 30.1 -107.2 -16.6C-54.1 -63.3 -27.1 -79.6 40.6 -103.1C108.3 -126.5 216.5 -157 268.6 -110.9"}" fill="${"rgb(205, 127, 0)"}"></path></g></svg></div>`;
+  return `<div class="${"scale-200 absolute -bottom-20 h-full w-full max-w-[600px] 2xl:-bottom-10"}"><svg id="${"visual"}" viewBox="${"0 0 900 600"}" xmlns="${"http://www.w3.org/2000/svg"}" xmlns:xlink="${"http://www.w3.org/1999/xlink"}" version="${"1.1"}"><g transform="${"translate(411.0061771322486 274.00080036139434)"}"><path d="${"M268.6 -110.9C320.7 -64.8 316.7 57.8 262.6 120.6C208.4 183.3 104.2 186.2 -1 186.8C-106.2 187.3 -212.5 185.7 -226 146.4C-239.5 107 -160.4 30.1 -107.2 -16.6C-54.1 -63.3 -27.1 -79.6 40.6 -103.1C108.3 -126.5 216.5 -157 268.6 -110.9"}" fill="${"rgb(205, 127, 0)"}"></path></g></svg></div>`;
 });
 const Programs = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   const programs = [
@@ -37,8 +37,7 @@ const Programs = create_ssr_component(($$result, $$props, $$bindings, slots) => 
     }
   ];
   const delay = ["delay-1000", "delay-1200", "delay-1400"];
-  return `<div class="${"py-60"}"><div class="${"relative flex h-full flex-row items-center justify-between gap-20 px-[10%] pb-40"}">
-		<div class="${"flex max-w-[50%] flex-col text-white"}"><h2${add_attribute(
+  return `<div class="${"py-60"}"><div class="${"relative flex h-full flex-col items-center justify-between gap-20 px-[10%] pb-40 lg:flex-row"}"><div class="${"flex w-full flex-col text-white lg:max-w-[50%] text-center lg:text-left"}"><h2${add_attribute(
     "class",
     `text-3xl transition-all duration-1000 ease-in-out lg:text-5xl ${"md:translate-y-full md:opacity-0 md:blur-[2px]"}`,
     0
@@ -55,11 +54,10 @@ const Programs = create_ssr_component(($$result, $$props, $$bindings, slots) => 
 				excellence, personalized learning, and a supportive community, our academic programs provide
 				an exceptional educational experience for all students.
 			</p></div>
-		<div class="${"relative flex h-full w-full"}"><img${add_attribute("src", kessokuBand, 0)} alt="${""}" class="${"float-shadow z-10 w-full max-w-xl"}">
+		<div class="${"relative hidden h-full w-full items-center justify-center lg:flex"}"><img${add_attribute("src", kessokuBand, 0)} alt="${""}" class="${"float-shadow z-10 w-full max-w-xl"}">
 			${validate_component(OrangeBlob1, "OrangeBlob1").$$render($$result, {}, {}, {})}</div></div>
-	<div class="${"flex w-full flex-col items-center justify-center gap-10 lg:flex-row"}">${each(programs, (program, idx) => {
-    return `
-			<div${add_attribute(
+	<div class="${"flex w-full flex-col items-center justify-center gap-10 lg:flex-row px-[10%]"}">${each(programs, (program, idx) => {
+    return `<div${add_attribute(
       "class",
       `${program.bg} w-full max-w-sm bg-cover pt-32 transition-all duration-1000 ${delay[idx]} ${"md:-translate-x-full md:opacity-0 md:blur-[2px]"}`,
       0
@@ -103,7 +101,7 @@ ${validate_component(Hero, "Hero").$$render($$result, {}, {}, {})}
 			approach to learning enhances our students&#39; education and helps them to explore their dynamic
 			and diverse community. Pateros Catholic School provides a rich learning environment that has
 			helped countless students get ahead.
-			</p></div></div>
+		</p></div></div>
 
 
 <div class="${"relative bg-black"}">${validate_component(CurveWhiteTop, "CurveWhiteTop").$$render($$result, {}, {}, {})}

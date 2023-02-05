@@ -1,4 +1,4 @@
-<div class="scale-200 absolute -bottom-20 h-full w-full 2xl:-bottom-10">
+<div class="scale-200 absolute -bottom-20 h-full w-full max-w-[600px] 2xl:-bottom-10">
 	<svg
 		id="visual"
 		viewBox="0 0 900 600"

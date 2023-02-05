@@ -5,7 +5,7 @@
 *,
 *::before,
 *::after {
-	font-family: torus-regular;
+	font-family: torus-regular, sans-serif;
 }
 
 @font-face {

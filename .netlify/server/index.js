@@ -709,6 +709,7 @@ function create_universal_fetch(event, state, fetched, csr, resolve_opts) {
                 /** @type {string | ArrayBufferView | undefined} */
                 input instanceof Request && cloned_body ? await stream_to_string(cloned_body) : init2?.body
               ),
+              request_headers: init2?.headers,
               response_body: body,
               response: response2
             });
@@ -824,19 +825,21 @@ function writable(value, start = noop) {
   }
   return { set, update, subscribe };
 }
-function hash(value) {
+function hash(...values) {
   let hash2 = 5381;
-  if (typeof value === "string") {
-    let i = value.length;
-    while (i)
-      hash2 = hash2 * 33 ^ value.charCodeAt(--i);
-  } else if (ArrayBuffer.isView(value)) {
-    const buffer = new Uint8Array(value.buffer, value.byteOffset, value.byteLength);
-    let i = buffer.length;
-    while (i)
-      hash2 = hash2 * 33 ^ buffer[--i];
-  } else {
-    throw new TypeError("value must be a string or TypedArray");
+  for (const value of values) {
+    if (typeof value === "string") {
+      let i = value.length;
+      while (i)
+        hash2 = hash2 * 33 ^ value.charCodeAt(--i);
+    } else if (ArrayBuffer.isView(value)) {
+      const buffer = new Uint8Array(value.buffer, value.byteOffset, value.byteLength);
+      let i = buffer.length;
+      while (i)
+        hash2 = hash2 * 33 ^ buffer[--i];
+    } else {
+      throw new TypeError("value must be a string or TypedArray");
+    }
   }
   return (hash2 >>> 0).toString(36);
 }
@@ -892,8 +895,15 @@ function serialize_data(fetched, filter, prerendering = false) {
     "data-sveltekit-fetched",
     `data-url=${escape_html_attr(fetched.url)}`
   ];
-  if (fetched.request_body) {
-    attrs.push(`data-hash=${escape_html_attr(hash(fetched.request_body))}`);
+  if (fetched.request_headers || fetched.request_body) {
+    const values = [];
+    if (fetched.request_headers) {
+      values.push([...new Headers(fetched.request_headers)].join(","));
+    }
+    if (fetched.request_body) {
+      values.push(fetched.request_body);
+    }
+    attrs.push(`data-hash="${hash(...values)}"`);
   }
   if (!prerendering && fetched.method === "GET" && cache_control && !vary) {
     const match = /s-maxage=(\d+)/g.exec(cache_control) ?? /max-age=(\d+)/g.exec(cache_control);
@@ -1817,39 +1827,29 @@ async function render_page(event, route, page, options2, manifest, state, resolv
 function exec(match, params, matchers) {
   const result = {};
   const values = match.slice(1);
-  let buffered = "";
+  let buffered = 0;
   for (let i = 0; i < params.length; i += 1) {
     const param = params[i];
-    let value = values[i];
+    const value = values[i - buffered];
     if (param.chained && param.rest && buffered) {
-      value = value ? buffered + "/" + value : buffered;
+      result[param.name] = values.slice(i - buffered, i + 1).filter((s2) => s2).join("/");
+      buffered = 0;
+      continue;
     }
-    buffered = "";
     if (value === void 0) {
       if (param.rest)
         result[param.name] = "";
-    } else {
-      if (param.matcher && !matchers[param.matcher](value)) {
-        if (param.optional && param.chained) {
-          let j = values.indexOf(void 0, i);
-          if (j === -1) {
-            const next = params[i + 1];
-            if (next?.rest && next.chained) {
-              buffered = value;
-            } else {
-              return;
-            }
-          }
-          while (j >= i) {
-            values[j] = values[j - 1];
-            j -= 1;
-          }
-          continue;
-        }
-        return;
-      }
-      result[param.name] = value;
+      continue;
     }
+    if (!param.matcher || matchers[param.matcher](value)) {
+      result[param.name] = value;
+      continue;
+    }
+    if (param.optional && param.chained) {
+      buffered++;
+      continue;
+    }
+    return;
   }
   if (buffered)
     return;

@@ -50,13 +50,11 @@
 </script>
 
 <div class="py-60">
-	<div class="relative flex h-full flex-row items-center justify-between gap-20 px-[10%] pb-40">
-		<!-- <span
-      class="font-torus-semibold pointer-events-none absolute text-9xl uppercase text-white opacity-10"
-      >Academic Programs</span
-    > -->
+	<div
+		class="relative flex h-full flex-col items-center justify-between gap-20 px-[10%] pb-40 lg:flex-row"
+	>
 		<div
-			class="flex max-w-[50%] flex-col text-white"
+			class="flex w-full flex-col text-white lg:max-w-[50%] text-center lg:text-left"
 			use:inview={options}
 			on:change={({ detail }) => {
 				isInView[0] = detail.inView;
@@ -90,33 +88,13 @@
 				an exceptional educational experience for all students.
 			</p>
 		</div>
-		<div class="relative flex h-full w-full">
+		<div class="relative hidden h-full w-full items-center justify-center lg:flex">
 			<img src={kessokuBand} alt="" class="float-shadow z-10 w-full max-w-xl" />
 			<OrangeBlob1 />
 		</div>
 	</div>
-	<div class="flex w-full flex-col items-center justify-center gap-10 lg:flex-row">
+	<div class="flex w-full flex-col items-center justify-center gap-10 lg:flex-row px-[10%]">
 		{#each programs as program, idx (idx)}
-			<!-- <a
-        href={program.path}
-        use:inview={options}
-        on:change={({ detail }) => {
-          isInView[1] = detail.inView;
-          changeDuration(isInView[1], detail.node.children);
-        }}
-      >
-         <img
-          src={program.image}
-          alt="pcs"
-          class={`transition-transform-opacity-filter pointer-events-none w-full max-w-sm cursor-pointer shadow-md shadow-black brightness-[60%] duration-1000 hover:scale-105 hover:brightness-100 ${
-            delay[idx]
-          } ${
-            isInView[1]
-              ? 'md:translate-x-0 md:opacity-100 md:blur-0'
-              : 'md:translate-x-full md:opacity-0 md:blur-[2px]'
-          }`}
-        />
-      </a> -->
 			<div
 				class={`${program.bg} w-full max-w-sm bg-cover pt-32 transition-all duration-1000 ${
 					delay[idx]

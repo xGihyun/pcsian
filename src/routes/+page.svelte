@@ -3,7 +3,6 @@
 	import Programs from '../components/Programs.svelte';
 	import { inview } from 'svelte-inview';
 	import '../styles/curves.css';
-	import CurveAccent from '../assets/curves/CurveAccent.svelte';
 	import CurveWhiteTop from '../assets/curves/CurveWhiteTop.svelte';
 	import CurveWhiteBottom from '../assets/curves/CurveWhiteBottom.svelte';
 
@@ -53,9 +52,6 @@
 			approach to learning enhances our students' education and helps them to explore their dynamic
 			and diverse community. Pateros Catholic School provides a rich learning environment that has
 			helped countless students get ahead.
-			<!-- Founded in 1961, the School is located in Pateros, Metro Manila and reflects the diverse backgrounds and cultures of the area.
-        We are extremely proud of our students and staff, who are always eager to learn, create and grow together.
-        Give us a call if you need more information. -->
 		</p>
 	</div>
 </div>
