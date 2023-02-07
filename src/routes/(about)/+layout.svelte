@@ -1,11 +1,10 @@
 <script lang="ts">
-	import pcsMain from '../../assets/images/pcsMain.jpg';
 	import TopHeading from '../../components/TopHeading.svelte';
 </script>
 
 <TopHeading title={'ABOUT'} />
-<div class="relative">
-	<img src={pcsMain} alt="pcs main" class="absolute h-full w-full object-cover opacity-50" />
-	<div class="absolute top-0 left-0 h-full w-full bg-white bg-opacity-80" />
-	<slot />
+<div class="relative mx-4 my-10 h-full bg-white ">
+	<div class="page-content mx-auto max-w-4xl">
+		<slot />
+	</div>
 </div>

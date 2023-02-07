@@ -28,16 +28,8 @@
 }
 
 @layer components {
-	.page-wrap {
-		@apply relative px-[5%] py-12 lg:px-[20%];
-	}
-
-	.page-content {
-		@apply rounded-xl bg-white px-10 py-5 shadow-lg shadow-black;
-	}
-
 	.page-content h2 {
-		@apply mt-5 mb-2 text-center text-2xl font-semibold;
+		@apply my-5 text-center text-2xl font-semibold;
 	}
 
 	.page-content h3 {

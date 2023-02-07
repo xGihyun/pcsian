@@ -21,6 +21,11 @@ export type Data = {
   contents: Programs;
 }
 
+export type Chat = {
+  type: string;
+  text: string;
+};
+
 // export type NavbarItem = {
 //   title: string,
 //   path: string,

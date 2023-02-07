@@ -43,7 +43,7 @@ module.exports = {
       },
       scale: {
         '200': '1.75',
-      }
+      },
     },
     fontFamily: {
       "torus-semibold": "torus-semibold",
