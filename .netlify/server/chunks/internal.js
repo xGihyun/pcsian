@@ -1,12 +1,11 @@
 import { c as create_ssr_component, a as setContext, v as validate_component, m as missing_component } from "./index.js";
+const base = "";
 let assets = "";
-let base = "";
+function set_assets(path) {
+  assets = path;
+}
 let version = "";
 let public_env = {};
-function set_paths(paths) {
-  base = paths.base;
-  assets = paths.assets || base;
-}
 function set_building(value) {
 }
 function set_private_env(environment) {
@@ -22,7 +21,8 @@ function afterUpdate() {
 const Root = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { stores } = $$props;
   let { page } = $$props;
-  let { components } = $$props;
+  let { constructors } = $$props;
+  let { components = [] } = $$props;
   let { form } = $$props;
   let { data_0 = null } = $$props;
   let { data_1 = null } = $$props;
@@ -35,6 +35,8 @@ const Root = create_ssr_component(($$result, $$props, $$bindings, slots) => {
     $$bindings.stores(stores);
   if ($$props.page === void 0 && $$bindings.page && page !== void 0)
     $$bindings.page(page);
+  if ($$props.constructors === void 0 && $$bindings.constructors && constructors !== void 0)
+    $$bindings.constructors(constructors);
   if ($$props.components === void 0 && $$bindings.components && components !== void 0)
     $$bindings.components(components);
   if ($$props.form === void 0 && $$bindings.form && form !== void 0)
@@ -45,26 +47,81 @@ const Root = create_ssr_component(($$result, $$props, $$bindings, slots) => {
     $$bindings.data_1(data_1);
   if ($$props.data_2 === void 0 && $$bindings.data_2 && data_2 !== void 0)
     $$bindings.data_2(data_2);
-  {
-    stores.page.set(page);
-  }
-  return `
-
-
-${components[1] ? `${validate_component(components[0] || missing_component, "svelte:component").$$render($$result, { data: data_0 }, {}, {
-    default: () => {
-      return `${components[2] ? `${validate_component(components[1] || missing_component, "svelte:component").$$render($$result, { data: data_1 }, {}, {
-        default: () => {
-          return `${validate_component(components[2] || missing_component, "svelte:component").$$render($$result, { data: data_2, form }, {}, {})}`;
-        }
-      })}` : `${validate_component(components[1] || missing_component, "svelte:component").$$render($$result, { data: data_1, form }, {}, {})}`}`;
+  let $$settled;
+  let $$rendered;
+  do {
+    $$settled = true;
+    {
+      stores.page.set(page);
     }
-  })}` : `${validate_component(components[0] || missing_component, "svelte:component").$$render($$result, { data: data_0, form }, {}, {})}`}
+    $$rendered = `
+
+
+${constructors[1] ? `${validate_component(constructors[0] || missing_component, "svelte:component").$$render(
+      $$result,
+      { data: data_0, this: components[0] },
+      {
+        this: ($$value) => {
+          components[0] = $$value;
+          $$settled = false;
+        }
+      },
+      {
+        default: () => {
+          return `${constructors[2] ? `${validate_component(constructors[1] || missing_component, "svelte:component").$$render(
+            $$result,
+            { data: data_1, this: components[1] },
+            {
+              this: ($$value) => {
+                components[1] = $$value;
+                $$settled = false;
+              }
+            },
+            {
+              default: () => {
+                return `${validate_component(constructors[2] || missing_component, "svelte:component").$$render(
+                  $$result,
+                  { data: data_2, form, this: components[2] },
+                  {
+                    this: ($$value) => {
+                      components[2] = $$value;
+                      $$settled = false;
+                    }
+                  },
+                  {}
+                )}`;
+              }
+            }
+          )}` : `${validate_component(constructors[1] || missing_component, "svelte:component").$$render(
+            $$result,
+            { data: data_1, form, this: components[1] },
+            {
+              this: ($$value) => {
+                components[1] = $$value;
+                $$settled = false;
+              }
+            },
+            {}
+          )}`}`;
+        }
+      }
+    )}` : `${validate_component(constructors[0] || missing_component, "svelte:component").$$render(
+      $$result,
+      { data: data_0, form, this: components[0] },
+      {
+        this: ($$value) => {
+          components[0] = $$value;
+          $$settled = false;
+        }
+      },
+      {}
+    )}`}
 
 ${``}`;
+  } while (!$$settled);
+  return $$rendered;
 });
-set_paths({ "base": "", "assets": "" });
-set_version("1675736449386");
+set_version("1675739265988");
 const options = {
   csp: { "mode": "auto", "directives": { "upgrade-insecure-requests": false, "block-all-mixed-content": false }, "reportOnly": { "upgrade-insecure-requests": false, "block-all-mixed-content": false } },
   csrf_check_origin: true,
@@ -130,8 +187,8 @@ function get_hooks() {
 export {
   assets as a,
   base as b,
-  set_building as c,
-  set_paths as d,
+  set_assets as c,
+  set_building as d,
   set_private_env as e,
   get_hooks as g,
   options as o,

@@ -130,6 +130,161 @@ function normalize_error(error2) {
     error2
   );
 }
+const GENERIC_ERROR = {
+  id: "__error"
+};
+function method_not_allowed(mod, method) {
+  return text(`${method} method not allowed`, {
+    status: 405,
+    headers: {
+      // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/405
+      // "The server must generate an Allow header field in a 405 status code response"
+      allow: allowed_methods(mod).join(", ")
+    }
+  });
+}
+function allowed_methods(mod) {
+  const allowed = [];
+  for (const method in ["GET", "POST", "PUT", "PATCH", "DELETE"]) {
+    if (method in mod)
+      allowed.push(method);
+  }
+  if (mod.GET || mod.HEAD)
+    allowed.push("HEAD");
+  return allowed;
+}
+function static_error_page(options2, status, message) {
+  return text(options2.templates.error({ status, message }), {
+    headers: { "content-type": "text/html; charset=utf-8" },
+    status
+  });
+}
+async function handle_fatal_error(event, options2, error2) {
+  error2 = error2 instanceof HttpError ? error2 : coalesce_to_error(error2);
+  const status = error2 instanceof HttpError ? error2.status : 500;
+  const body = await handle_error_and_jsonify(event, options2, error2);
+  const type = negotiate(event.request.headers.get("accept") || "text/html", [
+    "application/json",
+    "text/html"
+  ]);
+  if (event.isDataRequest || type === "application/json") {
+    return json(body, {
+      status
+    });
+  }
+  return static_error_page(options2, status, body.message);
+}
+async function handle_error_and_jsonify(event, options2, error2) {
+  if (error2 instanceof HttpError) {
+    return error2.body;
+  } else {
+    return await options2.hooks.handleError({ error: error2, event }) ?? {
+      message: event.route.id != null ? "Internal Error" : "Not Found"
+    };
+  }
+}
+function redirect_response(status, location) {
+  const response = new Response(void 0, {
+    status,
+    headers: { location }
+  });
+  return response;
+}
+function clarify_devalue_error(event, error2) {
+  if (error2.path) {
+    return `Data returned from \`load\` while rendering ${event.route.id} is not serializable: ${error2.message} (data${error2.path})`;
+  }
+  if (error2.path === "") {
+    return `Data returned from \`load\` while rendering ${event.route.id} is not a plain object`;
+  }
+  return error2.message;
+}
+function serialize_data_node(node) {
+  if (!node)
+    return "null";
+  if (node.type === "error" || node.type === "skip") {
+    return JSON.stringify(node);
+  }
+  const stringified = devalue.stringify(node.data);
+  const uses = [];
+  if (node.uses.dependencies.size > 0) {
+    uses.push(`"dependencies":${JSON.stringify(Array.from(node.uses.dependencies))}`);
+  }
+  if (node.uses.params.size > 0) {
+    uses.push(`"params":${JSON.stringify(Array.from(node.uses.params))}`);
+  }
+  if (node.uses.parent)
+    uses.push(`"parent":1`);
+  if (node.uses.route)
+    uses.push(`"route":1`);
+  if (node.uses.url)
+    uses.push(`"url":1`);
+  return `{"type":"data","data":${stringified},"uses":{${uses.join(",")}}${node.slash ? `,"slash":${JSON.stringify(node.slash)}` : ""}}`;
+}
+async function render_endpoint(event, route, mod, state) {
+  const method = (
+    /** @type {import('types').HttpMethod} */
+    event.request.method
+  );
+  let handler = mod[method];
+  if (!handler && method === "HEAD") {
+    handler = mod.GET;
+  }
+  if (!handler) {
+    return method_not_allowed(mod, method);
+  }
+  const prerender = mod.prerender ?? state.prerender_default;
+  if (prerender && (mod.POST || mod.PATCH || mod.PUT || mod.DELETE)) {
+    throw new Error("Cannot prerender endpoints that have mutative methods");
+  }
+  if (state.prerendering && !prerender) {
+    if (state.initiator) {
+      throw new Error(`${event.route.id} is not prerenderable`);
+    } else {
+      return new Response(void 0, { status: 204 });
+    }
+  }
+  state.initiator = route;
+  try {
+    const response = await handler(
+      /** @type {import('types').RequestEvent<Record<string, any>>} */
+      event
+    );
+    if (!(response instanceof Response)) {
+      throw new Error(
+        `Invalid response from route ${event.url.pathname}: handler should return a Response object`
+      );
+    }
+    if (state.prerendering) {
+      response.headers.set("x-sveltekit-prerender", String(prerender));
+    }
+    return response;
+  } catch (e) {
+    if (e instanceof Redirect) {
+      return new Response(void 0, {
+        status: e.status,
+        headers: { location: e.location }
+      });
+    }
+    throw e;
+  }
+}
+function is_endpoint_request(event) {
+  const { method, headers } = event.request;
+  if (method === "PUT" || method === "PATCH" || method === "DELETE") {
+    return true;
+  }
+  if (method === "POST" && headers.get("x-sveltekit-action") === "true")
+    return false;
+  const accept = event.request.headers.get("accept") ?? "*/*";
+  return negotiate(accept, ["*", "text/html"]) !== "text/html";
+}
+function compact(arr) {
+  return arr.filter(
+    /** @returns {val is NonNullable<T>} */
+    (val) => val != null
+  );
+}
 function normalize_path(path, trailing_slash) {
   if (path === "/" || trailing_slash === "ignore")
     return path;
@@ -198,172 +353,6 @@ function add_data_suffix(pathname) {
 }
 function strip_data_suffix(pathname) {
   return pathname.slice(0, -DATA_SUFFIX.length);
-}
-const GENERIC_ERROR = {
-  id: "__error"
-};
-function method_not_allowed(mod, method) {
-  return text(`${method} method not allowed`, {
-    status: 405,
-    headers: {
-      // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/405
-      // "The server must generate an Allow header field in a 405 status code response"
-      allow: allowed_methods(mod).join(", ")
-    }
-  });
-}
-function allowed_methods(mod) {
-  const allowed = [];
-  for (const method in ["GET", "POST", "PUT", "PATCH", "DELETE"]) {
-    if (method in mod)
-      allowed.push(method);
-  }
-  if (mod.GET || mod.HEAD)
-    allowed.push("HEAD");
-  return allowed;
-}
-function get_option(nodes, option) {
-  return nodes.reduce(
-    (value, node) => {
-      return (
-        /** @type {any} TypeScript's too dumb to understand this */
-        node?.universal?.[option] ?? node?.server?.[option] ?? value
-      );
-    },
-    /** @type {Value | undefined} */
-    void 0
-  );
-}
-function static_error_page(options2, status, message) {
-  return text(options2.templates.error({ status, message }), {
-    headers: { "content-type": "text/html; charset=utf-8" },
-    status
-  });
-}
-async function handle_fatal_error(event, options2, error2) {
-  error2 = error2 instanceof HttpError ? error2 : coalesce_to_error(error2);
-  const status = error2 instanceof HttpError ? error2.status : 500;
-  const body = await handle_error_and_jsonify(event, options2, error2);
-  const type = negotiate(event.request.headers.get("accept") || "text/html", [
-    "application/json",
-    "text/html"
-  ]);
-  if (has_data_suffix(new URL(event.request.url).pathname) || type === "application/json") {
-    return json(body, {
-      status
-    });
-  }
-  return static_error_page(options2, status, body.message);
-}
-async function handle_error_and_jsonify(event, options2, error2) {
-  if (error2 instanceof HttpError) {
-    return error2.body;
-  } else {
-    return await options2.hooks.handleError({ error: error2, event }) ?? {
-      message: event.route.id != null ? "Internal Error" : "Not Found"
-    };
-  }
-}
-function redirect_response(status, location) {
-  const response = new Response(void 0, {
-    status,
-    headers: { location }
-  });
-  return response;
-}
-function clarify_devalue_error(event, error2) {
-  if (error2.path) {
-    return `Data returned from \`load\` while rendering ${event.route.id} is not serializable: ${error2.message} (data${error2.path})`;
-  }
-  if (error2.path === "") {
-    return `Data returned from \`load\` while rendering ${event.route.id} is not a plain object`;
-  }
-  return error2.message;
-}
-function serialize_data_node(node) {
-  if (!node)
-    return "null";
-  if (node.type === "error" || node.type === "skip") {
-    return JSON.stringify(node);
-  }
-  const stringified = devalue.stringify(node.data);
-  const uses = [];
-  if (node.uses.dependencies.size > 0) {
-    uses.push(`"dependencies":${JSON.stringify(Array.from(node.uses.dependencies))}`);
-  }
-  if (node.uses.params.size > 0) {
-    uses.push(`"params":${JSON.stringify(Array.from(node.uses.params))}`);
-  }
-  if (node.uses.parent)
-    uses.push(`"parent":1`);
-  if (node.uses.route)
-    uses.push(`"route":1`);
-  if (node.uses.url)
-    uses.push(`"url":1`);
-  return `{"type":"data","data":${stringified},"uses":{${uses.join(",")}}${node.slash ? `,"slash":${JSON.stringify(node.slash)}` : ""}}`;
-}
-async function render_endpoint(event, mod, state) {
-  const method = (
-    /** @type {import('types').HttpMethod} */
-    event.request.method
-  );
-  let handler = mod[method];
-  if (!handler && method === "HEAD") {
-    handler = mod.GET;
-  }
-  if (!handler) {
-    return method_not_allowed(mod, method);
-  }
-  const prerender = mod.prerender ?? state.prerender_default;
-  if (prerender && (mod.POST || mod.PATCH || mod.PUT || mod.DELETE)) {
-    throw new Error("Cannot prerender endpoints that have mutative methods");
-  }
-  if (state.prerendering && !prerender) {
-    if (state.initiator) {
-      throw new Error(`${event.route.id} is not prerenderable`);
-    } else {
-      return new Response(void 0, { status: 204 });
-    }
-  }
-  try {
-    const response = await handler(
-      /** @type {import('types').RequestEvent<Record<string, any>>} */
-      event
-    );
-    if (!(response instanceof Response)) {
-      throw new Error(
-        `Invalid response from route ${event.url.pathname}: handler should return a Response object`
-      );
-    }
-    if (state.prerendering) {
-      response.headers.set("x-sveltekit-prerender", String(prerender));
-    }
-    return response;
-  } catch (e) {
-    if (e instanceof Redirect) {
-      return new Response(void 0, {
-        status: e.status,
-        headers: { location: e.location }
-      });
-    }
-    throw e;
-  }
-}
-function is_endpoint_request(event) {
-  const { method, headers } = event.request;
-  if (method === "PUT" || method === "PATCH" || method === "DELETE") {
-    return true;
-  }
-  if (method === "POST" && headers.get("x-sveltekit-action") === "true")
-    return false;
-  const accept = event.request.headers.get("accept") ?? "*/*";
-  return negotiate(accept, ["*", "text/html"]) !== "text/html";
-}
-function compact(arr) {
-  return arr.filter(
-    /** @returns {val is NonNullable<T>} */
-    (val) => val != null
-  );
 }
 function is_action_json_request(event) {
   const accept = negotiate(event.request.headers.get("accept") ?? "*/*", [
@@ -1250,7 +1239,7 @@ async function render_response({
         navigating: writable(null),
         updated
       },
-      components: await Promise.all(branch.map(({ node }) => node.component())),
+      constructors: await Promise.all(branch.map(({ node }) => node.component())),
       form: form_value
     };
     let data = {};
@@ -1388,8 +1377,8 @@ async function render_response({
   }
   if (page_config.csr) {
     const opts = [
+      `assets: ${s(assets)}`,
       `env: ${s(public_env)}`,
-      `paths: ${s({ assets, base })}`,
       `target: document.querySelector('[data-sveltekit-hydrate="${target}"]').parentNode`,
       `version: ${s(version)}`
     ];
@@ -1504,6 +1493,18 @@ async function render_response({
     status,
     headers
   });
+}
+function get_option(nodes, option) {
+  return nodes.reduce(
+    (value, node) => {
+      return (
+        /** @type {any} TypeScript's too dumb to understand this */
+        node?.universal?.[option] ?? node?.server?.[option] ?? value
+      );
+    },
+    /** @type {Value | undefined} */
+    void 0
+  );
 }
 async function respond_with_error({
   event,
@@ -2215,7 +2216,8 @@ const validate_common_exports = validator([
   "prerender",
   "csr",
   "ssr",
-  "trailingSlash"
+  "trailingSlash",
+  "config"
 ]);
 const validate_page_server_exports = validator([
   "load",
@@ -2223,7 +2225,8 @@ const validate_page_server_exports = validator([
   "csr",
   "ssr",
   "actions",
-  "trailingSlash"
+  "trailingSlash",
+  "config"
 ]);
 const validate_server_exports = validator([
   "GET",
@@ -2232,7 +2235,8 @@ const validate_server_exports = validator([
   "PUT",
   "DELETE",
   "prerender",
-  "trailingSlash"
+  "trailingSlash",
+  "config"
 ]);
 const default_transform = ({ html }) => html;
 const default_filter = () => false;
@@ -2257,12 +2261,6 @@ async function respond(request, options2, manifest, state) {
   }
   let route = null;
   let params = {};
-  if (base && !state.prerendering?.fallback) {
-    if (!decoded.startsWith(base)) {
-      return text("Not found", { status: 404 });
-    }
-    decoded = decoded.slice(base.length) || "/";
-  }
   const is_data_request = has_data_suffix(decoded);
   let invalidated_data_nodes;
   if (is_data_request) {
@@ -2478,7 +2476,7 @@ async function respond(request, options2, manifest, state) {
             trailing_slash ?? "never"
           );
         } else if (route.endpoint && (!route.page || is_endpoint_request(event2))) {
-          response = await render_endpoint(event2, await route.endpoint(), state);
+          response = await render_endpoint(event2, route, await route.endpoint(), state);
         } else if (route.page) {
           response = await render_page(
             event2,

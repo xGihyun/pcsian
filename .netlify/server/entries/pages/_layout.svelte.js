@@ -57,7 +57,7 @@ const Navbar = create_ssr_component(($$result, $$props, $$bindings, slots) => {
 		<div>${validate_component(HamburgerMenu, "HamburgerMenu").$$render($$result, {}, {}, {})}</div></nav>
 	${``}</div>`;
 });
-const PUBLIC_OPENAI_API_KEY = "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";
+const PUBLIC_OPENAI_API_KEY = "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";
 const Robot = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { style } = $$props;
   if ($$props.style === void 0 && $$bindings.style && style !== void 0)

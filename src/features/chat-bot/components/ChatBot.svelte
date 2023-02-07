@@ -28,7 +28,7 @@
 			model: 'text-davinci-003',
 			prompt: `${CONDITION} ${prompt}.`,
 			max_tokens: 50,
-			temperature: 1
+			temperature: 1,
 		});
 
 		const responseText = response.data.choices[0].text as string;
