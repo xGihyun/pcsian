@@ -9,7 +9,7 @@
 
 	const API_KEY = PUBLIC_OPENAI_API_KEY;
 
-  export let show: boolean;
+	export let show: boolean;
 
 	const configuration = new Configuration({
 		apiKey: API_KEY
@@ -40,7 +40,11 @@
 	}
 </script>
 
-<div class={`fixed bottom-32 right-0 z-50 w-full max-w-lg text-white md:right-10 ${show ? "block" : "hidden"}`}>
+<div
+	class={`fixed bottom-32 right-0 z-50 w-full max-w-lg text-white md:right-10 ${
+		show ? 'block' : 'hidden'
+	}`}
+>
 	<div class="h-[40vh] overflow-y-scroll border-2 border-black bg-neutral-800">
 		{#each chatHistory as chat, idx (idx)}
 			{#if chat.type === 'user'}
@@ -75,9 +79,14 @@
 		</div> -->
 	</div>
 	<div class="flex border-2 border-black bg-neutral-700 p-2">
-		<input class="w-full bg-transparent outline-none" type="text" bind:value={prompt} placeholder="Aa" />
+		<input
+			class="w-full bg-transparent outline-none"
+			type="text"
+			bind:value={prompt}
+			placeholder="Aa"
+		/>
 		<button on:click={getResponse}>
-      <Send style="h-[20px] w-[20px]" />
-    </button>
+			<Send style="h-[20px] w-[20px]" />
+		</button>
 	</div>
 </div>
