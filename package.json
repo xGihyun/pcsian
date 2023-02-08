@@ -1,6 +1,6 @@
 {
 	"engines": {
-		"node": "18.14.0"
+		"node": "v17.2.0"
 	},
 	"name": "pcsian",
 	"version": "0.0.1",
