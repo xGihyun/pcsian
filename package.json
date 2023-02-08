@@ -1,4 +1,7 @@
 {
+	"engines": {
+		"node": ">=18"
+	},
 	"name": "pcsian",
 	"version": "0.0.1",
 	"private": true,
