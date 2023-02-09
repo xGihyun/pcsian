@@ -5,7 +5,7 @@
 <div class='page-wrap'>
   <div class='page-content'>
     <h2>Services & Facilities</h2>
-    <ul>
+    <ul class="list-disc">
       {#each services as item, idx (idx)}
         <li>
           <h3>{item.title}</h3>

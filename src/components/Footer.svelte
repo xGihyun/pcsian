@@ -3,7 +3,9 @@
 	import pcsMembers from '../assets/images/pcsMembers.png';
 </script>
 
-<footer class="border-t-accent w-full border-t-8 bg-neutral-800 text-white [&>h2]:text-2xl [&>p]:text-neutral-300">
+<footer
+	class="border-t-accent w-full border-t-8 bg-neutral-900 text-white [&>p]:text-neutral-300 [&>h2]:text-2xl"
+>
 	<div class="flex flex-col items-start justify-center py-16 text-center lg:flex-row">
 		<div class="flex w-full flex-col items-center pb-12">
 			<div class="pb-4">

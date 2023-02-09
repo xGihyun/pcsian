@@ -5,8 +5,8 @@
 </script>
 
 <ul
-	class={`absolute top-20 flex flex-col gap-3 text-white transition-all duration-300 ease-in-out ${
-		scrolled ? 'top-14 pt-2' : ''
+	class={`absolute flex flex-col gap-3 text-white transition-all duration-300 ease-in-out ${
+		scrolled ? 'top-14 pt-2' : 'top-20'
 	}`}
 >
 	{#each dropdownItems[drop] as item, idx (idx)}

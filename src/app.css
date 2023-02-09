@@ -41,7 +41,7 @@
 	}
 
 	.page-content ol {
-		@apply list-decimal pl-10;
+		@apply list-decimal;
 	}
 
 	.page-content ol p {
@@ -51,12 +51,13 @@
 	.page-content ol ol {
 		@apply list-disc;
 	}
-
-	.page-content ul {
-		@apply list-disc pl-4;
-	}
-
+	
 	.gradient {
 		background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7) 25%, rgb(0, 0, 0));
+	}
+
+	/* Firefox only */
+	.scrollbar-dark{
+		scrollbar-color: rgb(30, 30 30) rgb(20, 20 20);
 	}
 }

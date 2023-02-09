@@ -2,9 +2,9 @@
 	import { navItems } from '../constants';
 	import logo from '../assets/images/pcsLogoBrown.png';
 	import Dropdown from './Dropdown.svelte';
-	import { onMount } from 'svelte';
 	import HamburgerMenu from '../assets/icons/HamburgerMenu.svelte';
 	import NavbarMobile from './mobile/NavbarMobile.svelte';
+	import { onMount } from 'svelte';
 
 	// Check if user has scrolled
 	let scrolled = false;
@@ -31,13 +31,13 @@
 		<div class="border-b-accent h-80 w-full border-b-4 bg-black bg-opacity-75" />
 	{/if}
 	<nav
-		class={`absolute top-0 left-0 hidden h-20 w-full items-center justify-between bg-gradient-to-b 
+		class={`absolute top-0 left-0 hidden w-full items-center justify-between bg-gradient-to-b 
     px-[5%] transition-all duration-300 ease-in-out md:flex ${
-			scrolled ? 'bg-accent shadow-nav-shadow h-14 from-transparent' : 'from-nav-gradient'
+			scrolled ? 'bg-accent shadow-nav-shadow h-14 from-transparent' : 'from-nav-gradient h-20'
 		}`}
 	>
 		<img
-			class={`h-16 w-16 transition-all duration-300 ease-in-out ${scrolled ? 'h-12 w-12' : ''}`}
+			class={`transition-all duration-300 ease-in-out ${scrolled ? 'h-12 w-12' : 'h-16 w-16'}`}
 			src={logo}
 			alt="pcs"
 		/>
@@ -53,8 +53,10 @@
 						on:mouseleave={() => (hovered = !hovered)}
 					>
 						<!-- svelte-ignore a11y-invalid-attribute -->
-						<a class="flex h-full items-center px-4 text-white" href="#" data-nav={item.data}
-							>{item.title}</a
+						<a
+							class="pointer-events-none flex h-full items-center px-4 text-white"
+							href="#"
+							data-nav={item.data}>{item.title}</a
 						>
 						{#if hoveredElement === item.data && hovered}
 							<Dropdown drop={hoveredElement} {scrolled} />

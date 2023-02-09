@@ -2,10 +2,10 @@
 	import gradeSchool from '../assets/images/gradeSchool.gif';
 	import juniorHigh from '../assets/images/juniorHigh.gif';
 	import seniorHigh from '../assets/images/seniorHigh.gif';
-	import { inview } from 'svelte-inview';
 	import kessokuBand from '../assets/images/KessokuBand.png';
-	import '../styles/animations.css';
 	import OrangeBlob1 from '../assets/blobs/OrangeBlob1.svelte';
+	import '../styles/animations.css';
+	import { inview } from 'svelte-inview';
 
 	const programs = [
 		{
@@ -40,9 +40,7 @@
 			// Use setTimeout to wait until the animation finishes before replacing/removing transition classes
 			setTimeout(() => {
 				children[0].classList.replace('duration-1000', 'duration-300');
-				children[0].classList.remove(delay[0]);
-				children[0].classList.remove(delay[1]);
-				children[0].classList.remove(delay[2]);
+				children[0].classList.remove(...delay);
 				children[0].classList.remove('pointer-events-none');
 			}, 1300);
 		}
@@ -54,7 +52,7 @@
 		class="relative flex h-full flex-col items-center justify-between gap-20 px-[10%] pb-40 lg:flex-row"
 	>
 		<div
-			class="flex w-full flex-col text-white lg:max-w-[50%] text-center lg:text-left"
+			class="flex w-full flex-col text-center text-white lg:max-w-[50%] lg:text-left"
 			use:inview={options}
 			on:change={({ detail }) => {
 				isInView[0] = detail.inView;
@@ -93,7 +91,7 @@
 			<OrangeBlob1 />
 		</div>
 	</div>
-	<div class="flex w-full flex-col items-center justify-center gap-10 lg:flex-row px-[10%]">
+	<div class="flex w-full flex-col items-center justify-center gap-10 px-[10%] lg:flex-row">
 		{#each programs as program, idx (idx)}
 			<div
 				class={`${program.bg} w-full max-w-sm bg-cover pt-32 transition-all duration-1000 ${

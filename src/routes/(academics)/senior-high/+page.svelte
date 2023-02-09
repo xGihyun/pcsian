@@ -7,7 +7,7 @@
 	{#each seniorHigh.content as item, idx (idx)}
 		<li class="mb-4">
 			<span>{item.mainText}</span>
-			<ol>
+			<ol class="pl-4">
 				{#each item.subText as sub, idx (idx)}
 					<li>{sub}</li>
 				{/each}

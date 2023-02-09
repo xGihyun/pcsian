@@ -43,27 +43,3 @@
 .curve-white-bottom .shape-fill {
   fill: #FFFFFF;
 }
-
-.curve-accent {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-  z-index: 20;
-}
-
-.curve-accent svg {
-  position: relative;
-  display: block;
-  width: calc(100% + 1.3px);
-
-  @apply h-[40px] md:h-[100px];
-}
-
-.curve-accent .shape-fill {
-  /* fill: rgb(38, 38, 38); */
-  /* fill: rgb(23, 23, 23); */
-  fill: rgb(0, 0, 0);
-}

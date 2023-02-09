@@ -1,12 +1,12 @@
 <script lang="ts">
 	import Hero from '../components/Hero.svelte';
 	import Programs from '../components/Programs.svelte';
-	import { inview } from 'svelte-inview';
-	import '../styles/curves.css';
 	import CurveWhiteTop from '../assets/curves/CurveWhiteTop.svelte';
 	import CurveWhiteBottom from '../assets/curves/CurveWhiteBottom.svelte';
+	import '../styles/curves.css';
+	import { inview } from 'svelte-inview';
 
-	let isInView = [false, false, false];
+	let isInView = [false, false];
 
 	const options = { unobserveOnEnter: true, rootMargin: '-10%' };
 </script>
@@ -36,10 +36,6 @@
 			class={`bg-accent my-8 h-[2px] w-full transform-gpu rounded-full transition-all duration-1000 ease-in-out ${
 				isInView[0] ? 'md:scale-x-100 md:delay-700' : 'md:scale-x-0'
 			}`}
-			use:inview={options}
-			on:change={({ detail }) => {
-				isInView[0] = detail.inView;
-			}}
 		/>
 		<p
 			class={`transform-gpu text-xl transition-all delay-1000 duration-1000 ease-in-out md:text-2xl ${
@@ -65,7 +61,6 @@
 
 <!-- Embedded Facebook posts -->
 <div class="relative h-full bg-white px-[10%] py-40">
-	<!-- <CurveAccent /> -->
 	<div
 		class={`relative mb-5 flex transform-gpu flex-col items-center justify-center whitespace-nowrap text-center text-3xl font-bold transition-all duration-1000 ease-in-out lg:text-5xl ${
 			isInView[1]
@@ -82,10 +77,6 @@
 			class={`bg-accent my-8 h-[2px] w-full transform-gpu rounded-full transition-all duration-1000 ease-in-out ${
 				isInView[1] ? 'md:scale-x-100 md:delay-700' : 'md:scale-x-0'
 			}`}
-			use:inview={options}
-			on:change={({ detail }) => {
-				isInView[1] = detail.inView;
-			}}
 		/>
 	</div>
 	<div class="flex flex-col justify-center gap-5 lg:flex-row">

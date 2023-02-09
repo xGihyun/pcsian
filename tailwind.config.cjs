@@ -9,8 +9,9 @@ module.exports = {
         "accent-dark": "rgb(167, 107, 0)",
       },
       boxShadow: {
-        "nav-shadow": "rgba(0, 0, 0, 0.25) 0px 3px 8px",
+        "nav-shadow": "rgba(0, 0, 0, 0.6) 0px 5px 10px",
         "select": "rgb(205, 127, 0) 0px 0px 10px 0px",
+        "chat": "rgba(0, 0, 0, 0.8) 0px 10px 20px",
       },
       gradientColorStops: {
         "nav-gradient": "rgba(0, 0, 0, 0.7)"
@@ -36,7 +37,7 @@ module.exports = {
           "0": { transform: "translateY(0)", },
           "50%": { transform: "translateY(20px)", },
           "100%": { transform: "translateY(0)", },
-        }
+        },
       },
       animation: {
         float: "float 3s ease-in-out infinite",
@@ -46,7 +47,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      "torus-semibold": "torus-semibold",
+      "torus-semibold": "torus-semibold, sans serif",
       "torus-bold": "torus-bold",
     }
   },

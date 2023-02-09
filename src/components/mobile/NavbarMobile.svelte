@@ -3,16 +3,13 @@
 	import { navItems } from '../../constants';
 	import DropdownMobile from './DropdownMobile.svelte';
 
-	// export let style: string;
-	// export let ulStyle: string;
-
 	// Get clicked element
 	let clickedElement = '';
 	let showDropdown = false;
 
 	function handleClick(data: string) {
 		clickedElement = data;
-		showDropdown = showDropdown ? false : true;
+		showDropdown = !showDropdown;
 	}
 </script>
 
@@ -24,18 +21,16 @@
 			{#if item.data === 'about' || item.data === 'academics'}
 				<li class="flex h-full w-full flex-col p-4">
 					<div class="flex flex-row-reverse text-white">
-						<ChevronRight
-							style={clickedElement === item.data && showDropdown ? 'rotate-90' : 'rotate-0'}
-						/>
-						<!-- svelte-ignore a11y-invalid-attribute -->
-						<a
-							class="flex h-full w-full"
-							href="#"
+						<button
+							class="flex h-full w-full justify-between"
 							data-nav={item.data}
 							on:click={() => handleClick(item.data)}
 						>
 							{item.title}
-						</a>
+							<ChevronRight
+								style={clickedElement === item.data && showDropdown ? 'rotate-90' : 'rotate-0'}
+							/>
+						</button>
 					</div>
 					{#if showDropdown && clickedElement === item.data}
 						<DropdownMobile drop={item.data} />
