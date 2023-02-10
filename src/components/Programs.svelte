@@ -87,8 +87,14 @@
 			</p>
 		</div>
 		<div class="relative hidden h-full w-full items-center justify-center lg:flex">
-			<img src={kessokuBand} alt="" class="float-shadow z-10 w-full max-w-xl" />
 			<OrangeBlob1 />
+			<a
+				href="https://www.deviantart.com/haerge/art/Kessoku-Band-Bocchi-The-Rock-936713092"
+				rel="noreferrer"
+				target="_blank"
+			>
+				<img src={kessokuBand} alt="" class="float-shadow z-10 w-full max-w-xl" />
+			</a>
 		</div>
 	</div>
 	<div class="flex w-full flex-col items-center justify-center gap-10 px-[10%] lg:flex-row">
