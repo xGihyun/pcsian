@@ -1,5 +1,5 @@
 <script lang="ts">
-	import pcsAnnex2 from '../assets/images/pcsAnnex2.jpg';
+	import { pcsAnnex2 } from "../assets/images";
 	export let title: string;
 </script>
 

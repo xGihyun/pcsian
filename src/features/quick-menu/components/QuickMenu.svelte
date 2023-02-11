@@ -22,7 +22,7 @@
 </div> -->
 <div class={`fixed bottom-10 right-10 z-50 ${show ? 'hidden' : 'block'}`}>
 	<button
-		class="bg-accent flex h-20 w-20 items-center justify-center rounded-full transition-transform duration-300 lg:hover:scale-90"
+		class="bg-accent shadow-nav-shadow flex h-20 w-20 items-center justify-center rounded-full transition-all duration-300 lg:hover:brightness-110 lg:hover:scale-90"
 		on:click={() => {
 			showChatBot.update(() => (show = !show));
 		}}

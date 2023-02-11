@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { navItems } from '../constants';
-	import logo from '../assets/images/pcsLogoBrown.png';
-	import Dropdown from './Dropdown.svelte';
+	import { pcsLogo } from '../assets/images';
+	import { Dropdown } from '.';
 	import HamburgerMenu from '../assets/icons/HamburgerMenu.svelte';
 	import NavbarMobile from './mobile/NavbarMobile.svelte';
 	import { onMount } from 'svelte';
@@ -38,7 +38,7 @@
 	>
 		<img
 			class={`transition-all duration-300 ease-in-out ${scrolled ? 'h-12 w-12' : 'h-16 w-16'}`}
-			src={logo}
+			src={pcsLogo}
 			alt="pcs"
 		/>
 		<ul class="hidden h-full flex-row md:flex">
@@ -79,7 +79,7 @@
 	<nav
 		class="bg-accent shadow-nav-shadow flex h-14 w-full items-center justify-between from-transparent px-[5%] md:hidden"
 	>
-		<img src={logo} alt="" class="h-12 w-12" />
+		<img src={pcsLogo} alt="" class="h-12 w-12" />
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<div on:click={() => (showNavbar = !showNavbar)}>
 			<HamburgerMenu />

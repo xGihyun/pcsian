@@ -1,6 +1,5 @@
 <script lang="ts">
-	import qrCode from '../assets/images/pcsQrCode.jpg';
-	import pcsMembers from '../assets/images/pcsMembers.png';
+	import { pcsMembers, qrCode } from '../assets/images';
 </script>
 
 <footer

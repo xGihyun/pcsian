@@ -1,27 +1,32 @@
 <script>
 	import { onMount } from 'svelte';
 	import '../app.css';
-	import Footer from '../components/Footer.svelte';
-	import Loading from '../components/Loading.svelte';
-	import Navbar from '../components/Navbar.svelte';
+	import { Footer, Loading, Navbar } from '../components';
 	import { QuickMenu } from '../features';
 	// import Transition from '../components/Transition.svelte';
 	// import { page } from '$app/stores';
 
-	let load = true;
+	let loading = true;
+	let display = 'block';
 
 	onMount(() => {
-		setInterval(() => {
-			load = false;
+		setTimeout(() => {
+			loading = false;
 		}, 2000);
+
+		setTimeout(() => {
+			display = 'hidden';
+		}, 3500);
 	});
 </script>
 
-{#if load}
-	<Loading />
-{/if}
+<Loading
+	style={`transition-all duration-1000 ${display} ${
+		loading ? 'translate-y-0' : '-translate-y-full'
+	}`}
+/>
 
-<div class={`${load ? 'hidden' : 'block'}`}>
+<div class={`${loading ? 'hidden' : 'block'}`}>
 	<Navbar />
 	<QuickMenu />
 	<main class="overflow-x-hidden">

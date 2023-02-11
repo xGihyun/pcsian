@@ -1,28 +1,22 @@
 <script lang="ts">
-	import gradeSchool from '../assets/images/gradeSchool.gif';
-	import juniorHigh from '../assets/images/juniorHigh.gif';
-	import seniorHigh from '../assets/images/seniorHigh.gif';
-	import kessokuBand from '../assets/images/KessokuBand.png';
 	import OrangeBlob1 from '../assets/blobs/OrangeBlob1.svelte';
-	import '../styles/animations.css';
+	import { kessokuBand } from '../assets/images';
 	import { inview } from 'svelte-inview';
+	import '../styles/animations.css';
 
 	const programs = [
 		{
 			title: 'Grade School',
-			image: gradeSchool,
 			bg: 'bg-grade-school',
 			path: '/grade-school'
 		},
 		{
 			title: 'Junior High',
-			image: juniorHigh,
 			bg: 'bg-junior-high',
 			path: '/junior-high'
 		},
 		{
 			title: 'Senior High',
-			image: seniorHigh,
 			bg: 'bg-senior-high',
 			path: '/senior-high'
 		}

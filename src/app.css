@@ -8,6 +8,10 @@
 	font-family: torus-regular, sans-serif;
 }
 
+body{
+	background: black;
+}
+
 @font-face {
 	font-family: torus-regular;
 	src: url('./assets/fonts/torus/TorusNotched-Regular.ttf');
@@ -24,7 +28,8 @@
 }
 
 :root {
-	--body: rgb(24, 24, 24);
+	--scrollbar-track: rgb(30, 30, 30);
+	--scrollbar-thumb: rgb(90, 90, 90);
 }
 
 @layer components {
@@ -51,13 +56,31 @@
 	.page-content ol ol {
 		@apply list-disc;
 	}
-	
+
 	.gradient {
 		background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7) 25%, rgb(0, 0, 0));
 	}
+}
 
-	/* Firefox only */
-	.scrollbar-dark{
-		scrollbar-color: rgb(30, 30 30) rgb(20, 20 20);
+/* Scrollbar */
+/* Firefox only */
+@supports (scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track)) {
+	* {
+		scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+		scrollbar-width: thin;
 	}
+}
+
+/* Other browsers */
+::-webkit-scrollbar {
+	width: 0.25em;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--scrollbar-thumb);
+	border-radius: 100vw;
 }

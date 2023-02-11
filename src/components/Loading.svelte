@@ -1,11 +1,15 @@
 <script lang="ts">
 	import '../styles/loading.css';
+
+	export let style: string;
 </script>
 
-<div class="bg-black h-screen flex items-center justify-center z-[999]">
-  <div class="loading-spinner absolute">
-    <div class="loading">
-      <div />
-    </div>
-  </div>
+<div
+	class={`absolute left-0 top-0 z-[999] flex h-screen w-full items-center justify-center bg-black ${style}`}
+>
+	<div class="loading-spinner">
+		<div class="loading">
+			<div />
+		</div>
+	</div>
 </div>

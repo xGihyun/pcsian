@@ -4,6 +4,7 @@
 	import { CONDITION } from '../constants';
 	import { showChatBot } from '../../stores';
 	import { openai } from '../api';
+	import { onMount } from 'svelte';
 
 	let show = false;
 	let input: HTMLInputElement;
@@ -23,7 +24,7 @@
 			model: 'text-davinci-003',
 			prompt: `${CONDITION} ${prompt}.`,
 			max_tokens: 100,
-			temperature: 1
+			temperature: 0.9
 		});
 
 		const responseText = response.data.choices[0].text as string;
@@ -33,6 +34,11 @@
 
 		prompt = '';
 	}
+
+	// Initial greeting
+	onMount(() => {
+		chatHistory = [...chatHistory, { type: 'bot', text: "Good day! How can I help?" }];
+	})
 </script>
 
 <div
@@ -46,7 +52,7 @@
 		</button>
 	</div>
 	<div class="relative">
-		<div class="scrollbar-dark h-[50vh] overflow-y-scroll bg-neutral-800 shadow-chat">
+		<div class="shadow-chat h-[50vh] overflow-y-scroll bg-neutral-800">
 			{#each chatHistory as chat, idx (idx)}
 				{#if chat.type === 'user'}
 					<div class="flex flex-row items-center gap-4 p-4">
@@ -93,7 +99,7 @@
 					placeholder="Aa"
 				/>
 				<button on:click={getResponse}>
-					<Send style="h-[20px] w-[20px]" />
+					<Send style="h-[20px] w-[20px] hover:text-accent hover:scale-110 transition-all duration-300" />
 				</button>
 			</form>
 		</div>

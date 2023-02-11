@@ -4,6 +4,7 @@
 
 <div class='page-wrap'>
   <div class='page-content'>
+    <h2>PAASCU Accreditation</h2>
     <ol>
       {#each paascu as item, idx (idx)}
         <li>

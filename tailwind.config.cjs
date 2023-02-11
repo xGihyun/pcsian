@@ -6,21 +6,18 @@ module.exports = {
     extend: {
       colors: {
         "accent": "rgb(205, 127, 0)",
-        "accent-dark": "rgb(167, 107, 0)",
       },
       boxShadow: {
         "nav-shadow": "rgba(0, 0, 0, 0.6) 0px 5px 10px",
-        "select": "rgb(205, 127, 0) 0px 0px 10px 0px",
         "chat": "rgba(0, 0, 0, 0.8) 0px 10px 20px",
       },
       gradientColorStops: {
         "nav-gradient": "rgba(0, 0, 0, 0.7)"
       },
       backgroundImage: {
-        "pcs": "url('./assets/images/pcsMain.jpg')",
-        "grade-school": "url('./assets/images/gradeSchool.gif')",
-        "junior-high": "url('./assets/images/juniorHigh.gif')",
-        "senior-high": "url('./assets/images/seniorHigh.gif')",
+        "grade-school": "url('./assets/images/gradeSchool.webp')",
+        "junior-high": "url('./assets/images/juniorHigh.webp')",
+        "senior-high": "url('./assets/images/seniorHigh.webp')",
       },
       transitionDelay: {
         "400": "400ms",
