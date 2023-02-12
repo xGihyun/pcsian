@@ -1,12 +1,25 @@
 <script lang="ts">
-	import { fly } from 'svelte/transition';
-	import { cubicOut } from 'svelte/easing';
-
 	export let url: URL;
 </script>
 
 {#key url}
-	<div in:fly={{ x: -200, duration: 1000, delay: 300, easing: cubicOut }}>
+	<div class="fade-in">
 		<slot />
 	</div>
 {/key}
+
+<style>
+	.fade-in {
+		animation: fade-in 2s;
+	}
+
+	@keyframes fade-in {
+		0% {
+			opacity: 0;
+		}
+		50%,
+		100% {
+			opacity: 1;
+		}
+	}
+</style>

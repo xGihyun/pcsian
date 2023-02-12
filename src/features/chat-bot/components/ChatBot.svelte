@@ -5,8 +5,10 @@
 	import { showChatBot } from '../../stores';
 	import { openai } from '../api';
 	import { onMount } from 'svelte';
+	import LoadingChat from '../../../assets/animations/LoadingChat.svelte';
 
 	let show = false;
+	let isLoading = false;
 	let input: HTMLInputElement;
 	let prompt: string;
 	let chatHistory: Chat[] = [];
@@ -18,6 +20,8 @@
 
 		// Store the user's prompt
 		chatHistory = [...chatHistory, { type: 'user', text: prompt }];
+
+		isLoading = true;
 
 		// Get response
 		const response = await openai.createCompletion({
@@ -32,13 +36,15 @@
 		// After the bot responds, store it as well
 		chatHistory = [...chatHistory, { type: 'bot', text: responseText }];
 
+		isLoading = false;
+
 		prompt = '';
 	}
 
 	// Initial greeting
 	onMount(() => {
-		chatHistory = [...chatHistory, { type: 'bot', text: "Good day! How can I help?" }];
-	})
+		chatHistory = [...chatHistory, { type: 'bot', text: 'Good day! How can I help?' }];
+	});
 </script>
 
 <div
@@ -70,20 +76,16 @@
 					</div>
 				{/if}
 			{/each}
-			<!-- <div class="flex flex-row items-center gap-4 p-4">
-				<div class="rounded-sm bg-emerald-600 p-2">
-					<User style="h-[20px] w-[20px]" />
+			{#if isLoading}
+				<div class="flex flex-row items-center gap-4 bg-neutral-700 p-4">
+					<div class="bg-accent rounded-sm p-2">
+						<Robot style="h-[20px] w-[20px]" />
+					</div>
+					<div class="pl-4">
+						<LoadingChat />
+					</div>
 				</div>
-				<span class="w-fit break-words">hello adjasdasdiasd</span>
-			</div>
-			<div class="flex flex-row items-center gap-4 bg-neutral-700 p-4">
-				<div class="bg-accent rounded-sm p-2">
-					<Robot style="h-[20px] w-[20px]" />
-				</div>
-				<span class="w-fit break-words"
-					>Test chat dasdsadasdashduashdaushduashdasuhdhsau lmaoooadasidasdhuasdhasd</span
-				>
-			</div> -->
+			{/if}
 			<div class="h-28" />
 		</div>
 		<span class="absolute left-0 bottom-0 h-32 w-full bg-gradient-to-t from-black opacity-50" />
@@ -99,7 +101,9 @@
 					placeholder="Aa"
 				/>
 				<button on:click={getResponse}>
-					<Send style="h-[20px] w-[20px] hover:text-accent hover:scale-110 transition-all duration-300" />
+					<Send
+						style="h-[20px] w-[20px] hover:text-accent hover:scale-110 transition-all duration-300"
+					/>
 				</button>
 			</form>
 		</div>

@@ -36,12 +36,8 @@ const INFORMATION = {
 		},
 		entranceExams: 'PCS does not have entrance exams'
 	}
-	// otherPrompts: {
-	// 	"I love you": "Thank you",
-	// 	"Do you love *insert person or object*": "No, why would I?",
-	// }
 };
 
 export const CONDITION = `You are an AI chatbot. You will ONLY answer questions related to the given information about Pateros Catholic School: ${JSON.stringify(
 	INFORMATION
-)} \nIf the user asks about Genyo and SchoolAide, give them the url as well. \nYou will ONLY answer questions related to the information given about Pateros Catholic School unless the user's message is a greeting. After getting all of these information, answer the questions of the user immediately if a prompt exists.`;
+)} \nYou will ONLY answer questions related to the information given about Pateros Catholic School. After getting all of these information, answer the questions of the user immediately if a prompt exists.`;

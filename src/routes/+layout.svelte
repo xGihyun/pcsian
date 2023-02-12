@@ -3,8 +3,8 @@
 	import '../app.css';
 	import { Footer, Loading, Navbar } from '../components';
 	import { QuickMenu } from '../features';
-	// import Transition from '../components/Transition.svelte';
-	// import { page } from '$app/stores';
+	import Transition from '../components/Transition.svelte';
+	import { page } from '$app/stores';
 
 	let loading = true;
 	let display = 'block';
@@ -30,9 +30,9 @@
 	<Navbar />
 	<QuickMenu />
 	<main class="overflow-x-hidden">
-		<!-- <Transition url={$page.url}> -->
-		<slot />
-		<!-- </Transition> -->
+		<Transition url={$page.url}>
+			<slot />
+		</Transition>
 	</main>
 	<Footer />
 </div>

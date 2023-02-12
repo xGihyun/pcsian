@@ -30,8 +30,8 @@
 				<p>(02) 642-6016; (02) 636-7274</p>
 				<p>registrar@pcsian.edu.ph</p>
 			</div>
-			<img src={qrCode} alt="" />
+			<img src={qrCode} alt="" class="h-40" />
 		</div>
 	</div>
-	<img src={pcsMembers} alt="" class="m-auto" />
+	<img src={pcsMembers} alt="" class="m-auto h-16" />
 </footer>
