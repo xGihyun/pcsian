@@ -32,6 +32,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"date-fns": "^2.29.3",
 		"openai": "^3.1.0",
 		"svelte-inview": "^3.0.2"
 	}
