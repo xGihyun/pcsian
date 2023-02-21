@@ -26,6 +26,18 @@ export type Chat = {
   text: string;
 };
 
+export type Event = {
+  name: string,
+  date: {
+    start: string,
+    end: string,
+    exclude?: {
+      start: string,
+      end: string
+    }
+  }
+}
+
 // export type NavbarItem = {
 //   title: string,
 //   path: string,

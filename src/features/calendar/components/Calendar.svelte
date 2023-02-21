@@ -7,27 +7,27 @@
 		parse,
 		add,
 		getDay,
-		isEqual,
 		isToday,
 		isSameMonth,
 		endOfWeek,
-		startOfWeek
+		startOfWeek,
+		isEqual
 	} from 'date-fns';
+	import type { Event } from '../../../Types';
+	import { ChevronLeft, ChevronRight } from '../assets/icons';
 
 	let today = startOfToday();
-	let selectedDay = today;
 	let currentMonth = format(today, 'MMM-yyyy');
 	let firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date());
-	let firstDayNextMonth: Date;
 
 	let days = eachDayOfInterval({
 		start: startOfWeek(firstDayCurrentMonth),
 		end: endOfWeek(endOfMonth(firstDayCurrentMonth))
 	});
 
-	function previousMonth() {
-		firstDayNextMonth = add(firstDayCurrentMonth, { months: -1 });
-		currentMonth = format(firstDayNextMonth, 'MMM-yyyy');
+	function navigateMonth(direction: number) {
+		const firstDayNextMonth = add(firstDayCurrentMonth, { months: direction });
+		const currentMonth = format(firstDayNextMonth, 'MMM-yyyy');
 		firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date());
 		days = eachDayOfInterval({
 			start: startOfWeek(firstDayCurrentMonth),
@@ -35,14 +35,60 @@
 		});
 	}
 
-	function nextMonth() {
-		firstDayNextMonth = add(firstDayCurrentMonth, { months: 1 });
-		currentMonth = format(firstDayNextMonth, 'MMM-yyyy');
-		firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date());
-		days = eachDayOfInterval({
-			start: startOfWeek(firstDayCurrentMonth),
-			end: endOfWeek(endOfMonth(firstDayCurrentMonth))
-		});
+	// Will use a headless CMS soon
+	const events: Event[] = [
+		{
+			name: 'Academic break',
+			date: {
+				start: '2023-02-1',
+				end: '2023-02-10'
+			}
+		},
+		{
+			name: 'Ash Wednesday',
+			date: {
+				start: '2023-02-22',
+				end: '2023-02-22'
+			}
+		},
+		{
+			name: 'Career Expedition',
+			date: {
+				start: '2023-02-23',
+				end: '2023-02-23'
+			}
+		},
+		{
+			name: 'Preliminary Exam',
+			date: {
+				start: '2023-02-24',
+				end: '2023-02-28',
+				exclude: {
+					start: '2023-02-25',
+					end: '2023-02-26'
+				}
+			}
+		},
+		{
+			name: 'My birthday',
+			date: {
+				start: '2023-02-24',
+				end: '2023-02-28'
+			}
+		}
+	];
+
+	function getDates(startDate: string, endDate: string) {
+		const dates = [];
+		let currentDate = new Date(startDate);
+		let end = new Date(endDate);
+
+		while (currentDate <= end) {
+			dates.push(format(new Date(currentDate), 'yyyy-MM-dd'));
+			currentDate.setDate(currentDate.getDate() + 1);
+		}
+
+		return dates;
 	}
 
 	const colStartClasses = [
@@ -57,33 +103,29 @@
 </script>
 
 <div class="pt-16">
-	<div class="mx-auto max-w-md px-4 sm:px-7 md:max-w-4xl md:px-6">
+	<div class="mx-auto max-w-md px-4 sm:px-7 md:max-w-5xl md:px-6">
 		<div class="md:grid md:divide-x md:divide-gray-200">
 			<div class="md:pr-14">
 				<div class="flex items-center">
-					<h2 class="flex-auto text-white">
+					<h2 class="flex-auto text-2xl text-black">
 						{format(firstDayCurrentMonth, 'MMMM yyyy')}
 					</h2>
 					<button
 						type="button"
-						on:click={previousMonth}
+						on:click={() => navigateMonth(-1)}
 						class="-my-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
 					>
-						<span class="sr-only">Previous month</span>
-						<span class="h-5 w-5 text-3xl" aria-hidden="true">{'<'}</span>
+						<ChevronLeft style="h-5 w-5 cursor-pointer" />
 					</button>
 					<button
-						on:click={nextMonth}
+						on:click={() => navigateMonth(1)}
 						type="button"
 						class="-my-1.5 -mr-1.5 ml-2 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
 					>
-						<span class="sr-only">Next month</span>
-						<span class="h-5 w-5 text-3xl" aria-hidden="true">{'>'}</span>
+						<ChevronRight style="h-5 w-5 cursor-pointer" />
 					</button>
 				</div>
-				<div
-					class="mt-10 grid grid-cols-7 text-center text-xs leading-6 text-neutral-200 md:text-xl"
-				>
+				<div class="mt-10 grid grid-cols-7 text-center text-xs leading-6 text-black md:text-xl">
 					<div>Sun</div>
 					<div>Mon</div>
 					<div>Tue</div>
@@ -92,45 +134,75 @@
 					<div>Fri</div>
 					<div>Sat</div>
 				</div>
-				<div class="mt-2 grid grid-cols-7 text-sm">
+				<div class="mt-2 grid h-full grid-cols-7 text-sm">
 					{#each days as day, idx (day.toString())}
 						<div
-							class={`relative border-[2px] border-white border-opacity-10 py-[25%] pl-1 text-xs md:pl-2 md:text-xl ${
+							class={`relative h-full border-y-[1px] border-opacity-50 text-xs md:min-h-[100px] md:text-xl ${
 								idx === 0 && colStartClasses[getDay(day)]
-							}`}
+							} `}
 						>
-							<!-- <span class="h-10 w-10 bg-white absolute"></span> -->
-							<button
-								type="button"
-								on:click={() => (selectedDay = day)}
-								class={`flex h-4 w-4 items-center justify-center rounded-full p-1 md:h-8 md:w-8 ${
-									isEqual(day, selectedDay)
-										? 'text-black'
-										: !isEqual(day, selectedDay) && isToday(day)
-										? 'text-amber-500'
-										: !isEqual(day, selectedDay) &&
-										  !isToday(day) &&
-										  isSameMonth(day, firstDayCurrentMonth)
-										? 'text-neutral-500'
-										: !isEqual(day, selectedDay) &&
-										  !isToday(day) &&
-										  !isSameMonth(day, firstDayCurrentMonth) &&
-										  'text-neutral-600'
-								}
-									${
-										isEqual(day, selectedDay) && isToday(day)
-											? 'bg-amber-500 text-white'
-											: isEqual(day, selectedDay) && !isToday(day)
-											? 'bg-neutral-200'
-											: !isEqual(day, selectedDay)
-											? 'hover:bg-neutral-200'
-											: isEqual(day, selectedDay) || (isToday(day) && 'font-semibold')
+							<div class="flex h-full flex-col">
+								<div
+									class={`flex h-4 w-4 items-center justify-center rounded-full p-1 md:h-8 md:w-8 
+										${isToday(day) ? 'bg-amber-500 text-white' : ''} ${
+										isSameMonth(day, firstDayCurrentMonth) ? 'text-neutral-900' : 'text-neutral-400'
 									}`}
-							>
-								<time dateTime={format(day, 'yyyy-MM-dd')}>
-									{format(day, 'd')}
-								</time>
-							</button>
+								>
+									<time dateTime={format(day, 'yyyy-MM-dd')}>
+										{format(day, 'd')}
+									</time>
+								</div>
+								{#each events as event, idx (idx)}
+									<!-- Check for available events -->
+									{#if getDates(event.date.start, event.date.end).includes(format(day, 'yyyy-MM-dd'))}
+										<!-- Check for the start of an event and add some custom styling to it -->
+										{#if isEqual(day, parse(getDates(event.date.start, event.date.end)[0], 'yyyy-MM-dd', new Date())) || isEqual(day, days[0])}
+											<div
+												class={`my-1 h-full border-l-8 border-red-500 bg-neutral-300 px-1 ${
+													getDates(event.date.start, event.date.end).length === 1
+														? 'w-[95%] rounded-r-md'
+														: 'w-full'
+												}`}
+											>
+												<span class="inline-block w-full overflow-hidden text-ellipsis text-lg"
+													>{event.name}</span
+												>
+											</div>
+											<!-- Excluded dates are those that make an event get cut-off (eg. due to weekends) -->
+											<!-- If the date is NOT excluded then just render the styles for events normally -->
+										{:else if getDates(event.date.exclude?.start || '', event.date.exclude?.end || '').includes(format(day, 'yyyy-MM-dd'))}
+											<div class="my-1 h-full bg-none">
+												<span
+													class="invisible inline-block w-full overflow-hidden text-ellipsis text-lg"
+													>{event.name}</span
+												>
+											</div>
+										{:else}
+											<div
+												class={`my-1 h-full bg-neutral-300 ${
+													isEqual(
+														day,
+														parse(
+															getDates(event.date.start, event.date.end)[
+																getDates(event.date.start, event.date.end).length - 1
+															],
+															'yyyy-MM-dd',
+															new Date()
+														)
+													)
+														? 'w-[95%] rounded-r-md'
+														: 'w-full'
+												}`}
+											>
+												<span
+													class="invisible inline-block w-full overflow-hidden text-ellipsis text-lg"
+													>{event.name}</span
+												>
+											</div>
+										{/if}
+									{/if}
+								{/each}
+							</div>
 							<!-- <div class="w-1 h-1 mx-auto mt-1">
                 {meetings.some((meeting) =>
                   isSameDay(parseISO(meeting.startDatetime), day)
