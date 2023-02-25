@@ -4,8 +4,7 @@
   "info": {
     "singularName": "calendar",
     "pluralName": "calendars",
-    "displayName": "Calendar",
-    "description": ""
+    "displayName": "Calendar"
   },
   "options": {
     "draftAndPublish": true
@@ -16,10 +15,10 @@
       "type": "string"
     },
     "date": {
-      "displayName": "eventDates",
+      "displayName": "eventDate",
       "type": "component",
       "repeatable": false,
-      "component": "date.event-dates"
+      "component": "date.event-date"
     },
     "type": {
       "type": "string",
