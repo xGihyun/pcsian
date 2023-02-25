@@ -1,8 +1,8 @@
 <script lang="ts">
 	import ChatBot from '../../chat-bot/components/ChatBot.svelte';
 	import Chat from '../assets/icons/Chat.svelte';
-	// import menheraPeek from '../assets/images/menheraPeek.png';
 	import { showChatBot } from '../../stores';
+	import CalendarIcon from '../../calendar/assets/icons/CalendarIcon.svelte';
 
 	let show = false;
 
@@ -10,23 +10,20 @@
 </script>
 
 <ChatBot />
-<!-- <div class="fixed bottom-14 right-0 z-50 h-36 w-36">
-	<button class="" on:click={() => (showChatBot = !showChatBot)}>
-		<Chat style={`text-white h-[50px] w-[50px] -scale-x-[1] drop-shadow-xl ${showChatBot ? 'hidden' : 'block'}`} />
-	</button>
-</div>
-<div class="fixed bottom-0 -right-[130px] z-50 h-52 w-52">
-	<button on:click={() => (showChatBot = !showChatBot)}>
-		<img src={menheraPeek} alt="menhera chan" />
-	</button>
-</div> -->
-<div class={`fixed bottom-10 right-10 z-50 ${show ? 'hidden' : 'block'}`}>
+<div class={`fixed flex flex-col gap-4 items-end bottom-10 right-10 z-50 ${show ? 'hidden' : 'block'}`}>
+	<a
+		href="/calendar"
+		type="button"
+		class="bg-accent shadow-nav-shadow flex h-12 w-12 items-center justify-center rounded-full transition-all duration-300 lg:hover:brightness-110 lg:hover:scale-90"
+	>
+		<CalendarIcon style="text-white h-5 w-5" />
+	</a>
 	<button
 		class="bg-accent shadow-nav-shadow flex h-20 w-20 items-center justify-center rounded-full transition-all duration-300 lg:hover:brightness-110 lg:hover:scale-90"
 		on:click={() => {
 			showChatBot.update(() => (show = !show));
 		}}
 	>
-		<Chat style="text-white h-[45px] w-[45px] -scale-x-[1]" />
+		<Chat style="text-white h-11 w-11" />
 	</button>
 </div>

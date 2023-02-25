@@ -11,8 +11,11 @@ const config = {
     serviceWorker: {
       register: false,
     },
-		adapter: adapter()
-	}
+		adapter: adapter(),
+		alias: {
+      '@storyblok/svelte': './node_modules/@storyblok/svelte',
+    },
+	},
 };
 
 export default config;

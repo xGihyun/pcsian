@@ -69,11 +69,11 @@ export const philosophy = [
 	},
 	{
 		title: 'Vision',
-		text: 'Pateros Catholic School is a parochial educational institution. Inspired by the Gospel of truth and excellence as lived fully by San Roque and Sta. Marta, the PCS family participates in the evangelizing mission of the Church by forming men and women of noble character.'
+		text: 'Committed to build a 21st century learning community, Pateros Catholic School is a Center for Excellence characterized by professional and personal competence for the integral formation and transformation to become “Men and Women of Noble Character'
 	},
 	{
 		title: 'Mission',
-		text: 'To realize this vision, PCS will become a center of excellence in basic education by offering quality, relevant and Christian educational programs.  We commit to build an academic community characterized by professional and personal competence for the integral formation of persons for further studies and above all, for life.'
+		text: 'Pateros Catholic School prepares learners for the 21st Century by engaging in quality Catholic Educational Programs that promote intellectual, spiritual, and personal excellence in a joyful, humble, and loving community.'
 	}
 ];
 

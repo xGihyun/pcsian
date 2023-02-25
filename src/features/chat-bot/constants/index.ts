@@ -9,7 +9,10 @@ const INFORMATION = {
 		nameOfSchool: 'Pateros Catholic School (PCS)',
 		type: 'Private Sectarian',
 		schoolId: '407299',
-		location: 'Pateros, Metro Manila, Philippines',
+		location: {
+			mainBuilding: 'B. Morcilla St. Pateros, 1620 Metro Manila, Philippines',
+			annexBuilding: 'F. Imson St. Brgy. San Pedro, Pateros, Metro Manila, Philippines',
+		},
 		gradeLevels: 'PCS supports K-12, no college',
 		tuitionFee: 'Around 40,000 php',
 		numOfStudents: 'Around 4000',

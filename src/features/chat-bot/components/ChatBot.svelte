@@ -92,7 +92,7 @@
 		<div
 			class="absolute left-[50%] bottom-3 w-[80%] -translate-x-[50%] rounded-full bg-neutral-700 p-3"
 		>
-			<form class="flex">
+			<form class="flex" data-sveltekit-noscroll>
 				<input
 					class="w-full bg-transparent outline-none"
 					type="text"

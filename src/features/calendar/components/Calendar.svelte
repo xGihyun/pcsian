@@ -16,6 +16,8 @@
 	import type { Event } from '../../../Types';
 	import { ChevronLeft, ChevronRight } from '../assets/icons';
 
+	export let events: Event[];
+
 	let today = startOfToday();
 	let currentMonth = format(today, 'MMM-yyyy');
 	let firstDayCurrentMonth = parse(currentMonth, 'MMM-yyyy', new Date());
@@ -34,49 +36,6 @@
 			end: endOfWeek(endOfMonth(firstDayCurrentMonth))
 		});
 	}
-
-	// Will use a headless CMS soon
-	const events: Event[] = [
-		{
-			name: 'Academic break',
-			date: {
-				start: '2023-02-1',
-				end: '2023-02-10'
-			}
-		},
-		{
-			name: 'Ash Wednesday',
-			date: {
-				start: '2023-02-22',
-				end: '2023-02-22'
-			}
-		},
-		{
-			name: 'Career Expedition',
-			date: {
-				start: '2023-02-23',
-				end: '2023-02-23'
-			}
-		},
-		{
-			name: 'Preliminary Exam',
-			date: {
-				start: '2023-02-24',
-				end: '2023-02-28',
-				exclude: {
-					start: '2023-02-25',
-					end: '2023-02-26'
-				}
-			}
-		},
-		{
-			name: 'My birthday',
-			date: {
-				start: '2023-02-24',
-				end: '2023-02-28'
-			}
-		}
-	];
 
 	function getDates(startDate: string, endDate: string) {
 		const dates = [];
@@ -154,27 +113,19 @@
 								</div>
 								{#each events as event, idx (idx)}
 									<!-- Check for available events -->
-									{#if getDates(event.date.start, event.date.end).includes(format(day, 'yyyy-MM-dd'))}
+									{#if getDates(event.attributes.date.start, event.attributes.date.end).includes(format(day, 'yyyy-MM-dd'))}
 										<!-- Check for the start of an event and add some custom styling to it -->
-										{#if isEqual(day, parse(getDates(event.date.start, event.date.end)[0], 'yyyy-MM-dd', new Date())) || isEqual(day, days[0])}
+										{#if isEqual(day, parse(getDates(event.attributes.date.start, event.attributes.date.end)[0], 'yyyy-MM-dd', new Date())) || 'Sunday' === format(day, 'EEEE') || isEqual(day, days[0])}
 											<div
-												class={`my-1 h-full border-l-8 border-red-500 bg-neutral-300 px-1 ${
-													getDates(event.date.start, event.date.end).length === 1
+												class={`my-1 mx-1 h-full border-l-8 border-red-500 bg-neutral-300 px-1 ${
+													getDates(event.attributes.date.start, event.attributes.date.end)
+														.length === 1
 														? 'w-[95%] rounded-r-md'
 														: 'w-full'
 												}`}
 											>
 												<span class="inline-block w-full overflow-hidden text-ellipsis text-lg"
-													>{event.name}</span
-												>
-											</div>
-											<!-- Excluded dates are those that make an event get cut-off (eg. due to weekends) -->
-											<!-- If the date is NOT excluded then just render the styles for events normally -->
-										{:else if getDates(event.date.exclude?.start || '', event.date.exclude?.end || '').includes(format(day, 'yyyy-MM-dd'))}
-											<div class="my-1 h-full bg-none">
-												<span
-													class="invisible inline-block w-full overflow-hidden text-ellipsis text-lg"
-													>{event.name}</span
+													>{event.attributes.title}</span
 												>
 											</div>
 										{:else}
@@ -183,8 +134,9 @@
 													isEqual(
 														day,
 														parse(
-															getDates(event.date.start, event.date.end)[
-																getDates(event.date.start, event.date.end).length - 1
+															getDates(event.attributes.date.start, event.attributes.date.end)[
+																getDates(event.attributes.date.start, event.attributes.date.end)
+																	.length - 1
 															],
 															'yyyy-MM-dd',
 															new Date()
@@ -196,41 +148,17 @@
 											>
 												<span
 													class="invisible inline-block w-full overflow-hidden text-ellipsis text-lg"
-													>{event.name}</span
+													>{event.attributes.title}</span
 												>
 											</div>
 										{/if}
 									{/if}
 								{/each}
 							</div>
-							<!-- <div class="w-1 h-1 mx-auto mt-1">
-                {meetings.some((meeting) =>
-                  isSameDay(parseISO(meeting.startDatetime), day)
-                ) && (
-                  <div class="w-1 h-1 rounded-full bg-sky-500"></div>
-                )}
-              </div> -->
 						</div>
 					{/each}
 				</div>
 			</div>
-			<!-- <section class="mt-12 md:mt-0 md:pl-14">
-				<h2 class="font-semibold text-gray-900">
-					Schedule for{' '}
-					<time dateTime={format(selectedDay, 'yyyy-MM-dd')}>
-						{format(selectedDay, 'MMM dd, yyy')}
-					</time>
-				</h2>
-				<ol class="mt-4 space-y-1 text-sm leading-6 text-gray-500">
-          {selectedDayMeetings.length > 0 ? (
-            selectedDayMeetings.map((meeting) => (
-              <Meeting meeting={meeting} key={meeting.id} />
-            ))
-          ) : (
-            <p>No meetings for today.</p>
-          )}
-        </ol>
-			</section> -->
 		</div>
 	</div>
 </div>

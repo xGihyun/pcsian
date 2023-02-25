@@ -27,15 +27,19 @@ export type Chat = {
 };
 
 export type Event = {
-  name: string,
-  date: {
-    start: string,
-    end: string,
-    exclude?: {
+  attributes: {
+    createdAt: string,
+    date: {
+      end: string,
+      id: number,
       start: string,
-      end: string
-    }
-  }
+    },
+    publishedAt: string,
+    title: string,
+    updatedAt: string,
+  },
+  id: number,
+  type: string,
 }
 
 // export type NavbarItem = {
