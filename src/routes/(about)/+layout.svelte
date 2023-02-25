@@ -1,5 +1,5 @@
 <script lang="ts">
-	import TopHeading from '../../components/TopHeading.svelte';
+	import { TopHeading } from '../../components';
 </script>
 
 <TopHeading title={'ABOUT'} />
