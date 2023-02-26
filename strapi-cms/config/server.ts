@@ -1,5 +1,5 @@
 export default ({ env }) => ({
-  // url: 'https://pcsian.onrender.com',
+  // url: 'https://pcsian-cms.onrender.com',
   host: env('HOST', '0.0.0.0'),
   port: env.int('PORT', 1337),
   app: {

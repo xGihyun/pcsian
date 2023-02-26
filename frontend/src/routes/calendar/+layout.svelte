@@ -3,6 +3,6 @@
 </script>
 
 <TopHeading title={'SCHOOL CALENDAR'} />
-<div class="h-screen bg-white">
+<div class="h-full bg-white">
   <slot />
 </div>

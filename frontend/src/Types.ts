@@ -42,8 +42,6 @@ export type Event = {
   type: string,
 }
 
-// export type NavbarItem = {
-//   title: string,
-//   path: string,
-//   data: string
-// }
+export type EventMap = {
+  [key: string]: Event[]
+}

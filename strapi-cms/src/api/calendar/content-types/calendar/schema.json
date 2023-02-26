@@ -4,7 +4,8 @@
   "info": {
     "singularName": "calendar",
     "pluralName": "calendars",
-    "displayName": "Calendar"
+    "displayName": "Calendar",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -21,7 +22,11 @@
       "component": "date.event-date"
     },
     "type": {
-      "type": "string",
+      "type": "enumeration",
+      "enum": [
+        "holiday",
+        "school"
+      ],
       "default": "holiday"
     }
   }
