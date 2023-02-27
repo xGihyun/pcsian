@@ -1,8 +1,8 @@
 <script lang="ts">
-	import ChatBot from '../../chat-bot/components/ChatBot.svelte';
+	import { ChatBot } from '../../../features';
 	import Chat from '../assets/icons/Chat.svelte';
 	import { showChatBot } from '../../stores';
-	import CalendarIcon from '../../calendar/assets/icons/CalendarIcon.svelte';
+	import { CalendarIcon } from '../../calendar/assets/icons';
 
 	let show = false;
 
@@ -10,16 +10,18 @@
 </script>
 
 <ChatBot />
-<div class={`fixed flex flex-col gap-4 items-end bottom-10 right-10 z-50 ${show ? 'hidden' : 'block'}`}>
+<div
+	class={`fixed bottom-5 right-5 sm:bottom-10 sm:right-10 z-50 flex flex-col items-end gap-4 ${show ? 'hidden' : 'block'}`}
+>
 	<a
 		href="/calendar"
 		type="button"
-		class="bg-accent shadow-nav-shadow flex h-12 w-12 items-center justify-center rounded-full transition-all duration-300 lg:hover:brightness-110 lg:hover:scale-90"
+		class="bg-accent shadow-nav-shadow flex h-12 w-12 items-center justify-center rounded-full transition-all duration-300 lg:hover:scale-90 lg:hover:brightness-110"
 	>
 		<CalendarIcon style="text-white h-5 w-5" />
 	</a>
 	<button
-		class="bg-accent shadow-nav-shadow flex h-20 w-20 items-center justify-center rounded-full transition-all duration-300 lg:hover:brightness-110 lg:hover:scale-90"
+		class="bg-accent shadow-nav-shadow flex h-20 w-20 items-center justify-center rounded-full transition-all duration-300 lg:hover:scale-90 lg:hover:brightness-110"
 		on:click={() => {
 			showChatBot.update(() => (show = !show));
 		}}

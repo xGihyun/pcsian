@@ -15,16 +15,19 @@ body{
 @font-face {
 	font-family: torus-regular;
 	src: url('./assets/fonts/torus/TorusNotched-Regular.ttf');
+	font-display: swap;
 }
 
 @font-face {
 	font-family: torus-bold;
 	src: url('./assets/fonts/torus/TorusNotched-Bold.ttf');
+	font-display: swap;
 }
 
 @font-face {
 	font-family: torus-semibold;
 	src: url('./assets/fonts/torus/TorusNotched-SemiBold.ttf');
+	font-display: swap;
 }
 
 :root {

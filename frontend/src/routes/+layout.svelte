@@ -5,11 +5,15 @@
 	import { QuickMenu } from '../features';
 	import Transition from '../components/Transition.svelte';
 	import { page } from '$app/stores';
+	import { preloadData } from '$app/navigation';
 
 	let loading = true;
 	let display = 'block';
-
+	
 	onMount(() => {
+		// Prefetch calendar data
+		preloadData('/calendar');
+
 		setTimeout(() => {
 			loading = false;
 		}, 2000);

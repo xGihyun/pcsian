@@ -108,12 +108,12 @@
 	</div>
 	<!-- Dates -->
 	<div class="mt-2 grid h-full grid-cols-7 text-sm">
-		{#each days as day, idx (day.toString())}
+		{#each days as day, dayIdx (day.toString())}
 			{#if eventsByDate[format(day, 'yyyy-MM-dd')]}
-				{#each eventsByDate[format(day, 'yyyy-MM-dd')] as event}
+				{#each eventsByDate[format(day, 'yyyy-MM-dd')] as event, eventIdx (eventIdx)}
 					<div
-						class={`relative h-full border-t-[1px] border-opacity-50 text-xs md:min-h-[100px] md:text-xl bg-orange-500 bg-opacity-20 md:bg-white ${
-							idx === 0 && colStartClasses[getDay(day)]
+						class={`relative h-full border-t-[1px] border-opacity-50 bg-orange-500 bg-opacity-20 text-xs md:min-h-[100px] md:bg-white md:text-xl ${
+							dayIdx === 0 && colStartClasses[getDay(day)]
 						} `}
 					>
 						<div class="flex h-full flex-col items-center md:items-start">
@@ -132,7 +132,8 @@
 							{#if isEqual(day, parse(getDates(event.attributes.date.start, event.attributes.date.end)[0], 'yyyy-MM-dd', new Date())) || 'Sunday' === format(day, 'EEEE') || isEqual(day, days[0])}
 								<div
 									class={`my-1 mx-1 hidden h-full border-l-8 border-orange-500 bg-neutral-300 px-1 md:block ${
-										getDates(event.attributes.date.start, event.attributes.date.end).length === 1
+										getDates(event.attributes.date.start, event.attributes.date.end).length === 1 ||
+										'Sunday' === format(day, 'EEEE')
 											? 'w-[95%] rounded-r-md'
 											: 'w-full'
 									}`}
@@ -143,7 +144,7 @@
 								</div>
 							{:else}
 								<div
-									class={`my-1 hidden h-full bg-neutral-300 md:block w-full ${
+									class={`my-1 hidden h-full bg-neutral-300 md:block ${
 										isEqual(
 											day,
 											parse(
@@ -154,9 +155,9 @@
 												'yyyy-MM-dd',
 												new Date()
 											)
-										)
-											? 'rounded-r-md'
-											: ''
+										) || 'Saturday' === format(day, 'EEEE')
+											? 'w-[95%] rounded-r-md'
+											: 'w-full'
 									}`}
 								>
 									<span class="invisible inline-block w-full overflow-hidden text-ellipsis text-lg"
@@ -170,7 +171,7 @@
 			{:else}
 				<div
 					class={`relative h-full border-t-[1px] border-opacity-50 text-xs md:min-h-[100px] md:text-xl ${
-						idx === 0 && colStartClasses[getDay(day)]
+						dayIdx === 0 && colStartClasses[getDay(day)]
 					} `}
 				>
 					<div class="flex h-full flex-col items-center md:items-start">
