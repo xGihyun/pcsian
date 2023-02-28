@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-node';
+import adapter from '@sveltejs/adapter-vercel';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -12,9 +12,6 @@ const config = {
       register: false,
     },
 		adapter: adapter(),
-		alias: {
-      '@storyblok/svelte': './node_modules/@storyblok/svelte',
-    },
 	},
 };
 
