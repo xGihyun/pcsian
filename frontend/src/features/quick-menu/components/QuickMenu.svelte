@@ -17,6 +17,7 @@
 		href="/calendar"
 		type="button"
 		class="bg-accent shadow-nav-shadow flex h-12 w-12 items-center justify-center rounded-full transition-all duration-300 lg:hover:scale-90 lg:hover:brightness-110"
+		data-sveltekit-preload-data="off"
 	>
 		<CalendarIcon style="text-white h-5 w-5" />
 	</a>

@@ -1,10 +1,6 @@
 // import { philosophy } from '../../../constants';
 
 const INFORMATION = {
-	greetings: {
-		'Hello!': 'Hello! How can I help?',
-		'Good day!': 'Good day! How can I help?'
-	},
 	schoolQuestions: {
 		nameOfSchool: 'Pateros Catholic School (PCS)',
 		type: 'Private Sectarian',
@@ -23,7 +19,6 @@ const INFORMATION = {
 		accessStudentsGradesAndReports:
 			'Teachers will send report card through the email address of the students',
 		payTuition: 'Pay tuition via online or just go onsite',
-		// dressCode: '',
 		requestSchoolForms: 'You may contact us via *insert the given email address*',
 		// visionMission: {
 		// 	vision: `Vision: "${philosophy[1].text}" *DO NOT change the text, send it as is*`,

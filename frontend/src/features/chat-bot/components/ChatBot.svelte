@@ -12,6 +12,7 @@
 	let input: HTMLInputElement;
 	let prompt: string;
 	let chatHistory: Chat[] = [];
+	let responseText: string;
 
 	showChatBot.subscribe((value) => (show = value));
 
@@ -24,14 +25,27 @@
 		isLoading = true;
 
 		// Get response
-		const response = await openai.createCompletion({
-			model: 'text-davinci-003',
-			prompt: `${CONDITION} ${prompt}.`,
-			max_tokens: 100,
-			temperature: 0.9
+		// Now using the official ChatGPT model
+		const response = await openai.createChatCompletion({
+			model: 'gpt-3.5-turbo',
+			messages: [
+				{ role: 'system', content: CONDITION },
+				{ role: 'assistant', content: prompt }
+			],
+			temperature: 0.5,
+			max_tokens: 512
 		});
 
-		const responseText = response.data.choices[0].text as string;
+		// TypeScript stuff
+		if (
+			response &&
+			response.data.choices &&
+			response.data.choices[0].message &&
+			response.data.choices[0].message.content &&
+			response.status === 200
+		) {
+			responseText = response.data.choices[0].message.content as string;
+		}
 
 		// After the bot responds, store it as well
 		chatHistory = [...chatHistory, { type: 'bot', text: responseText }];

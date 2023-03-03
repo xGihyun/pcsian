@@ -5,15 +5,11 @@
 	import { QuickMenu } from '../features';
 	import Transition from '../components/Transition.svelte';
 	import { page } from '$app/stores';
-	import { preloadData } from '$app/navigation';
 
 	let loading = true;
 	let display = 'block';
-	
-	onMount(() => {
-		// Prefetch calendar data
-		preloadData('/calendar');
 
+	onMount(() => {
 		setTimeout(() => {
 			loading = false;
 		}, 2000);
@@ -33,10 +29,10 @@
 <div class={`${loading ? 'hidden' : 'block'}`}>
 	<Navbar />
 	<QuickMenu />
-	<main class="overflow-x-hidden">
-		<Transition url={$page.url}>
+	<Transition url={$page.url}>
+		<main class="overflow-x-hidden">
 			<slot />
-		</Transition>
-	</main>
-	<Footer />
+		</main>
+		<Footer />
+	</Transition>
 </div>

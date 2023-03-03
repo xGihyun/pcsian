@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { navItems } from '../constants';
-	import { pcsLogo } from '../assets/images';
+	import { pcsLogo, pcsLogoNew } from '../assets/images';
 	import { Dropdown } from '.';
 	import HamburgerMenu from '../assets/icons/HamburgerMenu.svelte';
 	import NavbarMobile from './mobile/NavbarMobile.svelte';
@@ -32,15 +32,18 @@
 	{/if}
 	<nav
 		class={`absolute top-0 left-0 hidden w-full items-center justify-between bg-gradient-to-b 
-    px-[5%] transition-all duration-300 ease-in-out md:flex ${
-			scrolled ? 'bg-accent shadow-nav-shadow h-14 from-transparent' : 'from-nav-gradient h-20'
+    px-[5%] transition-all duration-500 ease-in-out md:flex ${
+			scrolled ? 'bg-accent shadow-nav-shadow h-16 from-transparent' : 'from-nav-gradient h-32'
 		}`}
 	>
-		<img
-			class={`transition-all duration-300 ease-in-out ${scrolled ? 'h-12 w-12' : 'h-16 w-16'}`}
-			src={pcsLogo}
-			alt="pcs"
-		/>
+		<div class="flex flex-row items-center gap-4">
+			<img
+				class={`transition-all duration-500 ease-in-out ${scrolled ? 'h-14 w-14' : 'h-28 w-28'}`}
+				src={pcsLogo}
+				alt="pcs"
+			/>
+			<!-- <span class={`text-white transition-all duration-500 ease-in-out ${scrolled ? 'text-xl' : 'text-3xl'}`}>Pateros Catholic School</span> -->
+		</div>
 		<ul class="hidden h-full flex-row md:flex">
 			{#each navItems as item, idx (idx)}
 				{#if item.data === 'about' || item.data === 'academics'}
