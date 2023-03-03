@@ -1,20 +1,50 @@
 <script lang="ts">
 	import { Calendar } from '../../features';
-	import type { EventMap } from '../../Types';
+	import type { Event } from '../../Types';
+	import type { PageData } from './$types';
 
-	export let data: EventMap;
+	export let data: PageData;
 
-	let events = data.data;
+	const gradeSchool: Event[] = data.gradeSchool.data[0].attributes.calendars.data;
+	const juniorHigh: Event[] = data.juniorHigh.data[0].attributes.calendars.data;
+	const seniorHigh: Event[] = data.seniorHigh.data[0].attributes.calendars.data;
+
+	// Default calendar to show
+	let currentCalendar = 'Senior High';
+
+	function handleNavigationClick(calendar: string){
+		currentCalendar = calendar;
+	};
+
+	const navigationItems = [
+		{ name: 'Grade School', calendar: gradeSchool },
+		{ name: 'Junior High', calendar: juniorHigh },
+		{ name: 'Senior High', calendar: seniorHigh },
+	];
 </script>
 
-{#if events}
-	<Calendar {events} />
+<nav class="flex w-full items-center justify-center py-10 px-4">
+	<ul class="flex h-full flex-row gap-8 text-xl">
+		{#each navigationItems as item, idx (idx)}
+			<li class={`${currentCalendar === item.name ? 'font-bold' : 'font-normal'}`}>
+				<button on:click={() => handleNavigationClick(item.name)} type="button">{item.name}</button>
+			</li>
+		{/each}
+	</ul>
+</nav>
+
+{#if currentCalendar === 'Grade School'}
+	<Calendar events={gradeSchool} />
+{:else if currentCalendar === 'Junior High'}
+	<Calendar events={juniorHigh} />
 {:else}
-	<div>Loading... Try refreshing if it doesn't work.</div>
+	<Calendar events={seniorHigh} />
 {/if}
 
-<!-- {#await events}
-	<div>Loading</div>
-{:then events}
-	<Calendar {events} />
-{/await} -->
+<!-- {#if seniorHigh}
+	<Calendar events={seniorHigh} />
+{:else if juniorHigh}
+	<Calendar events={juniorHigh} />
+{:else}
+	<div>Loading... Try refreshing if it doesn't work.</div>
+{/if} -->

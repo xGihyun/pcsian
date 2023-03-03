@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { navItems } from '../constants';
-	import { pcsLogo, pcsLogoNew } from '../assets/images';
+	import { pcsLogo } from '../assets/images';
 	import { Dropdown } from '.';
 	import HamburgerMenu from '../assets/icons/HamburgerMenu.svelte';
 	import NavbarMobile from './mobile/NavbarMobile.svelte';

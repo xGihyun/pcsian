@@ -30,6 +30,18 @@ body{
 	font-display: swap;
 }
 
+@font-face {
+	font-family: avant-garde-gothic-medium;
+	src: url('./assets/fonts/avant-garde/AvantGardeGothic-Medium.otf');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: avant-garde-gothic-book;
+	src: url('./assets/fonts/avant-garde/AvantGardeGothic-Book.otf');
+	font-display: swap;
+}
+
 :root {
 	--scrollbar-track: rgb(30, 30, 30);
 	--scrollbar-thumb: rgb(90, 90, 90);
