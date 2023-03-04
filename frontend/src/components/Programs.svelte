@@ -118,7 +118,7 @@
 						hands-on learning and creating a lifelong love of learning.
 					</p>
 					<!-- svelte-ignore a11y-invalid-attribute -->
-					<a href={program.path} class="mt-4 text-base text-white">Learn More</a>
+					<a href={program.path} class="mt-4 text-base text-white hover:text-accent transition-colors duration-300">Learn More</a>
 				</div>
 			</div>
 		{/each}

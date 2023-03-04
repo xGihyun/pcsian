@@ -9,5 +9,5 @@
 		alt="pcs annex"
 		class="absolute h-full w-full object-cover brightness-[40%]"
 	/>
-	<h1 class="z-10 text-4xl font-bold text-white">{title}</h1>
+	<h1 class="z-10 text-4xl font-bold text-white text-center">{title}</h1>
 </div>
