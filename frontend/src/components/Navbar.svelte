@@ -37,11 +37,13 @@
 		}`}
 	>
 		<div class="flex flex-row items-center gap-4">
-			<img
-				class={`transition-all duration-500 ease-in-out ${scrolled ? 'h-14 w-14' : 'h-28 w-28'}`}
-				src={pcsLogo}
-				alt="pcs"
-			/>
+			<a href="/">
+				<img
+					class={`transition-all duration-500 ease-in-out ${scrolled ? 'h-14 w-14' : 'h-28 w-28'}`}
+					src={pcsLogo}
+					alt="pcs"
+				/>
+			</a>
 			<!-- <span class={`text-white transition-all duration-500 ease-in-out ${scrolled ? 'text-xl' : 'text-3xl'}`}>Pateros Catholic School</span> -->
 		</div>
 		<ul class="hidden h-full flex-row md:flex">

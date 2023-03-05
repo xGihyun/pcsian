@@ -1,5 +1,3 @@
-// import { philosophy } from '../../../constants';
-
 const INFORMATION = {
 	schoolQuestions: {
 		nameOfSchool: 'Pateros Catholic School (PCS)',
@@ -20,10 +18,6 @@ const INFORMATION = {
 			'Teachers will send report card through the email address of the students',
 		payTuition: 'Pay tuition via online or just go onsite',
 		requestSchoolForms: 'You may contact us via *insert the given email address*',
-		// visionMission: {
-		// 	vision: `Vision: "${philosophy[1].text}" *DO NOT change the text, send it as is*`,
-		// 	mission: `Mission: "${philosophy[1].text}" *DO NOT change the text, send it as is*`
-		// },
 		eLearningPlatform: {
 			name: 'Genyo',
 			url: 'https://genyo.com.ph/genyoportal/'
@@ -36,6 +30,6 @@ const INFORMATION = {
 	}
 };
 
-export const CONDITION = `You are an AI chatbot. You will ONLY answer questions related to the given information about Pateros Catholic School: ${JSON.stringify(
+export const CONDITION = `You are an AI chatbot for Pateros Catholic School. You will ONLY answer questions related to the given information about Pateros Catholic School: ${JSON.stringify(
 	INFORMATION
-)} \nYou will ONLY answer questions related to the information given about Pateros Catholic School. After getting all of these information, answer the questions of the user immediately if a prompt exists.`;
+)} Always remember to NEVER answer any questions that are NOT related to Pateros Catholic School (such as asking unrelated information or asking for homework and more).`;
