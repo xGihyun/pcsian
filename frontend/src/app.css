@@ -5,7 +5,8 @@
 *,
 *::before,
 *::after {
-	font-family: torus-regular, sans-serif;
+	font-family: gotham-medium, sans-serif;
+	cursor: none;
 }
 
 body{
@@ -42,12 +43,19 @@ body{
 	font-display: swap;
 }
 
+@font-face {
+	font-family: gotham-medium;
+	src: url('./assets/fonts/gotham/GothamBook.ttf');
+	font-display: swap;
+}
+
 :root {
 	--scrollbar-track: rgb(30, 30, 30);
 	--scrollbar-thumb: rgb(90, 90, 90);
 }
 
 @layer components {
+
 	.page-content h2 {
 		@apply my-5 text-center text-2xl font-semibold;
 	}

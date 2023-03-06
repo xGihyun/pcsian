@@ -8,9 +8,6 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		serviceWorker: {
-			register: false
-		},
 		adapter: adapter({ runtime: 'edge' })
 	}
 };

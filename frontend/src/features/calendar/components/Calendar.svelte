@@ -96,7 +96,9 @@
 </script>
 
 <!-- The actual calendar -->
-<div class="mx-auto max-w-md py-10 px-4 md:max-w-5xl">
+<div
+	class="shadow-nav-shadow mx-auto max-w-md rounded-lg bg-white py-6 px-8 md:max-w-6xl md:py-10 md:px-20"
+>
 	<!-- Navigate between months -->
 	<div class="flex items-center">
 		<h2 class="flex-auto text-2xl text-black">
@@ -146,7 +148,7 @@
 					<div class="flex h-full flex-col items-center md:items-start">
 						<div
 							class={`m-2 flex h-4 w-4 items-center justify-center rounded-full p-3 md:h-8 md:w-8 
-								${isToday(day) ? 'bg-amber-500 text-white' : ''} ${
+									${isToday(day) ? 'bg-amber-500 text-white' : ''} ${
 								isSameMonth(day, firstDayCurrentMonth) ? 'text-neutral-900' : 'text-neutral-400'
 							}`}
 						>
@@ -213,7 +215,7 @@
 					<div class="flex h-full flex-col items-center md:items-start">
 						<div
 							class={`m-2 flex h-4 w-4 items-center justify-center rounded-full p-3 md:h-8 md:w-8 
-						${isToday(day) ? 'bg-amber-500 text-white' : ''} ${
+							${isToday(day) ? 'bg-amber-500 text-white' : ''} ${
 								isSameMonth(day, firstDayCurrentMonth) ? 'text-neutral-900' : 'text-neutral-400'
 							}`}
 						>
@@ -229,36 +231,36 @@
 </div>
 
 <!-- Show the events for today or the clicked date -->
-<div
-	class="mx-auto flex h-full min-h-[14rem] max-w-md flex-col gap-4 py-10 px-4 md:min-h-[20rem] md:max-w-5xl"
->
-	<h2 class="font-torus-semibold text-center text-3xl md:text-5xl">
-		Events for {format(clickedDay, 'MMMM d, yyyy')}
-	</h2>
-	{#if handleDateClick(clickedDayFormat)}
-		<div class="flex flex-col justify-center">
-			<div class="flex w-full items-center border-neutral-200 p-4">
-				<h2 class="font-torus-semibold mb-4 w-1/2 text-center text-2xl md:text-3xl">What:</h2>
-				<h2 class="font-torus-semibold mb-4 w-1/2 text-center text-2xl md:text-3xl">When:</h2>
-			</div>
-			{#each handleDateClick(clickedDayFormat) as event}
-				<div class="flex w-full items-baseline border-neutral-200">
-					<span class="w-1/2 text-xl md:text-2xl">{event.attributes.title}</span>
-					<div class="w-1/2">
-						<div class="text-xl md:text-2xl">
-							{#if event.attributes.date.start === event.attributes.date.end}
-								<span>{format(new Date(event.attributes.date.start), 'MMMM d, yyyy')}</span>
-							{:else}
-								<span>{format(new Date(event.attributes.date.start), 'MMMM d, yyyy')}</span> -
-								<span>{format(new Date(event.attributes.date.end), 'MMMM d, yyyy')}</span>
-							{/if}
+<div class="h-full min-h-[14rem] py-10 px-4 md:min-h-[20rem]">
+	<div class="mx-auto flex max-w-md flex-col gap-4 md:max-w-5xl">
+		<h2 class="text-center text-2xl font-bold md:text-5xl">
+			Events for {format(clickedDay, 'MMMM d, yyyy')}
+		</h2>
+		{#if handleDateClick(clickedDayFormat)}
+			<div class="flex flex-col justify-center">
+				<div class="flex w-full items-center border-neutral-200 p-4">
+					<h2 class="mb-4 w-1/2 text-center text-xl font-bold md:text-3xl">What:</h2>
+					<h2 class="mb-4 w-1/2 text-center text-xl font-bold md:text-3xl">When:</h2>
+				</div>
+				{#each handleDateClick(clickedDayFormat) as event}
+					<div class="flex w-full items-baseline border-neutral-200 gap-4">
+						<span class="w-1/2 text-lg md:text-xl">{event.attributes.title}</span>
+						<div class="w-1/2">
+							<div class="text-lg md:text-xl">
+								{#if event.attributes.date.start === event.attributes.date.end}
+									<span>{format(new Date(event.attributes.date.start), 'MMMM d, yyyy')}</span>
+								{:else}
+									<span>{format(new Date(event.attributes.date.start), 'MMMM d, yyyy')}</span> -
+									<span>{format(new Date(event.attributes.date.end), 'MMMM d, yyyy')}</span>
+								{/if}
+							</div>
 						</div>
 					</div>
-				</div>
-				<hr class="my-2 border-neutral-200" />
-			{/each}
-		</div>
-	{:else}
-		<span class="text-center">No events for {format(clickedDay, 'MMMM d, yyyy')}</span>
-	{/if}
+					<hr class="my-2 border-neutral-200" />
+				{/each}
+			</div>
+		{:else}
+			<span class="text-center">No events for {format(clickedDay, 'MMMM d, yyyy')}</span>
+		{/if}
+	</div>
 </div>

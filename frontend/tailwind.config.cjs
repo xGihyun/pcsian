@@ -27,7 +27,7 @@ module.exports = {
         "1400": "1400ms",
       },
       transitionProperty: {
-        "transform-opacity-filter": "transform, opacity, filter"
+        "transform-opacity-filter": "transform, opacity, filter",
       },
       keyframes: {
         float: {
@@ -35,17 +35,30 @@ module.exports = {
           "50%": { transform: "translateY(20px)", },
           "100%": { transform: "translateY(0)", },
         },
+        expand: {
+          "0": { scale: "1", opacity: "1" },
+          "50%": { scale: "6", opacity: "1" },
+          "100%": { scale: "1", opacity: "0" },
+        },
+        expand2: {
+          "0": { scale: "1", opacity: "1" },
+          "50%": { scale: "0.8" },
+          "100%": { scale: "1", opacity: "0" },
+        },
       },
       animation: {
         float: "float 3s ease-in-out infinite",
+        expand: "expand .5s forwards",
+        expand2: "expand2 .5s forwards",
       },
       scale: {
         '200': '1.75',
       },
     },
     fontFamily: {
-      "torus-semibold": "torus-semibold, sans serif",
+      "torus-semibold": "torus-semibold, sans-serif",
       "torus-bold": "torus-bold",
+      "torus-regular": "torus-regular, sans-serif"
     }
   },
   plugins: [],

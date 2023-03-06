@@ -88,6 +88,7 @@
 			scrolling="no"
 			frameborder="0"
 			allowfullscreen={true}
+			loading="lazy"
 			allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
 		/>
 		<iframe
@@ -99,6 +100,7 @@
 			scrolling="no"
 			frameborder="0"
 			allowfullscreen={true}
+			loading="lazy"
 			allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
 		/>
 		<iframe
@@ -110,6 +112,7 @@
 			scrolling="no"
 			frameborder="0"
 			allowfullscreen={true}
+			loading="lazy"
 			allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
 		/>
 	</div>

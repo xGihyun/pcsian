@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { pcsMembers, qrCode } from '../assets/images';
+	import { pcsMembers, qrCode, staticMapPcs } from '../assets/images';
 </script>
 
 <footer
@@ -12,7 +12,7 @@
 				<p>B. Morcilla St, Pateros, 1620 Metro Manila, Philippines</p>
 			</div>
 			<div class="h-72 w-72 md:h-[25rem] md:w-[25rem]">
-				<iframe
+				<!-- <iframe
 					title="map"
 					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.9494751054976!2d121.06508531483951!3d14.54488198983792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c8900303c535%3A0x83c4ca46850a39b3!2sPateros%20Catholic%20School!5e0!3m2!1sen!2sph!4v1664087741176!5m2!1sen!2sph"
 					width="100%"
@@ -21,7 +21,10 @@
 					allowFullScreen={true}
 					loading="lazy"
 					referrerPolicy="no-referrer-when-downgrade"
-				/>
+				/> -->
+				<a href="https://www.google.com/maps/place/Pateros+Catholic+School/@14.544882,121.067274,16z/data=!4m6!3m5!1s0x3397c8900303c535:0x83c4ca46850a39b3!8m2!3d14.544882!4d121.067274!16s%2Fg%2F1tfpm6qt?hl=en" target="_blank" rel="noreferrer">
+					<img src={staticMapPcs} class="bg-cover" alt="pcs map" />
+				</a>
 			</div>
 		</div>
 		<div class="flex w-full flex-col items-center">

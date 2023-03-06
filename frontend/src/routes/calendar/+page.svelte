@@ -26,7 +26,7 @@
 <nav class="flex w-full items-center justify-center py-10 px-4">
 	<ul class="flex h-full flex-row gap-8 text-xl">
 		{#each navigationItems as item, idx (idx)}
-			<li class={`${currentCalendar === item.name ? 'font-bold' : 'font-normal'}`}>
+			<li class={`text-base md:text-lg ${currentCalendar === item.name ? 'font-bold' : 'font-normal'}`}>
 				<button on:click={() => handleNavigationClick(item.name)} type="button">{item.name}</button>
 			</li>
 		{/each}

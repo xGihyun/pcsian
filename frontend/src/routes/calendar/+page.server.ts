@@ -10,7 +10,13 @@ import { error } from '@sveltejs/kit';
 type Fetch = typeof fetch;
 
 // Fetch data from Strapi
-export async function load({ fetch }: { fetch: Fetch }) {
+export async function load({
+	fetch,
+	setHeaders
+}: {
+	fetch: Fetch;
+	setHeaders(headers: Record<string, string>): void;
+}) {
 	async function getGradeSchool() {
 		const res = await fetch(GRADE_SCHOOL_END_POINT);
 
@@ -37,6 +43,9 @@ export async function load({ fetch }: { fetch: Fetch }) {
 
 	async function getSeniorHigh() {
 		const res = await fetch(SENIOR_HIGH_END_POINT);
+
+		// Test
+		setHeaders({ 'cache-control': 'max-age=600' });
 
 		if (!res.ok) {
 			throw error(res.status, 'Error loading, try refreshing!');

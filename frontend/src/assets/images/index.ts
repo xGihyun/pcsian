@@ -7,7 +7,8 @@ import kessokuBand from './KessokuBand.webp';
 import qrCode from './pcsQrCode.webp';
 import pcsMembers from './pcsMembers.webp';
 import pcsLogoNew from './pcsLogoNew.png';
+import staticMapPcs from './staticMapPcs.jpg';
 
 export {
-  gradeSchool, juniorHigh, seniorHigh, pcsAnnex2, pcsLogo, kessokuBand, qrCode, pcsMembers, pcsLogoNew
+  gradeSchool, juniorHigh, seniorHigh, pcsAnnex2, pcsLogo, kessokuBand, qrCode, pcsMembers, pcsLogoNew, staticMapPcs
 }
