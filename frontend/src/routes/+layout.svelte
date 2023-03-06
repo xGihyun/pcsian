@@ -14,13 +14,19 @@
 	let cursor: HTMLImageElement;
 
 	function moveCursor(e: any, interacting: boolean) {
+		const cursorRect = cursor.getBoundingClientRect();
+		const cursorWidth = cursorRect.width;
+		const cursorHeight = cursorRect.height;
+		const cursorX = e.clientX - cursorWidth / 2;
+		const cursorY = e.clientY - cursorHeight / 2;
+
 		x = e.clientX;
 		y = e.clientY;
 
-		interacting ? (cursor.style.scale = '1.25') : (cursor.style.scale = '1');
+		// interacting ? (cursor.style.scale = '1.25') : (cursor.style.scale = '1');
 
-		cursor.style.left = `${x - 938}px`;
-		cursor.style.top = `${y - 528}px`;
+		cursor.style.left = `${cursorX}px`;
+		cursor.style.top = `${cursorY}px`;
 		// cursor.style.left = `${x - 16}px`;
 		// cursor.style.top = `${y - 16}px`;
 	}
@@ -43,8 +49,8 @@
 
 			moveCursor(e, interacting);
 		};
-		window.onmousedown = () => (cursor.style.scale = '1.5');
-		window.onmouseup = () => (cursor.style.scale = '1');
+		// window.onmousedown = () => (cursor.style.scale = '1.5');
+		// window.onmouseup = () => (cursor.style.scale = '1');
 		// window.onclick = () => {
 		// 	cursor.classList.add("animate-expand2");
 		// 	cursor.classList.add("after:animate-expand");
