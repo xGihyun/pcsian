@@ -8,7 +8,8 @@ import qrCode from './pcsQrCode.webp';
 import pcsMembers from './pcsMembers.webp';
 import pcsLogoNew from './pcsLogoNew.png';
 import staticMapPcs from './staticMapPcs.jpg';
+import csgo from './csgo.png';
 
 export {
-  gradeSchool, juniorHigh, seniorHigh, pcsAnnex2, pcsLogo, kessokuBand, qrCode, pcsMembers, pcsLogoNew, staticMapPcs
+  gradeSchool, juniorHigh, seniorHigh, pcsAnnex2, pcsLogo, kessokuBand, qrCode, pcsMembers, pcsLogoNew, staticMapPcs, csgo
 }

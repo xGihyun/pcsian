@@ -5,12 +5,13 @@
 	import { QuickMenu } from '../features';
 	import Transition from '../components/Transition.svelte';
 	import { page } from '$app/stores';
+	import { csgo } from '../assets/images';
 
 	let loading = true;
 	let display = 'block';
 	let x = 0;
 	let y = 0;
-	let cursor: HTMLDivElement;
+	let cursor: HTMLImageElement;
 
 	function moveCursor(e: any, interacting: boolean) {
 		x = e.clientX;
@@ -18,8 +19,10 @@
 
 		interacting ? (cursor.style.scale = '1.25') : (cursor.style.scale = '1');
 
-		cursor.style.left = `${x - 16}px`;
-		cursor.style.top = `${y - 16}px`;
+		cursor.style.left = `${x - 938}px`;
+		cursor.style.top = `${y - 528}px`;
+		// cursor.style.left = `${x - 16}px`;
+		// cursor.style.top = `${y - 16}px`;
 	}
 
 	let interacting = false;
@@ -42,15 +45,15 @@
 		};
 		window.onmousedown = () => (cursor.style.scale = '1.5');
 		window.onmouseup = () => (cursor.style.scale = '1');
-		window.onclick = () => {
-			cursor.classList.add("animate-expand2");
-			cursor.classList.add("after:animate-expand");
+		// window.onclick = () => {
+		// 	cursor.classList.add("animate-expand2");
+		// 	cursor.classList.add("after:animate-expand");
 
-			setTimeout(() => {
-				cursor.classList.remove("animate-expand2");
-				cursor.classList.remove("after:animate-expand");
-			}, 500)
-		}
+		// 	setTimeout(() => {
+		// 		cursor.classList.remove("animate-expand2");
+		// 		cursor.classList.remove("after:animate-expand");
+		// 	}, 500)
+		// }
 	});
 </script>
 
@@ -60,8 +63,16 @@
 	}`}
 />
 
-<div
+<!-- Custom cursor -->
+<!-- <div
 	class="hidden lg:block pointer-events-none fixed z-[999] h-8 w-8 rounded-full bg-white mix-blend-difference transition-[scale] duration-150 after:fixed after:h-8 after:w-8 after:opacity-0 after:rounded-full after:border-[1px] after:border-red-500 after:content-['']"
+	bind:this={cursor}
+/> -->
+
+<img
+	class="pointer-events-none fixed z-[999] hidden transition-[scale] duration-150 lg:block"
+	src={csgo}
+	alt="csgo"
 	bind:this={cursor}
 />
 

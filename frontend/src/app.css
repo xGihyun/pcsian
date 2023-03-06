@@ -13,6 +13,10 @@ body{
 	background: black;
 }
 
+button{
+	cursor: none;
+}
+
 @font-face {
 	font-family: torus-regular;
 	src: url('./assets/fonts/torus/TorusNotched-Regular.ttf');
