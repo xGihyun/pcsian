@@ -6,15 +6,10 @@
 *::before,
 *::after {
 	font-family: gotham-medium, sans-serif;
-	cursor: none;
 }
 
 body{
 	background: black;
-}
-
-button{
-	cursor: none;
 }
 
 @font-face {

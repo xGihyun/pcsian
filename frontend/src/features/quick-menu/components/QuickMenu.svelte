@@ -11,12 +11,15 @@
 
 <ChatBot />
 <div
-	class={`fixed bottom-5 right-5 sm:bottom-10 sm:right-10 z-50 flex flex-col items-end gap-4 ${show ? 'hidden' : 'block'}`}
+	class={`fixed bottom-5 right-5 z-50 flex flex-col items-end gap-4 sm:bottom-10 sm:right-10 ${
+		show ? 'hidden' : 'block'
+	}`}
 >
 	<a
 		href="/calendar"
 		type="button"
 		class="bg-accent shadow-nav-shadow flex h-12 w-12 items-center justify-center rounded-full transition-all duration-300 lg:hover:scale-90 lg:hover:brightness-110"
+		aria-label="Go to calendar"
 	>
 		<CalendarIcon style="text-white h-5 w-5" />
 	</a>
@@ -25,6 +28,7 @@
 		on:click={() => {
 			showChatBot.update(() => (show = !show));
 		}}
+		aria-label="Show chatbot"
 	>
 		<Chat style="text-white h-11 w-11" />
 	</button>

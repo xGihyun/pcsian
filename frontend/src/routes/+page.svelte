@@ -58,6 +58,7 @@
 	<CurveWhiteBottom />
 </div>
 
+<!-- SUBJECT TO CHANGE -->
 <!-- Embedded Facebook posts -->
 <div class="relative h-full bg-white px-[10%] py-40">
 	<div
@@ -79,7 +80,10 @@
 		/>
 	</div>
 	<div class="flex flex-col justify-center gap-5 lg:flex-row">
-		<iframe
+		<div class="h-96 w-96 bg-neutral-200"></div>
+		<div class="h-96 w-96 bg-neutral-200"></div>
+		<div class="h-96 w-96 bg-neutral-200"></div>
+		<!-- <iframe
 			src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FPCS.OfficialPage%2Fposts%2Fpfbid02BK1sBRu1PVZ7qiW6TknHHgQbbaT26wcX9XMyJdoMQvkAqNnRoumxfaYg1THzDRCsl&show_text=true&width=500"
 			width="100%"
 			height="634"
@@ -114,6 +118,6 @@
 			allowfullscreen={true}
 			loading="lazy"
 			allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-		/>
+		/> -->
 	</div>
 </div>

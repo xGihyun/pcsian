@@ -6,10 +6,12 @@ import pcsLogo from './pcsLogoBrown.webp';
 import kessokuBand from './KessokuBand.webp';
 import qrCode from './pcsQrCode.webp';
 import pcsMembers from './pcsMembers.webp';
-import pcsLogoNew from './pcsLogoNew.png';
+import pcsLogoNewOrig from './pcsLogoNew.webp';
+import pcsLogoNewOutlineWhite from './pcsLogoNewOutlineWhite.webp';
+import pcsLogoNewOutlineBlack from './pcsLogoNewOutlineBlack.webp';
 import staticMapPcs from './staticMapPcs.jpg';
 import csgo from './csgo.png';
 
 export {
-  gradeSchool, juniorHigh, seniorHigh, pcsAnnex2, pcsLogo, kessokuBand, qrCode, pcsMembers, pcsLogoNew, staticMapPcs, csgo
+  gradeSchool, juniorHigh, seniorHigh, pcsAnnex2, pcsLogo, kessokuBand, qrCode, pcsMembers, staticMapPcs, csgo, pcsLogoNewOrig, pcsLogoNewOutlineWhite, pcsLogoNewOutlineBlack
 }

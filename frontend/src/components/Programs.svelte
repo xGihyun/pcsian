@@ -91,7 +91,7 @@
 			</a>
 		</div>
 	</div>
-	<div class="flex w-full flex-col items-center justify-center gap-10 px-[10%] lg:flex-row">
+	<div class="flex w-full flex-col items-center justify-center gap-16 px-[10%] lg:flex-row">
 		{#each programs as program, idx (idx)}
 			<div
 				class={`${program.bg} w-full max-w-sm bg-cover pt-32 transition-all duration-1000 ${

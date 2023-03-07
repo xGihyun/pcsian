@@ -6,18 +6,22 @@ module.exports = {
     extend: {
       colors: {
         "accent": "rgb(205, 127, 0)",
+        "accent2": "rgb(72, 38, 20)",
       },
       boxShadow: {
         "nav-shadow": "rgba(0, 0, 0, 0.6) 0px 5px 10px",
         "chat": "rgba(0, 0, 0, 0.8) 0px 10px 20px",
       },
       gradientColorStops: {
-        "nav-gradient": "rgba(0, 0, 0, 0.7)"
+        "nav-gradient": "rgba(0, 0, 0, 0.85)"
       },
       backgroundImage: {
         "grade-school": "url('./assets/images/gradeSchool.webp')",
         "junior-high": "url('./assets/images/juniorHigh.webp')",
         "senior-high": "url('./assets/images/seniorHigh.webp')",
+        "pcs-orig": "url('./assets/images/pcsLogoNew.webp')",
+        "pcs-outline-white": "url('./assets/images/pcsLogoNewOutlineWhite.webp')",
+        "pcs-outline-black": "url('./assets/images/pcsLogoNewOutlineBlack.webp')",
       },
       transitionDelay: {
         "400": "400ms",
@@ -37,7 +41,7 @@ module.exports = {
         },
         expand: {
           "0": { scale: "1", opacity: "1" },
-          "50%": { scale: "6", opacity: "1" },
+          "50%": { scale: "8", opacity: "1" },
           "100%": { scale: "1", opacity: "0" },
         },
         expand2: {

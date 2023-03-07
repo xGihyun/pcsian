@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { navItems } from '../constants';
-	import { pcsLogo } from '../assets/images';
 	import { Dropdown } from '.';
 	import HamburgerMenu from '../assets/icons/HamburgerMenu.svelte';
 	import NavbarMobile from './mobile/NavbarMobile.svelte';
@@ -31,22 +30,44 @@
 		<div class="border-b-accent h-80 w-full border-b-4 bg-black bg-opacity-75" />
 	{/if}
 	<nav
-		class={`absolute top-0 left-0 hidden w-full items-center justify-between bg-gradient-to-b 
-    px-[5%] transition-all duration-500 ease-in-out md:flex ${
-			scrolled ? 'bg-accent shadow-nav-shadow h-16 from-transparent' : 'from-nav-gradient h-32'
+		class={`absolute top-0 left-0 z-40 hidden w-full items-center justify-between bg-gradient-to-b 
+    px-[5%] transition-all duration-500 ease-in-out lg:flex ${
+			scrolled ? 'shadow-nav-shadow bg-accent h-16 from-transparent' : 'h-32'
 		}`}
 	>
-		<div class="flex flex-row items-center gap-4">
-			<a href="/">
-				<img
-					class={`transition-all duration-500 ease-in-out ${scrolled ? 'h-14 w-14' : 'h-28 w-28'}`}
-					src={pcsLogo}
-					alt="pcs"
-				/>
-			</a>
-			<!-- <span class={`text-white transition-all duration-500 ease-in-out ${scrolled ? 'text-xl' : 'text-3xl'}`}>Pateros Catholic School</span> -->
-		</div>
-		<ul class="hidden h-full flex-row md:flex">
+		<span
+			class={`from-nav-gradient absolute top-0 left-0 z-10 h-40 w-full bg-gradient-to-b transition-opacity duration-500 ease-in-out ${
+				scrolled ? 'opacity-0' : 'opacity-100'
+			}`}
+		/>
+		<a
+			href="/"
+			class={`z-20 flex origin-left flex-row items-center gap-4 transition-all duration-500 ease-in-out ${
+				scrolled ? 'scale-50' : 'scale-100'
+			}`}
+		>
+			<!-- PCS logo -->
+			<div
+				class="bg-pcs-outline-white hover:bg-pcs-orig h-28 w-28 transform-gpu bg-cover bg-no-repeat transition-all duration-500 ease-in-out"
+			/>
+			<!-- PCS text -->
+			<div class="flex origin-left flex-col transition-all duration-500 ease-in-out">
+				<span class="ease-in-ou text-5xl uppercase text-white transition-all duration-500"
+					>Pateros</span
+				>
+				<div class="flex justify-between">
+					<span
+						class="ease-in-ou text-xl uppercase tracking-widest text-white transition-all duration-500"
+						>Catholic</span
+					>
+					<span
+						class="text-xl uppercase tracking-widest text-white transition-all duration-500 ease-in-out"
+						>School</span
+					>
+				</div>
+			</div></a
+		>
+		<ul class="z-20 hidden h-full flex-row md:flex">
 			{#each navItems as item, idx (idx)}
 				{#if item.data === 'about' || item.data === 'academics'}
 					<li
@@ -59,7 +80,9 @@
 					>
 						<!-- svelte-ignore a11y-invalid-attribute -->
 						<a
-							class="pointer-events-none flex h-full items-center px-4 text-white"
+							class={`pointer-events-none flex h-full items-center px-4 transition-colors duration-500 ${
+								scrolled ? 'text-white' : 'text-white'
+							}`}
 							href="#"
 							data-nav={item.data}>{item.title}</a
 						>
@@ -70,7 +93,9 @@
 				{:else}
 					<li class="h-full">
 						<a
-							class="flex h-full items-center px-4 text-white"
+							class={`flex h-full items-center px-4 text-black transition-colors duration-500 ${
+								scrolled ? 'text-white' : 'text-white'
+							}`}
 							href={item.path}
 							data-nav={item.data}>{item.title}</a
 						>
@@ -82,9 +107,11 @@
 
 	<!-- Navbar small devices -->
 	<nav
-		class="bg-accent shadow-nav-shadow flex h-14 w-full items-center justify-between from-transparent px-[5%] md:hidden"
+		class="bg-accent shadow-nav-shadow flex h-16 w-full items-center justify-between from-transparent px-[5%] lg:hidden"
 	>
-		<img src={pcsLogo} alt="" class="h-12 w-12" />
+		<div
+			class="bg-pcs-outline-white hover:bg-pcs-orig h-14 w-14 transform-gpu bg-cover bg-no-repeat transition-all duration-500 ease-in-out"
+		/>
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<div on:click={() => (showNavbar = !showNavbar)}>
 			<HamburgerMenu />

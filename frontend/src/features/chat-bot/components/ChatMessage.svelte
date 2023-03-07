@@ -1,5 +1,5 @@
 <script lang="ts">
-	import LoadingChat from '../../../assets/animations/LoadingChat.svelte';
+	import LoadingChat from '../assets/animations/LoadingChat.svelte';
 	import { Robot, User } from '../assets/icons';
 
 	export let type: string;
