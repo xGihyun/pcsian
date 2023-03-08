@@ -80,9 +80,9 @@
 		/>
 	</div>
 	<div class="flex flex-col justify-center gap-5 lg:flex-row">
-		<div class="h-96 w-96 bg-neutral-200"></div>
-		<div class="h-96 w-96 bg-neutral-200"></div>
-		<div class="h-96 w-96 bg-neutral-200"></div>
+		<div class="h-96 w-full max-w-sm bg-neutral-200" />
+		<div class="h-96 w-full max-w-sm bg-neutral-200" />
+		<div class="h-96 w-full max-w-sm bg-neutral-200" />
 		<!-- <iframe
 			src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FPCS.OfficialPage%2Fposts%2Fpfbid02BK1sBRu1PVZ7qiW6TknHHgQbbaT26wcX9XMyJdoMQvkAqNnRoumxfaYg1THzDRCsl&show_text=true&width=500"
 			width="100%"

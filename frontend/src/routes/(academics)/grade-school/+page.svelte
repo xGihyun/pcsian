@@ -2,8 +2,30 @@
 	import { gradeSchool } from '../../../constants';
 </script>
 
-<h2>{gradeSchool.title}</h2>
-<div class="flex flex-row gap-10">
+<div class="mx-auto max-w-7xl px-10">
+	<div class="mb-20 text-center">
+		<h1
+			class="text-5xl font-extrabold uppercase tracking-widest md:whitespace-nowrap md:text-8xl lg:text-[7rem]"
+		>
+			Grade School
+		</h1>
+	</div>
+	<h2 class="uppercase">The Department</h2>
+	<div class="mb-10 flex flex-row justify-between gap-10">
+		<p class="text-justify lg:w-1/2">
+			The Grade School Department aims to provide a holistic education for students, encompassing
+			not just academic skills but also the development of important values and life skills. The
+			objectives of the department are focused on four key areas: social, moral, and spiritual
+			values; love for learning and effective study skills; physical and mental health; and
+			compassion for the poor and suffering. Through a combination of academic instruction and
+			practical experiences, the Grade School Department seeks to prepare students for success in
+			all aspects of their lives, including their relationships with others, their personal health
+			and well-being, and their ability to contribute to society in meaningful ways.
+		</p>
+		<div class="hidden h-80 w-[500px] bg-neutral-400 lg:block" />
+		<!-- <div class="h-80 w-[400px] bg-amber-400" /> -->
+	</div>
+	<h2 class="uppercase">Objectives</h2>
 	<ol>
 		{#each gradeSchool.content as item, idx (idx)}
 			<li class="mb-4">
@@ -16,8 +38,4 @@
 			</li>
 		{/each}
 	</ol>
-	<div class="flex flex-col gap-4">
-		<img class="object-cover h-64 w-80" src="https://i.kym-cdn.com/entries/icons/original/000/027/475/Screen_Shot_2018-10-25_at_11.02.15_AM.png" alt="pikachu" />
-		<img class="object-cover h-64 w-80" src="https://pyxis.nymag.com/v1/imgs/0f9/f96/029acbf4c6d8c67e138e1eb06a277204bf-05-patrick.rsocial.w1200.jpg" alt="patrick" />
-	</div>
 </div>

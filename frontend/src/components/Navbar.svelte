@@ -47,9 +47,16 @@
 			}`}
 		>
 			<!-- PCS logo -->
-			<div
-				class="bg-pcs-outline-white hover:bg-pcs-orig h-28 w-28 transform-gpu bg-cover bg-no-repeat transition-all duration-500 ease-in-out"
-			/>
+			<!-- If there is still a bug, use this instead -->
+			<div class="relative h-28 w-28">
+				<div
+					class="bg-pcs-orig absolute z-10 h-28 w-28 transform-gpu bg-cover bg-no-repeat opacity-0 transition-all duration-500 ease-in-out hover:opacity-100"
+				/>
+				<div
+					class="bg-pcs-outline-white absolute z-[9] h-28 w-28 transform-gpu bg-cover bg-no-repeat transition-all duration-500 ease-in-out"
+				/>
+			</div>
+
 			<!-- PCS text -->
 			<div class="flex origin-left flex-col transition-all duration-500 ease-in-out">
 				<span class="ease-in-ou text-5xl uppercase text-white transition-all duration-500"
@@ -109,9 +116,16 @@
 	<nav
 		class="bg-accent shadow-nav-shadow flex h-16 w-full items-center justify-between from-transparent px-[5%] lg:hidden"
 	>
-		<div
-			class="bg-pcs-outline-white hover:bg-pcs-orig h-14 w-14 transform-gpu bg-cover bg-no-repeat transition-all duration-500 ease-in-out"
-		/>
+		<a href="/">
+			<div class="relative h-14 w-14">
+				<div
+					class="bg-pcs-orig absolute z-10 h-14 w-14 transform-gpu bg-cover bg-no-repeat opacity-0 transition-all duration-500 ease-in-out hover:opacity-100"
+				/>
+				<div
+					class="bg-pcs-outline-white absolute z-[9] h-14 w-14 transform-gpu bg-cover bg-no-repeat transition-all duration-500 ease-in-out"
+				/>
+			</div>
+		</a>
 		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<div on:click={() => (showNavbar = !showNavbar)}>
 			<HamburgerMenu />

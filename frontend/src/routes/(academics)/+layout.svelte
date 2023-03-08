@@ -1,10 +1,8 @@
 <script lang="ts">
-	import { TopHeading } from "../../components";
+	import { TopHeading } from '../../components';
 </script>
 
 <TopHeading title={'ACADEMICS'} />
-<div class="px-4 py-10 h-full bg-white">
-	<div class="page-content mx-auto max-w-6xl">
-		<slot />
-	</div>
+<div class="py-20 page-content bg-white">
+	<slot />
 </div>

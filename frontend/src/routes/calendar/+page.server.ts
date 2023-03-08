@@ -44,8 +44,8 @@ export async function load({
 	async function getSeniorHigh() {
 		const res = await fetch(SENIOR_HIGH_END_POINT);
 
-		// Test
-		setHeaders({ 'cache-control': 'max-age=600' });
+		// Set cache
+		setHeaders({ 'cache-control': 'max-age=6000' });
 
 		if (!res.ok) {
 			throw error(res.status, 'Error loading, try refreshing!');
