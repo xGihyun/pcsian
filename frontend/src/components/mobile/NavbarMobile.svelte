@@ -28,7 +28,7 @@
 						>
 							{item.title}
 							<ChevronRight
-								style={clickedElement === item.data && showDropdown ? 'rotate-90' : 'rotate-0'}
+								style={`w-5 h-5 ${clickedElement === item.data && showDropdown ? 'rotate-90' : 'rotate-0'}`}
 							/>
 						</button>
 					</div>

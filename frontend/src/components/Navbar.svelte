@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { navItems } from '../constants';
 	import { Dropdown } from '.';
-	import HamburgerMenu from '../assets/icons/HamburgerMenu.svelte';
+	import { HamburgerMenu, ChevronRight } from '../assets/icons';
 	import NavbarMobile from './mobile/NavbarMobile.svelte';
 	import { onMount } from 'svelte';
 
@@ -27,7 +27,7 @@
 <div class="fixed top-0 left-0 z-50 w-full">
 	<!-- Navbar large devices -->
 	{#if hovered}
-		<div class="border-b-accent h-80 w-full border-b-4 bg-black bg-opacity-75" />
+		<div class="border-b-accent h-80 w-full border-b-4 bg-black bg-opacity-90" />
 	{/if}
 	<nav
 		class={`absolute top-0 left-0 z-40 hidden w-full items-center justify-between bg-gradient-to-b 
@@ -47,7 +47,6 @@
 			}`}
 		>
 			<!-- PCS logo -->
-			<!-- If there is still a bug, use this instead -->
 			<div class="relative h-28 w-28">
 				<div
 					class="bg-pcs-orig absolute z-10 h-28 w-28 transform-gpu bg-cover bg-no-repeat opacity-0 transition-all duration-500 ease-in-out hover:opacity-100"
@@ -58,19 +57,13 @@
 			</div>
 
 			<!-- PCS text -->
-			<div class="flex origin-left flex-col transition-all duration-500 ease-in-out">
-				<span class="ease-in-ou text-5xl uppercase text-white transition-all duration-500"
-					>Pateros</span
-				>
+			<div
+				class="flex origin-left flex-col text-white transition-all duration-500 ease-in-out hover:text-neutral-400"
+			>
+				<span class="text-5xl font-black uppercase">Pateros</span>
 				<div class="flex justify-between">
-					<span
-						class="ease-in-ou text-xl uppercase tracking-widest text-white transition-all duration-500"
-						>Catholic</span
-					>
-					<span
-						class="text-xl uppercase tracking-widest text-white transition-all duration-500 ease-in-out"
-						>School</span
-					>
+					<span class="text-xl font-black uppercase tracking-widest">Catholic</span>
+					<span class="text-xl font-black uppercase tracking-widest">School</span>
 				</div>
 			</div></a
 		>
@@ -87,12 +80,15 @@
 					>
 						<!-- svelte-ignore a11y-invalid-attribute -->
 						<a
-							class={`pointer-events-none flex h-full items-center px-4 transition-colors duration-500 ${
+							class={`pointer-events-none flex h-full items-center gap-2 px-4 transition-colors duration-500 ${
 								scrolled ? 'text-white' : 'text-white'
 							}`}
 							href="#"
-							data-nav={item.data}>{item.title}</a
+							data-nav={item.data}
 						>
+							{item.title}
+							<ChevronRight style="h-4 w-4 rotate-90" />
+						</a>
 						{#if hoveredElement === item.data && hovered}
 							<Dropdown drop={hoveredElement} {scrolled} />
 						{/if}

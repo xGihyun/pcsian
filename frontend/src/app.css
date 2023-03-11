@@ -31,18 +31,6 @@ body{
 }
 
 @font-face {
-	font-family: avant-garde-gothic-medium;
-	src: url('./assets/fonts/avant-garde/AvantGardeGothic-Medium.otf');
-	font-display: swap;
-}
-
-@font-face {
-	font-family: avant-garde-gothic-book;
-	src: url('./assets/fonts/avant-garde/AvantGardeGothic-Book.otf');
-	font-display: swap;
-}
-
-@font-face {
 	font-family: gotham-medium;
 	src: url('./assets/fonts/gotham/GothamBook.ttf');
 	font-display: swap;
@@ -65,6 +53,10 @@ body{
 
 	.page-content h4 {
 		@apply mt-4 mb-2 pl-3 text-lg font-semibold;
+	}
+
+	.page-content p {
+		@apply text-lg;
 	}
 
 	.page-content ol {

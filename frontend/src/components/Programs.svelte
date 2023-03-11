@@ -23,7 +23,7 @@
 	];
 
 	// Delay for the staggered effect
-	const delay = ['delay-1000', 'delay-1200', 'delay-1400'];
+	const delay = ['delay-600', 'delay-800', 'delay-1000'];
 
 	const options = { unobserveOnEnter: true, rootMargin: '-10%' };
 	let isInView = [false, false];
@@ -46,7 +46,7 @@
 		class="relative flex h-full flex-col items-center justify-between gap-20 px-[10%] pb-40 lg:flex-row"
 	>
 		<div
-			class="flex w-full flex-col text-center text-white lg:max-w-[50%] lg:text-left"
+			class="flex w-full flex-col text-white lg:max-w-[50%]"
 			use:inview={options}
 			on:change={({ detail }) => {
 				isInView[0] = detail.inView;
@@ -67,7 +67,7 @@
 				}`}
 			/>
 			<p
-				class={`transition-all delay-1000 duration-1000 ease-in-out ${
+				class={`text-lg transition-all delay-1000 duration-1000 ease-in-out ${
 					isInView[0]
 						? 'md:translate-y-0 md:opacity-100 md:blur-0'
 						: 'md:translate-y-full md:opacity-0 md:blur-[2px]'
@@ -109,16 +109,20 @@
 			>
 				<div class="gradient p-4 pt-12">
 					<h3
-						class="after:bg-accent relative text-xl text-white after:absolute after:left-[calc(1rem*-1)] after:-bottom-1 after:h-[2px] after:w-full after:content-['']"
+						class="after:bg-accent relative text-xl font-bold text-white after:absolute after:left-[calc(1rem*-1)] after:-bottom-1 after:h-[2px] after:w-full after:content-['']"
 					>
 						{program.title}
 					</h3>
-					<p class="my-4 text-sm text-white">
+					<p class="my-4 text-base text-white">
 						A solid foundation for academic success and character development, with a focus on
 						hands-on learning and creating a lifelong love of learning.
 					</p>
 					<!-- svelte-ignore a11y-invalid-attribute -->
-					<a href={program.path} class="mt-4 text-base text-white hover:text-accent transition-colors duration-300">Learn More</a>
+					<a
+						href={program.path}
+						class="hover:text-accent mt-4 text-base font-semibold text-white transition-colors duration-300"
+						>Learn More</a
+					>
 				</div>
 			</div>
 		{/each}

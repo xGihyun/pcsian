@@ -9,29 +9,30 @@
 
 	let loading = true;
 	let display = 'block';
-	let x = 0;
-	let y = 0;
-	let cursor: HTMLDivElement;
 
-	function moveCursor(e: any, interacting: boolean) {
-		// const cursorRect = cursor.getBoundingClientRect();
-		// const cursorWidth = cursorRect.width;
-		// const cursorHeight = cursorRect.height;
-		// const cursorX = e.clientX - cursorWidth / 2;
-		// const cursorY = e.clientY - cursorHeight / 2;
+	// let x = 0;
+	// let y = 0;
+	// let cursor: HTMLDivElement;
 
-		x = e.clientX;
-		y = e.clientY;
+	// function moveCursor(e: any, interacting: boolean) {
+	// 	// const cursorRect = cursor.getBoundingClientRect();
+	// 	// const cursorWidth = cursorRect.width;
+	// 	// const cursorHeight = cursorRect.height;
+	// 	// const cursorX = e.clientX - cursorWidth / 2;
+	// 	// const cursorY = e.clientY - cursorHeight / 2;
 
-		interacting ? (cursor.style.scale = '1.5') : (cursor.style.scale = '1');
+	// 	x = e.clientX;
+	// 	y = e.clientY;
 
-		// cursor.style.left = `${cursorX}px`;
-		// cursor.style.top = `${cursorY}px`;
-		cursor.style.left = `${x - 12}px`;
-		cursor.style.top = `${y - 12}px`;
-	}
+	// 	interacting ? (cursor.style.scale = '1.5') : (cursor.style.scale = '1');
 
-	let interacting = false;
+	// 	// cursor.style.left = `${cursorX}px`;
+	// 	// cursor.style.top = `${cursorY}px`;
+	// 	cursor.style.left = `${x - 12}px`;
+	// 	cursor.style.top = `${y - 12}px`;
+	// }
+
+	// let interacting = false;
 
 	onMount(() => {
 		setTimeout(() => {
@@ -42,15 +43,15 @@
 			display = 'hidden';
 		}, 3500);
 
-		window.onmousemove = (e: any) => {
-			const interactable = e.target.closest('a') || e.target.closest('button');
+		// window.onmousemove = (e: any) => {
+		// 	const interactable = e.target.closest('a') || e.target.closest('button');
 
-			interacting = interactable !== null;
+		// 	interacting = interactable !== null;
 
-			moveCursor(e, interacting);
-		};
-		window.onmousedown = () => (cursor.style.scale = '2');
-		window.onmouseup = () => (cursor.style.scale = '1');
+		// 	moveCursor(e, interacting);
+		// };
+		// window.onmousedown = () => (cursor.style.scale = '2');
+		// window.onmouseup = () => (cursor.style.scale = '1');
 		// window.onclick = () => {
 		// 	cursor.classList.add("animate-expand2");
 		// 	cursor.classList.add("after:animate-expand");
@@ -70,10 +71,10 @@
 />
 
 <!-- Custom cursor -->
-<div
+<!-- <div
 	class="hidden lg:block pointer-events-none fixed z-[999] h-6 w-6 rounded-full bg-white mix-blend-difference transition-[scale] duration-150 after:fixed after:h-6 after:w-6 after:opacity-0 after:rounded-full after:border-[1px] after:border-red-500 after:content-['']"
 	bind:this={cursor}
-/>
+/> -->
 
 <!-- CS:GO crosshair -->
 <!-- <img

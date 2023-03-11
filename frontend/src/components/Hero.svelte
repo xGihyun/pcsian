@@ -11,19 +11,21 @@
 		muted
 		class="absolute bottom-0 left-0 -z-10 h-screen w-full object-cover brightness-[30%]"
 	/>
-	<div class="h-full">
+	<div class="h-full px-[5%] pb-20">
 		<div
-			class="flex h-full flex-col items-center justify-center text-center text-white [&>p]:pointer-events-none [&>h1]:pointer-events-none"
+			class="flex h-full flex-col items-start justify-end text-center text-white"
 		>
-			<h1 class="font-torus-regular mb-10 text-5xl lg:text-7xl">Quality Catholic Education</h1>
-			<p class="font-torus-regular text-base">Through Faith, Hope, & Charity</p>
+			<h1 class="mb-10 w-4/5 md:w-2/3 text-start text-4xl font-black md:text-5xl lg:w-1/2 lg:text-6xl tracking-wide">
+				A Catholic education emphasizes faith, hope, and charity to foster positive change.
+			</h1>
+			<p class="mb-10 text-start text-lg font-bold lg:text-2xl tracking-wide">A lifelong journey of faith and learning</p>
+			<a
+				class="hover:bg-accent hover:border-accent z-30 rounded-full border-[1px] border-white py-3 px-5 text-xl text-white transition-all duration-300"
+				href="https://schoolaide.pcsian.edu.ph/login"
+				rel="noreferrer"
+				target="_blank"
+				type="button">Apply Now</a
+			>
 		</div>
-		<a
-			class="hover:bg-accent hover:border-accent font-torus-regular absolute bottom-[20%] left-[50%] -translate-x-[50%] -translate-y-[50%] border-[1px] border-white py-3 px-5 text-xl text-white transition-all duration-300"
-			href="https://schoolaide.pcsian.edu.ph/login"
-			rel="noreferrer"
-			target="_blank"
-			type="button">Apply Now</a
-		>
 	</div>
 </section>
