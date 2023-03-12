@@ -34,20 +34,21 @@
 
 	// let interacting = false;
 
+	// Do the animation stuff
 	onMount(() => {
+		scrollTo(0, 0);
+
 		setTimeout(() => {
 			loading = false;
-		}, 2000);
+		}, 800);
 
 		setTimeout(() => {
 			display = 'hidden';
-		}, 3500);
+		}, 2000);
 
 		// window.onmousemove = (e: any) => {
 		// 	const interactable = e.target.closest('a') || e.target.closest('button');
-
 		// 	interacting = interactable !== null;
-
 		// 	moveCursor(e, interacting);
 		// };
 		// window.onmousedown = () => (cursor.style.scale = '2');
@@ -55,7 +56,6 @@
 		// window.onclick = () => {
 		// 	cursor.classList.add("animate-expand2");
 		// 	cursor.classList.add("after:animate-expand");
-
 		// 	setTimeout(() => {
 		// 		cursor.classList.remove("animate-expand2");
 		// 		cursor.classList.remove("after:animate-expand");
@@ -65,8 +65,8 @@
 </script>
 
 <Loading
-	style={`transition-all duration-1000 ${display} ${
-		loading ? 'translate-y-0' : '-translate-y-full'
+	style={`transition-all duration-700 ${display} ${
+		loading ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
 	}`}
 />
 
@@ -84,13 +84,11 @@
 	bind:this={cursor}
 /> -->
 
-<div class={`${loading ? 'hidden' : 'block'}`}>
-	<Navbar />
-	<QuickMenu />
-	<Transition url={$page.url}>
-		<main class="overflow-x-hidden">
-			<slot />
-		</main>
-		<Footer />
-	</Transition>
-</div>
+<Navbar />
+<QuickMenu />
+<Transition url={$page.url}>
+	<main class="overflow-x-hidden">
+		<slot />
+	</main>
+	<Footer />
+</Transition>

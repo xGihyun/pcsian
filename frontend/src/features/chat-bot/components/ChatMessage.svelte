@@ -19,6 +19,6 @@
 			<LoadingChat />
 		</div>
 	{:else}
-		<span class="w-fit break-words">{message}</span>
+		<span class="w-fit break-words text-lg">{message}</span>
 	{/if}
 </div>

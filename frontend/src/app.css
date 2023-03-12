@@ -5,7 +5,7 @@
 *,
 *::before,
 *::after {
-	font-family: gotham-medium, sans-serif;
+	font-family: gt-walsheim-pro, sans-serif;
 }
 
 body{
@@ -33,6 +33,18 @@ body{
 @font-face {
 	font-family: gotham-medium;
 	src: url('./assets/fonts/gotham/GothamBook.ttf');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: gt-walsheim-pro;
+	src: url('./assets/fonts/gt-walsheim-pro/GTWalsheimPro-Regular.ttf');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: gt-walsheim-pro-medium;
+	src: url('./assets/fonts/gt-walsheim-pro/GTWalsheimPro-Medium.ttf');
 	font-display: swap;
 }
 

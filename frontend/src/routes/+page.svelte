@@ -15,11 +15,11 @@
 
 <!-- After the hero section  -->
 <div
-	class="relative flex items-center bg-white px-[10%] pt-40 pb-32 text-black md:px-[20%] md:text-center"
+	class="relative flex items-center bg-white px-[10%] py-20 text-black md:px-[20%] md:text-center lg:py-32"
 >
 	<div class="flex flex-col items-center justify-center">
 		<h2
-			class={`transform-gpu text-3xl font-bold transition-all duration-1000 ease-in-out lg:text-5xl ${
+			class={`font-gt-walsheim-pro-medium transform-gpu text-3xl transition-all duration-1000 ease-in-out md:text-5xl ${
 				isInView[0]
 					? 'md:translate-y-0 md:opacity-100 md:blur-0'
 					: 'md:translate-y-full md:opacity-0 md:blur-[2px]'
@@ -60,9 +60,9 @@
 
 <!-- SUBJECT TO CHANGE -->
 <!-- Embedded Facebook posts -->
-<div class="relative h-full bg-white px-[10%] py-40">
+<div class="relative h-full bg-white px-[10%] py-20 lg:py-32">
 	<div
-		class={`relative mb-5 flex transform-gpu flex-col whitespace-nowrap text-3xl font-bold transition-all duration-1000 ease-in-out md:text-center lg:text-5xl ${
+		class={`relative mb-5 flex transform-gpu flex-col whitespace-nowrap text-3xl transition-all duration-1000 ease-in-out md:text-center lg:text-5xl ${
 			isInView[1]
 				? 'md:translate-y-0 md:opacity-100 md:blur-0'
 				: 'md:translate-y-full md:opacity-0 md:blur-[2px]'
@@ -72,7 +72,7 @@
 			isInView[1] = detail.inView;
 		}}
 	>
-		<h2 class="text-center">What's Happening?</h2>
+		<h2 class="font-gt-walsheim-pro-medium text-center">What's Happening?</h2>
 		<span
 			class={`bg-accent my-8 h-[2px] w-full transform-gpu rounded-full transition-all duration-1000 ease-in-out ${
 				isInView[1] ? 'md:scale-x-100 md:delay-700' : 'md:scale-x-0'

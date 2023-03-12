@@ -60,10 +60,10 @@
 			<div
 				class="flex origin-left flex-col text-white transition-all duration-500 ease-in-out hover:text-neutral-400"
 			>
-				<span class="text-5xl font-black uppercase">Pateros</span>
+				<span class="text-5xl uppercase">Pateros</span>
 				<div class="flex justify-between">
-					<span class="text-xl font-black uppercase tracking-widest">Catholic</span>
-					<span class="text-xl font-black uppercase tracking-widest">School</span>
+					<span class="text-xl uppercase tracking-wide">Catholic</span>
+					<span class="text-xl uppercase tracking-wide">School</span>
 				</div>
 			</div></a
 		>
@@ -80,9 +80,7 @@
 					>
 						<!-- svelte-ignore a11y-invalid-attribute -->
 						<a
-							class={`pointer-events-none flex h-full items-center gap-2 px-4 transition-colors duration-500 ${
-								scrolled ? 'text-white' : 'text-white'
-							}`}
+							class="pointer-events-none flex h-full items-center gap-2 px-4 text-lg text-white transition-colors duration-500"
 							href="#"
 							data-nav={item.data}
 						>
@@ -96,9 +94,7 @@
 				{:else}
 					<li class="h-full">
 						<a
-							class={`flex h-full items-center px-4 text-black transition-colors duration-500 ${
-								scrolled ? 'text-white' : 'text-white'
-							}`}
+							class="flex h-full items-center px-4 text-lg text-white transition-colors duration-500"
 							href={item.path}
 							data-nav={item.data}>{item.title}</a
 						>

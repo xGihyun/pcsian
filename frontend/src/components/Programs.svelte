@@ -41,7 +41,7 @@
 	}
 </script>
 
-<div class="py-60">
+<div class="py-32 md:py-60">
 	<div
 		class="relative flex h-full flex-col items-center justify-between gap-20 px-[10%] pb-40 lg:flex-row"
 	>
@@ -53,7 +53,7 @@
 			}}
 		>
 			<h2
-				class={`text-3xl transition-all duration-1000 ease-in-out lg:text-5xl ${
+				class={`font-gt-walsheim-pro-medium text-3xl transition-all duration-1000 ease-in-out lg:text-5xl ${
 					isInView[0]
 						? 'md:translate-y-0 md:opacity-100 md:blur-0'
 						: 'md:translate-y-full md:opacity-0 md:blur-[2px]'
@@ -109,7 +109,7 @@
 			>
 				<div class="gradient p-4 pt-12">
 					<h3
-						class="after:bg-accent relative text-xl font-bold text-white after:absolute after:left-[calc(1rem*-1)] after:-bottom-1 after:h-[2px] after:w-full after:content-['']"
+						class="after:bg-accent relative text-xl text-white after:absolute after:left-[calc(1rem*-1)] after:-bottom-1 after:h-[2px] after:w-full after:content-['']"
 					>
 						{program.title}
 					</h3>
@@ -120,8 +120,8 @@
 					<!-- svelte-ignore a11y-invalid-attribute -->
 					<a
 						href={program.path}
-						class="hover:text-accent mt-4 text-base font-semibold text-white transition-colors duration-300"
-						>Learn More</a
+						class="mt-4 rounded-full border-[1px] border-white py-1 px-3 text-base text-white transition-colors duration-300 hover:bg-white hover:text-black"
+						type="button">Learn More</a
 					>
 				</div>
 			</div>

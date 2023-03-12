@@ -10,7 +10,7 @@
 	}`}
 >
 	{#each dropdownItems[drop] as item, idx (idx)}
-		<li class="pl-4 text-neutral-400 transition-colors duration-300 hover:text-white">
+		<li class="pl-4 text-neutral-400 transition-colors duration-300 hover:text-white text-lg">
 			<a href={item.path}>{item.title}</a>
 		</li>
 	{/each}

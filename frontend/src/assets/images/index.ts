@@ -8,9 +8,22 @@ import pcsMembers from './pcsMembers.webp';
 import pcsLogoNew from './pcsLogoNew.webp';
 import pcsLogoNewOutlineWhite from './pcsLogoNewOutlineWhite.webp';
 import pcsLogoNewOutlineBlack from './pcsLogoNewOutlineBlack.webp';
-import staticMapPcs from './staticMapPcs.jpg';
 import csgo from './csgo.png';
+import logoLeaf from './logoLeaf.webp';
+import logoCandleBook from './logoCandleBook.webp';
 
 export {
-  gradeSchool, juniorHigh, seniorHigh, pcsAnnex2, kessokuBand, qrCode, pcsMembers, staticMapPcs, csgo, pcsLogoNew, pcsLogoNewOutlineWhite, pcsLogoNewOutlineBlack
-}
+	gradeSchool,
+	juniorHigh,
+	seniorHigh,
+	pcsAnnex2,
+	kessokuBand,
+	qrCode,
+	pcsMembers,
+	csgo,
+	pcsLogoNew,
+	pcsLogoNewOutlineWhite,
+	pcsLogoNewOutlineBlack,
+	logoLeaf,
+	logoCandleBook
+};

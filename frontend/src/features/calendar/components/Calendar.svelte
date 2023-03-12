@@ -97,7 +97,7 @@
 
 <!-- The actual calendar -->
 <div
-	class="shadow-nav-shadow mx-auto max-w-md rounded-lg bg-white py-6 px-8 md:max-w-6xl md:py-10 md:px-20"
+	class="shadow-calendar mx-auto max-w-md xl:rounded-lg bg-white py-6 px-4 md:max-w-6xl md:py-10 md:px-20"
 >
 	<!-- Navigate between months -->
 	<div class="flex items-center">
