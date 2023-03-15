@@ -13,7 +13,7 @@
 <!-- Hero section -->
 <Hero />
 
-<!-- After the hero section  -->
+<!-- Homepage body -->
 <div
 	class="relative flex items-center bg-white px-[10%] py-20 text-black md:px-[20%] md:text-center lg:py-32"
 >
@@ -37,7 +37,7 @@
 			}`}
 		/>
 		<p
-			class={`transform-gpu text-lg transition-all delay-1000 duration-1000 ease-in-out md:text-2xl ${
+			class={`transform-gpu text-base transition-all delay-1000 duration-1000 ease-in-out md:text-2xl ${
 				isInView[0]
 					? 'md:translate-y-0 md:opacity-100 md:blur-0'
 					: 'md:translate-y-full md:opacity-0 md:blur-[2px]'

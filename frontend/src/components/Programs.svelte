@@ -7,16 +7,22 @@
 	const programs = [
 		{
 			title: 'Grade School',
+			description:
+				'Nurturing learning, character, and life skills for academic and personal success through a dynamic and holistic approach.',
 			bg: 'bg-grade-school',
 			path: '/grade-school'
 		},
 		{
 			title: 'Junior High',
+			description:
+				'Fostering academic excellence and holistic development through Catholic teachings, creative talents, and social responsibility.',
 			bg: 'bg-junior-high',
 			path: '/junior-high'
 		},
 		{
 			title: 'Senior High',
+			description:
+				'Empowering students for lifelong success through a holistic education that fosters critical thinking, practical skills, and ethical values.',
 			bg: 'bg-senior-high',
 			path: '/senior-high'
 		}
@@ -67,7 +73,7 @@
 				}`}
 			/>
 			<p
-				class={`text-lg transition-all delay-1000 duration-1000 ease-in-out ${
+				class={`text-sm transition-all delay-1000 duration-1000 ease-in-out sm:text-lg ${
 					isInView[0]
 						? 'md:translate-y-0 md:opacity-100 md:blur-0'
 						: 'md:translate-y-full md:opacity-0 md:blur-[2px]'
@@ -91,10 +97,23 @@
 			</a>
 		</div>
 	</div>
+	<h3
+		class={`mb-4 text-center text-2xl uppercase tracking-widest text-white transition-all duration-1000 ease-in-out ${
+			isInView[1]
+				? 'md:translate-y-0 md:opacity-100 md:blur-0'
+				: 'md:translate-y-full md:opacity-0 md:blur-[2px]'
+		}`}
+		use:inview={options}
+		on:change={({ detail }) => {
+			isInView[1] = detail.inView;
+		}}
+	>
+		Programs
+	</h3>
 	<div class="flex w-full flex-col items-center justify-center gap-16 px-[10%] lg:flex-row">
 		{#each programs as program, idx (idx)}
 			<div
-				class={`${program.bg} w-full max-w-sm bg-cover pt-32 transition-all duration-1000 ${
+				class={`${program.bg} h-96 w-full max-w-sm bg-cover transition-all duration-1000 ${
 					delay[idx]
 				} ${
 					isInView[1]
@@ -103,28 +122,39 @@
 				}`}
 				use:inview={options}
 				on:change={({ detail }) => {
-					isInView[1] = detail.inView;
 					changeDuration(isInView[1], detail.node.children);
 				}}
 			>
-				<div class="gradient p-4 pt-12">
-					<h3
-						class="after:bg-accent relative text-xl text-white after:absolute after:left-[calc(1rem*-1)] after:-bottom-1 after:h-[2px] after:w-full after:content-['']"
-					>
-						{program.title}
-					</h3>
-					<p class="my-4 text-base text-white">
-						A solid foundation for academic success and character development, with a focus on
-						hands-on learning and creating a lifelong love of learning.
-					</p>
-					<!-- svelte-ignore a11y-invalid-attribute -->
-					<a
-						href={program.path}
-						class="mt-4 rounded-full border-[1px] border-white py-1 px-3 text-base text-white transition-colors duration-300 hover:bg-white hover:text-black"
-						type="button">Learn More</a
-					>
+				<div class="flex h-full flex-col justify-end">
+					<div class="gradient h-1/2 p-4">
+						<h4
+							class="after:bg-accent relative text-base sm:text-xl text-white after:absolute after:left-[calc(1rem*-1)] after:-bottom-1 after:h-[2px] after:w-full after:content-['']"
+						>
+							{program.title}
+						</h4>
+						<p class="my-4 text-sm sm:text-base text-white">
+							{program.description}
+						</p>
+						<!-- svelte-ignore a11y-invalid-attribute -->
+						<a
+							href={program.path}
+							class="mt-4 rounded-full border-[1px] border-white py-1 px-3 text-sm sm:text-base text-white transition-colors duration-300 hover:bg-white hover:text-black"
+							type="button">Learn More</a
+						>
+					</div>
 				</div>
 			</div>
 		{/each}
 	</div>
+	<!-- <h3
+		class="font-gt-walsheim-pro-medium mb-4 text-center text-2xl uppercase tracking-widest text-white"
+	>
+		Supported By
+	</h3>
+	<div class="flex flex-row justify-center gap-20 px-[10%]">
+		<img class="h-52" src={mapsa} alt="mapsa" />
+		<img class="h-52" src={ceap} alt="ceap" />
+		<img class="h-52" src={padss} alt="padss" />
+		<img class="h-52" src={paascu} alt="paascu" />
+	</div> -->
 </div>

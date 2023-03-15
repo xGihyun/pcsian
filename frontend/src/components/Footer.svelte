@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Email, Telephone, Location, Facebook } from '../assets/icons';
+	import { ceap, mapsa, paascu, padss } from '../assets/images';
 	// import { pcsMembers, qrCode, staticMapPcs } from '../assets/images';
 </script>
 
@@ -108,7 +109,13 @@
 		</div>
 	</div>
 	<hr class="my-5 opacity-20" />
-	<div class="flex flex-row justify-center text-center">
-		<span>© 2023. Pateros Catholic School, Pateros, Metro Manila. All Rights Reserved.</span>
+	<div class="flex flex-col lg:flex-row justify-evenly">
+		<span class="text-center mb-4">© 2023. Pateros Catholic School, Pateros, Metro Manila. All Rights Reserved.</span>
+		<div class="flex flex-row gap-4 justify-center">
+			<img class="h-10 grayscale hover:grayscale-0 transition-all duration-300" src={mapsa} alt="mapsa" />
+			<img class="h-10 grayscale hover:grayscale-0 transition-all duration-300" src={ceap} alt="ceap" />
+			<img class="h-10 grayscale hover:grayscale-0 transition-all duration-300" src={padss} alt="padss" />
+			<img class="h-10 grayscale hover:grayscale-0 transition-all duration-300" src={paascu} alt="paascu" />
+		</div>
 	</div>
 </footer>

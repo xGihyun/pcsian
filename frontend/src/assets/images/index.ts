@@ -11,6 +11,10 @@ import pcsLogoNewOutlineBlack from './pcsLogoNewOutlineBlack.webp';
 import csgo from './csgo.png';
 import logoLeaf from './logoLeaf.webp';
 import logoCandleBook from './logoCandleBook.webp';
+import ceap from './ceap.webp';
+import mapsa from './mapsa.webp';
+import paascu from './paascu.webp';
+import padss from './padss.webp';
 
 export {
 	gradeSchool,
@@ -25,5 +29,9 @@ export {
 	pcsLogoNewOutlineWhite,
 	pcsLogoNewOutlineBlack,
 	logoLeaf,
-	logoCandleBook
+	logoCandleBook,
+	ceap,
+	mapsa,
+	paascu,
+	padss
 };

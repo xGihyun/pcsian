@@ -60,7 +60,7 @@ body{
 	}
 
 	.page-content h3 {
-		@apply mt-4 mb-2 text-xl font-semibold;
+		@apply mt-4 mb-2 text-base sm:text-xl font-semibold;
 	}
 
 	.page-content h4 {
@@ -68,7 +68,7 @@ body{
 	}
 
 	.page-content p {
-		@apply text-lg;
+		@apply text-sm sm:text-lg;
 	}
 
 	.page-content ol {
@@ -76,7 +76,7 @@ body{
 	}
 
 	.page-content ol p {
-		@apply mt-2 mb-4;
+		@apply mt-1 mb-2 sm:mt-2 sm:mb-4;
 	}
 
 	.page-content ol ol {

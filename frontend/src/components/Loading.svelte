@@ -50,8 +50,8 @@
 		</div>
 	</div>
 </div>
-<!-- Old preloader -->
 
+<!-- Old preloader -->
 <!-- <div class="loading-spinner">
 	<div class="loading">
 		<div />

@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { ChatBot } from '../../../features';
-	import Chat from '../assets/icons/Chat.svelte';
 	import { showChatBot } from '../../stores';
 	import { CalendarIcon } from '../../calendar/assets/icons';
+	import { ChatBotIcon } from '../../chat-bot/assets/icons';
+	import { ChatBot } from '../..';
 
 	let show = false;
 
@@ -20,16 +20,17 @@
 		type="button"
 		class="bg-accent shadow-nav-shadow flex h-12 w-12 items-center justify-center rounded-full transition-all duration-300 lg:hover:scale-90 lg:hover:brightness-110"
 		aria-label="Go to calendar"
+		data-sveltekit-preload-data="off"
 	>
 		<CalendarIcon style="text-white h-5 w-5" />
 	</a>
 	<button
-		class="bg-accent shadow-nav-shadow flex h-20 w-20 items-center justify-center rounded-full transition-all duration-300 lg:hover:scale-90 lg:hover:brightness-110"
+		class="bg-accent shadow-nav-shadow flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full transition-all duration-300 lg:hover:scale-90 lg:hover:brightness-110"
 		on:click={() => {
 			showChatBot.update(() => (show = !show));
 		}}
 		aria-label="Show chatbot"
 	>
-		<Chat style="text-white h-11 w-11" />
+		<ChatBotIcon style="text-white h-10 w-10 sm:h-12 sm:w-12" />
 	</button>
 </div>
