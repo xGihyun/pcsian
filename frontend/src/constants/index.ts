@@ -36,6 +36,10 @@ export const dropdownItems: { [key: string]: DropdownItem[] } = {
 		{
 			title: 'Senior High',
 			path: '/senior-high'
+		},
+		{
+			title: 'Calendar',
+			path: '/calendar'
 		}
 	],
 	about: [

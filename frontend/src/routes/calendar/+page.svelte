@@ -37,14 +37,12 @@
 	<Calendar events={gradeSchool} />
 {:else if currentCalendar === 'Junior High'}
 	<Calendar events={juniorHigh} />
-{:else}
+{:else if currentCalendar === 'Senior High'}
 	<Calendar events={seniorHigh} />
+{:else}
+	<div class="flex justify-center h-screen">
+		<h1 class="font-gt-walsheim-pro-medium text-3xl">
+			Failed to fetch data, try refreshing!
+		</h1>
+	</div>
 {/if}
-
-<!-- {#if seniorHigh}
-	<Calendar events={seniorHigh} />
-{:else if juniorHigh}
-	<Calendar events={juniorHigh} />
-{:else}
-	<div>Loading... Try refreshing if it doesn't work.</div>
-{/if} -->

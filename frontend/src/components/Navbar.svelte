@@ -29,17 +29,17 @@
 	{#if hovered}
 		<div class="border-b-accent h-80 w-full border-b-4 bg-black bg-opacity-90" />
 	{/if}
+	<span
+		class={`from-nav-gradient absolute top-0 left-0 z-10 w-full bg-gradient-to-b transition-all duration-500 hidden lg:block ease-in-out ${
+			scrolled ? 'h-16 opacity-0' : 'h-40 opacity-100'
+		}`}
+	/>
 	<nav
 		class={`absolute top-0 left-0 z-40 hidden w-full items-center justify-between bg-gradient-to-b 
     px-[5%] transition-all duration-500 ease-in-out lg:flex ${
 			scrolled ? 'shadow-nav-shadow bg-accent h-16 from-transparent' : 'h-32'
 		}`}
 	>
-		<span
-			class={`from-nav-gradient absolute top-0 left-0 z-10 h-40 w-full bg-gradient-to-b transition-opacity duration-500 ease-in-out ${
-				scrolled ? 'opacity-0' : 'opacity-100'
-			}`}
-		/>
 		<a
 			href="/"
 			class={`z-20 flex origin-left flex-row items-center gap-4 transition-all duration-500 ease-in-out ${

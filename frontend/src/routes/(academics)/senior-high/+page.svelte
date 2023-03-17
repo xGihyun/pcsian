@@ -29,7 +29,7 @@
 		<!-- <div class="h-80 w-[400px] bg-amber-400" /> -->
 	</div>
 </div>
-<div class="bg-accent h-full p-10">
+<div class="bg-black h-full p-10">
 	<h2 class="uppercase text-white tracking-widest">Strands Offered</h2>
 	<div class="mx-auto grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 xl:px-20">
 		<!-- STEM -->

@@ -15,22 +15,33 @@
 		show ? 'hidden' : 'block'
 	}`}
 >
-	<a
+	<!-- <a
 		href="/calendar"
 		type="button"
-		class="bg-accent shadow-nav-shadow flex h-12 w-12 items-center justify-center rounded-full transition-all duration-300 lg:hover:scale-90 lg:hover:brightness-110"
+		class="shadow-nav-shadow flex w-40 items-center rounded-full bg-neutral-800 text-white transition-all duration-300 lg:hover:scale-90 lg:hover:brightness-110"
 		aria-label="Go to calendar"
-		data-sveltekit-preload-data="off"
 	>
-		<CalendarIcon style="text-white h-5 w-5" />
-	</a>
+		<div class="bg-accent flex h-12 w-12 items-center justify-center rounded-full">
+			<CalendarIcon style="text-white h-5 w-5" />
+		</div>
+		<div class="flex flex-col pl-3 text-left">
+			<span class="font-gt-walsheim-pro-medium text-sm">Calendar</span>
+			<span class="text-xs opacity-50">View Events</span>
+		</div>
+	</a> -->
 	<button
-		class="bg-accent shadow-nav-shadow flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full transition-all duration-300 lg:hover:scale-90 lg:hover:brightness-110"
+		class="shadow-nav-shadow flex w-44 items-center rounded-full bg-neutral-800 text-white transition-all duration-300 lg:hover:scale-90 lg:hover:brightness-110"
 		on:click={() => {
 			showChatBot.update(() => (show = !show));
 		}}
 		aria-label="Show chatbot"
 	>
-		<ChatBotIcon style="text-white h-10 w-10 sm:h-12 sm:w-12" />
+		<div class="bg-accent flex h-16 w-16 items-center justify-center rounded-full">
+			<ChatBotIcon style="text-white h-10 w-10" />
+		</div>
+		<div class="flex flex-col pl-3 text-left">
+			<span class="font-gt-walsheim-pro-medium text-base">Chatbot</span>
+			<span class="text-sm opacity-50">Ask FAQs</span>
+		</div>
 	</button>
 </div>

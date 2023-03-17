@@ -7,6 +7,7 @@ module.exports = {
       colors: {
         "accent": "rgb(205, 127, 0)",
         "accent2": "rgb(72, 38, 20)",
+        "accent-dark": "rgb(110, 69, 0)",
       },
       boxShadow: {
         "nav-shadow": "rgba(0, 0, 0, 0.6) 0px 5px 10px",

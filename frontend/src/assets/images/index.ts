@@ -1,7 +1,9 @@
 import gradeSchool from './gradeSchool.webp';
 import juniorHigh from './juniorHigh.webp';
 import seniorHigh from './seniorHigh.webp';
+import pcsAnnex from './pcsAnnex.png';
 import pcsAnnex2 from './pcsAnnex2.webp';
+import pcsMain from './pcsMain.png';
 import kessokuBand from './KessokuBand.webp';
 import qrCode from './pcsQrCode.webp';
 import pcsMembers from './pcsMembers.webp';
@@ -25,6 +27,8 @@ export {
 	qrCode,
 	pcsMembers,
 	csgo,
+	pcsAnnex,
+	pcsMain,
 	pcsLogoNew,
 	pcsLogoNewOutlineWhite,
 	pcsLogoNewOutlineBlack,

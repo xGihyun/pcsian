@@ -146,15 +146,4 @@
 			</div>
 		{/each}
 	</div>
-	<!-- <h3
-		class="font-gt-walsheim-pro-medium mb-4 text-center text-2xl uppercase tracking-widest text-white"
-	>
-		Supported By
-	</h3>
-	<div class="flex flex-row justify-center gap-20 px-[10%]">
-		<img class="h-52" src={mapsa} alt="mapsa" />
-		<img class="h-52" src={ceap} alt="ceap" />
-		<img class="h-52" src={padss} alt="padss" />
-		<img class="h-52" src={paascu} alt="paascu" />
-	</div> -->
 </div>

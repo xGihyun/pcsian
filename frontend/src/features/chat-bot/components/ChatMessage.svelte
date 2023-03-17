@@ -1,6 +1,6 @@
 <script lang="ts">
 	import LoadingChat from '../assets/animations/LoadingChat.svelte';
-	import { ChatBotIcon, User } from '../assets/icons';
+	import { Robot, User } from '../assets/icons';
 
 	export let type: string;
 	export let message: string;
@@ -11,7 +11,7 @@
 		{#if type === 'user'}
 			<User style="h-5 w-5" />
 		{:else}
-			<ChatBotIcon style="h-5 w-5" />
+			<Robot style="h-5 w-5" />
 		{/if}
 	</div>
 	{#if type === 'loading'}

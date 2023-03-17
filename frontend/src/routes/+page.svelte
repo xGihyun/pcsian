@@ -4,6 +4,7 @@
 	import CurveWhiteBottom from '../assets/curves/CurveWhiteBottom.svelte';
 	import '../styles/curves.css';
 	import { inview } from 'svelte-inview';
+	import { pcsAnnex } from '../assets/images';
 
 	let isInView = [false, false];
 
@@ -58,11 +59,9 @@
 	<CurveWhiteBottom />
 </div>
 
-<!-- SUBJECT TO CHANGE -->
-<!-- Embedded Facebook posts -->
 <div class="relative h-full bg-white px-[10%] py-20 lg:py-32">
 	<div
-		class={`relative mb-5 flex transform-gpu flex-col whitespace-nowrap text-3xl transition-all duration-1000 ease-in-out md:text-center lg:text-5xl ${
+		class={`relative mb-5 flex transform-gpu flex-col whitespace-nowrap text-3xl transition-all duration-1000 ease-in-out lg:text-5xl ${
 			isInView[1]
 				? 'md:translate-y-0 md:opacity-100 md:blur-0'
 				: 'md:translate-y-full md:opacity-0 md:blur-[2px]'
@@ -72,52 +71,40 @@
 			isInView[1] = detail.inView;
 		}}
 	>
-		<h2 class="font-gt-walsheim-pro-medium text-center">What's Happening?</h2>
-		<span
-			class={`bg-accent my-8 h-[2px] w-full transform-gpu rounded-full transition-all duration-1000 ease-in-out ${
+		<h2 class="font-gt-walsheim-pro-medium">Become a PCSian</h2>
+		<!-- <span
+			class={`bg-accent my-8 h-[2px] w-1/2 origin-left transform-gpu rounded-full transition-all duration-1000 ease-in-out ${
 				isInView[1] ? 'md:scale-x-100 md:delay-700' : 'md:scale-x-0'
 			}`}
-		/>
-	</div>
-	<div class="flex flex-col justify-center gap-5 lg:flex-row">
-		<div class="h-96 w-full max-w-sm bg-neutral-200" />
-		<div class="h-96 w-full max-w-sm bg-neutral-200" />
-		<div class="h-96 w-full max-w-sm bg-neutral-200" />
-		<!-- <iframe
-			src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FPCS.OfficialPage%2Fposts%2Fpfbid02BK1sBRu1PVZ7qiW6TknHHgQbbaT26wcX9XMyJdoMQvkAqNnRoumxfaYg1THzDRCsl&show_text=true&width=500"
-			width="100%"
-			height="634"
-			title="fb-post-1"
-			style="border:none;overflow:hidden"
-			scrolling="no"
-			frameborder="0"
-			allowfullscreen={true}
-			loading="lazy"
-			allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-		/>
-		<iframe
-			src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FPCS.OfficialPage%2Fposts%2Fpfbid09VxSPgjyjBaACaeUyR23qAPicT6bWr2jSMpmGcZkhvRnb98yuv7NGzmhFZPWALwfl&show_text=true&width=500"
-			width="100%"
-			height="709"
-			title="fb-post-2"
-			style="border:none;overflow:hidden"
-			scrolling="no"
-			frameborder="0"
-			allowfullscreen={true}
-			loading="lazy"
-			allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-		/>
-		<iframe
-			src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FPCS.OfficialPage%2Fposts%2Fpfbid06CQJPSaPCtTXUs6AqqkqErnXVZke5owTm7RRMuNaSfzhfGm7sLVCR61guiboqrcJl&show_text=true&width=500"
-			width="100%"
-			height="748"
-			style="border:none;overflow:hidden"
-			title="fb-post-3"
-			scrolling="no"
-			frameborder="0"
-			allowfullscreen={true}
-			loading="lazy"
-			allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
 		/> -->
 	</div>
+	<div class="flex justify-between gap-10">
+		<div>
+			<p class="mb-20 w-full max-w-[75%] text-base md:text-2xl">
+				Your journey of academic and personal growth begins. Unlock your potential, and delve into a
+				world of endless possibilities that await you at Pateros Catholic School.
+			</p>
+			<a
+				class="hover:bg-accent z-30 rounded-full bg-black py-3 px-5 text-xl text-white transition-all duration-300 hover:scale-90"
+				href="https://schoolaide.pcsian.edu.ph/login"
+				rel="noreferrer"
+				target="_blank"
+				type="button">Apply Now</a
+			>
+		</div>
+		<div class="relative m-auto max-w-xl hidden lg:block">
+			<div
+				class="flex aspect-square items-end justify-center overflow-hidden rounded-bl-full rounded-br-full hover:[&>img]:scale-[1.2]"
+			>
+				<div class="bg-accent absolute bottom-0 aspect-square w-full rounded-full" />
+				<img
+					src={pcsAnnex}
+					class="relative w-96 max-w-xl origin-bottom transition-transform duration-300"
+					alt="pcs annex"
+				/>
+			</div>
+		</div>
+	</div>
+
+	<!-- <div class="flex flex-col justify-center gap-5 lg:flex-row" /> -->
 </div>

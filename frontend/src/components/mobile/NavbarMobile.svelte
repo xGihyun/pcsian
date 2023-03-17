@@ -14,21 +14,23 @@
 </script>
 
 <div
-	class="border-b-accent -z-10 h-full w-full border-b-4 bg-black bg-opacity-75 transition-all duration-500 ease-in-out"
+	class="border-b-accent -z-10 h-full w-full border-b-4 bg-black bg-opacity-75 transition-all duration-500 ease-in-out pb-4"
 >
 	<ul class="flex flex-col transition-all duration-500 ease-in-out">
 		{#each navItems as item, idx (idx)}
 			{#if item.data === 'about' || item.data === 'academics'}
-				<li class="flex h-full w-full flex-col p-4">
+				<li class="flex h-full w-full flex-col">
 					<div class="flex flex-row-reverse text-white">
 						<button
-							class="flex h-full w-full justify-between"
+							class="flex h-full w-full justify-between  p-4"
 							data-nav={item.data}
 							on:click={() => handleClick(item.data)}
 						>
 							{item.title}
 							<ChevronRight
-								style={`w-5 h-5 ${clickedElement === item.data && showDropdown ? 'rotate-90' : 'rotate-0'}`}
+								style={`w-5 h-5 ${
+									clickedElement === item.data && showDropdown ? 'rotate-90' : 'rotate-0'
+								}`}
 							/>
 						</button>
 					</div>
@@ -37,8 +39,8 @@
 					{/if}
 				</li>
 			{:else}
-				<li class="h-full w-full p-4 text-white">
-					<a class="flex h-full w-full" href={item.path} data-nav={item.data}>{item.title}</a>
+				<li class="h-full w-full text-white">
+					<a class="flex h-full w-full p-4" href={item.path} data-nav={item.data}>{item.title}</a>
 				</li>
 			{/if}
 		{/each}
