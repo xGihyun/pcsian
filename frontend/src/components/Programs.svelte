@@ -33,23 +33,11 @@
 
 	const options = { unobserveOnEnter: true, rootMargin: '-10%' };
 	let isInView = [false, false];
-
-	// Replace classes after the animation
-	function changeDuration(inView: boolean, children: HTMLCollection) {
-		if (inView) {
-			// Use setTimeout to wait until the animation finishes before replacing/removing transition classes
-			setTimeout(() => {
-				children[0].classList.replace('duration-1000', 'duration-300');
-				children[0].classList.remove(...delay);
-				children[0].classList.remove('pointer-events-none');
-			}, 1300);
-		}
-	}
 </script>
 
 <div class="py-32 md:py-60">
 	<div
-		class="relative flex h-full flex-col items-center justify-between gap-20 px-[10%] pb-40 lg:flex-row"
+		class="relative flex h-full flex-col items-center justify-between gap-20 px-[10%] pb-20 sm:pb-40 lg:flex-row"
 	>
 		<div
 			class="flex w-full flex-col text-white lg:max-w-[50%]"
@@ -59,7 +47,7 @@
 			}}
 		>
 			<h2
-				class={`font-gt-walsheim-pro-medium text-3xl transition-all duration-1000 ease-in-out lg:text-5xl ${
+				class={`font-gt-walsheim-pro-medium mb-8 text-3xl transition-all duration-1000 ease-in-out lg:text-5xl ${
 					isInView[0]
 						? 'md:translate-y-0 md:opacity-100 md:blur-0'
 						: 'md:translate-y-full md:opacity-0 md:blur-[2px]'
@@ -67,24 +55,26 @@
 			>
 				Discover the Power of Personalized Education
 			</h2>
-			<span
-				class={`bg-accent my-8 inline-block h-[2px] w-full origin-left rounded-full transition-all delay-700 duration-1000 ease-in-out ${
-					isInView[0] ? 'md:scale-x-100' : 'md:scale-x-0'
-				}`}
-			/>
-			<p
-				class={`text-sm transition-all delay-1000 duration-1000 ease-in-out sm:text-lg ${
-					isInView[0]
-						? 'md:translate-y-0 md:opacity-100 md:blur-0'
-						: 'md:translate-y-full md:opacity-0 md:blur-[2px]'
-				}`}
-			>
-				At Pateros Catholic School, we offer a comprehensive educational experience for students in
-				grades K-12. Our academic programs are designed to provide a strong foundation for our
-				students and help them reach their full potential. With our commitment to academic
-				excellence, personalized learning, and a supportive community, our academic programs provide
-				an exceptional educational experience for all students.
-			</p>
+			<div class="relative pl-3 sm:pl-6">
+				<span
+					class={`bg-accent absolute inset-y-0 left-0 w-1 origin-top rounded-full transition-transform delay-700 duration-1000 sm:w-2 ${
+						isInView[0] ? 'md:scale-y-100' : 'md:scale-y-0'
+					}`}
+				/>
+				<p
+					class={`text-sm transition-all delay-700 duration-1000 ease-in-out sm:text-lg ${
+						isInView[0]
+							? 'md:translate-y-0 md:opacity-100 md:blur-0'
+							: 'md:translate-y-full md:opacity-0 md:blur-[2px]'
+					}`}
+				>
+					At Pateros Catholic School, we offer a comprehensive educational experience for students
+					in grades K-12. Our academic programs are designed to provide a strong foundation for our
+					students and help them reach their full potential. With our commitment to academic
+					excellence, personalized learning, and a supportive community, our academic programs
+					provide an exceptional educational experience for all students.
+				</p>
+			</div>
 		</div>
 		<div class="relative hidden h-full w-full items-center justify-center lg:flex">
 			<OrangeBlob1 />
@@ -110,37 +100,38 @@
 	>
 		Programs
 	</h3>
-	<div class="flex w-full flex-col items-center justify-center gap-16 px-[10%] lg:flex-row">
+	<div
+		class="flex w-full flex-col items-center justify-center gap-8 px-[10%] md:flex-row lg:gap-16"
+	>
 		{#each programs as program, idx (idx)}
 			<div
-				class={`${program.bg} h-96 w-full max-w-sm bg-cover transition-all duration-1000 ${
-					delay[idx]
-				} ${
-					isInView[1]
-						? 'md:translate-x-0 md:opacity-100 md:blur-0'
-						: 'md:-translate-x-full md:opacity-0 md:blur-[2px]'
-				}`}
-				use:inview={options}
-				on:change={({ detail }) => {
-					changeDuration(isInView[1], detail.node.children);
-				}}
+				class="hover:shadow-card brightness-75 transition-all duration-300 hover:brightness-100 [&>div>div>div>p]:hover:text-white [&>div>div>div>h4]:hover:after:scale-x-100 [&>div>div>div>a]:hover:border-white"
 			>
-				<div class="flex h-full flex-col justify-end">
-					<div class="gradient h-1/2 p-4">
-						<h4
-							class="after:bg-accent relative text-base sm:text-xl text-white after:absolute after:left-[calc(1rem*-1)] after:-bottom-1 after:h-[2px] after:w-full after:content-['']"
-						>
-							{program.title}
-						</h4>
-						<p class="my-4 text-sm sm:text-base text-white">
-							{program.description}
-						</p>
-						<!-- svelte-ignore a11y-invalid-attribute -->
-						<a
-							href={program.path}
-							class="mt-4 rounded-full border-[1px] border-white py-1 px-3 text-sm sm:text-base text-white transition-colors duration-300 hover:bg-white hover:text-black"
-							type="button">Learn More</a
-						>
+				<div
+					class={`${program.bg} h-96 w-full max-w-sm bg-cover transition-all duration-1000 ${
+						delay[idx]
+					} ${
+						isInView[1]
+							? 'md:translate-x-0 md:opacity-100 md:blur-0'
+							: 'md:-translate-x-full md:opacity-0 md:blur-[2px]'
+					}`}
+				>
+					<div class="flex h-full flex-col justify-end">
+						<div class="gradient px-4 pb-4 pt-16">
+							<h4
+								class="before:bg-accent-dark after:bg-accent relative text-base text-white transition-colors duration-300 before:absolute before:left-[calc(1rem*-1)] before:-bottom-1 before:h-[2px] before:w-full before:content-[''] after:absolute after:left-[calc(1rem*-1)] after:-bottom-1 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:transition-transform after:duration-300 after:content-[''] sm:text-xl"
+							>
+								{program.title}
+							</h4>
+							<p class="my-4 text-sm text-neutral-200 transition-colors duration-300 lg:text-base">
+								{program.description}
+							</p>
+							<a
+								href={program.path}
+								class="rounded-full border-[1px] border-neutral-400 py-1 px-3 text-sm text-white transition-colors duration-300 hover:bg-white hover:text-black sm:text-base"
+								type="button">Learn More</a
+							>
+						</div>
 					</div>
 				</div>
 			</div>

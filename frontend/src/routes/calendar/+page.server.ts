@@ -17,6 +17,8 @@ export async function load({
 	fetch: Fetch;
 	setHeaders(headers: Record<string, string>): void;
 }) {
+	setHeaders({ 'cache-control': 'max-age=6000' });
+
 	async function getGradeSchool() {
 		const res = await fetch(GRADE_SCHOOL_END_POINT);
 
@@ -43,9 +45,6 @@ export async function load({
 
 	async function getSeniorHigh() {
 		const res = await fetch(SENIOR_HIGH_END_POINT);
-
-		// Set cache
-		setHeaders({ 'cache-control': 'max-age=6000' });
 
 		if (!res.ok) {
 			throw error(res.status, 'Error loading, try refreshing!');

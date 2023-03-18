@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import '../app.css';
-	import { Footer, Loading, Navbar } from '../components';
+	import { Footer, Loader, Navbar } from '../components';
 	import { QuickMenu } from '../features';
 	import Transition from '../components/Transition.svelte';
 	import { page } from '$app/stores';
@@ -64,7 +64,7 @@
 	});
 </script>
 
-<Loading
+<Loader
 	style={`transition-all duration-700 ${display} ${
 		loading ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
 	}`}

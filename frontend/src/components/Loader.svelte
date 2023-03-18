@@ -19,10 +19,10 @@
 				class="circle-1 flex h-[280px] w-[280px] transform-gpu items-center justify-center rounded-full border-8 border-white opacity-0"
 			>
 				<div
-					class="circle-2 flex h-[250px] w-[250px] transform-gpu items-center justify-center rounded-full border-4 border-white opacity-0"
+					class="circle-2 flex h-[250px] w-[250px] transform-gpu items-center justify-center rounded-full border-4 border-neutral-400 opacity-0"
 				>
 					<div
-						class="circle-3 h-[230px] w-[230px] transform-gpu rounded-full border-2 border-white opacity-0"
+						class="circle-3 h-[230px] w-[230px] transform-gpu rounded-full border-2 border-neutral-500 opacity-0"
 					>
 						<!-- PCS logo candle + book -->
 						<img
@@ -51,12 +51,6 @@
 	</div>
 </div>
 
-<!-- Old preloader -->
-<!-- <div class="loading-spinner">
-	<div class="loading">
-		<div />
-	</div>
-</div> -->
 <style>
 	.circle-1 {
 		animation: fade 500ms ease-in-out;
@@ -82,49 +76,4 @@
 			opacity: 1;
 		}
 	}
-
-	/* Copy pasted */
-	/* @keyframes loading {
-		0% {
-			transform: rotate(0deg);
-		}
-		50% {
-			transform: rotate(180deg);
-		}
-		100% {
-			transform: rotate(360deg);
-		}
-	} */
-
-	/* .loading div {
-		position: absolute;
-		animation: loading 1s linear infinite;
-		width: 160px;
-		height: 160px;
-		top: 20px;
-		left: 20px;
-		border-radius: 50%;
-		box-shadow: 0 6px 0 0 #cd7f00;
-		transform-origin: 80px 83px;
-	}
-
-	.loading-spinner {
-		width: 200px;
-		height: 200px;
-		display: inline-block;
-		overflow: hidden;
-	} */
-
-	/* .loading {
-		width: 100%;
-		height: 100%;
-		position: relative;
-		transform: translateZ(0) scale(1);
-		backface-visibility: hidden;
-		transform-origin: 0 0;
-	} */
-
-	/* .loading div {
-		box-sizing: content-box;
-	} */
 </style>

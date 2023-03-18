@@ -19,13 +19,22 @@
 				A Catholic education emphasizes faith, hope, and charity to foster positive change.
 			</h1>
 			<p class="mb-10 text-start text-lg lg:text-2xl">A lifelong journey of faith and learning</p>
-			<a
-				class="bg-accent z-30 rounded-full py-3 px-5 text-xl text-white transition-all duration-300 hover:scale-90 hover:bg-teal-500 hover:text-black hover:brightness-110"
-				href="https://schoolaide.pcsian.edu.ph/login"
-				rel="noreferrer"
-				target="_blank"
-				type="button">Apply Now</a
-			>
+			<div class="z-30 flex gap-4">
+				<a
+					class="bg-accent z-30 rounded-full py-2 px-4 text-sm text-white transition-all duration-300 hover:scale-90 hover:bg-teal-500 hover:text-black hover:brightness-110 md:py-3 md:px-5 md:text-xl"
+					href="https://schoolaide.pcsian.edu.ph/login"
+					rel="noreferrer"
+					target="_blank"
+					type="button">Apply Now</a
+				>
+				<a
+					class="z-30 rounded-full border-[1px] border-white py-2 px-4 text-sm text-white transition-all duration-300 hover:scale-90 md:py-3 md:px-5 md:text-xl"
+					href="https://www.facebook.com/PCS.OfficialPage"
+					rel="noreferrer"
+					target="_blank"
+					type="button">Follow Us</a
+				>
+			</div>
 		</div>
 	</div>
 </section>

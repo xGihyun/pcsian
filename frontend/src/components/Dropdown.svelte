@@ -11,7 +11,11 @@
 >
 	{#each dropdownItems[drop] as item, idx (idx)}
 		<li class="pl-4 text-neutral-400 transition-colors duration-300 hover:text-white text-lg">
-			<a href={item.path}>{item.title}</a>
+			{#if item.title === 'Calendar'}
+				<a href={item.path} data-sveltekit-preload-code>{item.title}</a>
+			{:else}
+				<a href={item.path}>{item.title}</a>
+			{/if}
 		</li>
 	{/each}
 </ul>
