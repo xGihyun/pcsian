@@ -7,18 +7,9 @@ import {
 } from '$env/static/private';
 import { error } from '@sveltejs/kit';
 
-type Fetch = typeof fetch;
-
 // Fetch data from Strapi
-export async function load({
-	fetch,
-	setHeaders
-}: {
-	fetch: Fetch;
-	setHeaders(headers: Record<string, string>): void;
-}) {
-	setHeaders({ 'cache-control': 'max-age=6000' });
-
+export async function load({ fetch, setHeaders }) {
+	
 	async function getGradeSchool() {
 		const res = await fetch(GRADE_SCHOOL_END_POINT);
 
@@ -54,6 +45,8 @@ export async function load({
 
 		return { data };
 	}
+
+	setHeaders({ 'cache-control': 'max-age=6000' });
 
 	return {
 		gradeSchool: getGradeSchool(),

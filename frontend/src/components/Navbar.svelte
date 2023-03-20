@@ -24,7 +24,7 @@
 	onMount(() => window.addEventListener('scroll', shrinkNav));
 </script>
 
-<div class="fixed top-0 left-0 z-50 w-full">
+<div class="fixed top-0 left-0 z-[100] w-full">
 	<!-- Navbar large devices -->
 	{#if hovered}
 		<div class="border-b-accent h-80 w-full border-b-4 bg-black bg-opacity-90" />

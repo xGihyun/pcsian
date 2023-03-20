@@ -3,7 +3,7 @@
 	export let title: string;
 </script>
 
-<div class="border-b-accent relative flex h-72 items-center justify-center border-b-8">
+<div class="border-b-accent relative flex h-72 items-center justify-center border-b-8 z-50">
 	<img
 		src={pcsAnnex2}
 		alt="pcs annex"

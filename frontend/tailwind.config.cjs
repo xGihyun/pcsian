@@ -14,6 +14,7 @@ module.exports = {
         "chat": "rgba(0, 0, 0, 0.8) 0px 10px 20px",
         "calendar": "rgba(0, 0, 0, 0.2) 0px 0px 20px",
         "card": "rgba(205, 127, 0, 0.5) 0px 40px 35px -30px",
+        "card-black": "rgba(0, 0, 0, 0.5) 0px 40px 35px -30px",
         "custom-1": "rgba(0, 0, 0, 0.25) 0px 0px 30px",
       },
       gradientColorStops: {

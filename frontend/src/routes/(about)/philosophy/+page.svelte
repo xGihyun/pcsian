@@ -4,10 +4,10 @@
 
 	<h2>{philosophy[0].title}</h2>
 	<p>{philosophy[0].text}</p>
-	<ul class="my-10 flex flex-row gap-10 text-justify">
+	<ul class="my-10 flex flex-col sm:flex-row gap-10">
 		{#each philosophy as item, idx (idx)}
 			{#if item.title !== 'Philosophy'}
-				<li class="w-[50%] list-none">
+				<li class="sm:w-1/2 list-none">
 					<h2>{item.title}</h2>
 					<p>{item.text}</p>
 				</li>
@@ -23,7 +23,7 @@
 		{/each}
 	</ol>
 	<h2>Core Values</h2>
-	<ol class="flex flex-col md:flex-row gap-10">
+	<ol class="flex flex-col md:flex-row gap-10 justify-between">
 		{#each coreValues as coreValue, idx (idx)}
 			<li>
 				<h3>{coreValue.title}</h3>
