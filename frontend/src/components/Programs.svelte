@@ -77,14 +77,40 @@
 			</div>
 		</div>
 		<div class="relative hidden h-full w-full items-center justify-center lg:flex">
-			<OrangeBlob1 />
-			<a
+			<!-- <OrangeBlob1 /> -->
+			<!-- <a
 				href="https://www.deviantart.com/haerge/art/Kessoku-Band-Bocchi-The-Rock-936713092"
 				rel="noreferrer"
 				target="_blank"
 			>
 				<img src={kessokuBand} alt="" class="float-shadow z-10 w-full max-w-xl" />
-			</a>
+			</a> -->
+			<div class="card-group aspect-[5/7] w-72">
+				<div
+					class="bg-accent absolute left-1/2 top-1/2 aspect-[5/7] w-28 -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-opacity-25 transition-all duration-500 ease-in-out"
+				/>
+				<div
+					class="bg-accent absolute left-1/2 top-1/2 aspect-[5/7] w-28 -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-opacity-25 transition-all duration-500 ease-in-out"
+				/>
+				<div
+					class="bg-accent absolute left-1/2 top-1/2 aspect-[5/7] w-28 -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-opacity-25 transition-all duration-500 ease-in-out"
+				/>
+				<div
+					class="bg-accent absolute left-1/2 top-1/2 aspect-[5/7] w-28 -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-opacity-25 transition-all duration-500 ease-in-out"
+				/>
+				<div
+					class="bg-img-1 shadow-card-black-2 absolute aspect-[5/7] w-72 -translate-x-[15%] -rotate-[6deg] transform-gpu rounded-2xl bg-white bg-opacity-10 bg-cover transition-all duration-500 ease-in-out"
+				/>
+				<div
+					class="bg-img-2 shadow-card-black-2 absolute aspect-[5/7] w-72 -translate-x-[5%] -rotate-2 transform-gpu rounded-2xl bg-white bg-opacity-10 bg-cover transition-all duration-500 ease-in-out"
+				/>
+				<div
+					class="bg-img-3 shadow-card-black-2 absolute aspect-[5/7] w-72 translate-x-[5%] rotate-2 transform-gpu rounded-2xl bg-white bg-opacity-10 bg-cover transition-all duration-500 ease-in-out"
+				/>
+				<div
+					class="bg-img-4 shadow-card-black-2 absolute aspect-[5/7] w-72 translate-x-[15%] translate-y-[3%] rotate-[6deg] transform-gpu rounded-2xl bg-white bg-opacity-10 bg-cover transition-all duration-500 ease-in-out"
+				/>
+			</div>
 		</div>
 	</div>
 	<h3
@@ -138,3 +164,46 @@
 		{/each}
 	</div>
 </div>
+
+<style>
+	/* Used normal CSS instead of tailwind since it would be very verbose, it might end up being unreadable */
+	.card-group:hover > :nth-child(5) {
+		translate: -50% 15%;
+		rotate: -20deg;
+	}
+
+	.card-group:hover > :nth-child(6) {
+		translate: -25% 5%;
+		rotate: -10deg;
+	}
+
+	.card-group:hover > :nth-child(7) {
+		translate: 25% 5%;
+		rotate: 10deg;
+	}
+
+	.card-group:hover > :nth-child(8) {
+		translate: 50% 15%;
+		rotate: 20deg;
+	}
+
+	.card-group:hover > :nth-child(1) {
+		translate: 200% -125%;
+		rotate: -15deg;
+	}
+
+	.card-group:hover > :nth-child(2) {
+		translate: 225% 150%;
+		rotate: 15deg;
+	}
+
+	.card-group:hover > :nth-child(3) {
+		translate: -200% -125%;
+		rotate: 15deg;
+	}
+
+	.card-group:hover > :nth-child(4) {
+		translate: -250% 125%;
+		rotate: -15deg;
+	}
+</style>

@@ -15,6 +15,7 @@ module.exports = {
         "calendar": "rgba(0, 0, 0, 0.2) 0px 0px 20px",
         "card": "rgba(205, 127, 0, 0.5) 0px 40px 35px -30px",
         "card-black": "rgba(0, 0, 0, 0.5) 0px 40px 35px -30px",
+        "card-black-2": "rgba(0, 0, 0, 1) 0px 0px 25px 5px",
         "custom-1": "rgba(0, 0, 0, 0.25) 0px 0px 30px",
       },
       gradientColorStops: {
@@ -27,6 +28,10 @@ module.exports = {
         "pcs-orig": "url('./assets/images/pcsLogoNew.webp')",
         "pcs-outline-white": "url('./assets/images/pcsLogoNewOutlineWhite.webp')",
         "pcs-outline-black": "url('./assets/images/pcsLogoNewOutlineBlack.webp')",
+        "img-1": "url('./assets/images/kinaadman.jpg')",
+        "img-2": "url('./assets/images/bsp.jpg')",
+        "img-3": "url('./assets/images/mathquizbee.jpg')",
+        "img-4": "url('./assets/images/kinaadman2.jpg')",
       },
       transitionDelay: {
         "400": "400ms",
