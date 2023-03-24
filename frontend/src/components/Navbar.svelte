@@ -30,35 +30,35 @@
 		<div class="border-b-accent h-80 w-full border-b-4 bg-black bg-opacity-90" />
 	{/if}
 	<span
-		class={`from-nav-gradient absolute top-0 left-0 z-10 w-full bg-gradient-to-b transition-all duration-500 hidden lg:block ease-in-out ${
+		class={`from-nav-gradient absolute top-0 left-0 z-10 w-full bg-gradient-to-b transition-[opacity,height] duration-500 hidden lg:block ease-in-out ${
 			scrolled ? 'h-16 opacity-0' : 'h-40 opacity-100'
 		}`}
 	/>
 	<nav
 		class={`absolute top-0 left-0 z-40 hidden w-full items-center justify-between bg-gradient-to-b 
-    px-[5%] transition-all duration-500 ease-in-out lg:flex ${
+    px-[5%] transition-[box-shadow,background-color,height] duration-500 ease-in-out lg:flex ${
 			scrolled ? 'shadow-nav-shadow bg-accent h-16 from-transparent' : 'h-32'
 		}`}
 	>
 		<a
 			href="/"
-			class={`z-20 flex origin-left flex-row items-center gap-4 transition-all duration-500 ease-in-out ${
+			class={`z-20 flex origin-left flex-row items-center gap-4 transition-transform duration-500 ease-in-out ${
 				scrolled ? 'scale-50' : 'scale-100'
 			}`}
 		>
 			<!-- PCS logo -->
 			<div class="relative h-28 w-28">
 				<div
-					class="bg-pcs-orig absolute z-10 h-28 w-28 transform-gpu bg-cover bg-no-repeat opacity-0 transition-all duration-500 ease-in-out hover:opacity-100"
+					class="bg-pcs-orig absolute z-10 h-28 w-28 transform-gpu bg-cover bg-no-repeat opacity-0 transition-opacity duration-500 ease-in-out hover:opacity-100"
 				/>
 				<div
-					class="bg-pcs-outline-white absolute z-[9] h-28 w-28 transform-gpu bg-cover bg-no-repeat transition-all duration-500 ease-in-out"
+					class="bg-pcs-outline-white absolute z-[9] h-28 w-28 bg-cover bg-no-repeat"
 				/>
 			</div>
 
 			<!-- PCS text -->
 			<div
-				class="flex origin-left flex-col text-white transition-all duration-500 ease-in-out hover:text-neutral-400"
+				class="flex origin-left flex-col text-white transition-[color] duration-500 ease-in-out hover:text-neutral-400"
 			>
 				<span class="text-5xl uppercase">Pateros</span>
 				<div class="flex justify-between">
@@ -111,10 +111,10 @@
 		<a href="/">
 			<div class="relative h-14 w-14">
 				<div
-					class="bg-pcs-orig absolute z-10 h-14 w-14 transform-gpu bg-cover bg-no-repeat opacity-0 transition-all duration-500 ease-in-out hover:opacity-100"
+					class="bg-pcs-orig absolute z-10 h-14 w-14 transform-gpu bg-cover bg-no-repeat opacity-0 transition-opacity duration-500 ease-in-out hover:opacity-100"
 				/>
 				<div
-					class="bg-pcs-outline-white absolute z-[9] h-14 w-14 transform-gpu bg-cover bg-no-repeat transition-all duration-500 ease-in-out"
+					class="bg-pcs-outline-white absolute z-[9] h-14 w-14 bg-cover bg-no-repeat"
 				/>
 			</div>
 		</a>

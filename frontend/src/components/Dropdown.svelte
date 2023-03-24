@@ -5,7 +5,7 @@
 </script>
 
 <ul
-	class={`absolute flex flex-col gap-3 text-white transition-all duration-500 ease-in-out ${
+	class={`absolute flex flex-col gap-3 text-white transition-[top,padding] duration-500 ease-in-out ${
 		scrolled ? 'top-16 pt-2' : 'top-24'
 	}`}
 >

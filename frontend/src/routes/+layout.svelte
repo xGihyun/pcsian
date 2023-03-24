@@ -65,7 +65,7 @@
 </script>
 
 <Loader
-	style={`transition-all duration-700 ${display} ${
+	style={`transition-[transform,opacity] duration-700 ${display} ${
 		loading ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
 	}`}
 />
