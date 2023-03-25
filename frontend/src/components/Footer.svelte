@@ -12,10 +12,10 @@
 		<a href="/" class="flex justify-center ">
 			<div class="relative h-52 w-52">
 				<div
-					class="bg-pcs-orig absolute z-10 h-52 w-52 transform-gpu bg-cover bg-no-repeat opacity-0 transition-all duration-500 ease-in-out hover:opacity-100"
+					class="bg-pcs-orig absolute z-10 h-52 w-52 transform-gpu bg-cover bg-no-repeat opacity-0 transition-opacity duration-500 ease-in-out hover:opacity-100"
 				/>
 				<div
-					class="bg-pcs-outline-white absolute z-[9] h-52 w-52 transform-gpu bg-cover bg-no-repeat transition-all duration-500 ease-in-out"
+					class="bg-pcs-outline-white absolute z-[9] h-52 w-52 bg-cover bg-no-repeat"
 				/>
 			</div>
 		</a>

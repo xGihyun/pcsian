@@ -90,7 +90,7 @@
 	</div>
 	<div class="relative">
 		<div class="shadow-chat h-[50vh] overflow-y-scroll bg-neutral-800">
-			{#each chatMessages as message}
+			{#each chatMessages as message, idx (idx)}
 				<ChatMessage type={message.role} message={message.content} />
 			{/each}
 			{#if answer}

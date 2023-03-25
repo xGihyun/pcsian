@@ -33,7 +33,6 @@
 	// }
 
 	// let interacting = false;
-
 	// Do the animation stuff
 	onMount(() => {
 		scrollTo(0, 0);

@@ -4,5 +4,9 @@ import Telephone from './Telephone.svelte';
 import Email from './Email.svelte';
 import Location from './Location.svelte';
 import Facebook from './Facebook.svelte';
+import Check from './Check.svelte';
+import ArrowClockwise from './ArrowClockwise.svelte';
+import Plus from './Plus.svelte';
+import Minus from './Minus.svelte';
 
-export { ChevronRight, HamburgerMenu, Email, Telephone, Location, Facebook };
+export { ChevronRight, HamburgerMenu, Email, Telephone, Location, Facebook, Check, ArrowClockwise, Plus, Minus };

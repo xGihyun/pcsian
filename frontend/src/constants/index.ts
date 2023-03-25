@@ -15,12 +15,12 @@ export const navItems = [
 		title: 'Academics',
 		path: '/grade-school',
 		data: 'academics'
+	},
+	{
+	  title: "Chat",
+	  path: "/chat",
+	  data: 'chat'
 	}
-	// {
-	//   title: "Scholarships",
-	//   path: "/scholarships",
-	//   data: 'scholarships'
-	// }
 ];
 
 export const dropdownItems: { [key: string]: DropdownItem[] } = {

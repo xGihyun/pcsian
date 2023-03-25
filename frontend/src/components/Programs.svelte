@@ -1,6 +1,6 @@
 <script lang="ts">
 	import OrangeBlob1 from '../assets/blobs/OrangeBlob1.svelte';
-	import { kessokuBand } from '../assets/images';
+	// import { kessokuBand } from '../assets/images';
 	import { inview } from 'svelte-inview';
 	import '../styles/animations.css';
 
@@ -92,16 +92,16 @@
 				}`}
 			>
 				<div
-					class="bg-accent absolute left-1/2 top-1/2 aspect-[5/7] w-28 -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-opacity-25 transition-transform duration-500 ease-in-out"
+					class="bg-accent bg-img-5 absolute left-1/2 top-1/2 aspect-[5/7] w-28 -translate-x-1/2 -translate-y-1/2 transform-gpu rounded-2xl bg-opacity-25 bg-cover transition-transform duration-500 ease-in-out"
 				/>
 				<div
-					class="bg-accent absolute left-1/2 top-1/2 aspect-[5/7] w-28 -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-opacity-25 transition-transform duration-500 ease-in-out"
+					class="bg-accent bg-img-6 absolute left-1/2 top-1/2 aspect-[5/7] w-28 -translate-x-1/2 -translate-y-1/2 transform-gpu rounded-2xl bg-opacity-25 bg-cover transition-transform duration-500 ease-in-out"
 				/>
 				<div
-					class="bg-accent absolute left-1/2 top-1/2 aspect-[5/7] w-28 -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-opacity-25 transition-transform duration-500 ease-in-out"
+					class="bg-accent bg-img-7 absolute left-1/2 top-1/2 aspect-[5/7] w-28 -translate-x-1/2 -translate-y-1/2 transform-gpu rounded-2xl bg-opacity-25 bg-cover transition-transform duration-500 ease-in-out"
 				/>
 				<div
-					class="bg-accent absolute left-1/2 top-1/2 aspect-[5/7] w-28 -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-opacity-25 transition-transform duration-500 ease-in-out"
+					class="bg-accent bg-img-8 absolute left-1/2 top-1/2 aspect-[5/7] w-28 -translate-x-1/2 -translate-y-1/2 transform-gpu rounded-2xl bg-opacity-25 bg-cover transition-transform duration-500 ease-in-out"
 				/>
 				<div
 					class="bg-img-1 shadow-card-black-2 absolute aspect-[5/7] w-72 -translate-x-[15%] -rotate-[6deg] transform-gpu rounded-2xl bg-white bg-opacity-10 bg-cover transition-transform duration-500 ease-in-out"

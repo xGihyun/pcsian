@@ -8,6 +8,7 @@ module.exports = {
         "accent": "rgb(205, 127, 0)",
         "accent2": "rgb(72, 38, 20)",
         "accent-dark": "rgb(110, 69, 0)",
+        "accent-light": "rgb(255, 245, 230)",
       },
       boxShadow: {
         "nav-shadow": "rgba(0, 0, 0, 0.6) 0px 5px 10px",
@@ -17,6 +18,7 @@ module.exports = {
         "card-black": "rgba(0, 0, 0, 0.5) 0px 40px 35px -30px",
         "card-black-2": "rgba(0, 0, 0, 1) 0px 0px 25px 5px",
         "custom-1": "rgba(0, 0, 0, 0.25) 0px 0px 30px",
+        "chat-msg": "rgba(0, 0, 0, 0.25) 0px 3px 5px",
       },
       gradientColorStops: {
         "nav-gradient": "rgba(0, 0, 0, 0.85)"
@@ -32,6 +34,10 @@ module.exports = {
         "img-2": "url('./assets/images/bsp.webp')",
         "img-3": "url('./assets/images/mathquizbee.webp')",
         "img-4": "url('./assets/images/kinaadman2.webp')",
+        "img-5": "url('./assets/images/confirmation.jpg')",
+        "img-6": "url('./assets/images/kinaadman3.jpg')",
+        "img-7": "url('./assets/images/confirmation2.jpg')",
+        "img-8": "url('./assets/images/equalizer.jpg')",
       },
       transitionDelay: {
         "400": "400ms",
