@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { dropdownItems } from '../constants';
+	import { page } from '$app/stores';
 	export let drop: string;
 	export let scrolled: boolean;
 </script>
 
 <ul
 	class={`absolute flex flex-col gap-3 text-white transition-[top,padding] duration-500 ease-in-out ${
-		scrolled ? 'top-16 pt-2' : 'top-24'
+		scrolled || $page.url.pathname === '/chat' ? 'top-16 pt-2' : 'top-28'
 	}`}
 >
 	{#each dropdownItems[drop] as item, idx (idx)}

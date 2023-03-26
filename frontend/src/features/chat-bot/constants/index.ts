@@ -37,8 +37,23 @@ const faqs = [
 	}
 ];
 
+const website = {
+	framework: 'SvelteKit',
+	cms: 'Strapi',
+	language: 'TypeScript',
+	host: {
+		frontend: 'Vercel',
+		cms: 'Railway'
+	},
+	calendar: 'Uses cms',
+	chatbot: {
+		api: 'OpenAI',
+		model: 'gpt-3.5-turbo'
+	}
+};
+
 export const CONDITION = `You are an AI chatbot for Pateros Catholic School. You will ONLY answer questions related to the given information about Pateros Catholic School. Basic informations: ${JSON.stringify(
 	school
-)}. Frequently asked questions: ${JSON.stringify(
-	faqs
-)}. Always remember to NEVER answer any questions that are NOT related to Pateros Catholic School (such as asking unrelated information, asking for homework, and more).`;
+)}. Frequently asked questions: ${JSON.stringify(faqs)}. About the website: ${JSON.stringify(
+	website
+)}. NEVER answer any questions that are NOT related to Pateros Catholic School such as asking unrelated information, math/science homework, and more.`;

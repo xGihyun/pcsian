@@ -4,22 +4,20 @@
 	import { HamburgerMenu, ChevronRight } from '../assets/icons';
 	import NavbarMobile from './mobile/NavbarMobile.svelte';
 	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
 
-	// Check if user has scrolled
 	let scrolled = false;
-
-	// Check if user hovered over the navbar
 	let hovered = false;
-
-	// Check which element user is hovering on the navbar
 	let hoveredElement = '';
 
-	// Dropdown navbar for smaller devices
+	// For smaller devices
 	let showNavbar = false;
 
 	function shrinkNav() {
 		window.scrollY > 20 ? (scrolled = true) : (scrolled = false);
 	}
+
+	$: applyClass = $page.url.pathname === '/chat';
 
 	onMount(() => window.addEventListener('scroll', shrinkNav));
 </script>
@@ -27,38 +25,42 @@
 <div class="fixed top-0 left-0 z-[100] w-full">
 	<!-- Navbar large devices -->
 	{#if hovered}
-		<div class="border-b-accent h-80 w-full border-b-4 bg-black bg-opacity-90" />
+		<div
+			class={`border-b-accent ${
+				scrolled ? 'h-80' : 'h-88'
+			} w-full border-b-4 bg-black bg-opacity-90 transition-[height] duration-500 ease-in-out`}
+		/>
 	{/if}
-	<span
-		class={`from-nav-gradient absolute top-0 left-0 z-10 w-full bg-gradient-to-b transition-[opacity,height] duration-500 hidden lg:block ease-in-out ${
-			scrolled ? 'h-16 opacity-0' : 'h-40 opacity-100'
+	<div
+		class={`from-nav-gradient absolute top-0 left-0 z-10 hidden w-full bg-gradient-to-b transition-[opacity,height] duration-500 ease-in-out lg:block ${
+			scrolled || applyClass ? 'h-20 opacity-0' : 'h-40 opacity-100'
 		}`}
 	/>
 	<nav
-		class={`absolute top-0 left-0 z-40 hidden w-full items-center justify-between bg-gradient-to-b 
+		class={`absolute top-0 left-0 z-40 hidden w-full items-center justify-between
     px-[5%] transition-[box-shadow,background-color,height] duration-500 ease-in-out lg:flex ${
-			scrolled ? 'shadow-nav-shadow bg-accent h-16 from-transparent' : 'h-32'
+			scrolled || applyClass ? 'bg-accent' : 'bg-none'
+		} ${scrolled || applyClass ? 'h-16' : 'h-40'} ${
+			scrolled || applyClass ? 'shadow-nav-shadow' : 'shadow-none'
 		}`}
 	>
 		<a
 			href="/"
 			class={`z-20 flex origin-left flex-row items-center gap-4 transition-transform duration-500 ease-in-out ${
-				scrolled ? 'scale-50' : 'scale-100'
+				scrolled || applyClass ? 'scale-50' : 'scale-100'
 			}`}
 		>
 			<!-- PCS logo -->
 			<div class="relative h-28 w-28">
 				<div
-					class="bg-pcs-orig absolute z-10 h-28 w-28 transform-gpu bg-cover bg-no-repeat opacity-0 transition-opacity duration-500 ease-in-out hover:opacity-100"
+					class={`bg-pcs-orig absolute z-10 h-28 w-28 transform-gpu bg-cover bg-no-repeat opacity-0 transition-opacity duration-500 ease-in-out hover:opacity-100`}
 				/>
-				<div
-					class="bg-pcs-outline-white absolute z-[9] h-28 w-28 bg-cover bg-no-repeat"
-				/>
+				<div class="bg-pcs-outline-white absolute z-[9] h-28 w-28 bg-cover bg-no-repeat" />
 			</div>
 
 			<!-- PCS text -->
 			<div
-				class="flex origin-left flex-col text-white transition-[color] duration-500 ease-in-out hover:text-neutral-400"
+				class={`flex origin-left flex-col text-white transition-[color] duration-500 ease-in-out hover:text-neutral-400`}
 			>
 				<span class="text-5xl uppercase">Pateros</span>
 				<div class="flex justify-between">
@@ -71,7 +73,7 @@
 			{#each navItems as item, idx (idx)}
 				{#if item.data === 'about' || item.data === 'academics'}
 					<li
-						class="h-full"
+						class="h-full text-white hover:text-neutral-300"
 						on:mouseenter={() => {
 							hoveredElement = item.data;
 							hovered = true;
@@ -80,7 +82,8 @@
 					>
 						<!-- svelte-ignore a11y-invalid-attribute -->
 						<a
-							class="pointer-events-none flex h-full items-center gap-2 px-4 text-lg text-white transition-colors duration-500"
+							class={`pointer-events-none  flex h-full items-center gap-2 px-4 text-lg 
+							transition-colors duration-300`}
 							href="#"
 							data-nav={item.data}
 						>
@@ -92,9 +95,10 @@
 						{/if}
 					</li>
 				{:else}
-					<li class="h-full">
+					<li class="h-full text-white hover:text-neutral-300">
 						<a
-							class="flex h-full items-center px-4 text-lg text-white transition-colors duration-500"
+							class={`} flex h-full items-center px-4 
+							text-lg transition-colors duration-300`}
 							href={item.path}
 							data-nav={item.data}>{item.title}</a
 						>
@@ -113,9 +117,7 @@
 				<div
 					class="bg-pcs-orig absolute z-10 h-14 w-14 transform-gpu bg-cover bg-no-repeat opacity-0 transition-opacity duration-500 ease-in-out hover:opacity-100"
 				/>
-				<div
-					class="bg-pcs-outline-white absolute z-[9] h-14 w-14 bg-cover bg-no-repeat"
-				/>
+				<div class="bg-pcs-outline-white absolute z-[9] h-14 w-14 bg-cover bg-no-repeat" />
 			</div>
 		</a>
 		<!-- svelte-ignore a11y-click-events-have-key-events -->

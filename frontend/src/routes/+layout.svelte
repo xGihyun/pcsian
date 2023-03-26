@@ -84,7 +84,9 @@
 /> -->
 
 <Navbar />
-<QuickMenu />
+<div class={`${$page.url.pathname === '/chat' ? 'hidden' : 'block'}`}>
+	<QuickMenu />
+</div>
 <Transition url={$page.url}>
 	<main class="overflow-x-hidden">
 		<slot />

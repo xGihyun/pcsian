@@ -20,7 +20,7 @@
 	{#if message !== ''}
 		<span
 			class={`shadow-chat-msg max-w-[75%] break-words rounded-2xl px-4 py-2 text-lg ${
-				type === 'user' ? 'bg-accent text-white' : 'bg-white text-black'
+				type === 'user' ? 'bg-gradient-to-r from-amber-500 to-accent text-white' : 'bg-white text-black'
 			}`}
 		>
 			{message}

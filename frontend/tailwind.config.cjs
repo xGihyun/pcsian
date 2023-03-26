@@ -4,6 +4,9 @@ module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
     extend: {
+      height: {
+        "88": "22rem",
+      },
       colors: {
         "accent": "rgb(205, 127, 0)",
         "accent2": "rgb(72, 38, 20)",
@@ -12,6 +15,7 @@ module.exports = {
       },
       boxShadow: {
         "nav-shadow": "rgba(0, 0, 0, 0.6) 0px 5px 10px",
+        "nav-shadow-white": "rgba(255, 255, 255, 1) 0px 5px 10px 10px",
         "chat": "rgba(0, 0, 0, 0.8) 0px 10px 20px",
         "calendar": "rgba(0, 0, 0, 0.2) 0px 0px 20px",
         "card": "rgba(205, 127, 0, 0.5) 0px 40px 35px -30px",
@@ -34,10 +38,10 @@ module.exports = {
         "img-2": "url('./assets/images/bsp.webp')",
         "img-3": "url('./assets/images/mathquizbee.webp')",
         "img-4": "url('./assets/images/kinaadman2.webp')",
-        "img-5": "url('./assets/images/confirmation.jpg')",
-        "img-6": "url('./assets/images/kinaadman3.jpg')",
-        "img-7": "url('./assets/images/confirmation2.jpg')",
-        "img-8": "url('./assets/images/equalizer.jpg')",
+        "img-5": "url('./assets/images/confirmation.webp')",
+        "img-6": "url('./assets/images/kinaadman3.webp')",
+        "img-7": "url('./assets/images/confirmation2.webp')",
+        "img-8": "url('./assets/images/equalizer.webp')",
       },
       transitionDelay: {
         "400": "400ms",
@@ -76,9 +80,6 @@ module.exports = {
       },
     },
     fontFamily: {
-      "torus-semibold": "torus-semibold, sans-serif",
-      "torus-bold": "torus-bold",
-      "torus-regular": "torus-regular, sans-serif",
       "gt-walsheim-pro-medium": "gt-walsheim-pro-medium, sans-serif"
     }
   },

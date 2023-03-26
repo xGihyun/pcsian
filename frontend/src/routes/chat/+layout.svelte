@@ -1,3 +1,3 @@
-<div class="h-screen bg-neutral-100 flex">
+<div class="h-screen bg-white flex">
 	<slot />
 </div>

@@ -13,30 +13,6 @@ body{
 }
 
 @font-face {
-	font-family: torus-regular;
-	src: url('./assets/fonts/torus/TorusNotched-Regular.ttf');
-	font-display: swap;
-}
-
-@font-face {
-	font-family: torus-bold;
-	src: url('./assets/fonts/torus/TorusNotched-Bold.ttf');
-	font-display: swap;
-}
-
-@font-face {
-	font-family: torus-semibold;
-	src: url('./assets/fonts/torus/TorusNotched-SemiBold.ttf');
-	font-display: swap;
-}
-
-@font-face {
-	font-family: gotham-medium;
-	src: url('./assets/fonts/gotham/GothamBook.ttf');
-	font-display: swap;
-}
-
-@font-face {
 	font-family: gt-walsheim-pro;
 	src: url('./assets/fonts/gt-walsheim-pro/GTWalsheimPro-Regular.ttf');
 	font-display: swap;

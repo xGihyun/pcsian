@@ -4,7 +4,7 @@
 	import type { ChatCompletionRequestMessage } from 'openai';
 	import { SSE } from 'sse.js';
 	import ChatMessage from './components/ChatMessage.svelte';
-	import { Minus, Plus } from '../../assets/icons';
+	import { Broom, Comments, Minus, Plus } from '../../assets/icons';
 
 	let scrollToDiv: HTMLDivElement;
 
@@ -78,8 +78,8 @@
 
 	const faqs = [
 		{
-			question: 'Question',
-			answer: 'Answer',
+			question: 'What is the chemical formula of Glucose?',
+			answer: 'C6H12O6',
 			show: false
 		},
 		{
@@ -106,20 +106,40 @@
 			question: 'Question',
 			answer: 'Answer',
 			show: false
-		}
+		},
+		{
+			question: 'Question',
+			answer: 'Answer',
+			show: false
+		},
+		{
+			question: 'Question',
+			answer: 'Answer',
+			show: false
+		},
+		{
+			question: 'Question',
+			answer: 'Answer',
+			show: false
+		},
+		{
+			question: 'Question',
+			answer: 'Answer',
+			show: false
+		},
 	];
 
 	const initialQuestions = [
 		{
-			title: 'Know more about PCS',
+			title: '🧐 Know more about PCS',
 			query: 'Does Pateros Catholic School use an e-learning platform?'
 		},
 		{
-			title: 'Ask about the website',
+			title: '🤔 Ask about the website',
 			query: 'How was the Pateros Catholic School website made?'
 		},
 		{
-			title: 'Get creative',
+			title: '🎨 Get creative',
 			query: 'Write a poem about Pateros Catholic School.'
 		}
 	];
@@ -144,7 +164,7 @@
 							{question.title}
 						</div>
 						<button
-							class="hover:shadow-chat-msg flex-1 rounded-2xl bg-white px-4 py-2 text-base transition-[box-shadow] duration-300"
+							class="hover:shadow-chat-msg to-accent flex-1 rounded-2xl bg-gradient-to-r from-amber-500 px-4 py-2 text-base text-white transition-[box-shadow,filter] duration-300 hover:brightness-90"
 							on:click={() => {
 								query = question.query;
 								handleSubmit();
@@ -155,12 +175,17 @@
 					</div>
 				{/each}
 			</div>
-			<div class="text-center text-lg">
+			<div class="text-center text-lg px-20">
 				<p>
-					Let's learn about Pateros Catholic School together! Chatbot is powered by
-					<a href="https://openai.com" class="text-accent hover:underline" target="_blank" rel="noreferrer">OpenAI</a>
-					with limited information and specific instructions. It may not be able to correctly
-					answer all of your questions.
+					Let's learn about Pateros Catholic School. Chatbot is powered by
+					<a
+						href="https://openai.com"
+						class="text-accent hover:underline"
+						target="_blank"
+						rel="noreferrer">OpenAI</a
+					>
+					with limited information and specific instructions. It may not be able to correctly answer
+					all of your questions.
 				</p>
 			</div>
 		</div>
@@ -168,8 +193,6 @@
 			{#each chatMessages as message, idx (idx)}
 				<ChatMessage type={message.role} message={message.content} />
 				<!-- <ChatMessage type={message.role} message={message.content} />
-				<ChatMessage type={message.role} message={message.content} />
-				<ChatMessage type={message.role} message={message.content} />
 				<ChatMessage type={message.role} message={message.content} />
 				<ChatMessage type={message.role} message={message.content} />
 				<ChatMessage type={message.role} message={message.content} />
@@ -189,42 +212,78 @@
 		<div class="h-40" bind:this={scrollToDiv} />
 	</div>
 	<div class="relative flex w-full">
-		<span class="from-accent-light absolute bottom-0 left-0 h-40 w-full bg-gradient-to-t" />
+		<div class="absolute bottom-0 left-0 h-40 w-full">
+			<div class="absolute bottom-0 left-0 h-1/2 w-full bg-neutral-50" />
+			<div class="absolute top-0 left-0 h-1/2 w-full bg-gradient-to-t from-neutral-50" />
+		</div>
 		<div class="relative w-full max-w-7xl">
-			<div
-				class="shadow-chat-msg absolute left-1/2 -top-28 h-12 w-[90%] max-w-4xl -translate-x-1/2 rounded-3xl bg-white p-3 transition-[height,border-radius] duration-300 ease-in-out focus-within:h-24 focus-within:rounded-2xl hover:h-24 hover:rounded-2xl [&>div]:focus-within:opacity-100 [&>div]:hover:opacity-100"
-			>
-				<form class="flex" data-sveltekit-noscroll>
-					<input
-						class="w-full text-lg text-black outline-none"
-						type="text"
-						placeholder="Aa"
-						maxlength="4000"
-						bind:value={query}
-					/>
-					<button on:click={handleSubmit}>
-						<Send
-							style="h-[20px] w-[20px] hover:text-accent hover:scale-110 transition-all duration-300 text-neutral-500"
-						/>
+			<div class="absolute left-1/2 -top-28 w-[90%] max-w-4xl -translate-x-1/2">
+				<div class="flex w-full gap-4">
+					<button
+						class="to-accent flex h-12 justify-between gap-3 rounded-3xl bg-gradient-to-r from-amber-500 px-4 py-3 text-white transition-[filter] duration-300 hover:brightness-90"
+						on:click={() => (chatMessages = [])}
+					>
+						<Broom style="h-6 w-6 text-white" />
+						<span class="text-base"> New topic </span>
 					</button>
-				</form>
-				<div
-					class="absolute bottom-0 flex h-12 items-center text-base text-neutral-500 opacity-0 transition-opacity duration-300"
-				>
-					{query.length}/4000
+					<div
+						class={`shadow-chat-msg relative h-12 flex-1 rounded-3xl bg-white p-3 transition-[height,border-radius] duration-300 ease-in-out ${
+							query
+								? 'h-24 rounded-2xl [&>div]:opacity-100'
+								: 'focus-within:h-24 focus-within:rounded-2xl hover:h-24 hover:rounded-2xl [&>div]:focus-within:opacity-100 [&>div]:hover:opacity-100'
+						}`}
+					>
+						<div class="relative flex">
+							<Comments style="h-5 w-5" />
+							<form class="contents" data-sveltekit-noscroll>
+								<div class="relative inline-grid w-full">
+									<textarea
+										class="relative col-start-1 row-start-1 w-full resize-none border-none bg-transparent pl-3 pr-10 text-base text-black outline-none"
+										placeholder="Aa"
+										maxlength="4000"
+										enterkeyhint="send"
+										spellcheck="false"
+										autocapitalize="off"
+										aria-label="Ask chatbot"
+										bind:value={query}
+										on:keydown={(event) => {
+											if (event.key === 'Enter') {
+												event.preventDefault();
+												handleSubmit();
+											}
+										}}
+									/>
+								</div>
+							</form>
+							{#if query}
+								<button class="absolute right-0 px-3" on:click={handleSubmit}>
+									<Send
+										style="h-5 w-5 hover:scale-125 hover:brightness-110 transition-[transform,filter] duration-300 text-accent"
+									/>
+								</button>
+							{/if}
+						</div>
+						<div
+							class="absolute bottom-0 flex items-center py-3 text-base text-neutral-500 opacity-0 transition-opacity duration-300"
+						>
+							{query.length}/4000
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="hidden h-full flex-1 flex-col gap-4 bg-neutral-200 px-[5%] py-40 lg:flex">
-	<h1 class="font-gt-walsheim-pro-medium mb-10 text-4xl text-black">Common FAQs</h1>
+<div
+	class="hidden h-full min-w-[30rem] max-w-full flex-1 flex-col gap-4 overflow-x-hidden overflow-y-scroll bg-white px-[5%] py-40 xl:flex"
+>
+	<h1 class="font-gt-walsheim-pro-medium mb-10 text-4xl text-black">FAQs</h1>
 	{#each faqs as faq, idx (idx)}
 		<button
-			class="bg-accent shadow-chat-msg flex rounded-2xl transition-[filter] duration-300 hover:brightness-75"
+			class="shadow-chat-msg flex max-w-full items-center rounded-2xl transition-[filter] duration-300 hover:brightness-75"
 			on:click={() => (faq.show = !faq.show)}
 		>
-			<div>
+			<div class="to-accent flex h-full items-center rounded-l-2xl bg-gradient-to-r from-amber-500">
 				<Plus
 					style={`h-12 w-12 text-white transition-transform duration-300 ${
 						faq.show ? 'rotate-[135deg] scale-75' : 'rotate-0 scale-100'
@@ -232,13 +291,12 @@
 				/>
 			</div>
 			<div
-				class="font-gt-walsheim-pro-medium flex h-full w-full items-center rounded-r-2xl bg-white px-4 py-2 text-left text-xl"
+				class="font-gt-walsheim-pro-medium flex h-full w-full items-center break-words rounded-r-2xl bg-white px-4 py-2 text-left text-xl"
 			>
 				{faq.question}
-				{idx + 1}
 			</div>
 		</button>
-		<div class={`px-4 text-lg ${faq.show ? 'block' : 'hidden'}`}>{faq.answer} {idx + 1}</div>
+		<div class={`px-4 text-lg ${faq.show ? 'block' : 'hidden'}`}>{faq.answer}</div>
 	{/each}
 </div>
 

@@ -8,5 +8,7 @@ import Check from './Check.svelte';
 import ArrowClockwise from './ArrowClockwise.svelte';
 import Plus from './Plus.svelte';
 import Minus from './Minus.svelte';
+import Comments from './Comments.svelte';
+import Broom from './Broom.svelte';
 
-export { ChevronRight, HamburgerMenu, Email, Telephone, Location, Facebook, Check, ArrowClockwise, Plus, Minus };
+export { ChevronRight, HamburgerMenu, Email, Telephone, Location, Facebook, Check, ArrowClockwise, Plus, Minus, Comments, Broom };

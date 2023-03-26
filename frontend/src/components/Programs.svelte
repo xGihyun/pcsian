@@ -136,7 +136,7 @@
 	>
 		{#each programs as program, idx (idx)}
 			<div
-				class="hover:shadow-card brightness-75 transition-[filter,box-shadow] duration-300 hover:brightness-100 [&>div>div>div>p]:hover:text-white [&>div>div>div>h4]:hover:after:scale-x-100 [&>div>div>div>a]:hover:border-white"
+				class="lg:hover:shadow-card transition-[filter,box-shadow] duration-300 lg:brightness-75 lg:hover:brightness-100 lg:[&>div>div>div>p]:hover:text-white lg:[&>div>div>div>h4]:hover:after:scale-x-100 lg:[&>div>div>div>a]:hover:border-white"
 			>
 				<div
 					class={`${
