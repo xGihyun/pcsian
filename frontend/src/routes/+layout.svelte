@@ -84,12 +84,14 @@
 /> -->
 
 <Navbar />
-<div class={`${$page.url.pathname === '/chat' ? 'hidden' : 'block'}`}>
+{#if $page.url.pathname !== '/chat'}
 	<QuickMenu />
-</div>
+{/if}
 <Transition url={$page.url}>
 	<main class="overflow-x-hidden">
 		<slot />
 	</main>
-	<Footer />
+	{#if $page.url.pathname !== '/chat'}
+		<Footer />
+	{/if}
 </Transition>

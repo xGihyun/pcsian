@@ -76,7 +76,7 @@
 	});
 
 	let clickedDay = today;
-	let clickedDayFormat: string;
+	let clickedDayFormat = format(today, 'yyyy-MM-dd');
 
 	function handleDateClick(date: string) {
 		const event = eventsByDate.get(date) as Event[];
