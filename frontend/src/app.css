@@ -44,7 +44,7 @@ body{
 	}
 
 	.page-content p {
-		@apply text-sm sm:text-lg;
+		@apply text-sm sm:text-xl;
 	}
 
 	.page-content ol {

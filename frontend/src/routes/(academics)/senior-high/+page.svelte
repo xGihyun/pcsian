@@ -4,7 +4,8 @@
 	const strands = [
 		{
 			name: 'Science, Technology, Engineering, & Mathematics',
-			image: 'https://sites.google.com/site/elps301plantstructures/_/rsrc/1486330942892/home/growth/Stem.jpg'
+			image:
+				'https://sites.google.com/site/elps301plantstructures/_/rsrc/1486330942892/home/growth/Stem.jpg'
 		},
 		{
 			name: 'Accountancy, Business, & Management',
@@ -20,13 +21,15 @@
 		},
 		{
 			name: 'Technical-Vocational-Livelihood',
-			image: 'https://cdn.vox-cdn.com/thumbor/hQJnvvOK_1Psh9nCbS7xvr8w73w=/0x0:2864x1468/1200x800/filters:focal(1203x505:1661x963)/cdn.vox-cdn.com/uploads/chorus_image/image/67811309/Screen_Shot_2020_11_18_at_10.57.40_AM.0.png'
+			image:
+				'https://cdn.vox-cdn.com/thumbor/hQJnvvOK_1Psh9nCbS7xvr8w73w=/0x0:2864x1468/1200x800/filters:focal(1203x505:1661x963)/cdn.vox-cdn.com/uploads/chorus_image/image/67811309/Screen_Shot_2020_11_18_at_10.57.40_AM.0.png'
 		},
 		{
 			name: 'General Academic Strand',
-			image: 'https://i.kym-cdn.com/entries/icons/original/000/027/475/Screen_Shot_2018-10-25_at_11.02.15_AM.png'
-		},
-	]
+			image:
+				'https://i.kym-cdn.com/entries/icons/original/000/027/475/Screen_Shot_2018-10-25_at_11.02.15_AM.png'
+		}
+	];
 </script>
 
 <div class="mx-auto max-w-7xl px-10">
@@ -60,11 +63,7 @@
 	<div class="mx-auto grid grid-cols-1 gap-20 md:grid-cols-2 lg:grid-cols-3 xl:px-20">
 		{#each strands as strand, idx (idx)}
 			<div class="text-center">
-				<img
-					src={strand.image}
-					alt=""
-					class="mb-4 h-72 w-full object-cover shadow-card"
-				/>
+				<img src={strand.image} alt="" class="shadow-card mb-4 h-72 w-full object-cover" />
 				<span class="text-white">{strand.name}</span>
 			</div>
 		{/each}
@@ -78,7 +77,7 @@
 				<span class="text-base sm:text-xl">{item.mainText}</span>
 				<ol class="pl-4">
 					{#each item.subText as sub, idx (idx)}
-						<li>
+						<li class="text-sm sm:text-lg">
 							{sub}
 						</li>
 					{/each}

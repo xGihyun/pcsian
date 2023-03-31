@@ -5,7 +5,7 @@
 <div class="mx-auto max-w-7xl px-10">
 	<div class="mb-20 text-center">
 		<h1
-			class="text-5xl font-gt-walsheim-pro-medium uppercase tracking-widest md:whitespace-nowrap md:text-8xl lg:text-[7rem]"
+			class="font-gt-walsheim-pro-medium text-5xl uppercase tracking-widest md:whitespace-nowrap md:text-8xl lg:text-[7rem]"
 		>
 			Grade School
 		</h1>
@@ -32,7 +32,7 @@
 				<span class="text-base sm:text-xl">{item.mainText}</span>
 				<ol class="pl-4">
 					{#each item.subText as sub, idx (idx)}
-						<li>
+						<li class="text-sm sm:text-lg">
 							{sub}
 						</li>
 					{/each}

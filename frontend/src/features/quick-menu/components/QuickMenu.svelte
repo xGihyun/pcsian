@@ -30,18 +30,18 @@
 		</div>
 	</a> -->
 	<button
-		class="shadow-nav-shadow flex w-44 items-center rounded-full bg-neutral-800 text-white transition-all duration-300 lg:hover:scale-90 lg:hover:brightness-110"
+		class="shadow-nav-shadow flex w-44 sm:w-52 items-center rounded-full bg-neutral-800 text-white transition-all duration-300 lg:hover:scale-90 lg:hover:brightness-110"
 		on:click={() => {
 			showChatBot.update(() => (show = !show));
 		}}
 		aria-label="Show chatbot"
 	>
-		<div class="bg-accent flex h-16 w-16 items-center justify-center rounded-full">
-			<ChatBotIcon style="text-white h-10 w-10" />
+		<div class="bg-accent flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full">
+			<ChatBotIcon style="text-white h-10 w-10 sm:h-12 sm:w-12" />
 		</div>
 		<div class="flex flex-col pl-3 text-left">
-			<span class="font-gt-walsheim-pro-medium text-base">Chatbot</span>
-			<span class="text-sm opacity-50">Ask FAQs</span>
+			<span class="font-gt-walsheim-pro-medium text-base sm:text-xl">Chatbot</span>
+			<span class="text-sm opacity-50 sm:text-base">Ask FAQs</span>
 		</div>
 	</button>
 </div>

@@ -29,13 +29,13 @@
 				<h3>{coreValue.title}</h3>
 				<ul class="list-disc pl-4">
 					{#each coreValue.text as text, idx (idx)}
-						<li>{text}</li>
+						<li class="text-sm sm:text-xl">{text}</li>
 					{/each}
 				</ul>
 				<h4>Related Values:</h4>
 				<ul class="list-disc pl-10">
 					{#each coreValue.values as value, idx (idx)}
-						<li>{value}</li>
+						<li class="text-sm sm:text-lg">{value}</li>
 					{/each}
 				</ul>
 			</li>

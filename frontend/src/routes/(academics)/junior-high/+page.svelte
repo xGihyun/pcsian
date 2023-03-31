@@ -12,7 +12,7 @@
 	</div>
 	<h2 class="uppercase">The Department</h2>
 	<div class="mb-10 flex flex-row items-center justify-between gap-10">
-		<p class="lg:w-1/2">
+		<p class="lg:w-1/2 text-justify">
 			The Junior High Department aims to prepare students for the challenges of high school and
 			beyond, by providing a well-rounded education that emphasizes the development of strong
 			values, lifelong learning skills, physical and mental health, and social responsibility. With
@@ -35,8 +35,8 @@
 				<span class="text-base sm:text-xl">{item.mainText}</span>
 				<ol class="pl-4">
 					{#each item.subText as sub, idx (idx)}
-						<li>
-							{sub}
+						<li class="text-sm sm:text-lg">
+								{sub}
 						</li>
 					{/each}
 				</ol>
