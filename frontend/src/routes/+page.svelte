@@ -28,7 +28,7 @@
 				isInView[0] = detail.inView;
 			}}
 		>
-			Creating a Brighter Future
+			My home from Nursery to Grade 12... and beyond
 		</h2>
 		<span
 			class={`bg-accent my-8 h-[2px] w-full transform-gpu rounded-full transition-transform duration-1000 ease-in-out ${

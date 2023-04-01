@@ -1,20 +1,11 @@
 <script lang="ts">
-	import ChevronRight from '../../assets/icons/ChevronRight.svelte';
+	import { ChevronRight } from '../../assets/icons';
 	import { navItems } from '../../constants';
 	import DropdownMobile from './DropdownMobile.svelte';
-
-	// Get clicked element
-	let clickedElement = '';
-	let showDropdown = false;
-
-	function handleClick(data: string) {
-		clickedElement = data;
-		showDropdown = !showDropdown;
-	}
 </script>
 
 <div
-	class="border-b-accent -z-10 h-full w-full border-b-4 bg-black bg-opacity-75 pb-4"
+	class="border-b-accent -z-10 h-full w-full border-b-4 bg-black bg-opacity-90 pb-4"
 >
 	<ul class="flex flex-col">
 		{#each navItems as item, idx (idx)}
@@ -24,17 +15,17 @@
 						<button
 							class="flex h-full w-full justify-between p-4"
 							data-nav={item.data}
-							on:click={() => handleClick(item.data)}
+							on:click={() => item.drop = !item.drop}
 						>
 							{item.title}
 							<ChevronRight
 								style={`w-5 h-5 cursor-pointer transition-transform duration-200 ${
-									clickedElement === item.data && showDropdown ? 'rotate-90' : 'rotate-0'
+									item.drop ? 'rotate-90' : 'rotate-0'
 								}`}
 							/>
 						</button>
 					</div>
-					{#if showDropdown && clickedElement === item.data}
+					{#if item.drop}
 						<DropdownMobile drop={item.data} />
 					{/if}
 				</li>

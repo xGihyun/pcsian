@@ -1,33 +1,75 @@
 <script lang="ts">
+	import CurveWhiteBottom from '../../../assets/curves/CurveWhiteBottom.svelte';
+	import CurveWhiteTop from '../../../assets/curves/CurveWhiteTop.svelte';
+	import {
+		Art,
+		ArtBoard,
+		AtomScience,
+		BankFinance,
+		Calculator,
+		CodeSlash,
+		Conclusion,
+		CookingDough,
+		FoodProducts,
+		Hotdog,
+		Investment,
+		Legal,
+		MoneyBank,
+		Pictures,
+		SignDocument,
+		SocialNetworking
+	} from '../../../assets/icons';
+	import { stem, abm, ad, humss, tvl, gas } from '../../../assets/images';
 	import { seniorHigh } from '../../../constants';
 
 	const strands = [
 		{
 			name: 'Science, Technology, Engineering, & Mathematics',
-			image:
-				'https://sites.google.com/site/elps301plantstructures/_/rsrc/1486330942892/home/growth/Stem.jpg'
+			subjects: 'Calculus, Chemistry, Programming',
+			image: stem,
+			icons: [AtomScience, Calculator, CodeSlash],
+			fromColor: 'from-green-950',
+			shadow: 'lg:hover:shadow-green'
 		},
 		{
 			name: 'Accountancy, Business, & Management',
-			image: 'https://blog.remitly.com/wp-content/uploads/2021/02/pile-of-Philippine-currency.jpeg'
+			subjects: 'Hello World',
+			image: abm,
+			icons: [MoneyBank, Investment, BankFinance],
+			fromColor: 'from-yellow-dark',
+			shadow: 'lg:hover:shadow-yellow'
 		},
 		{
 			name: 'Humanities & Social Sciences',
-			image: 'https://i.imgflip.com/1k9f4u.jpg'
+			subjects: 'Hello World',
+			image: humss,
+			icons: [Legal, SignDocument, SocialNetworking],
+			fromColor: 'from-red-950',
+			shadow: 'lg:hover:shadow-red'
 		},
 		{
 			name: 'Arts & Design',
-			image: 'https://blog.artsper.com/wp-content/uploads/2022/06/44151m.jpg'
+			subjects: 'Hello World',
+			image: ad,
+			icons: [Art, ArtBoard, Pictures],
+			fromColor: 'from-blue-950',
+			shadow: 'lg:hover:shadow-blue'
 		},
 		{
 			name: 'Technical-Vocational-Livelihood',
-			image:
-				'https://cdn.vox-cdn.com/thumbor/hQJnvvOK_1Psh9nCbS7xvr8w73w=/0x0:2864x1468/1200x800/filters:focal(1203x505:1661x963)/cdn.vox-cdn.com/uploads/chorus_image/image/67811309/Screen_Shot_2020_11_18_at_10.57.40_AM.0.png'
+			subjects: 'Hello World',
+			image: tvl,
+			icons: [CookingDough, FoodProducts, Hotdog],
+			fromColor: 'from-neutral-700',
+			shadow: 'lg:hover:shadow-neutral'
 		},
 		{
 			name: 'General Academic Strand',
-			image:
-				'https://i.kym-cdn.com/entries/icons/original/000/027/475/Screen_Shot_2018-10-25_at_11.02.15_AM.png'
+			subjects: 'Hello World',
+			image: gas,
+			icons: [AtomScience, SignDocument, Conclusion],
+			fromColor: 'from-pink-dark',
+			shadow: 'lg:hover:shadow-pink'
 		}
 	];
 </script>
@@ -35,47 +77,83 @@
 <div class="mx-auto max-w-7xl px-10">
 	<div class="mb-20 text-center">
 		<h1
-			class="font-gt-walsheim-pro-medium text-5xl uppercase tracking-widest md:whitespace-nowrap md:text-8xl lg:text-[7rem]"
+			class="font-gt-walsheim-pro-medium text-4xl uppercase tracking-widest md:whitespace-nowrap md:text-8xl lg:text-[7rem]"
 		>
 			Senior High
 		</h1>
 	</div>
-	<h2 class="uppercase">The Department</h2>
+	<h2 class="my-5 text-center text-2xl font-semibold uppercase">The Department</h2>
 	<div class="mb-10 flex flex-row items-center justify-between gap-10">
-		<p class="lg:w-1/2">
-			The Senior High Department aims to prepare students for the challenges of high school and
-			beyond, by providing a well-rounded education that emphasizes the development of strong
-			values, lifelong learning skills, physical and mental health, and social responsibility. With
-			a focus on Catholic teachings, students are guided to work cooperatively with others, to
-			communicate honestly and dependably, and to actively participate in religious activities.
-			Along with building effective study skills, the department promotes the development of
-			creative talents and social inquiries for informed career choices and nation-building. Good
-			physical and mental health is also prioritized, as is the development of self-reliance,
-			self-discipline, and personal vision. Students are encouraged to deepen their understanding of
-			and commitment to social responsibility, showing respect for the dignity of all persons, and
-			actively participating in campaigns for the care and protection of the environment.
+		<p class="text-justify text-sm sm:text-xl lg:w-1/2">
+			The Senior High Department provides a well-rounded education that emphasizes critical
+			thinking, problem-solving, communication, and collaboration skills, essential for success in
+			college and the competitive workforce. Along with academic excellence, the department
+			prioritizes personal and professional development by promoting good physical and mental
+			health, self-discipline, and personal vision. The curriculum prepares students for informed
+			career choices and nation-building by promoting the development of creative talents and social
+			inquiries, while encouraging social responsibility through participation in campaigns for the
+			care and protection of the environment. The department's Catholic education instills strong
+			values, guiding students to work cooperatively, communicate honestly, and actively participate
+			in religious activities for personal and professional growth.
 		</p>
 		<div class="hidden h-[400px] w-[500px] bg-neutral-400 lg:block" />
 	</div>
 </div>
-<div class="bg-black py-20 px-10">
-	<h2 class="uppercase tracking-widest text-white">Strands Offered</h2>
-	<div class="mx-auto grid grid-cols-1 gap-20 md:grid-cols-2 lg:grid-cols-3 xl:px-20">
-		{#each strands as strand, idx (idx)}
-			<div class="text-center">
-				<img src={strand.image} alt="" class="shadow-card mb-4 h-72 w-full object-cover" />
-				<span class="text-white">{strand.name}</span>
-			</div>
-		{/each}
+<div class="relative bg-black">
+	<CurveWhiteTop />
+	<div class="px-10 py-32 md:py-60">
+		<h2 class="my-5 text-center text-2xl font-semibold uppercase tracking-widest text-white">
+			Strands Offered
+		</h2>
+		<!-- <div class="mx-auto grid grid-cols-1 gap-20 md:grid-cols-2 lg:grid-cols-3 xl:px-20">
+			{#each strands as strand, idx (idx)}
+				<div class="text-center flex flex-col items-center justify-end">
+					<img src={strand.image} alt="" class="mb-4 max-w-[10rem] sm:max-w-xs w-full object-cover" />
+					<span class="text-white">{strand.name}</span>
+				</div>
+				
+			{/each}
+		</div> -->
+		<div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-20 lg:grid-cols-2">
+			{#each strands as strand, idx (idx)}
+				<div class={`flex w-full justify-center`}>
+					<div
+						class={`flex w-full max-w-2xl flex-col items-center bg-neutral-900 transition-[filter,box-shadow] duration-300 sm:flex-row lg:hover:brightness-125 ${strand.shadow}`}
+					>
+						<div
+							class={`bg-gradient-to-t to-black sm:bg-gradient-to-l ${strand.fromColor} flex h-full w-full justify-center p-5 sm:w-auto`}
+						>
+							<img
+								src={strand.image}
+								alt={`pcs ${strand.name}`}
+								class="w-full max-w-[10rem] object-cover"
+							/>
+						</div>
+						<div class="flex h-full w-full flex-col">
+							<div class="flex h-full w-full flex-col justify-center bg-neutral-900 p-5">
+								<span class="mb-1 text-base text-white sm:text-lg">{strand.name}</span>
+								<span class="text-sm text-neutral-400 sm:text-base">{strand.subjects}</span>
+							</div>
+							<div class="flex w-full gap-4 bg-neutral-950 px-5 py-3">
+								{#each strand.icons as Icon, idx (idx)}
+									<Icon style="h-5 w-5 text-white" />
+								{/each}
+							</div>
+						</div>
+					</div>
+				</div>
+			{/each}
+		</div>
 	</div>
+	<CurveWhiteBottom />
 </div>
 <div class="mx-auto max-w-6xl px-10 pt-10">
-	<h2 class="uppercase">Objectives</h2>
-	<ol>
+	<h2 class="my-5 text-center text-2xl font-semibold uppercase">Objectives</h2>
+	<ol class="list-decimal">
 		{#each seniorHigh.content as item, idx (idx)}
 			<li class="mb-4">
 				<span class="text-base sm:text-xl">{item.mainText}</span>
-				<ol class="pl-4">
+				<ol class="list-disc pl-4">
 					{#each item.subText as sub, idx (idx)}
 						<li class="text-sm sm:text-lg">
 							{sub}

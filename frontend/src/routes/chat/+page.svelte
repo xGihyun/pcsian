@@ -151,7 +151,7 @@
 
 <div class="shadow-custom-1 relative h-full w-full max-w-7xl">
 	<div class="relative h-full w-full max-w-7xl overflow-y-scroll px-[5%]">
-		<div class="flex flex-col items-center justify-center pt-32 pb-10 sm:pt-40 sm:pb-20">
+		<div class="flex flex-col items-center justify-center pb-10 pt-32 sm:pb-20 sm:pt-40">
 			<div class="mb-10 flex flex-col items-center justify-center">
 				<img class="mb-10 h-28 w-28" src={pcsLogoNew} alt="pcs" />
 				<h1 class="font-gt-walsheim-pro-medium mb-2 text-center text-2xl text-black sm:text-4xl">
@@ -213,13 +213,17 @@
 		</div>
 		<div class="h-40" bind:this={scrollToDiv} />
 	</div>
-	<div class="fixed top-[calc(100vh-10rem)] left-0 h-40 w-full lg:absolute">
+
+	<!-- Message input -->
+	<div class="fixed left-0 top-[calc(100vh-10rem)] hidden h-40 w-full lg:absolute lg:block">
 		<div class="h-40">
 			<div class="h-1/2 w-full bg-gradient-to-t from-neutral-50" />
 			<div class="h-1/2 w-full bg-neutral-50" />
 		</div>
 	</div>
-	<div class="fixed top-[calc(100vh-7rem)] left-1/2 w-full max-w-4xl -translate-x-1/2 lg:absolute">
+	<div
+		class="fixed left-1/2 top-[calc(100vh-7rem)] hidden w-full max-w-4xl -translate-x-1/2 lg:absolute lg:block"
+	>
 		<div class="relative flex w-full justify-center">
 			<div class="flex w-[90%] gap-4 2xl:w-full">
 				<button
@@ -277,12 +281,78 @@
 	</div>
 </div>
 
+<!-- Message menu but for mobile devices, the code is mostly the same -->
+<!-- On mobile devices, browsers have a bottom navbar/menu that appear, we don't want that to cover the input -->
+<!-- Copy pasting it looks ugly, but this is the easiest way to do it -->
+<div class="fixed left-0 top-[calc(100vh-10rem)] block h-40 w-full max-w-7xl lg:hidden">
+	<div class="h-40">
+		<div class="h-1/2 w-full bg-gradient-to-t from-neutral-50" />
+		<div class="h-1/2 w-full bg-neutral-50" />
+	</div>
+</div>
+<div class="fixed left-0 top-[calc(100vh-7rem)] block w-full max-w-4xl lg:absolute lg:hidden">
+	<div class="relative flex w-full justify-center">
+		<div class="flex w-[90%] gap-4 2xl:w-full">
+			<button
+				class="to-accent flex h-12 justify-between gap-3 rounded-3xl bg-gradient-to-r from-amber-500 p-3 text-white transition-[filter] duration-300 hover:brightness-90"
+				on:click={() => (chatMessages = [])}
+			>
+				<Broom style="h-6 w-6 text-white" />
+				<span class="hidden text-base sm:block">New topic</span>
+			</button>
+			<div
+				class={`shadow-chat-msg relative h-12 flex-1 rounded-3xl bg-white p-3 transition-[height,border-radius] duration-300 ease-in-out ${
+					query
+						? 'h-24 rounded-2xl [&>div]:opacity-100'
+						: 'focus-within:rounded-2xl hover:rounded-2xl lg:focus-within:h-24 lg:hover:h-24 lg:[&>div]:focus-within:opacity-100 lg:[&>div]:hover:opacity-100'
+				}`}
+			>
+				<div class="relative flex h-full">
+					<Comments style="h-5 w-5" />
+					<form class="contents" data-sveltekit-noscroll>
+						<div class="relative inline-grid h-full w-full">
+							<textarea
+								class="relative col-start-1 row-start-1 h-10 w-full resize-none border-none bg-transparent pl-3 pr-10 text-lg text-black outline-none"
+								placeholder="Aa"
+								maxlength="4000"
+								enterkeyhint="send"
+								spellcheck="false"
+								autocapitalize="off"
+								aria-label="Ask chatbot"
+								bind:value={query}
+								on:keydown={(event) => {
+									if (event.key === 'Enter') {
+										event.preventDefault();
+										handleSubmit();
+									}
+								}}
+							/>
+						</div>
+					</form>
+					{#if query}
+						<button class="absolute right-0 px-3" on:click={handleSubmit}>
+							<Send
+								style="h-5 w-5 hover:scale-125 hover:brightness-110 transition-[transform,filter] duration-300 text-accent"
+							/>
+						</button>
+					{/if}
+				</div>
+				<div
+					class="absolute bottom-0 flex items-center py-3 text-base text-neutral-500 opacity-0 transition-opacity duration-300"
+				>
+					{query.length}/4000
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <!-- FAQs -->
 <!-- Could be a component itself -->
 <div
 	class={`${
 		!toggleChat ? 'absolute block' : 'hidden'
-	} h-full w-full overflow-x-hidden overflow-y-scroll bg-gradient-to-t from-neutral-800 to-neutral-700 px-[5%] py-40 lg:relative lg:block lg:w-auto`}
+	} h-full w-full overflow-x-hidden overflow-y-scroll bg-gradient-to-t from-neutral-900 to-neutral-800 px-[5%] py-40 lg:relative lg:block lg:w-auto`}
 >
 	<div class="mb-10 sm:mb-20">
 		<h1 class="font-gt-walsheim-pro-medium mb-2 text-center text-2xl text-white sm:text-4xl">
@@ -295,7 +365,7 @@
 	<div class="flex flex-col gap-4">
 		{#each faqs as faq, idx (idx)}
 			<div
-				class="after:bg-accent relative before:absolute before:left-0 before:bottom-0 before:h-[2px] before:w-full before:bg-white before:bg-opacity-20 before:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:transition-transform after:duration-300 after:content-[''] hover:after:scale-x-100"
+				class="after:bg-accent relative before:absolute before:bottom-0 before:left-0 before:h-[2px] before:w-full before:bg-white before:bg-opacity-20 before:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:transition-transform after:duration-300 after:content-[''] hover:after:scale-x-100"
 			>
 				<button
 					class="relative flex w-full items-center transition-[filter] duration-300"
@@ -322,9 +392,10 @@
 	</div>
 </div>
 
+<!-- Bottom navbar to switch between chat and faqs for mobile devices -->
 <div
 	class={`fixed bottom-0 left-0 flex w-full justify-center border-t-2 lg:hidden ${
-		toggleChat ? 'border-neutral-200 bg-white' : 'border-neutral-600 bg-neutral-800'
+		toggleChat ? 'border-neutral-200 bg-white' : 'border-neutral-800 bg-neutral-950'
 	}`}
 >
 	<button

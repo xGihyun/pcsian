@@ -4,22 +4,26 @@ export const navItems = [
 	{
 		title: 'Home',
 		path: '/',
-		data: 'home'
+		data: 'home',
+		drop: false,
 	},
 	{
 		title: 'About PCS',
 		path: '/history',
-		data: 'about'
+		data: 'about',
+		drop: false,
 	},
 	{
 		title: 'Academics',
 		path: '/grade-school',
-		data: 'academics'
+		data: 'academics',
+		drop: false,
 	},
 	{
 	  title: "Chat",
 	  path: "/chat",
-	  data: 'chat'
+	  data: 'chat',
+		drop: false,
 	}
 ];
 

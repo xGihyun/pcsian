@@ -22,7 +22,7 @@
 	onMount(() => window.addEventListener('scroll', shrinkNav));
 </script>
 
-<div class="fixed top-0 left-0 z-[100] w-full">
+<div class="fixed left-0 top-0 z-[100] w-full">
 	<!-- Navbar large devices -->
 	{#if hovered}
 		<div
@@ -32,12 +32,12 @@
 		/>
 	{/if}
 	<div
-		class={`from-nav-gradient absolute top-0 left-0 z-10 hidden w-full bg-gradient-to-b transition-[opacity,height] duration-500 ease-in-out lg:block ${
+		class={`from-nav-gradient absolute left-0 top-0 z-10 hidden w-full bg-gradient-to-b transition-[opacity,height] duration-500 ease-in-out lg:block ${
 			scrolled || applyClass ? 'h-20 opacity-0' : 'h-40 opacity-100'
 		}`}
 	/>
 	<nav
-		class={`absolute top-0 left-0 z-40 hidden w-full items-center justify-between
+		class={`absolute left-0 top-0 z-40 hidden w-full items-center justify-between
     px-[5%] transition-[box-shadow,background-color,height] duration-500 ease-in-out lg:flex ${
 			scrolled || applyClass ? 'bg-accent' : 'bg-none'
 		} ${scrolled || applyClass ? 'h-16' : 'h-40'} ${
@@ -120,10 +120,9 @@
 				<div class="bg-pcs-outline-white absolute z-[9] h-14 w-14 bg-cover bg-no-repeat" />
 			</div>
 		</a>
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<div on:click={() => (showNavbar = !showNavbar)}>
+		<button on:click={() => (showNavbar = !showNavbar)}>
 			<HamburgerMenu />
-		</div>
+		</button>
 	</nav>
 	{#if showNavbar}
 		<NavbarMobile />

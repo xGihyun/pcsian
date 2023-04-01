@@ -17,6 +17,12 @@ import ceap from './ceap.webp';
 import mapsa from './mapsa.webp';
 import paascu from './paascu.webp';
 import padss from './padss.webp';
+import stem from './stem.webp';
+import abm from './abm.webp';
+import ad from './ad.webp';
+import humss from './humss.webp';
+import tvl from './tvl.webp';
+import gas from './gas.webp';
 
 export {
 	gradeSchool,
@@ -37,5 +43,11 @@ export {
 	ceap,
 	mapsa,
 	paascu,
-	padss
+	padss,
+	stem,
+	abm,
+	ad,
+	humss,
+	tvl,
+	gas,
 };

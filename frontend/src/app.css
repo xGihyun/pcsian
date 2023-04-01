@@ -29,41 +29,6 @@ body{
 	--scrollbar-thumb: rgb(90, 90, 90);
 }
 
-@layer components {
-
-	.page-content h2 {
-		@apply my-5 text-center text-2xl font-semibold;
-	}
-
-	.page-content h3 {
-		@apply mt-4 mb-2 text-base sm:text-xl font-semibold;
-	}
-
-	.page-content h4 {
-		@apply mt-4 mb-2 pl-3 text-lg font-semibold;
-	}
-
-	.page-content p {
-		@apply text-sm sm:text-xl;
-	}
-
-	.page-content ol {
-		@apply list-decimal;
-	}
-
-	.page-content ol p {
-		@apply mt-1 mb-2 sm:mt-2 sm:mb-4;
-	}
-
-	.page-content ol ol {
-		@apply list-disc;
-	}
-
-	.gradient {
-		background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8) 25%, rgb(0, 0, 0));
-	}
-}
-
 /* Scrollbar */
 /* Firefox only */
 @supports (scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track)) {

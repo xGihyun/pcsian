@@ -3,6 +3,6 @@
 </script>
 
 <TopHeading title={'ACADEMICS'} />
-<div class="py-20 page-content bg-white">
+<div class="py-20 bg-white">
 	<slot />
 </div>

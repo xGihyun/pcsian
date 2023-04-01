@@ -23,7 +23,7 @@
 	];
 </script>
 
-<nav class="flex w-full items-center justify-center py-10 px-4">
+<nav class="flex w-full items-center justify-center py-10 px-4 relative">
 	<ul class="flex h-full flex-row gap-8 text-xl">
 		{#each navigationItems as item, idx (idx)}
 			<li class={`text-base md:text-lg ${currentCalendar === item.name ? 'font-bold' : 'font-normal'}`}>

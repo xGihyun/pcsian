@@ -205,4 +205,8 @@
 	.card-group:hover > :nth-child(8) {
 		transform: translate(50%, 15%) rotate(20deg);
 	}
+
+	.gradient {
+		background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8) 25%, rgb(0, 0, 0));
+	}
 </style>
