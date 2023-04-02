@@ -7,6 +7,7 @@
 
 	let show = false;
 	let scrollToDiv: HTMLDivElement;
+	let responseDone = false;
 
 	function scrollToBottom() {
 		setTimeout(() => {
@@ -23,6 +24,7 @@
 
 	async function handleSubmit() {
 		loading = true;
+		responseDone = false;
 
 		chatMessages = [...chatMessages, { role: 'user', content: query }];
 
@@ -48,6 +50,7 @@
 				if (e.data === '[DONE]') {
 					chatMessages = [...chatMessages, { role: 'assistant', content: answer }];
 					answer = '';
+					responseDone = true;
 					return;
 				}
 
@@ -91,13 +94,13 @@
 	<div class="relative">
 		<div class="shadow-chat h-[50vh] overflow-y-scroll bg-neutral-800">
 			{#each chatMessages as message, idx (idx)}
-				<ChatMessage type={message.role} message={message.content} />
+				<ChatMessage type={message.role} message={message.content} {responseDone} />
 			{/each}
 			{#if answer}
-				<ChatMessage type={'assistant'} message={answer} />
+				<ChatMessage type={'assistant'} message={answer} {responseDone} />
 			{/if}
 			{#if loading}
-				<ChatMessage type={'loading'} message={''} />
+				<ChatMessage type={'loading'} message={''} {responseDone} />
 			{/if}
 			<div class="h-28" bind:this={scrollToDiv} />
 		</div>

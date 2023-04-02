@@ -120,7 +120,7 @@
 				<div class="bg-pcs-outline-white absolute z-[9] h-14 w-14 bg-cover bg-no-repeat" />
 			</div>
 		</a>
-		<button on:click={() => (showNavbar = !showNavbar)}>
+		<button on:click={() => (showNavbar = !showNavbar)} aria-label="hamburger menu">
 			<HamburgerMenu />
 		</button>
 	</nav>

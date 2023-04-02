@@ -1,5 +1,3 @@
-/** @type {import('./$types').PageLoad} */
-
 import {
 	GRADE_SCHOOL_END_POINT,
 	JUNIOR_HIGH_END_POINT,
@@ -9,7 +7,6 @@ import { error } from '@sveltejs/kit';
 
 // Fetch data from Strapi
 export async function load({ fetch, setHeaders }) {
-	
 	async function getGradeSchool() {
 		const res = await fetch(GRADE_SCHOOL_END_POINT);
 
@@ -46,7 +43,20 @@ export async function load({ fetch, setHeaders }) {
 		return { data };
 	}
 
-	setHeaders({ 'cache-control': 'max-age=6000' });
+	const [gradeSchoolRes, juniorHighRes, seniorHighRes] = await Promise.allSettled([
+		getGradeSchool(),
+		getJuniorHigh(),
+		getSeniorHigh()
+	]);
+
+	// Don't set cache if there's an error
+	if (
+		gradeSchoolRes.status === 'fulfilled' &&
+		juniorHighRes.status === 'fulfilled' &&
+		seniorHighRes.status === 'fulfilled'
+	) {
+		setHeaders({ 'cache-control': 'max-age=6000' });
+	}
 
 	return {
 		gradeSchool: getGradeSchool(),

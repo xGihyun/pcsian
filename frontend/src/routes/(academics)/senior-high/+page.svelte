@@ -25,7 +25,7 @@
 	const strands = [
 		{
 			name: 'Science, Technology, Engineering, & Mathematics',
-			subjects: 'Calculus, Chemistry, Programming',
+			subjects: 'Innovating the future through science and technology.',
 			image: stem,
 			icons: [AtomScience, Calculator, CodeSlash],
 			fromColor: 'from-green-950',
@@ -33,7 +33,7 @@
 		},
 		{
 			name: 'Accountancy, Business, & Management',
-			subjects: 'Hello World',
+			subjects: 'Shaping future business leaders and managers.',
 			image: abm,
 			icons: [MoneyBank, Investment, BankFinance],
 			fromColor: 'from-yellow-dark',
@@ -41,7 +41,7 @@
 		},
 		{
 			name: 'Humanities & Social Sciences',
-			subjects: 'Hello World',
+			subjects: 'Empowering critical thinking and social awareness.',
 			image: humss,
 			icons: [Legal, SignDocument, SocialNetworking],
 			fromColor: 'from-red-950',
@@ -49,7 +49,7 @@
 		},
 		{
 			name: 'Arts & Design',
-			subjects: 'Hello World',
+			subjects: 'Celebrating creativity and imagination through the arts.',
 			image: ad,
 			icons: [Art, ArtBoard, Pictures],
 			fromColor: 'from-blue-950',
@@ -57,7 +57,7 @@
 		},
 		{
 			name: 'Technical-Vocational-Livelihood',
-			subjects: 'Hello World',
+			subjects: 'Equipping students with practical skills for real-world success.',
 			image: tvl,
 			icons: [CookingDough, FoodProducts, Hotdog],
 			fromColor: 'from-neutral-700',
@@ -65,7 +65,7 @@
 		},
 		{
 			name: 'General Academic Strand',
-			subjects: 'Hello World',
+			subjects: 'Broadening knowledge and opportunities for further studies.',
 			image: gas,
 			icons: [AtomScience, SignDocument, Conclusion],
 			fromColor: 'from-pink-dark',

@@ -36,10 +36,10 @@ export type Event = {
     },
     publishedAt: string,
     title: string,
+    type: string,
     updatedAt: string,
   },
   id: number,
-  type: string,
 }
 
 export type EventMap = {

@@ -39,7 +39,7 @@
 							src={logoLeaf}
 							class={`absolute bottom-0 h-40 transform-gpu transition-[transform,opacity] duration-700 ease-in-out ${
 								show
-									? 'translate-x-2 -translate-y-4 rotate-0 opacity-100'
+									? '-translate-y-4 translate-x-2 rotate-0 opacity-100'
 									: '-translate-y-2 translate-x-8 -rotate-45 opacity-0'
 							}`}
 							alt=""
@@ -49,6 +49,7 @@
 			</div>
 		</div>
 	</div>
+	<div class="fixed -bottom-60 h-60 w-full bg-gradient-to-b from-black" />
 </div>
 
 <style>

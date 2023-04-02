@@ -9,10 +9,13 @@
 
 	let scrollToDiv: HTMLDivElement;
 	let toggleChat = true;
+	let responseDone = false;
 
 	function scrollToBottom() {
 		setTimeout(() => {
-			scrollToDiv.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+			if (scrollToDiv) {
+				scrollToDiv.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
+			}
 		}, 100);
 	}
 
@@ -26,6 +29,7 @@
 
 	async function handleSubmit() {
 		loading = true;
+		responseDone = false;
 
 		chatMessages = [...chatMessages, { role: 'user', content: query }];
 
@@ -51,6 +55,7 @@
 				if (e.data === '[DONE]') {
 					chatMessages = [...chatMessages, { role: 'assistant', content: answer }];
 					answer = '';
+					responseDone = true;
 					return;
 				}
 
@@ -82,33 +87,33 @@
 
 	const faqs = [
 		{
-			question: 'What is the chemical formula of Glucose?',
-			answer: 'C6H12O6',
-			show: false
-		},
-		{
-			question: 'What is the area of the square if the side is 5?',
-			answer: '25',
-			show: false
-		},
-		{
-			question: 'What is the meaning of life?',
-			answer: "I don't know",
-			show: false
-		},
-		{
-			question: 'Question',
+			question: 'What are the admission requirements?',
 			answer: 'Answer',
 			show: false
 		},
 		{
-			question: 'Question',
+			question: 'How much is the tuition fee?',
+			answer: 'Around 40,000php.',
+			show: false
+		},
+		{
+			question: "What is the school's grading system?",
 			answer: 'Answer',
 			show: false
 		},
 		{
-			question: 'Question',
-			answer: 'Answer',
+			question: 'How does the school communicate with parents and guardians?',
+			answer: 'Go to school.',
+			show: false
+		},
+		{
+			question: "What is the school's policy on dress code?",
+			answer: 'Shorts, sando, ripped jeans, etc. not allowed.',
+			show: false
+		},
+		{
+			question: 'What is the class size for each grade level?',
+			answer: 'Around 40 students, but Senior High School class size varies based on the strand.',
 			show: false
 		},
 		{
@@ -161,7 +166,7 @@
 					Your AI-powered chatbot for Pateros Catholic School
 				</p>
 			</div>
-			<div class="mb-10 flex flex-col items-center gap-7 sm:gap-10 md:flex-row">
+			<div class="mb-10 flex flex-col gap-7 sm:gap-10 md:flex-row">
 				{#each initialQuestions as question, idx (idx)}
 					<div class="w-full flex-1">
 						<div class="flex flex-col gap-2">
@@ -198,17 +203,17 @@
 		</div>
 		<div class="flex flex-col gap-4">
 			{#each chatMessages as message, idx (idx)}
-				<ChatMessage type={message.role} message={message.content} />
+				<ChatMessage type={message.role} message={message.content} {responseDone} />
 				<!-- <ChatMessage type={message.role} message={message.content} />
 				<ChatMessage type={message.role} message={message.content} />
 				<ChatMessage type={message.role} message={message.content} />
 				<ChatMessage type={message.role} message={message.content} /> -->
 			{/each}
 			{#if answer}
-				<ChatMessage type={'assistant'} message={answer} />
+				<ChatMessage type={'assistant'} message={answer} {responseDone} />
 			{/if}
 			{#if loading}
-				<ChatMessage type={'loading'} message={''} />
+				<ChatMessage type={'loading'} message={''} {responseDone} />
 			{/if}
 		</div>
 		<div class="h-40" bind:this={scrollToDiv} />
@@ -236,7 +241,7 @@
 				<div
 					class={`shadow-chat-msg relative h-12 flex-1 rounded-3xl bg-white p-3 transition-[height,border-radius] duration-300 ease-in-out ${
 						query
-							? 'h-24 rounded-2xl [&>div]:opacity-100'
+							? 'rounded-2xl lg:h-24 lg:[&>div]:opacity-100'
 							: 'focus-within:rounded-2xl hover:rounded-2xl lg:focus-within:h-24 lg:hover:h-24 lg:[&>div]:focus-within:opacity-100 lg:[&>div]:hover:opacity-100'
 					}`}
 				>
@@ -284,13 +289,13 @@
 <!-- Message menu but for mobile devices, the code is mostly the same -->
 <!-- On mobile devices, browsers have a bottom navbar/menu that appear, we don't want that to cover the input -->
 <!-- Copy pasting it looks ugly, but this is the easiest way to do it -->
-<div class="fixed left-0 top-[calc(100vh-10rem)] block h-40 w-full max-w-7xl lg:hidden">
+<div class="fixed bottom-0 left-0 block h-40 w-full max-w-7xl lg:hidden">
 	<div class="h-40">
 		<div class="h-1/2 w-full bg-gradient-to-t from-neutral-50" />
 		<div class="h-1/2 w-full bg-neutral-50" />
 	</div>
 </div>
-<div class="fixed left-0 top-[calc(100vh-7rem)] block w-full max-w-4xl lg:absolute lg:hidden">
+<div class="fixed bottom-16 left-0 block w-full max-w-4xl lg:hidden">
 	<div class="relative flex w-full justify-center">
 		<div class="flex w-[90%] gap-4 2xl:w-full">
 			<button
@@ -301,10 +306,8 @@
 				<span class="hidden text-base sm:block">New topic</span>
 			</button>
 			<div
-				class={`shadow-chat-msg relative h-12 flex-1 rounded-3xl bg-white p-3 transition-[height,border-radius] duration-300 ease-in-out ${
-					query
-						? 'h-24 rounded-2xl [&>div]:opacity-100'
-						: 'focus-within:rounded-2xl hover:rounded-2xl lg:focus-within:h-24 lg:hover:h-24 lg:[&>div]:focus-within:opacity-100 lg:[&>div]:hover:opacity-100'
+				class={`shadow-chat-msg relative h-12 flex-1 bg-white p-3 transition-[height,border-radius] duration-300 ease-in-out ${
+					query ? 'rounded-2xl' : 'rounded-3xl focus-within:rounded-2xl hover:rounded-2xl'
 				}`}
 			>
 				<div class="relative flex h-full">
@@ -336,11 +339,6 @@
 							/>
 						</button>
 					{/if}
-				</div>
-				<div
-					class="absolute bottom-0 flex items-center py-3 text-base text-neutral-500 opacity-0 transition-opacity duration-300"
-				>
-					{query.length}/4000
 				</div>
 			</div>
 		</div>

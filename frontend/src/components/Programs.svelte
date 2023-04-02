@@ -28,14 +28,43 @@
 		}
 	];
 
+	const latestEvents = [
+		{
+			title: 'DAGITAB: Pagliyab ng Pusong Makabayan',
+			description:
+				'Speakers including Patricia Non, Atty. Luke Espiritu, Atty. Neri Colmenares, and Cong. Teddy Baguilat participated in KINAADMAN 2023 to discuss and promote nationalism.',
+			date: 'March 21, 2023',
+			bg: 'bg-dagitab',
+			path: 'https://www.facebook.com/kinaadman.pcsshs/posts/pfbid022ZDyh6yDCEJwZ38Hnu5c197iPEzzCaH3CrYCVr5amsNRwqwFVbAvMDJUkVead861l'
+		},
+		{
+			title: 'DAGITAB: Pagliyab ng Pusong Makabayan',
+			description:
+				'Speakers including Patricia Non, Atty. Luke Espiritu, Atty. Neri Colmenares, and Cong. Teddy Baguilat participated in KINAADMAN 2023 to discuss and promote nationalism.',
+			date: 'March 21, 2023',
+			bg: 'bg-dagitab',
+			path: 'https://www.facebook.com/kinaadman.pcsshs/posts/pfbid022ZDyh6yDCEJwZ38Hnu5c197iPEzzCaH3CrYCVr5amsNRwqwFVbAvMDJUkVead861l'
+		},
+		{
+			title: 'DAGITAB: Pagliyab ng Pusong Makabayan',
+			description:
+				'Speakers including Patricia Non, Atty. Luke Espiritu, Atty. Neri Colmenares, and Cong. Teddy Baguilat participated in KINAADMAN 2023 to discuss and promote nationalism.',
+			date: 'March 21, 2023',
+			bg: 'bg-dagitab',
+			path: 'https://www.facebook.com/kinaadman.pcsshs/posts/pfbid022ZDyh6yDCEJwZ38Hnu5c197iPEzzCaH3CrYCVr5amsNRwqwFVbAvMDJUkVead861l'
+		}
+	];
+
 	// Delay for the staggered effect
-	const delay = ['delay-600', 'delay-800', 'delay-1000'];
+	const delayProgram = ['delay-600', 'delay-800', 'delay-1000'];
+	const delayEvents = ['delay-600', 'delay-800', 'delay-1000'];
 
 	const options = { unobserveOnEnter: true, rootMargin: '-10%' };
-	let isInView = [false, false];
+	let isInView = [false, false, false];
 </script>
 
 <div class="py-32 md:py-60">
+	<!-- Academic programs -->
 	<div
 		class="relative flex h-full flex-col items-center justify-between gap-20 px-[10%] pb-20 sm:pb-40 lg:flex-row"
 	>
@@ -118,57 +147,124 @@
 			</div>
 		</div>
 	</div>
-	<h3
-		class={`transition-transform-opacity-filter mb-4 text-center text-2xl uppercase tracking-widest text-white duration-1000 ease-in-out ${
-			isInView[1]
-				? 'lg:translate-y-0 lg:opacity-100 lg:blur-0'
-				: 'lg:translate-y-full lg:opacity-0 lg:blur-[2px]'
-		}`}
-		use:inview={options}
-		on:change={({ detail }) => {
-			isInView[1] = detail.inView;
-		}}
-	>
-		Programs
-	</h3>
-	<div
-		class="flex w-full flex-col items-center justify-center gap-8 px-[10%] md:flex-row lg:gap-16"
-	>
-		{#each programs as program, idx (idx)}
-			<div
-				class="lg:hover:shadow-card transition-[filter,box-shadow] duration-300 lg:brightness-75 lg:hover:brightness-100 lg:[&>div>div>div>p]:hover:text-white lg:[&>div>div>div>h4]:hover:after:scale-x-100 lg:[&>div>div>div>a]:hover:border-white"
-			>
+	<div class="mb-20 sm:mb-40">
+		<h3
+			class={`transition-transform-opacity-filter mb-4 text-center text-2xl uppercase tracking-widest text-white duration-1000 ease-in-out ${
+				isInView[1]
+					? 'lg:translate-y-0 lg:opacity-100 lg:blur-0'
+					: 'lg:translate-y-full lg:opacity-0 lg:blur-[2px]'
+			}`}
+			use:inview={options}
+			on:change={({ detail }) => {
+				isInView[1] = detail.inView;
+			}}
+		>
+			Programs
+		</h3>
+		<div
+			class="flex w-full flex-col items-center justify-center gap-8 px-[10%] md:flex-row lg:gap-16"
+		>
+			{#each programs as program, idx (idx)}
 				<div
-					class={`${
-						program.bg
-					} transition-transform-opacity-filter h-96 w-full max-w-sm bg-cover duration-1000 ${
-						delay[idx]
-					} ${
-						isInView[1]
-							? 'lg:translate-x-0 lg:opacity-100 lg:blur-0'
-							: 'lg:-translate-x-full lg:opacity-0 lg:blur-[2px]'
-					}`}
+					class="lg:hover:shadow-card transition-[filter,box-shadow] duration-300 lg:brightness-75 lg:hover:brightness-100 lg:[&>div>div>div>a]:hover:border-white lg:[&>div>div>div>h4]:hover:after:scale-x-100 lg:[&>div>div>div>p]:hover:text-white"
 				>
-					<div class="flex h-full flex-col justify-end">
-						<div class="gradient px-4 pb-4 pt-16">
-							<h4
-								class="before:bg-accent-dark after:bg-accent relative text-base text-white transition-colors duration-300 before:absolute before:left-[calc(1rem*-1)] before:-bottom-1 before:h-[2px] before:w-full before:content-[''] after:absolute after:left-[calc(1rem*-1)] after:-bottom-1 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:transition-transform after:duration-300 after:content-[''] sm:text-xl"
-							>
-								{program.title}
-							</h4>
-							<p class="my-4 text-sm text-neutral-200 transition-colors duration-300 lg:text-base">
-								{program.description}
-							</p>
-							<a
-								href={program.path}
-								class="rounded-full border-[1px] border-neutral-400 py-1 px-3 text-sm text-white transition-colors duration-300 hover:bg-white hover:text-black sm:text-base"
-								type="button">Learn More</a
-							>
+					<div
+						class={`${
+							program.bg
+						} transition-transform-opacity-filter h-96 w-full max-w-sm bg-cover duration-1000 ${
+							delayProgram[idx]
+						} ${
+							isInView[1]
+								? 'lg:translate-x-0 lg:opacity-100 lg:blur-0'
+								: 'lg:-translate-x-full lg:opacity-0 lg:blur-[2px]'
+						}`}
+					>
+						<div class="flex h-full flex-col justify-end">
+							<div class="gradient px-4 pb-4 pt-16">
+								<h4
+									class="before:bg-accent-dark after:bg-accent relative text-base text-white transition-colors duration-300 before:absolute before:-bottom-1 before:left-[calc(1rem*-1)] before:h-[2px] before:w-full before:content-[''] after:absolute after:-bottom-1 after:left-[calc(1rem*-1)] after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:transition-transform after:duration-300 after:content-[''] sm:text-xl"
+								>
+									{program.title}
+								</h4>
+								<p
+									class="my-4 text-sm text-neutral-200 transition-colors duration-300 lg:text-base"
+								>
+									{program.description}
+								</p>
+								<a
+									href={program.path}
+									class="rounded-full border-[1px] border-neutral-400 px-3 py-1 text-sm text-white transition-colors duration-300 hover:bg-white hover:text-black sm:text-base"
+									type="button">Learn More</a
+								>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		{/each}
+			{/each}
+		</div>
+	</div>
+
+	<!-- Latest events -->
+	<div>
+		<h3
+			class={`transition-transform-opacity-filter mb-4 text-center text-2xl uppercase tracking-widest text-white duration-1000 ease-in-out ${
+				isInView[2]
+					? 'lg:translate-y-0 lg:opacity-100 lg:blur-0'
+					: 'lg:translate-y-full lg:opacity-0 lg:blur-[2px]'
+			}`}
+			use:inview={options}
+			on:change={({ detail }) => {
+				isInView[2] = detail.inView;
+			}}
+		>
+			Latest Events
+		</h3>
+		<div
+			class="flex w-full flex-col items-center justify-center gap-8 px-[10%] md:flex-row lg:gap-16"
+		>
+			{#each latestEvents as event, idx (idx)}
+				<div
+					class="lg:hover:shadow-card transition-[filter,box-shadow] duration-300 lg:brightness-75 lg:hover:brightness-100 lg:[&>div>div>div>a]:hover:border-white lg:[&>div>div>div>div]:hover:after:scale-x-100 lg:[&>div>div>div>p]:hover:text-white"
+				>
+					<div
+						class={`${
+							event.bg
+						} transition-transform-opacity-filter h-96 sm:h-112 w-full max-w-sm bg-cover duration-1000 ${
+							delayEvents[idx]
+						} ${
+							isInView[2]
+								? 'lg:translate-x-0 lg:opacity-100 lg:blur-0'
+								: 'lg:-translate-x-full lg:opacity-0 lg:blur-[2px]'
+						}`}
+					>
+						<div class="h-full flex flex-col justify-end pt-40">
+							<div class="gradient px-4 pb-4 pt-16">
+								<div
+									class="before:bg-accent-dark after:bg-accent relative text-base text-white transition-colors duration-300 before:absolute before:-bottom-1 before:left-[calc(1rem*-1)] before:h-[2px] before:w-full before:content-[''] after:absolute after:-bottom-1 after:left-[calc(1rem*-1)] after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:transition-transform after:duration-300 after:content-['']"
+								>
+									<h4 class="sm:text-xl line-clamp-1" title={event.title}>
+										{event.title}
+									</h4>
+									<span class="text-sm text-neutral-400 lg:text-base">{event.date}</span>
+								</div>
+								<p
+									class="my-4 text-sm text-neutral-200 transition-colors duration-300 lg:text-base line-clamp-3" title={event.description}
+								>
+									{event.description}
+								</p>
+								<a
+									href={event.path}
+									class="rounded-full border-[1px] border-neutral-400 px-3 py-1 text-sm text-white transition-colors duration-300 hover:bg-white hover:text-black sm:text-base"
+									type="button"
+									target="_blank"
+									rel="noreferrer">Learn More</a
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+			{/each}
+		</div>
 	</div>
 </div>
 

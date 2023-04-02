@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       height: {
         "88": "22rem",
+        "112": "28rem",
       },
       colors: {
         "accent": "rgb(205, 127, 0)",
@@ -50,6 +51,7 @@ module.exports = {
         "img-6": "url('./assets/images/kinaadman3.webp')",
         "img-7": "url('./assets/images/confirmation2.webp')",
         "img-8": "url('./assets/images/equalizer.webp')",
+        "dagitab": "url('./assets/images/dagitab.webp')",
       },
       transitionDelay: {
         "400": "400ms",
@@ -57,6 +59,7 @@ module.exports = {
         "800": "800ms",
         "1200": "1200ms",
         "1400": "1400ms",
+        "1600": "1600ms",
       },
       transitionProperty: {
         "transform-opacity-filter": "transform, opacity, filter",

@@ -50,7 +50,7 @@
 	</div>
 </div>
 
-<!-- Academic programs -->
+<!-- Academic programs and latest events -->
 <div class="relative bg-black">
 	<CurveWhiteTop />
 	<Programs />
@@ -127,17 +127,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- <div class="relative m-auto hidden max-w-xl lg:block">
-			<div
-				class="flex aspect-square items-end justify-center overflow-hidden rounded-bl-full rounded-br-full hover:[&>img]:scale-[1.2]"
-			>
-				<div class="bg-accent absolute bottom-0 aspect-square w-full rounded-full" />
-				<img
-					src={pcsAnnex}
-					class="relative w-96 max-w-xl origin-bottom transition-transform duration-300"
-					alt="pcs annex"
-				/>
-			</div>
-		</div> -->
 	</div>
 </div>
+

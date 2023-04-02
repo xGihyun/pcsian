@@ -8,7 +8,7 @@ const school = {
 	},
 	gradeLevels: 'K-12',
 	tuitionFee: 'Around 40,000 php',
-	numOfStudents: 'Around 4000',
+	numOfStudents: 'Around 4,000',
 	numOfTeachers: 'Around 100',
 	contacts: {
 		email: 'registrar@pcsian.edu.ph',
@@ -18,12 +18,14 @@ const school = {
 	payTuition: 'Pay tuition online or onsite',
 	eLearningPlatform: {
 		name: 'Genyo',
-		url: 'https://genyo.com.ph/genyoportal/'
+		url: 'https://genyo.com.ph/genyoportal'
 	},
 	studentInfoSystem: {
 		name: 'SchoolAide',
 		url: 'https://schoolaide.pcsian.edu.ph/login'
-	}
+	},
+	scholarships: 'Bishop San Diego Scholarship',
+	classSize: 'Around 40 students, but Senior High School class size varies based on the strand.'
 };
 
 const faqs = [
@@ -34,7 +36,11 @@ const faqs = [
 	{
 		question: 'How to request school forms?',
 		answer: 'Contact us via *insert contact details*'
-	}
+	},
+	{
+		question: 'Founder of PCS?',
+		answer: 'It was founded on June 1, 1951 by then Reverend Monsignor Felix G. Sicat.'
+	},
 ];
 
 const website = {
@@ -45,11 +51,12 @@ const website = {
 		frontend: 'Vercel',
 		cms: 'Railway'
 	},
-	calendar: 'Uses cms',
+	calendar: 'Uses CMS',
 	chatbot: {
 		api: 'OpenAI',
 		model: 'gpt-3.5-turbo'
-	}
+	},
+	developers: 'A team of web developers',
 };
 
 export const CONDITION = `You are an AI chatbot for Pateros Catholic School. You will ONLY answer questions related to the given information about Pateros Catholic School. Basic informations: ${JSON.stringify(
