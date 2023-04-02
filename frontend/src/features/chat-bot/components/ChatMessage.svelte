@@ -12,12 +12,8 @@
 		const element = document.querySelectorAll('[data-response]');
 		const lastResponseElement = element[element.length - 1];
 
-		console.log(lastResponseElement);
-		console.log(responseDone);
-
 		// Only replace words with links after the response is done so it wouldn't be interrupted
 		if (responseDone) {
-			console.log(responseDone);
 			const originalContent = lastResponseElement.innerHTML;
 			lastResponseElement.innerHTML = replaceWordsWithLinks(originalContent);
 		}
