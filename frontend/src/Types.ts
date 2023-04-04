@@ -39,6 +39,7 @@ export type Event = {
     type: string,
     updatedAt: string,
   },
+  color: string,
   id: number,
 }
 

@@ -1,22 +1,18 @@
 <script lang="ts">
 	import { Email, Telephone, Location, Facebook } from '../assets/icons';
-	import { ceap, mapsa, paascu, padss } from '../assets/images';
-	// import { pcsMembers, qrCode, staticMapPcs } from '../assets/images';
 </script>
 
 <footer
-	class="border-t-accent w-full border-t-8 bg-black px-[5%] py-20 text-white [&>p]:text-neutral-300 [&>h2]:text-2xl"
+	class="border-t-accent w-full border-t-8 bg-black px-[5%] py-20 text-white [&>h2]:text-2xl [&>p]:text-neutral-300"
 >
 	<div class="flex flex-col-reverse lg:flex-row lg:gap-40">
 		<!-- PCS logo -->
-		<a href="/" class="flex justify-center ">
+		<a href="/" class="flex justify-center">
 			<div class="relative h-52 w-52">
 				<div
 					class="bg-pcs-orig absolute z-10 h-52 w-52 transform-gpu bg-cover bg-no-repeat opacity-0 transition-opacity duration-500 ease-in-out hover:opacity-100"
 				/>
-				<div
-					class="bg-pcs-outline-white absolute z-[9] h-52 w-52 bg-cover bg-no-repeat"
-				/>
+				<div class="bg-pcs-outline-white absolute z-[9] h-52 w-52 bg-cover bg-no-repeat" />
 			</div>
 		</a>
 		<div class="w-full">
@@ -109,13 +105,9 @@
 		</div>
 	</div>
 	<hr class="my-5 opacity-20" />
-	<div class="justify-center flex">
-		<span class="text-center mb-4">© 2023. Pateros Catholic School, Pateros, Metro Manila. All Rights Reserved.</span>
-		<!-- <div class="flex flex-row gap-4 justify-center">
-			<img class="h-10 grayscale hover:grayscale-0 transition-all duration-300" src={mapsa} alt="mapsa" />
-			<img class="h-10 grayscale hover:grayscale-0 transition-all duration-300" src={ceap} alt="ceap" />
-			<img class="h-10 grayscale hover:grayscale-0 transition-all duration-300" src={padss} alt="padss" />
-			<img class="h-10 grayscale hover:grayscale-0 transition-all duration-300" src={paascu} alt="paascu" />
-		</div> -->
+	<div class="flex justify-center">
+		<span class="mb-4 text-center"
+			>© 2023. Pateros Catholic School, Pateros, Metro Manila. All Rights Reserved.</span
+		>
 	</div>
 </footer>

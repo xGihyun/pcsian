@@ -160,7 +160,7 @@
 			<div class="mb-10 flex flex-col items-center justify-center">
 				<img class="mb-10 h-28 w-28" src={pcsLogoNew} alt="pcs" />
 				<h1 class="font-gt-walsheim-pro-medium mb-2 text-center text-2xl text-black sm:text-4xl">
-					Welcome to the new PCS chatbot
+					Welcome to the new PCS assistant
 				</h1>
 				<p class="text-center text-base text-black sm:text-lg">
 					Your AI-powered chatbot for Pateros Catholic School

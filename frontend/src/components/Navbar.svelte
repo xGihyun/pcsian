@@ -37,16 +37,14 @@
 		}`}
 	/>
 	<nav
-		class={`absolute left-0 top-0 z-40 hidden w-full items-center justify-between
-    px-[5%] transition-[box-shadow,background-color,height] duration-500 ease-in-out lg:flex ${
-			scrolled || applyClass ? 'bg-accent' : 'bg-none'
-		} ${scrolled || applyClass ? 'h-16' : 'h-40'} ${
-			scrolled || applyClass ? 'shadow-nav-shadow' : 'shadow-none'
+		class={`absolute left-0 top-0 z-40 hidden w-full transform-gpu items-center
+    justify-between px-[5%] transition-[box-shadow,background-color,height] duration-500 ease-in-out lg:flex ${
+			scrolled || applyClass ? 'bg-accent shadow-nav-shadow h-16' : 'h-40 bg-none shadow-none'
 		}`}
 	>
 		<a
 			href="/"
-			class={`z-20 flex origin-left flex-row items-center gap-4 transition-transform duration-500 ease-in-out ${
+			class={`z-20 flex origin-left flex-row items-center gap-4 transform-gpu transition-transform duration-500 ease-in-out ${
 				scrolled || applyClass ? 'scale-50' : 'scale-100'
 			}`}
 		>
