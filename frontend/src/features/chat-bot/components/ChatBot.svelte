@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Close, Send } from '../assets/icons';
-	import { showChatBot } from '../../stores';
+	import { showChatBot } from '$lib/stores';
 	import type { ChatCompletionRequestMessage } from 'openai';
 	import { SSE } from 'sse.js';
 	import ChatMessage from './ChatMessage.svelte';

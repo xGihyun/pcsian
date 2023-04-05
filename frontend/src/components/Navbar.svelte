@@ -5,13 +5,16 @@
 	import NavbarMobile from './mobile/NavbarMobile.svelte';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
+	import { showMobileDropdown } from '$lib/stores';
 
 	let scrolled = false;
 	let hovered = false;
 	let hoveredElement = '';
 
 	// For smaller devices
-	let showNavbar = false;
+	let show = false;
+
+	showMobileDropdown.subscribe((value) => (show = value));
 
 	function shrinkNav() {
 		window.scrollY > 20 ? (scrolled = true) : (scrolled = false);
@@ -44,7 +47,7 @@
 	>
 		<a
 			href="/"
-			class={`z-20 flex origin-left flex-row items-center gap-4 transform-gpu transition-transform duration-500 ease-in-out ${
+			class={`z-20 flex origin-left transform-gpu flex-row items-center gap-4 transition-transform duration-500 ease-in-out ${
 				scrolled || applyClass ? 'scale-50' : 'scale-100'
 			}`}
 		>
@@ -118,11 +121,14 @@
 				<div class="bg-pcs-outline-white absolute z-[9] h-14 w-14 bg-cover bg-no-repeat" />
 			</div>
 		</a>
-		<button on:click={() => (showNavbar = !showNavbar)} aria-label="hamburger menu">
+		<button
+			on:click={() => showMobileDropdown.update(() => (show = !show))}
+			aria-label="hamburger menu"
+		>
 			<HamburgerMenu />
 		</button>
 	</nav>
-	{#if showNavbar}
+	{#if show}
 		<NavbarMobile />
 	{/if}
 </div>

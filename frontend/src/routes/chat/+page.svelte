@@ -83,6 +83,15 @@
 		console.error(err);
 	}
 
+	let textArea: HTMLTextAreaElement;
+
+	function autoResize() {
+		if (textArea) {
+			textArea.style.height = '24px';
+			textArea.style.height = `${textArea.scrollHeight}px`;
+		}
+	}
+
 	onMount(() => scrollToBottom());
 
 	const faqs = [
@@ -220,66 +229,68 @@
 	</div>
 
 	<!-- Message input -->
-	<div class="fixed left-0 top-[calc(100vh-10rem)] hidden h-40 w-full lg:absolute lg:block">
+	<div class="fixed left-0 bottom-0 h-40 w-full lg:absolute">
 		<div class="h-40">
-			<div class="h-1/2 w-full bg-gradient-to-t from-neutral-50" />
-			<div class="h-1/2 w-full bg-neutral-50" />
+			<div class="h-1/4 w-full bg-gradient-to-t from-neutral-50" />
+			<div class="h-3/4 w-full bg-neutral-50" />
 		</div>
 	</div>
 	<div
-		class="fixed left-1/2 top-[calc(100vh-7rem)] hidden w-full max-w-4xl -translate-x-1/2 lg:absolute lg:block"
+		class="fixed bottom-16 left-1/2 w-full max-w-4xl -translate-x-1/2 lg:absolute"
 	>
 		<div class="relative flex w-full justify-center">
-			<div class="flex w-[90%] gap-4 2xl:w-full">
-				<button
-					class="to-accent flex h-12 justify-between gap-3 rounded-3xl bg-gradient-to-r from-amber-500 p-3 text-white transition-[filter] duration-300 hover:brightness-90"
-					on:click={() => (chatMessages = [])}
-				>
-					<Broom style="h-6 w-6 text-white" />
-					<span class="hidden text-base sm:block">New topic</span>
-				</button>
+			<div class="relative flex w-[90%] gap-4 2xl:w-full">
+				<div class="flex items-end">
+					<button
+						class="to-accent h-12 flex items-center justify-between gap-3 rounded-full bg-gradient-to-r from-amber-500 p-3 text-white transition-[filter] duration-300 hover:brightness-90"
+						on:click={() => (chatMessages = [])}
+					>
+						<Broom style="h-6 w-6 text-white" />
+						<span class="hidden text-base sm:block">New topic</span>
+					</button>
+				</div>
 				<div
-					class={`shadow-chat-msg relative h-12 flex-1 rounded-3xl bg-white p-3 transition-[height,border-radius] duration-300 ease-in-out ${
-						query
-							? 'rounded-2xl lg:h-24 lg:[&>div]:opacity-100'
-							: 'focus-within:rounded-2xl hover:rounded-2xl lg:focus-within:h-24 lg:hover:h-24 lg:[&>div]:focus-within:opacity-100 lg:[&>div]:hover:opacity-100'
-					}`}
+					class={`border-accent shadow-chat-msg-sm relative flex-1 rounded-t-lg border-b-4 bg-neutral-100 px-3 py-2 transition-[height,border-radius] duration-300 ease-in-out`}
 				>
-					<div class="relative flex h-full">
-						<Comments style="h-5 w-5" />
+					<div class="relative flex h-full items-center">
+						<div class="flex items-start h-full">
+							<Comments style="h-5 w-5" />
+						</div>
 						<form class="contents" data-sveltekit-noscroll>
-							<div class="relative inline-grid h-full w-full">
-								<textarea
-									class="relative col-start-1 row-start-1 h-10 w-full resize-none border-none bg-transparent pl-3 pr-10 text-lg text-black outline-none"
-									placeholder="Aa"
-									maxlength="4000"
-									enterkeyhint="send"
-									spellcheck="false"
-									autocapitalize="off"
-									aria-label="Ask chatbot"
-									bind:value={query}
-									on:keydown={(event) => {
-										if (event.key === 'Enter') {
-											event.preventDefault();
-											handleSubmit();
-										}
-									}}
-								/>
-							</div>
+							<textarea
+								class="relative h-6 max-h-40 w-full resize-none border-none bg-transparent pl-3 pr-10 text-base text-black outline-none"
+								placeholder="Aa"
+								maxlength="4000"
+								enterkeyhint="send"
+								spellcheck="false"
+								autocapitalize="off"
+								aria-label="Ask chatbot"
+								bind:value={query}
+								bind:this={textArea}
+								on:input={autoResize}
+								on:keydown={(event) => {
+									if (event.key === 'Enter') {
+										event.preventDefault();
+										handleSubmit();
+									}
+								}}
+							/>
 						</form>
 						{#if query}
-							<button class="absolute right-0 px-3" on:click={handleSubmit}>
-								<Send
-									style="h-5 w-5 hover:scale-125 hover:brightness-110 transition-[transform,filter] duration-300 text-accent"
-								/>
-							</button>
+							<div class="flex h-full relative items-start">
+								<button class="absolute right-0 px-3" on:click={handleSubmit}>
+									<Send
+										style="h-5 w-5 hover:scale-125 hover:brightness-110 transition-[transform,filter] duration-300 text-accent"
+									/>
+								</button>
+							</div>
 						{/if}
 					</div>
-					<div
+					<!-- <div
 						class="absolute bottom-0 flex items-center py-3 text-base text-neutral-500 opacity-0 transition-opacity duration-300"
 					>
 						{query.length}/4000
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
@@ -289,7 +300,7 @@
 <!-- Message menu but for mobile devices, the code is mostly the same -->
 <!-- On mobile devices, browsers have a bottom navbar/menu that appear, we don't want that to cover the input -->
 <!-- Copy pasting it looks ugly, but this is the easiest way to do it -->
-<div class="fixed bottom-0 left-0 block h-40 w-full max-w-7xl lg:hidden">
+<!-- <div class="fixed bottom-0 left-0 block h-40 w-full max-w-7xl lg:hidden">
 	<div class="h-40">
 		<div class="h-1/2 w-full bg-gradient-to-t from-neutral-50" />
 		<div class="h-1/2 w-full bg-neutral-50" />
@@ -343,7 +354,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 
 <!-- FAQs -->
 <!-- Could be a component itself -->

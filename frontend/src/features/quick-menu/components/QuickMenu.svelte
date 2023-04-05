@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { showChatBot } from '../../stores';
+	import { showChatBot } from '$lib/stores';
 	import { ChatBotIcon } from '../../chat-bot/assets/icons';
 	import { ChatBot } from '../..';
 
@@ -15,13 +15,13 @@
 	}`}
 >
 	<button
-		class="shadow-nav-shadow flex w-44 sm:w-52 items-center rounded-full bg-neutral-800 text-white transition-all duration-300 lg:hover:scale-90 lg:hover:brightness-110"
+		class="shadow-nav-shadow flex w-44 items-center rounded-full bg-neutral-800 text-white transition-all duration-300 sm:w-52 lg:hover:scale-90 lg:hover:brightness-110"
 		on:click={() => {
 			showChatBot.update(() => (show = !show));
 		}}
 		aria-label="Show chatbot"
 	>
-		<div class="bg-accent flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full">
+		<div class="bg-accent flex h-16 w-16 items-center justify-center rounded-full sm:h-20 sm:w-20">
 			<ChatBotIcon style="text-white h-10 w-10 sm:h-12 sm:w-12" />
 		</div>
 		<div class="flex flex-col pl-3 text-left">

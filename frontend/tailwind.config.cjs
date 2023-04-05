@@ -24,6 +24,7 @@ module.exports = {
         "card-black-2": "rgba(0, 0, 0, 1) 0px 0px 25px 5px",
         "custom-1": "rgba(0, 0, 0, 0.25) 0px 0px 30px",
         "chat-msg": "rgba(0, 0, 0, 0.25) 0px 3px 5px",
+        "chat-msg-sm": "rgba(0, 0, 0, 0.15) 0px 0px 5px",
         "green": "rgba(0, 255, 0, 0.5) 0px 20px 40px -20px",
         "yellow": "rgba(255, 242, 0, 0.5) 0px 20px 40px -20px",
         "blue": "rgba(37, 99, 235, 0.5) 0px 20px 40px -20px",

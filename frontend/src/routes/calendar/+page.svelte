@@ -12,21 +12,25 @@
 	// Default calendar to show
 	let currentCalendar = 'Senior High';
 
-	function handleNavigationClick(calendar: string){
+	function handleNavigationClick(calendar: string) {
 		currentCalendar = calendar;
-	};
+	}
 
 	const navigationItems = [
-		{ name: 'Grade School', calendar: gradeSchool },
-		{ name: 'Junior High', calendar: juniorHigh },
-		{ name: 'Senior High', calendar: seniorHigh },
+		{ name: 'Grade School' },
+		{ name: 'Junior High' },
+		{ name: 'Senior High' }
 	];
 </script>
 
-<nav class="flex w-full items-center justify-center py-10 px-4 relative">
+<nav class="relative flex w-full items-center justify-center px-4 py-10">
 	<ul class="flex h-full flex-row gap-8 text-xl">
 		{#each navigationItems as item, idx (idx)}
-			<li class={`text-base md:text-lg ${currentCalendar === item.name ? 'font-bold' : 'font-normal'}`}>
+			<li
+				class={`text-base md:text-lg ${
+					currentCalendar === item.name ? 'font-bold' : 'font-normal'
+				}`}
+			>
 				<button on:click={() => handleNavigationClick(item.name)} type="button">{item.name}</button>
 			</li>
 		{/each}
@@ -39,10 +43,4 @@
 	<Calendar events={juniorHigh} />
 {:else if currentCalendar === 'Senior High'}
 	<Calendar events={seniorHigh} />
-{:else}
-	<div class="flex justify-center h-screen">
-		<h1 class="font-gt-walsheim-pro-medium text-3xl">
-			Failed to fetch data, try refreshing!
-		</h1>
-	</div>
 {/if}
