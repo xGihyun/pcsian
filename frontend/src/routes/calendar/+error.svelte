@@ -16,10 +16,11 @@
 				},
 				publishedAt: 'a',
 				title: 'Event',
+				type: 'senior-high',
 				updatedAt: 'a'
 			},
 			id: 1,
-			type: 'senior-high'
+			color: ''
 		}
 	];
 </script>

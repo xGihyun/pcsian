@@ -1,6 +1,5 @@
 <script lang="ts">
-	import CurveWhiteBottom from '../../../assets/curves/CurveWhiteBottom.svelte';
-	import CurveWhiteTop from '../../../assets/curves/CurveWhiteTop.svelte';
+	import { CurveWhiteBottom, CurveWhiteTop } from '../../../assets/curves';
 	import {
 		Art,
 		ArtBoard,

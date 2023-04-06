@@ -1,13 +1,14 @@
 <script lang="ts">
 	import { Close, Send } from '../assets/icons';
-	import { showChatBot } from '$lib/stores';
+	import { conversationHistory, showChatBot } from '$lib/stores';
 	import type { ChatCompletionRequestMessage } from 'openai';
 	import { SSE } from 'sse.js';
 	import ChatMessage from './ChatMessage.svelte';
+	import { Stop } from '../../../assets/icons';
 
 	let show = false;
 	let scrollToDiv: HTMLDivElement;
-	let responseDone = false;
+	let responseDone = true;
 
 	function scrollToBottom() {
 		setTimeout(() => {
@@ -18,18 +19,21 @@
 	let query = '';
 	let answer = '';
 	let loading = false;
-	let chatMessages: ChatCompletionRequestMessage[] = [
-		{ role: 'assistant', content: 'Good day! How can I help?' }
-	];
+	let chatMessages: ChatCompletionRequestMessage[];
+	let eventSource: SSE;
+
+	conversationHistory.subscribe((value) => (chatMessages = value));
 
 	async function handleSubmit() {
 		loading = true;
 		responseDone = false;
 
-		chatMessages = [...chatMessages, { role: 'user', content: query }];
+		conversationHistory.update(
+			() => (chatMessages = [...chatMessages, { role: 'user', content: query }])
+		);
 
 		// Set up Server Sent Events (SSE)
-		const eventSource = new SSE('../../../api/chat', {
+		eventSource = new SSE('../../../api/chat', {
 			headers: {
 				'Content-Type': 'application/json'
 			},
@@ -48,7 +52,9 @@
 
 				// Check if the response is done
 				if (e.data === '[DONE]') {
-					chatMessages = [...chatMessages, { role: 'assistant', content: answer }];
+					conversationHistory.update(
+						() => (chatMessages = [...chatMessages, { role: 'assistant', content: answer }])
+					);
 					answer = '';
 					responseDone = true;
 					return;
@@ -68,6 +74,19 @@
 
 		eventSource.stream();
 		scrollToBottom();
+	}
+
+	function stopResponding() {
+		if (eventSource) {
+			eventSource.close();
+			conversationHistory.update(
+				() => (chatMessages = [...chatMessages, { role: 'assistant', content: answer }])
+			);
+			answer = '';
+			loading = false;
+			responseDone = true;
+			scrollToBottom();
+		}
 	}
 
 	function handleError<T>(err: T) {
@@ -104,23 +123,34 @@
 			{/if}
 			<div class="h-28" bind:this={scrollToDiv} />
 		</div>
-		<span class="absolute left-0 bottom-0 h-32 w-full bg-gradient-to-t from-black opacity-50" />
-		<div
-			class="absolute left-[50%] bottom-3 w-[80%] -translate-x-[50%] rounded-full bg-neutral-700 p-3"
-		>
-			<form class="flex" data-sveltekit-noscroll>
-				<input
-					class="w-full bg-transparent outline-none"
-					type="text"
-					bind:value={query}
-					placeholder="Aa"
-				/>
-				<button on:click={handleSubmit}>
-					<Send
-						style="h-[20px] w-[20px] hover:text-accent hover:scale-110 transition-all duration-300"
-					/>
+		<span class="absolute bottom-0 left-0 h-32 w-full bg-gradient-to-t from-black opacity-50" />
+		<div class="absolute bottom-3 left-[50%] w-[80%] -translate-x-[50%]">
+			<div class="flex flex-col items-center gap-4">
+				<button
+					class={`border-accent z-10 flex w-fit items-center gap-1 rounded-lg border-[1px] bg-neutral-800 px-2 py-1 transition-[transform,opacity] delay-300 duration-500 ${
+						!responseDone ? 'translate-y-0 opacity-100' : 'translate-y-14 opacity-0'
+					}`}
+					on:click={stopResponding}
+				>
+					<Stop style="h-6 w-6 text-accent" />
+					<span class="text-accent text-base">Stop Responding</span>
 				</button>
-			</form>
+				<div class="z-20 w-full rounded-full bg-neutral-700 p-3">
+					<form class="flex" data-sveltekit-noscroll>
+						<input
+							class="w-full bg-transparent outline-none"
+							type="text"
+							bind:value={query}
+							placeholder="Aa"
+						/>
+						<button on:click={handleSubmit}>
+							<Send
+								style="h-[20px] w-[20px] hover:text-accent hover:scale-110 transition-all duration-300"
+							/>
+						</button>
+					</form>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

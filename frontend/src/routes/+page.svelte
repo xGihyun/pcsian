@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { Hero, Programs } from '../components';
-	import CurveWhiteTop from '../assets/curves/CurveWhiteTop.svelte';
-	import CurveWhiteBottom from '../assets/curves/CurveWhiteBottom.svelte';
+	import { CurveWhiteBottom, CurveWhiteTop } from '../assets/curves';
 	import '../styles/curves.css';
 	import { inview } from 'svelte-inview';
 	import { pcsAnnex } from '../assets/images';

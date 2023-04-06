@@ -18,3 +18,11 @@ export function replaceWordsWithLinks(text: string) {
 		}
 	});
 }
+
+export const greetings = [
+	'Good day! How can I help?',
+	"Let's start a new topic! Ask anything about Pateros Catholic School.",
+	"Greetings, human! I'm Pateros Catholic School's chatbot, here to make your life easier.",
+	"What's up? Your favorite chatbot is here to help you out with anything you need!",
+	"Hey! It's great to see you. Let me know how I can assist you in making your school experience better."
+];

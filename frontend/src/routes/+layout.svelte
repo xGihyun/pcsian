@@ -1,41 +1,17 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import '../app.css';
-	import { Footer, Loader, Navbar } from '../components';
+	import { Footer, Loader, Navbar, Transition } from '../components';
 	import { QuickMenu } from '../features';
-	import Transition from '../components/Transition.svelte';
 	import { page } from '$app/stores';
-	// import { csgo } from '../assets/images';
+	import { preloadData } from '$app/navigation';
 
 	let loading = true;
 	let display = 'block';
 
-	// let x = 0;
-	// let y = 0;
-	// let cursor: HTMLDivElement;
-
-	// function moveCursor(e: any, interacting: boolean) {
-	// 	// const cursorRect = cursor.getBoundingClientRect();
-	// 	// const cursorWidth = cursorRect.width;
-	// 	// const cursorHeight = cursorRect.height;
-	// 	// const cursorX = e.clientX - cursorWidth / 2;
-	// 	// const cursorY = e.clientY - cursorHeight / 2;
-
-	// 	x = e.clientX;
-	// 	y = e.clientY;
-
-	// 	interacting ? (cursor.style.scale = '1.5') : (cursor.style.scale = '1');
-
-	// 	// cursor.style.left = `${cursorX}px`;
-	// 	// cursor.style.top = `${cursorY}px`;
-	// 	cursor.style.left = `${x - 12}px`;
-	// 	cursor.style.top = `${y - 12}px`;
-	// }
-
-	// let interacting = false;
-	// Do the animation stuff
 	onMount(() => {
 		scrollTo(0, 0);
+		preloadData('/calendar');
 
 		setTimeout(() => {
 			loading = false;
@@ -44,22 +20,6 @@
 		setTimeout(() => {
 			display = 'hidden';
 		}, 2000);
-
-		// window.onmousemove = (e: any) => {
-		// 	const interactable = e.target.closest('a') || e.target.closest('button');
-		// 	interacting = interactable !== null;
-		// 	moveCursor(e, interacting);
-		// };
-		// window.onmousedown = () => (cursor.style.scale = '2');
-		// window.onmouseup = () => (cursor.style.scale = '1');
-		// window.onclick = () => {
-		// 	cursor.classList.add("animate-expand2");
-		// 	cursor.classList.add("after:animate-expand");
-		// 	setTimeout(() => {
-		// 		cursor.classList.remove("animate-expand2");
-		// 		cursor.classList.remove("after:animate-expand");
-		// 	}, 500)
-		// }
 	});
 </script>
 
@@ -68,20 +28,6 @@
 		loading ? 'translate-y-0' : '-translate-y-[calc(100vh+15rem)]'
 	}`}
 />
-
-<!-- Custom cursor -->
-<!-- <div
-	class="hidden lg:block pointer-events-none fixed z-[999] h-6 w-6 rounded-full bg-white mix-blend-difference transition-[scale] duration-150 after:fixed after:h-6 after:w-6 after:opacity-0 after:rounded-full after:border-[1px] after:border-red-500 after:content-['']"
-	bind:this={cursor}
-/> -->
-
-<!-- CS:GO crosshair -->
-<!-- <img
-	class="pointer-events-none fixed z-[999] hidden transition-[scale] duration-150 lg:block"
-	src={csgo}
-	alt="csgo"
-	bind:this={cursor}
-/> -->
 
 <Navbar />
 {#if $page.url.pathname !== '/chat'}

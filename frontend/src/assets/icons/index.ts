@@ -26,6 +26,7 @@ import CookingDough from './CookingDough.svelte';
 import FoodProducts from './FoodProducts.svelte';
 import Hotdog from './Hotdog.svelte';
 import Conclusion from './Conclusion.svelte';
+import Stop from './Stop.svelte';
 
 export {
 	ChevronRight,
@@ -56,4 +57,5 @@ export {
   FoodProducts,
   Hotdog,
   Conclusion,
+	Stop
 };

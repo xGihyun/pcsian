@@ -9,13 +9,20 @@
 	export let responseDone: boolean;
 
 	onMount(() => {
-		const element = document.querySelectorAll('[data-response]');
-		const lastResponseElement = element[element.length - 1];
+		const elements: NodeListOf<HTMLParagraphElement> = document.querySelectorAll('[data-response]');
+		const lastResponseElement = elements[elements.length - 1];
 
 		// Only replace words with links after the response is done so it wouldn't be interrupted
 		if (responseDone) {
-			const originalContent = lastResponseElement.innerHTML;
-			lastResponseElement.innerHTML = replaceWordsWithLinks(originalContent);
+			if (elements) {
+				for (let i = 0; i < elements.length; i++) {
+					const originalContent = elements[i].innerText;
+					elements[i].innerHTML = replaceWordsWithLinks(originalContent);
+				}
+			} else {
+				const originalContent = lastResponseElement.innerText;
+				lastResponseElement.innerHTML = replaceWordsWithLinks(originalContent);
+			}
 		}
 	});
 </script>
