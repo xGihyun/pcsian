@@ -1,8 +1,11 @@
 <script lang="ts">
 	import OrangeBlob1 from '../assets/blobs/OrangeBlob1.svelte';
-	// import { kessokuBand } from '../assets/images';
-	import { inview } from 'svelte-inview';
+	import { inview, type ObserverEventDetails } from 'svelte-inview';
 	import '../styles/animations.css';
+	import type { LatestEvent } from '$lib/types';
+	import { format } from 'date-fns';
+
+	export let latestEvents: LatestEvent[];
 
 	const programs = [
 		{
@@ -10,48 +13,21 @@
 			description:
 				'Nurturing learning, character, and life skills for academic and personal success through a dynamic and holistic approach.',
 			bg: 'bg-grade-school',
-			path: '/grade-school'
+			source: '/grade-school'
 		},
 		{
 			title: 'Junior High',
 			description:
 				'Fostering academic excellence and holistic development through Catholic teachings, creative talents, and social responsibility.',
 			bg: 'bg-junior-high',
-			path: '/junior-high'
+			source: '/junior-high'
 		},
 		{
 			title: 'Senior High',
 			description:
 				'Empowering students for lifelong success through a holistic education that fosters critical thinking, practical skills, and ethical values.',
 			bg: 'bg-senior-high',
-			path: '/senior-high'
-		}
-	];
-
-	const latestEvents = [
-		{
-			title: 'DAGITAB: Pagliyab ng Pusong Makabayan',
-			description:
-				'Speakers including Patricia Non, Atty. Luke Espiritu, Atty. Neri Colmenares, and Cong. Teddy Baguilat participated in KINAADMAN 2023 to discuss and promote nationalism.',
-			date: 'March 21, 2023',
-			bg: 'bg-dagitab',
-			path: 'https://www.facebook.com/kinaadman.pcsshs/posts/pfbid022ZDyh6yDCEJwZ38Hnu5c197iPEzzCaH3CrYCVr5amsNRwqwFVbAvMDJUkVead861l'
-		},
-		{
-			title: 'DAGITAB: Pagliyab ng Pusong Makabayan',
-			description:
-				'Speakers including Patricia Non, Atty. Luke Espiritu, Atty. Neri Colmenares, and Cong. Teddy Baguilat participated in KINAADMAN 2023 to discuss and promote nationalism.',
-			date: 'March 21, 2023',
-			bg: 'bg-dagitab',
-			path: 'https://www.facebook.com/kinaadman.pcsshs/posts/pfbid022ZDyh6yDCEJwZ38Hnu5c197iPEzzCaH3CrYCVr5amsNRwqwFVbAvMDJUkVead861l'
-		},
-		{
-			title: 'DAGITAB: Pagliyab ng Pusong Makabayan',
-			description:
-				'Speakers including Patricia Non, Atty. Luke Espiritu, Atty. Neri Colmenares, and Cong. Teddy Baguilat participated in KINAADMAN 2023 to discuss and promote nationalism.',
-			date: 'March 21, 2023',
-			bg: 'bg-dagitab',
-			path: 'https://www.facebook.com/kinaadman.pcsshs/posts/pfbid022ZDyh6yDCEJwZ38Hnu5c197iPEzzCaH3CrYCVr5amsNRwqwFVbAvMDJUkVead861l'
+			source: '/senior-high'
 		}
 	];
 
@@ -61,6 +37,18 @@
 
 	const options = { unobserveOnEnter: true, rootMargin: '-10%' };
 	let isInView = [false, false, false];
+
+	function handleChangeFactory(index: number) {
+		return function handleChange({ detail }: CustomEvent<ObserverEventDetails>) {
+			isInView[index] = detail.inView;
+		};
+	}
+
+	// Group the sorted events by date from most recent to oldest
+	// Only get the 3 latest events
+	latestEvents = latestEvents
+		.sort((a, b) => Date.parse(b.attributes.date) - Date.parse(a.attributes.date))
+		.slice(0, 3);
 </script>
 
 <div class="py-32 md:py-60">
@@ -71,9 +59,7 @@
 		<div
 			class="flex w-full flex-col text-white lg:max-w-[50%]"
 			use:inview={options}
-			on:change={({ detail }) => {
-				isInView[0] = detail.inView;
-			}}
+			on:change={handleChangeFactory(0)}
 		>
 			<h2
 				class={`font-gt-walsheim-pro-medium transition-transform-opacity-filter mb-8 text-3xl duration-1000 ease-in-out lg:text-5xl ${
@@ -155,9 +141,7 @@
 					: 'lg:translate-y-full lg:opacity-0 lg:blur-[2px]'
 			}`}
 			use:inview={options}
-			on:change={({ detail }) => {
-				isInView[1] = detail.inView;
-			}}
+			on:change={handleChangeFactory(1)}
 		>
 			Programs
 		</h3>
@@ -192,7 +176,7 @@
 									{program.description}
 								</p>
 								<a
-									href={program.path}
+									href={program.source}
 									class="rounded-full border-[1px] border-neutral-400 px-3 py-1 text-sm text-white transition-colors duration-300 hover:bg-white hover:text-black sm:text-base"
 									type="button">Learn More</a
 								>
@@ -213,9 +197,7 @@
 					: 'lg:translate-y-full lg:opacity-0 lg:blur-[2px]'
 			}`}
 			use:inview={options}
-			on:change={({ detail }) => {
-				isInView[2] = detail.inView;
-			}}
+			on:change={handleChangeFactory(2)}
 		>
 			Latest Events
 		</h3>
@@ -227,9 +209,7 @@
 					class="lg:hover:shadow-card transition-[filter,box-shadow] duration-300 lg:brightness-75 lg:hover:brightness-100 lg:[&>div>div>div>a]:hover:border-white lg:[&>div>div>div>div]:hover:after:scale-x-100 lg:[&>div>div>div>p]:hover:text-white"
 				>
 					<div
-						class={`${
-							event.bg
-						} transition-transform-opacity-filter h-96 sm:h-112 w-full max-w-sm bg-cover duration-1000 ${
+						class={`bg-default transition-transform-opacity-filter sm:h-112 h-96 w-full max-w-sm bg-cover duration-1000 ${
 							delayEvents[idx]
 						} ${
 							isInView[2]
@@ -237,23 +217,26 @@
 								: 'lg:-translate-x-full lg:opacity-0 lg:blur-[2px]'
 						}`}
 					>
-						<div class="h-full flex flex-col justify-end pt-40">
+						<div class="flex h-full flex-col justify-end pt-40">
 							<div class="gradient px-4 pb-4 pt-16">
 								<div
 									class="before:bg-accent-dark after:bg-accent relative text-base text-white transition-colors duration-300 before:absolute before:-bottom-1 before:left-[calc(1rem*-1)] before:h-[2px] before:w-full before:content-[''] after:absolute after:-bottom-1 after:left-[calc(1rem*-1)] after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:transition-transform after:duration-300 after:content-['']"
 								>
-									<h4 class="sm:text-xl line-clamp-1" title={event.title}>
-										{event.title}
+									<h4 class="line-clamp-1 sm:text-xl" title={event.attributes.title}>
+										{event.attributes.title}
 									</h4>
-									<span class="text-sm text-neutral-400 lg:text-base">{event.date}</span>
+									<span class="text-sm text-neutral-400 lg:text-base"
+										>{format(new Date(event.attributes.date), 'MMMM d, yyyy')}</span
+									>
 								</div>
 								<p
-									class="my-4 text-sm text-neutral-200 transition-colors duration-300 lg:text-base line-clamp-3" title={event.description}
+									class="my-4 line-clamp-3 text-sm text-neutral-200 transition-colors duration-300 lg:text-base"
+									title={event.attributes.description}
 								>
-									{event.description}
+									{event.attributes.description}
 								</p>
 								<a
-									href={event.path}
+									href={event.attributes.source}
 									class="rounded-full border-[1px] border-neutral-400 px-3 py-1 text-sm text-white transition-colors duration-300 hover:bg-white hover:text-black sm:text-base"
 									type="button"
 									target="_blank"

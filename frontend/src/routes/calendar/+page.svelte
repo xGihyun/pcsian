@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Calendar } from '../../features';
-	import type { Event } from '../../Types';
+	import type { Event } from '$lib/types';
 	import type { PageData } from './$types';
 
 	export let data: PageData;

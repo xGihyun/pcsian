@@ -46,3 +46,16 @@ export type Event = {
 export type EventMap = {
   [key: string]: Event[]
 }
+
+export type LatestEvent = {
+  attributes: {
+    createdAt: string,
+    date: string,
+    description: string,
+    publishedAt: string,
+    source: string,
+    title: string,
+    updatedAt: string,
+  },
+  id: number,
+}

@@ -1,4 +1,4 @@
-import type { DropdownItem } from '../Types';
+import type { DropdownItem } from '$lib/types';
 
 export const navItems = [
 	{

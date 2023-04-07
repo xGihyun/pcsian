@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { juniorHighDepartment } from '../../../assets/images';
 	import { juniorHigh } from '../../../constants';
 </script>
 
@@ -25,7 +26,8 @@
 			and commitment to social responsibility, showing respect for the dignity of all persons, and
 			actively participating in campaigns for the care and protection of the environment.
 		</p>
-		<div class="hidden h-[400px] w-[500px] bg-neutral-400 lg:block" />
+		<img src={juniorHighDepartment} class="max-w-lg w-full hidden lg:block" alt="pcs junior high department" />
+		<!-- <div class="hidden h-[400px] w-[500px] bg-neutral-400 lg:block" /> -->
 		<!-- <div class="h-80 w-[400px] bg-amber-400" /> -->
 	</div>
 	<h2 class="my-5 text-center text-2xl font-semibold uppercase">Objectives</h2>

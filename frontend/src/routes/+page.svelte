@@ -1,13 +1,25 @@
 <script lang="ts">
 	import { Hero, Programs } from '../components';
 	import { CurveWhiteBottom, CurveWhiteTop } from '../assets/curves';
-	import '../styles/curves.css';
-	import { inview } from 'svelte-inview';
 	import { pcsAnnex } from '../assets/images';
+	import type { PageData } from './$types';
+	import type { LatestEvent } from '$lib/types';
+	import { inview, type ObserverEventDetails, type Options } from 'svelte-inview';
+	import '../styles/curves.css';
+
+	export let data: PageData;
+
+	const latestEvents: LatestEvent[] = data.latestEvents.data
 
 	let isInView = [false, false];
 
-	const options = { unobserveOnEnter: true, rootMargin: '-10%' };
+	const options: Options = { unobserveOnEnter: true, rootMargin: '-10%' };
+
+	function handleChangeFactory(index: number) {
+		return function handleChange({ detail }: CustomEvent<ObserverEventDetails>) {
+			isInView[index] = detail.inView;
+		};
+	}
 </script>
 
 <!-- Hero section -->
@@ -15,7 +27,7 @@
 
 <!-- Homepage body -->
 <div class="relative flex w-full bg-white px-[10%] py-20 text-black lg:px-[20%] lg:py-32">
-	<div class="flex flex-col justify-center ">
+	<div class="flex flex-col justify-center">
 		<h2
 			class={`font-gt-walsheim-pro-medium transition-transform-opacity-filter transform-gpu text-start text-3xl duration-1000 ease-in-out md:text-center md:text-5xl ${
 				isInView[0]
@@ -23,9 +35,7 @@
 					: 'lg:translate-y-full lg:opacity-0 lg:blur-[2px]'
 			}`}
 			use:inview={options}
-			on:change={({ detail }) => {
-				isInView[0] = detail.inView;
-			}}
+			on:change={handleChangeFactory(0)}
 		>
 			My home from Nursery to Grade 12... and beyond
 		</h2>
@@ -52,12 +62,13 @@
 <!-- Academic programs and latest events -->
 <div class="relative bg-black">
 	<CurveWhiteTop />
-	<Programs />
+	<Programs {latestEvents} />
 	<CurveWhiteBottom />
 </div>
 
 <div class="relative h-full bg-white px-[10%] py-20 lg:py-32">
 	<img
+		loading="lazy"
 		src={pcsAnnex}
 		alt="pcs annex"
 		class="transition-transform-opacity-filter absolute bottom-0 right-0 max-w-sm opacity-20 saturate-0 duration-300 sm:right-[10%] md:max-w-lg lg:max-w-none lg:hover:opacity-75 lg:hover:saturate-100"
@@ -65,9 +76,7 @@
 	<div
 		class="flex justify-between gap-10 lg:w-2/3"
 		use:inview={options}
-		on:change={({ detail }) => {
-			isInView[1] = detail.inView;
-		}}
+		on:change={handleChangeFactory(1)}
 	>
 		<div class="flex flex-col">
 			<div
@@ -76,10 +85,6 @@
 						? 'lg:translate-y-0 lg:opacity-100 lg:blur-0'
 						: 'lg:translate-y-full lg:opacity-0 lg:blur-[2px]'
 				}`}
-				use:inview={options}
-				on:change={({ detail }) => {
-					isInView[1] = detail.inView;
-				}}
 			/>
 			<h2
 				class={`font-gt-walsheim-pro-medium transition-transform-opacity-filter mb-8 text-3xl duration-1000 ease-in-out md:text-5xl ${
@@ -110,14 +115,14 @@
 				</div>
 				<div class="flex gap-4">
 					<a
-						class="hover:bg-accent z-30 rounded-full bg-black py-2 px-4 text-sm text-white transition-[transform,background-color] duration-300 hover:scale-90 md:py-3 md:px-5 md:text-xl"
+						class="hover:bg-accent z-30 rounded-full bg-black px-4 py-2 text-sm text-white transition-[transform,background-color] duration-300 hover:scale-90 md:px-5 md:py-3 md:text-xl"
 						href="https://schoolaide.pcsian.edu.ph/login"
 						rel="noreferrer"
 						target="_blank"
 						type="button">Apply Now</a
 					>
 					<a
-						class="z-30 rounded-full border-[1px] border-black py-2 px-4 text-sm text-black transition-transform duration-300 hover:scale-90 md:py-3 md:px-5 md:text-xl"
+						class="z-30 rounded-full border-[1px] border-black px-4 py-2 text-sm text-black transition-transform duration-300 hover:scale-90 md:px-5 md:py-3 md:text-xl"
 						href="https://www.facebook.com/PCS.OfficialPage"
 						rel="noreferrer"
 						target="_blank"
@@ -128,4 +133,3 @@
 		</div>
 	</div>
 </div>
-

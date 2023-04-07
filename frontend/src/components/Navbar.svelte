@@ -6,6 +6,7 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { showMobileDropdown } from '$lib/stores';
+	import { pcsLogoNew, pcsLogoNewOutlineWhite } from '../assets/images';
 
 	let scrolled = false;
 	let hovered = false;
@@ -53,10 +54,18 @@
 		>
 			<!-- PCS logo -->
 			<div class="relative h-28 w-28">
-				<div
-					class={`bg-pcs-orig absolute z-10 h-28 w-28 transform-gpu bg-cover bg-no-repeat opacity-0 transition-opacity duration-500 ease-in-out hover:opacity-100`}
+				<img
+					src={pcsLogoNew}
+					class="absolute z-10 h-28 w-28 transform-gpu bg-cover bg-no-repeat opacity-0 transition-opacity duration-300 ease-in-out hover:opacity-100"
+					alt="pcs logo"
+					loading="lazy"
 				/>
-				<div class="bg-pcs-outline-white absolute z-[9] h-28 w-28 bg-cover bg-no-repeat" />
+				<img
+					src={pcsLogoNewOutlineWhite}
+					class="absolute z-[9] h-28 w-28 bg-cover bg-no-repeat"
+					alt="pcs logo"
+					loading="lazy"
+				/>
 			</div>
 
 			<!-- PCS text -->
@@ -115,10 +124,18 @@
 	>
 		<a href="/">
 			<div class="relative h-14 w-14">
-				<div
-					class="bg-pcs-orig absolute z-10 h-14 w-14 transform-gpu bg-cover bg-no-repeat opacity-0 transition-opacity duration-500 ease-in-out hover:opacity-100"
+				<img
+					src={pcsLogoNew}
+					class="absolute z-10 h-14 w-14 transform-gpu bg-cover bg-no-repeat opacity-0 transition-opacity duration-300 ease-in-out hover:opacity-100"
+					alt="pcs logo"
+					loading="lazy"
 				/>
-				<div class="bg-pcs-outline-white absolute z-[9] h-14 w-14 bg-cover bg-no-repeat" />
+				<img
+					src={pcsLogoNewOutlineWhite}
+					class="absolute z-[9] h-14 w-14 bg-cover bg-no-repeat"
+					alt="pcs logo"
+					loading="lazy"
+				/>
 			</div>
 		</a>
 		<button

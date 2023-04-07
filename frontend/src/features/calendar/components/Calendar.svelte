@@ -12,7 +12,7 @@
 		endOfWeek,
 		startOfWeek
 	} from 'date-fns';
-	import type { Event } from '../../../Types';
+	import type { Event } from '$lib/types';
 	import { ChevronLeft, ChevronRight } from '../assets/icons';
 
 	export let events: Event[];

@@ -53,6 +53,7 @@ module.exports = {
         "img-7": "url('./assets/images/confirmation2.webp')",
         "img-8": "url('./assets/images/equalizer.webp')",
         "dagitab": "url('./assets/images/dagitab.webp')",
+        "default": "url('./assets/images/pcsAnnex2.webp')",
       },
       transitionDelay: {
         "400": "400ms",

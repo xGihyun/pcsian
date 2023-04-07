@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Email, Telephone, Location, Facebook } from '../assets/icons';
+	import { pcsLogoNew, pcsLogoNewOutlineWhite } from '../assets/images';
 </script>
 
 <footer
@@ -9,10 +10,18 @@
 		<!-- PCS logo -->
 		<a href="/" class="flex justify-center">
 			<div class="relative h-52 w-52">
-				<div
-					class="bg-pcs-orig absolute z-10 h-52 w-52 transform-gpu bg-cover bg-no-repeat opacity-0 transition-opacity duration-500 ease-in-out hover:opacity-100"
+				<img
+					src={pcsLogoNew}
+					class="absolute z-10 h-52 w-52 transform-gpu bg-cover bg-no-repeat opacity-0 transition-opacity duration-300 ease-in-out hover:opacity-100"
+					alt="pcs logo"
+					loading="lazy"
 				/>
-				<div class="bg-pcs-outline-white absolute z-[9] h-52 w-52 bg-cover bg-no-repeat" />
+				<img
+					src={pcsLogoNewOutlineWhite}
+					class="absolute z-[9] h-52 w-52 bg-cover bg-no-repeat"
+					alt="pcs logo"
+					loading="lazy"
+				/>
 			</div>
 		</a>
 		<div class="w-full">

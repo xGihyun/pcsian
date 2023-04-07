@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { gradeSchoolDepartment } from '../../../assets/images';
 	import { gradeSchool } from '../../../constants';
 </script>
 
@@ -22,7 +23,8 @@
 			all aspects of their lives, including their relationships with others, their personal health
 			and well-being, and their ability to contribute to society in meaningful ways.
 		</p>
-		<div class="hidden h-[400px] w-[500px] bg-neutral-400 lg:block" />
+		<img src={gradeSchoolDepartment} class="max-w-lg w-full hidden lg:block" alt="pcs grade school department" />	
+		<!-- <div class="hidden h-[400px] w-[500px] bg-neutral-400 lg:block" /> -->
 		<!-- <div class="h-80 w-[400px] bg-amber-400" /> -->
 	</div>
 	<h2 class="my-5 text-center text-2xl font-semibold uppercase">Objectives</h2>

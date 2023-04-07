@@ -18,7 +18,7 @@
 		SignDocument,
 		SocialNetworking
 	} from '../../../assets/icons';
-	import { stem, abm, ad, humss, tvl, gas } from '../../../assets/images';
+	import { stem, abm, ad, humss, tvl, gas, seniorHighDepartment } from '../../../assets/images';
 	import { seniorHigh } from '../../../constants';
 
 	const strands = [
@@ -95,7 +95,8 @@
 			values, guiding students to work cooperatively, communicate honestly, and actively participate
 			in religious activities for personal and professional growth.
 		</p>
-		<div class="hidden h-[400px] w-[500px] bg-neutral-400 lg:block" />
+		<img src={seniorHighDepartment} class="max-w-lg w-full hidden lg:block" alt="pcs senior high department" />
+		<!-- <div class="hidden h-[400px] w-[500px] bg-neutral-400 lg:block" /> -->
 	</div>
 </div>
 <div class="relative bg-black">
@@ -126,6 +127,7 @@
 								src={strand.image}
 								alt={`pcs ${strand.name}`}
 								class="w-full max-w-[10rem] object-cover"
+								loading="lazy"
 							/>
 						</div>
 						<div class="flex h-full w-full flex-col">

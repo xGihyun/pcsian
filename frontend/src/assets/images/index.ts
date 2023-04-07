@@ -3,31 +3,35 @@ import juniorHigh from './juniorHigh.webp';
 import seniorHigh from './seniorHigh.webp';
 import pcsAnnex from './pcsAnnex.webp';
 import pcsAnnex2 from './pcsAnnex2.webp';
-import pcsMain from './pcsMain.png';
-import kessokuBand from './KessokuBand.webp';
-import qrCode from './pcsQrCode.webp';
-import pcsMembers from './pcsMembers.webp';
+// import pcsMain from './pcsMain.png';
+// import kessokuBand from './KessokuBand.webp';
+// import qrCode from './pcsQrCode.webp';
+// import pcsMembers from './pcsMembers.webp';
 import pcsLogoNew from './pcsLogoNew.webp';
 import pcsLogoNewOutlineWhite from './pcsLogoNewOutlineWhite.webp';
-import pcsLogoNewOutlineBlack from './pcsLogoNewOutlineBlack.webp';
-import csgo from './csgo.png';
 import logoLeaf from './logoLeaf.webp';
 import logoCandleBook from './logoCandleBook.webp';
-import ceap from './ceap.webp';
-import mapsa from './mapsa.webp';
-import paascu from './paascu.webp';
-import padss from './padss.webp';
+// import ceap from './ceap.webp';
+// import mapsa from './mapsa.webp';
+// import paascu from './paascu.webp';
+// import padss from './padss.webp';
 import stem from './stem.webp';
 import abm from './abm.webp';
 import ad from './ad.webp';
 import humss from './humss.webp';
 import tvl from './tvl.webp';
 import gas from './gas.webp';
+import gradeSchoolDepartment from './gradeSchoolDepartment3.webp';
+import juniorHighDepartment from './juniorHighDepartment.webp';
+import seniorHighDepartment from './seniorHighDepartment.webp';
 
 export {
 	gradeSchool,
+	gradeSchoolDepartment,
 	juniorHigh,
+	juniorHighDepartment,
 	seniorHigh,
+	seniorHighDepartment,
 	pcsAnnex2,
 	kessokuBand,
 	qrCode,
