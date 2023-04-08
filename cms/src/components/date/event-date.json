@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_date_event_dates",
+  "info": {
+    "displayName": "eventDate"
+  },
+  "options": {},
+  "attributes": {
+    "start": {
+      "type": "date"
+    },
+    "end": {
+      "type": "date"
+    }
+  }
+}

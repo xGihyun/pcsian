@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "junior_highs",
+  "info": {
+    "singularName": "junior-high",
+    "pluralName": "junior-highs",
+    "displayName": "Junior High"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "calendars": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::calendar.calendar"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "senior_highs",
+  "info": {
+    "singularName": "senior-high",
+    "pluralName": "senior-highs",
+    "displayName": "Senior High"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "calendars": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::calendar.calendar"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "grade_schools",
+  "info": {
+    "singularName": "grade-school",
+    "pluralName": "grade-schools",
+    "displayName": "Grade School",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "calendars": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::calendar.calendar"
+    }
+  }
+}
