@@ -3,11 +3,12 @@ import {
 	JUNIOR_HIGH_END_POINT,
 	SENIOR_HIGH_END_POINT
 } from '$env/static/private';
+import type { Calendar } from '$lib/types.js';
 import { error } from '@sveltejs/kit';
 
 // Fetch data from Strapi
 export async function load({ fetch, setHeaders }) {
-	async function getGradeSchool() {
+	async function getGradeSchool(): Promise<{data: Calendar[]}> {
 		const res = await fetch(GRADE_SCHOOL_END_POINT);
 
 		if (!res.ok) {
@@ -19,7 +20,7 @@ export async function load({ fetch, setHeaders }) {
 		return { data };
 	}
 
-	async function getJuniorHigh() {
+	async function getJuniorHigh(): Promise<{data: Calendar[]}> {
 		const res = await fetch(JUNIOR_HIGH_END_POINT);
 
 		if (!res.ok) {
@@ -31,7 +32,7 @@ export async function load({ fetch, setHeaders }) {
 		return { data };
 	}
 
-	async function getSeniorHigh() {
+	async function getSeniorHigh(): Promise<{data: Calendar[]}> {
 		const res = await fetch(SENIOR_HIGH_END_POINT);
 
 		if (!res.ok) {
@@ -59,8 +60,10 @@ export async function load({ fetch, setHeaders }) {
 	}
 
 	return {
-		gradeSchool: getGradeSchool(),
-		juniorHigh: getJuniorHigh(),
-		seniorHigh: getSeniorHigh()
+		streamed: {
+			gradeSchool: getGradeSchool(),
+			juniorHigh: getJuniorHigh(),
+			seniorHigh: getSeniorHigh()
+		}
 	};
 }

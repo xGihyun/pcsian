@@ -12,10 +12,12 @@
 		endOfWeek,
 		startOfWeek
 	} from 'date-fns';
-	import type { Event } from '$lib/types';
+	import type { CalendarEvent, Calendar } from '$lib/types';
 	import { ChevronLeft, ChevronRight } from '../assets/icons';
 
-	export let events: Event[];
+	export let eventsData: Calendar[];
+
+	const events = eventsData[0].attributes.calendars.data;
 
 	let today = startOfToday();
 	let currentMonth = format(today, 'MMM-yyyy');
@@ -51,7 +53,7 @@
 	}
 
 	// Sort array based on the difference between the start and end
-	events.sort((a: Event, b: Event) => {
+	events.sort((a: CalendarEvent, b: CalendarEvent) => {
 		const aDateDiff =
 			new Date(a.attributes.date.end).getTime() - new Date(a.attributes.date.start).getTime();
 		const bDateDiff =
@@ -61,7 +63,7 @@
 	});
 
 	// Group the sorted events by date
-	const eventsByDate = new Map<string, Event[]>();
+	const eventsByDate = new Map<string, CalendarEvent[]>();
 
 	events.forEach((event) => {
 		const dates = getDates(event.attributes.date.start, event.attributes.date.end);
@@ -78,7 +80,7 @@
 	let clickedDayFormat = format(today, 'yyyy-MM-dd');
 
 	function handleDateClick(date: string) {
-		const event = eventsByDate.get(date) as Event[];
+		const event = eventsByDate.get(date) as CalendarEvent[];
 
 		return event;
 	}

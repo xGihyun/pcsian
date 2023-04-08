@@ -96,7 +96,6 @@
 			in religious activities for personal and professional growth.
 		</p>
 		<img src={seniorHighDepartment} class="max-w-lg w-full hidden lg:block" alt="pcs senior high department" />
-		<!-- <div class="hidden h-[400px] w-[500px] bg-neutral-400 lg:block" /> -->
 	</div>
 </div>
 <div class="relative bg-black">
@@ -105,15 +104,6 @@
 		<h2 class="my-5 text-center text-2xl font-semibold uppercase tracking-widest text-white">
 			Strands Offered
 		</h2>
-		<!-- <div class="mx-auto grid grid-cols-1 gap-20 md:grid-cols-2 lg:grid-cols-3 xl:px-20">
-			{#each strands as strand, idx (idx)}
-				<div class="text-center flex flex-col items-center justify-end">
-					<img src={strand.image} alt="" class="mb-4 max-w-[10rem] sm:max-w-xs w-full object-cover" />
-					<span class="text-white">{strand.name}</span>
-				</div>
-				
-			{/each}
-		</div> -->
 		<div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-20 lg:grid-cols-2">
 			{#each strands as strand, idx (idx)}
 				<div class={`flex w-full justify-center`}>

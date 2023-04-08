@@ -1,11 +1,13 @@
 <script lang="ts">
 	import OrangeBlob1 from '../assets/blobs/OrangeBlob1.svelte';
-	import { inview, type ObserverEventDetails } from 'svelte-inview';
-	import '../styles/animations.css';
 	import type { LatestEvent } from '$lib/types';
 	import { format } from 'date-fns';
+	import { inview } from 'svelte-inview';
+	import type { Options, ObserverEventDetails } from 'svelte-inview';
+	import '../styles/animations.css';
+	import { ArrowClockwise } from '../assets/icons';
 
-	export let latestEvents: LatestEvent[];
+	export let latestEventsData: Promise<{ data: LatestEvent[] }>;
 
 	const programs = [
 		{
@@ -35,20 +37,14 @@
 	const delayProgram = ['delay-600', 'delay-800', 'delay-1000'];
 	const delayEvents = ['delay-600', 'delay-800', 'delay-1000'];
 
-	const options = { unobserveOnEnter: true, rootMargin: '-10%' };
-	let isInView = [false, false, false];
+	const options: Options = { rootMargin: '-10%', unobserveOnEnter: true };
+	let isInView: boolean[] = Array(3);
 
 	function handleChangeFactory(index: number) {
 		return function handleChange({ detail }: CustomEvent<ObserverEventDetails>) {
 			isInView[index] = detail.inView;
 		};
 	}
-
-	// Group the sorted events by date from most recent to oldest
-	// Only get the 3 latest events
-	latestEvents = latestEvents
-		.sort((a, b) => Date.parse(b.attributes.date) - Date.parse(a.attributes.date))
-		.slice(0, 3);
 </script>
 
 <div class="py-32 md:py-60">
@@ -59,7 +55,7 @@
 		<div
 			class="flex w-full flex-col text-white lg:max-w-[50%]"
 			use:inview={options}
-			on:change={handleChangeFactory(0)}
+			on:inview_change={handleChangeFactory(0)}
 		>
 			<h2
 				class={`font-gt-walsheim-pro-medium transition-transform-opacity-filter mb-8 text-3xl duration-1000 ease-in-out lg:text-5xl ${
@@ -93,14 +89,6 @@
 		</div>
 		<div class="relative hidden h-full w-full items-center justify-center lg:flex">
 			<OrangeBlob1 />
-			<!-- <a
-				href="https://www.deviantart.com/haerge/art/Kessoku-Band-Bocchi-The-Rock-936713092"
-				rel="noreferrer"
-				target="_blank"
-			>
-				<img src={kessokuBand} alt="" class="float-shadow z-10 w-full max-w-xl" />
-			</a> -->
-			<!-- <div class="bg-accent w-96 h-32 rounded-[12rem/4rem] absolute -bottom-20"></div> -->
 			<div
 				class={`card-group transition-transform-opacity-filter animate-float shadow-card-black-2 aspect-[5/7] w-72 duration-1000 ease-in-out ${
 					isInView[0] ? 'lg:opacity-100 lg:blur-0' : 'lg:opacity-0 lg:blur-[2px]'
@@ -141,7 +129,7 @@
 					: 'lg:translate-y-full lg:opacity-0 lg:blur-[2px]'
 			}`}
 			use:inview={options}
-			on:change={handleChangeFactory(1)}
+			on:inview_change={handleChangeFactory(1)}
 		>
 			Programs
 		</h3>
@@ -197,56 +185,62 @@
 					: 'lg:translate-y-full lg:opacity-0 lg:blur-[2px]'
 			}`}
 			use:inview={options}
-			on:change={handleChangeFactory(2)}
+			on:inview_change={handleChangeFactory(2)}
 		>
 			Latest Events
 		</h3>
 		<div
 			class="flex w-full flex-col items-center justify-center gap-8 px-[10%] md:flex-row lg:gap-16"
 		>
-			{#each latestEvents as event, idx (idx)}
-				<div
-					class="lg:hover:shadow-card transition-[filter,box-shadow] duration-300 lg:brightness-75 lg:hover:brightness-100 lg:[&>div>div>div>a]:hover:border-white lg:[&>div>div>div>div]:hover:after:scale-x-100 lg:[&>div>div>div>p]:hover:text-white"
-				>
+			{#await latestEventsData}
+				<ArrowClockwise style="text-amber-500 h-40 w-40 animate-spin" />
+			{:then latestEvents}
+				{#each latestEvents.data
+					.sort((a, b) => Date.parse(b.attributes.date) - Date.parse(a.attributes.date))
+					.slice(0, 3) as event, idx (idx)}
 					<div
-						class={`bg-default transition-transform-opacity-filter sm:h-112 h-96 w-full max-w-sm bg-cover duration-1000 ${
-							delayEvents[idx]
-						} ${
-							isInView[2]
-								? 'lg:translate-x-0 lg:opacity-100 lg:blur-0'
-								: 'lg:-translate-x-full lg:opacity-0 lg:blur-[2px]'
-						}`}
+						class="lg:hover:shadow-card transition-[filter,box-shadow] duration-300 lg:brightness-75 lg:hover:brightness-100 lg:[&>div>div>div>a]:hover:border-white lg:[&>div>div>div>div]:hover:after:scale-x-100 lg:[&>div>div>div>p]:hover:text-white"
 					>
-						<div class="flex h-full flex-col justify-end pt-40">
-							<div class="gradient px-4 pb-4 pt-16">
-								<div
-									class="before:bg-accent-dark after:bg-accent relative text-base text-white transition-colors duration-300 before:absolute before:-bottom-1 before:left-[calc(1rem*-1)] before:h-[2px] before:w-full before:content-[''] after:absolute after:-bottom-1 after:left-[calc(1rem*-1)] after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:transition-transform after:duration-300 after:content-['']"
-								>
-									<h4 class="line-clamp-1 sm:text-xl" title={event.attributes.title}>
-										{event.attributes.title}
-									</h4>
-									<span class="text-sm text-neutral-400 lg:text-base"
-										>{format(new Date(event.attributes.date), 'MMMM d, yyyy')}</span
+						<div
+							class={`bg-default transition-transform-opacity-filter sm:h-112 h-96 w-full max-w-sm bg-cover bg-center duration-1000 ${
+								delayEvents[idx]
+							} ${
+								isInView[2]
+									? 'lg:translate-x-0 lg:opacity-100 lg:blur-0'
+									: 'lg:-translate-x-full lg:opacity-0 lg:blur-[2px]'
+							}`}
+						>
+							<div class="flex h-full flex-col justify-end pt-40">
+								<div class="gradient px-4 pb-4 pt-16">
+									<div
+										class="before:bg-accent-dark after:bg-accent relative text-base text-white transition-colors duration-300 before:absolute before:-bottom-1 before:left-[calc(1rem*-1)] before:h-[2px] before:w-full before:content-[''] after:absolute after:-bottom-1 after:left-[calc(1rem*-1)] after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:transition-transform after:duration-300 after:content-['']"
+									>
+										<h4 class="line-clamp-1 sm:text-xl" title={event.attributes.title}>
+											{event.attributes.title}
+										</h4>
+										<span class="text-sm text-neutral-400 lg:text-base"
+											>{format(new Date(event.attributes.date), 'MMMM d, yyyy')}</span
+										>
+									</div>
+									<p
+										class="my-4 line-clamp-3 text-sm text-neutral-200 transition-colors duration-300 lg:text-base"
+										title={event.attributes.description}
+									>
+										{event.attributes.description}
+									</p>
+									<a
+										href={event.attributes.source}
+										class="rounded-full border-[1px] border-neutral-400 px-3 py-1 text-sm text-white transition-colors duration-300 hover:bg-white hover:text-black sm:text-base"
+										type="button"
+										target="_blank"
+										rel="noreferrer">Learn More</a
 									>
 								</div>
-								<p
-									class="my-4 line-clamp-3 text-sm text-neutral-200 transition-colors duration-300 lg:text-base"
-									title={event.attributes.description}
-								>
-									{event.attributes.description}
-								</p>
-								<a
-									href={event.attributes.source}
-									class="rounded-full border-[1px] border-neutral-400 px-3 py-1 text-sm text-white transition-colors duration-300 hover:bg-white hover:text-black sm:text-base"
-									type="button"
-									target="_blank"
-									rel="noreferrer">Learn More</a
-								>
 							</div>
 						</div>
 					</div>
-				</div>
-			{/each}
+				{/each}
+			{/await}
 		</div>
 	</div>
 </div>

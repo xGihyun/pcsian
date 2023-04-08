@@ -3,17 +3,15 @@
 	import { CurveWhiteBottom, CurveWhiteTop } from '../assets/curves';
 	import { pcsAnnex } from '../assets/images';
 	import type { PageData } from './$types';
-	import type { LatestEvent } from '$lib/types';
-	import { inview, type ObserverEventDetails, type Options } from 'svelte-inview';
+	import { inview } from 'svelte-inview';
+	import type { Options, ObserverEventDetails } from 'svelte-inview';
 	import '../styles/curves.css';
 
 	export let data: PageData;
 
-	const latestEvents: LatestEvent[] = data.latestEvents.data
+	let isInView: boolean[] = Array(2);
 
-	let isInView = [false, false];
-
-	const options: Options = { unobserveOnEnter: true, rootMargin: '-10%' };
+	const options: Options = { rootMargin: '-10%', unobserveOnEnter: true };
 
 	function handleChangeFactory(index: number) {
 		return function handleChange({ detail }: CustomEvent<ObserverEventDetails>) {
@@ -35,7 +33,7 @@
 					: 'lg:translate-y-full lg:opacity-0 lg:blur-[2px]'
 			}`}
 			use:inview={options}
-			on:change={handleChangeFactory(0)}
+			on:inview_change={handleChangeFactory(0)}
 		>
 			My home from Nursery to Grade 12... and beyond
 		</h2>
@@ -62,7 +60,7 @@
 <!-- Academic programs and latest events -->
 <div class="relative bg-black">
 	<CurveWhiteTop />
-	<Programs {latestEvents} />
+	<Programs latestEventsData={data.streamed.latestEvents} />
 	<CurveWhiteBottom />
 </div>
 
@@ -76,7 +74,7 @@
 	<div
 		class="flex justify-between gap-10 lg:w-2/3"
 		use:inview={options}
-		on:change={handleChangeFactory(1)}
+		on:inview_change={handleChangeFactory(1)}
 	>
 		<div class="flex flex-col">
 			<div

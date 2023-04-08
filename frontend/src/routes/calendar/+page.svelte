@@ -1,13 +1,9 @@
 <script lang="ts">
+	import { ArrowClockwise } from '../../assets/icons';
 	import { Calendar } from '../../features';
-	import type { Event } from '$lib/types';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-
-	const gradeSchool: Event[] = data.gradeSchool.data[0].attributes.calendars.data;
-	const juniorHigh: Event[] = data.juniorHigh.data[0].attributes.calendars.data;
-	const seniorHigh: Event[] = data.seniorHigh.data[0].attributes.calendars.data;
 
 	// Default calendar to show
 	let currentCalendar = 'Senior High';
@@ -37,10 +33,29 @@
 	</ul>
 </nav>
 
+<!-- Will probably reduce repetition if possible -->
 {#if currentCalendar === 'Grade School'}
-	<Calendar events={gradeSchool} />
+	{#await data.streamed.gradeSchool}
+		<div class="h-screen p-10 flex justify-center items-center">
+			<ArrowClockwise style="text-amber-500 h-40 w-40 animate-spin" />
+		</div>
+	{:then events}
+		<Calendar eventsData={events.data} />
+	{/await}
 {:else if currentCalendar === 'Junior High'}
-	<Calendar events={juniorHigh} />
+	{#await data.streamed.juniorHigh}
+	<div class="h-screen p-10 flex justify-center items-center">
+		<ArrowClockwise style="text-amber-500 h-40 w-40 animate-spin" />
+	</div>
+	{:then events}
+		<Calendar eventsData={events.data} />
+	{/await}
 {:else if currentCalendar === 'Senior High'}
-	<Calendar events={seniorHigh} />
+	{#await data.streamed.seniorHigh}
+	<div class="h-screen p-10 flex justify-center items-center">
+		<ArrowClockwise style="text-amber-500 h-40 w-40 animate-spin" />
+	</div>
+	{:then events}
+		<Calendar eventsData={events.data} />
+	{/await}
 {/if}

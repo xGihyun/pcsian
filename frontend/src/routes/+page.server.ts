@@ -1,9 +1,10 @@
 import { LATEST_EVENTS_END_POINT } from '$env/static/private';
+import type { LatestEvent } from '$lib/types.js';
 import { error } from '@sveltejs/kit';
 
 // Fetch data from Strapi
 export async function load({ fetch, setHeaders }) {
-	async function getLatestEvents() {
+	async function getLatestEvents(): Promise<{data: LatestEvent[]}> {
 		const res = await fetch(LATEST_EVENTS_END_POINT);
 
 		if (!res.ok) {
@@ -23,6 +24,8 @@ export async function load({ fetch, setHeaders }) {
 	}
 
 	return {
-		latestEvents: getLatestEvents()
+		streamed: {
+			latestEvents: getLatestEvents()
+		}
 	};
 }
