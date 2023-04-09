@@ -20,7 +20,7 @@ export async function load({ fetch, setHeaders }) {
 
 	// Don't set cache if there's an error
 	if (getLatestEventsRes.status === 'fulfilled') {
-		setHeaders({ 'cache-control': 'max-age=6000' });
+		setHeaders({ 'cache-control': 'max-age=3000, s-maxage=3600' });
 	}
 
 	return {

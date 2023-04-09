@@ -8,7 +8,7 @@ import { error } from '@sveltejs/kit';
 
 // Fetch data from Strapi
 export async function load({ fetch, setHeaders }) {
-	async function getGradeSchool(): Promise<{data: Calendar[]}> {
+	async function getGradeSchool(): Promise<{ data: Calendar[] }> {
 		const res = await fetch(GRADE_SCHOOL_END_POINT);
 
 		if (!res.ok) {
@@ -20,7 +20,7 @@ export async function load({ fetch, setHeaders }) {
 		return { data };
 	}
 
-	async function getJuniorHigh(): Promise<{data: Calendar[]}> {
+	async function getJuniorHigh(): Promise<{ data: Calendar[] }> {
 		const res = await fetch(JUNIOR_HIGH_END_POINT);
 
 		if (!res.ok) {
@@ -32,7 +32,7 @@ export async function load({ fetch, setHeaders }) {
 		return { data };
 	}
 
-	async function getSeniorHigh(): Promise<{data: Calendar[]}> {
+	async function getSeniorHigh(): Promise<{ data: Calendar[] }> {
 		const res = await fetch(SENIOR_HIGH_END_POINT);
 
 		if (!res.ok) {
@@ -56,7 +56,7 @@ export async function load({ fetch, setHeaders }) {
 		juniorHighRes.status === 'fulfilled' &&
 		seniorHighRes.status === 'fulfilled'
 	) {
-		setHeaders({ 'cache-control': 'max-age=6000' });
+		setHeaders({ 'cache-control': 'max-age=3000, s-maxage=3600' });
 	}
 
 	return {

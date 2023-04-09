@@ -4,6 +4,7 @@
 	import { Footer, Loader, Navbar, Transition } from '../components';
 	import { QuickMenu } from '../features';
 	import { page } from '$app/stores';
+	import { preloadData } from '$app/navigation';
 	// import { afterNavigate, preloadData } from '$app/navigation';
 
 	let loading = true;

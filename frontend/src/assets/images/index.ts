@@ -24,6 +24,14 @@ import gas from './gas.webp';
 import gradeSchoolDepartment from './gradeSchoolDepartment3.webp';
 import juniorHighDepartment from './juniorHighDepartment.webp';
 import seniorHighDepartment from './seniorHighDepartment.webp';
+import kinaadman from './kinaadman.webp';
+import kinaadman2 from './kinaadman2.webp';
+import kinaadman3 from './kinaadman3.webp';
+import bsp from './bsp.webp';;
+import mathquizbee from './mathquizbee.webp';
+import confirmation from './confirmation.webp';
+import confirmation2 from './confirmation2.webp';
+import equalizer from './equalizer.webp'
 
 export {
 	gradeSchool,
@@ -33,25 +41,23 @@ export {
 	seniorHigh,
 	seniorHighDepartment,
 	pcsAnnex2,
-	kessokuBand,
-	qrCode,
-	pcsMembers,
-	csgo,
 	pcsAnnex,
-	pcsMain,
 	pcsLogoNew,
 	pcsLogoNewOutlineWhite,
-	pcsLogoNewOutlineBlack,
 	logoLeaf,
 	logoCandleBook,
-	ceap,
-	mapsa,
-	paascu,
-	padss,
 	stem,
 	abm,
 	ad,
 	humss,
 	tvl,
 	gas,
+	kinaadman,
+	kinaadman2,
+	kinaadman3,
+	bsp,
+	mathquizbee,
+	confirmation,
+	confirmation2,
+	equalizer,
 };

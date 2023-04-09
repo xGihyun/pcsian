@@ -6,6 +6,7 @@
 	import type { Options, ObserverEventDetails } from 'svelte-inview';
 	import '../styles/animations.css';
 	import { ArrowClockwise } from '../assets/icons';
+	import { bsp, confirmation, confirmation2, equalizer, kinaadman, kinaadman2, kinaadman3, mathquizbee } from '../assets/images';
 
 	export let latestEventsData: Promise<{ data: LatestEvent[] }>;
 
@@ -94,29 +95,53 @@
 					isInView[0] ? 'lg:opacity-100 lg:blur-0' : 'lg:opacity-0 lg:blur-[2px]'
 				}`}
 			>
-				<div
-					class="bg-accent bg-img-5 absolute left-1/2 top-1/2 aspect-[5/7] w-28 -translate-x-1/2 -translate-y-1/2 transform-gpu rounded-2xl bg-opacity-25 bg-cover transition-transform duration-500 ease-in-out"
+				<img
+					src={confirmation}
+					class="absolute left-1/2 top-1/2 aspect-[5/7] w-28 -translate-x-1/2 -translate-y-1/2 transform-gpu rounded-2xl bg-opacity-25 object-cover transition-transform duration-500 ease-in-out"
+					alt="pcs confirmation"
+					loading="lazy"
 				/>
-				<div
-					class="bg-accent bg-img-6 absolute left-1/2 top-1/2 aspect-[5/7] w-28 -translate-x-1/2 -translate-y-1/2 transform-gpu rounded-2xl bg-opacity-25 bg-cover transition-transform duration-500 ease-in-out"
+				<img
+					src={kinaadman3}
+					class="absolute left-1/2 top-1/2 aspect-[5/7] w-28 -translate-x-1/2 -translate-y-1/2 transform-gpu rounded-2xl bg-opacity-25 object-cover transition-transform duration-500 ease-in-out"
+					alt="pcs kinaadman dagitab"
+					loading="lazy"
 				/>
-				<div
-					class="bg-accent bg-img-7 absolute left-1/2 top-1/2 aspect-[5/7] w-28 -translate-x-1/2 -translate-y-1/2 transform-gpu rounded-2xl bg-opacity-25 bg-cover transition-transform duration-500 ease-in-out"
+				<img
+					src={confirmation2}
+					class="absolute left-1/2 top-1/2 aspect-[5/7] w-28 -translate-x-1/2 -translate-y-1/2 transform-gpu rounded-2xl bg-opacity-25 object-cover transition-transform duration-500 ease-in-out"
+					alt="pcs confirmation"
+					loading="lazy"
 				/>
-				<div
-					class="bg-accent bg-img-8 absolute left-1/2 top-1/2 aspect-[5/7] w-28 -translate-x-1/2 -translate-y-1/2 transform-gpu rounded-2xl bg-opacity-25 bg-cover transition-transform duration-500 ease-in-out"
+				<img
+					src={equalizer}
+					class="absolute left-1/2 top-1/2 aspect-[5/7] w-28 -translate-x-1/2 -translate-y-1/2 transform-gpu rounded-2xl bg-opacity-25 object-cover transition-transform duration-500 ease-in-out"
+					alt="pcs equalizer"
+					loading="lazy"
 				/>
-				<div
-					class="bg-img-1 shadow-card-black-2 absolute aspect-[5/7] w-72 -translate-x-[15%] -rotate-[6deg] transform-gpu rounded-2xl bg-white bg-opacity-10 bg-cover transition-transform duration-500 ease-in-out"
+				<img
+					src={kinaadman}
+					class="shadow-card-black-2 absolute aspect-[5/7] w-72 -translate-x-[15%] -rotate-[6deg] transform-gpu rounded-2xl bg-white bg-opacity-10 object-cover transition-transform duration-500 ease-in-out"
+					alt="pcs kinaadman dagitab"
+					loading="lazy"
 				/>
-				<div
-					class="bg-img-2 shadow-card-black-2 absolute aspect-[5/7] w-72 -translate-x-[5%] -rotate-2 transform-gpu rounded-2xl bg-white bg-opacity-10 bg-cover transition-transform duration-500 ease-in-out"
+				<img
+					src={bsp}
+					class="shadow-card-black-2 absolute aspect-[5/7] w-72 -translate-x-[5%] -rotate-2 transform-gpu rounded-2xl bg-white bg-opacity-10 object-cover transition-transform duration-500 ease-in-out"
+					alt="pcs boy scout"
+					loading="lazy"
 				/>
-				<div
-					class="bg-img-3 shadow-card-black-2 absolute aspect-[5/7] w-72 translate-x-[5%] rotate-2 transform-gpu rounded-2xl bg-white bg-opacity-10 bg-cover transition-transform duration-500 ease-in-out"
+				<img
+					src={mathquizbee}
+					class="shadow-card-black-2 absolute aspect-[5/7] w-72 translate-x-[5%] rotate-2 transform-gpu rounded-2xl bg-white bg-opacity-10 object-cover transition-transform duration-500 ease-in-out"
+					alt="padss mathira mathibay 2023"
+					loading="lazy"
 				/>
-				<div
-					class="bg-img-4 shadow-card-black-2 absolute aspect-[5/7] w-72 translate-x-[15%] translate-y-[3%] rotate-[6deg] transform-gpu rounded-2xl bg-white bg-opacity-10 bg-cover transition-transform duration-500 ease-in-out"
+				<img
+					src={kinaadman2}
+					class="shadow-card-black-2 absolute aspect-[5/7] w-72 translate-x-[15%] translate-y-[3%] rotate-[6deg] transform-gpu rounded-2xl bg-white bg-opacity-10 object-cover object-left transition-transform duration-500 ease-in-out"
+					alt="pcs kinaadman dagitab"
+					loading="lazy"
 				/>
 			</div>
 		</div>

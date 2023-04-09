@@ -33,8 +33,37 @@
 	</ul>
 </nav>
 
+{#await data.streamed.gradeSchool}
+	<div class="h-screen p-10 flex justify-center">
+		<ArrowClockwise style="text-amber-500 h-40 w-40 animate-spin" />
+	</div>
+{:then events}
+	{#if currentCalendar === 'Grade School'}
+		<Calendar eventsData={events.data} />
+	{/if}
+{/await}
+{#await data.streamed.juniorHigh}
+	<div class="h-screen p-10 flex justify-center">
+		<ArrowClockwise style="text-amber-500 h-40 w-40 animate-spin" />
+	</div>
+{:then events}
+	{#if currentCalendar === 'Junior High'}
+		<Calendar eventsData={events.data} />
+	{/if}
+{/await}
+{#await data.streamed.seniorHigh}
+	<div class="h-screen p-10 flex justify-center">
+		<ArrowClockwise style="text-amber-500 h-40 w-40 animate-spin" />
+	</div>
+{:then events}
+	{#if currentCalendar === 'Senior High'}
+		<Calendar eventsData={events.data} />
+	{/if}
+{/await}
+
+
 <!-- Will probably reduce repetition if possible -->
-{#if currentCalendar === 'Grade School'}
+<!-- {#if currentCalendar === 'Grade School'}
 	{#await data.streamed.gradeSchool}
 		<div class="h-screen p-10 flex justify-center items-center">
 			<ArrowClockwise style="text-amber-500 h-40 w-40 animate-spin" />
@@ -58,4 +87,4 @@
 	{:then events}
 		<Calendar eventsData={events.data} />
 	{/await}
-{/if}
+{/if} -->
