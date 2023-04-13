@@ -330,11 +330,6 @@
 								</div>
 							{/if}
 						</div>
-						<!-- <div
-							class="absolute bottom-0 flex items-center py-3 text-base text-neutral-500 opacity-0 transition-opacity duration-300"
-						>
-							{query.length}/4000
-						</div> -->
 					</div>
 				</div>
 			</div>

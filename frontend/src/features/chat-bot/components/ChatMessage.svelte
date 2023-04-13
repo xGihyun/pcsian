@@ -9,7 +9,7 @@
 	export let responseDone: boolean;
 
 	onMount(() => {
-		const elements: NodeListOf<HTMLParagraphElement> = document.querySelectorAll('[data-response]');
+		const elements: NodeListOf<HTMLParagraphElement> = document.querySelectorAll(`[data-response='true']`);
 		const lastResponseElement = elements[elements.length - 1];
 
 		// Only replace words with links after the response is done so it wouldn't be interrupted
@@ -40,6 +40,6 @@
 			<LoadingChat />
 		</div>
 	{:else}
-		<p data-response class="w-fit break-words text-lg">{message}</p>
+		<p data-response={type !== 'user'} class="w-fit break-words text-lg">{message}</p>
 	{/if}
 </div>

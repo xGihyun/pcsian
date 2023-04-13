@@ -5,24 +5,35 @@
 <script lang="ts">
 	import { Calendar } from '../../features';
 
-	let events = [
+	let eventsData = [
 		{
-			attributes: {
-				createdAt: 'a',
-				date: {
-					end: '2023-04-01',
-					id: 1,
-					start: '2023-03-27'
-				},
-				publishedAt: 'a',
-				title: 'Event',
-				type: 'senior-high',
-				updatedAt: 'a'
-			},
 			id: 1,
-			color: ''
+			attributes: {
+				createdAt: 'date',
+				updatedAt: 'date',
+				publishedAt: 'date',
+				calendars: {
+					data: [
+						{
+							id: 1,
+							attributes: {
+								title: 'Error!',
+								type: 'holiday',
+								createdAt: 'date',
+								updatedAt: 'date',
+								publishedAt: 'date',
+								date: {
+									id: 1,
+									start: '2023-02-22',
+									end: '2023-02-22'
+								}
+							}
+						}
+					]
+				}
+			}
 		}
 	];
 </script>
 
-<Calendar {events} />
+<Calendar {eventsData} />

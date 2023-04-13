@@ -159,7 +159,7 @@
 			Programs
 		</h3>
 		<div
-			class="flex w-full flex-col items-center justify-center gap-8 px-[10%] md:flex-row lg:gap-16"
+			class="flex w-full flex-col items-center justify-center gap-8 px-[10%] lg:flex-row lg:gap-16"
 		>
 			{#each programs as program, idx (idx)}
 				<div
@@ -215,19 +215,17 @@
 			Latest Events
 		</h3>
 		<div
-			class="flex w-full flex-col items-center justify-center gap-8 px-[10%] md:flex-row lg:gap-16"
+			class="flex w-full flex-col items-center justify-center gap-8 px-[10%] lg:flex-row lg:gap-16"
 		>
 			{#await latestEventsData}
 				<ArrowClockwise style="text-amber-500 h-40 w-40 animate-spin" />
 			{:then latestEvents}
-				{#each latestEvents.data
-					.sort((a, b) => Date.parse(b.attributes.date) - Date.parse(a.attributes.date))
-					.slice(0, 3) as event, idx (idx)}
+				{#each latestEvents.data as event, idx (idx)}
 					<div
-						class="lg:hover:shadow-card transition-[filter,box-shadow] duration-300 lg:brightness-75 lg:hover:brightness-100 lg:[&>div>div>div>a]:hover:border-white lg:[&>div>div>div>div]:hover:after:scale-x-100 lg:[&>div>div>div>p]:hover:text-white"
+						class="lg:hover:shadow-card transition-[filter,box-shadow] w-full max-w-sm flex justify-center duration-300 lg:brightness-75 lg:hover:brightness-100 lg:[&>div>div>div>a]:hover:border-white lg:[&>div>div>div>div]:hover:after:scale-x-100 lg:[&>div>div>div>p]:hover:text-white"
 					>
 						<div
-							class={`bg-default transition-transform-opacity-filter sm:h-112 h-96 w-full max-w-sm bg-cover bg-center duration-1000 ${
+							class={`bg-default transition-transform-opacity-filter sm:h-112 h-96 w-full bg-cover bg-center duration-1000 ${
 								delayEvents[idx]
 							} ${
 								isInView[2]

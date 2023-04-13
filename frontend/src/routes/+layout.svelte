@@ -4,17 +4,12 @@
 	import { Footer, Loader, Navbar, Transition } from '../components';
 	import { QuickMenu } from '../features';
 	import { page } from '$app/stores';
-	import { preloadData } from '$app/navigation';
-	// import { afterNavigate, preloadData } from '$app/navigation';
 
 	let loading = true;
 	let display = 'block';
-	// let preloadHomepage = false;
 
 	onMount(() => {
 		scrollTo(0, 0);
-
-		// preloadData('/calendar');
 
 		setTimeout(() => {
 			loading = false;
@@ -24,14 +19,6 @@
 			display = 'hidden';
 		}, 2000);
 	});
-
-	// Preload the data from '/' after navigating to a different route, it should only be preloaded once
-	// afterNavigate(() => {
-	// 	if (!preloadHomepage && $page.url.pathname !== '/') {
-	// 		preloadData('/');
-	// 		preloadHomepage = true;
-	// 	}
-	// });
 </script>
 
 <Loader
