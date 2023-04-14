@@ -77,7 +77,7 @@ export const philosophy = [
 	},
 	{
 		title: 'Vision',
-		text: 'Committed to build a 21st century learning community, Pateros Catholic School is a Center for Excellence characterized by professional and personal competence for the integral formation and transformation to become “Men and Women of Noble Character'
+		text: `Committed to build a 21st century learning community, Pateros Catholic School is a Center for Excellence characterized by professional and personal competence for the integral formation and transformation to become "Men and Women of Noble Character."`
 	},
 	{
 		title: 'Mission',

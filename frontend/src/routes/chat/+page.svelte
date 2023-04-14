@@ -374,7 +374,7 @@
 						/>
 					</div>
 				</button>
-				<div class={`px-4 py-2 text-lg text-neutral-300 ${faq.show ? 'block' : 'hidden'}`}>
+				<div class={`px-4 py-2 text-lg max-w-sm w-full text-neutral-300 ${faq.show ? 'block' : 'hidden'}`}>
 					{faq.answer}
 				</div>
 			</div>

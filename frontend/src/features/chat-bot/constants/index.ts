@@ -25,7 +25,8 @@ const school = {
 		url: 'https://schoolaide.pcsian.edu.ph/login'
 	},
 	scholarships: 'Bishop San Diego Scholarship',
-	classSize: 'Around 40 students, but Senior High School class size varies based on the strand.'
+	classSize: 'Around 40 students, but Senior High School class size varies based on the strand.',
+	schoolDirector: 'Rev. Fr. Edgar Barrameda',
 };
 
 const faqs = [

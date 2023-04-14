@@ -69,7 +69,7 @@
 		loading="lazy"
 		src={pcsAnnex}
 		alt="pcs annex"
-		class="transition-transform-opacity-filter absolute bottom-0 right-0 max-w-sm opacity-20 saturate-0 duration-300 sm:right-[10%] md:max-w-lg lg:max-w-none lg:hover:opacity-75 lg:hover:saturate-100"
+		class="transition-transform-opacity-filter hidden md:block absolute bottom-0 right-0 max-w-sm opacity-20 saturate-0 duration-300 sm:right-[10%] md:max-w-lg lg:max-w-none lg:hover:opacity-75 lg:hover:saturate-100"
 	/>
 	<div
 		class="flex justify-between gap-10 lg:w-2/3"
