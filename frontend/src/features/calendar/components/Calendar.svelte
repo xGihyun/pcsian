@@ -12,12 +12,9 @@
 		endOfWeek,
 		startOfWeek
 	} from 'date-fns';
-	import type { CalendarEvent, Calendar } from '$lib/types';
 	import { ChevronLeft, ChevronRight } from '../assets/icons';
 
-	export let eventsData: Calendar[];
-
-	const events = eventsData[0].attributes.calendars.data;
+	export let events: any;
 
 	let today = startOfToday();
 	let currentMonth = format(today, 'MMM-yyyy');
@@ -53,20 +50,18 @@
 	}
 
 	// Sort array based on the difference between the start and end
-	events.sort((a: CalendarEvent, b: CalendarEvent) => {
-		const aDateDiff =
-			new Date(a.attributes.date.end).getTime() - new Date(a.attributes.date.start).getTime();
-		const bDateDiff =
-			new Date(b.attributes.date.end).getTime() - new Date(b.attributes.date.start).getTime();
+	events.sort((a: any, b: any) => {
+		const aDateDiff = new Date(a.content.end).getTime() - new Date(a.content.start).getTime();
+		const bDateDiff = new Date(b.content.end).getTime() - new Date(b.content.start).getTime();
 
 		return bDateDiff - aDateDiff;
 	});
 
 	// Group the sorted events by date
-	const eventsByDate = new Map<string, CalendarEvent[]>();
+	const eventsByDate = new Map<string, any[]>();
 
-	events.forEach((event) => {
-		const dates = getDates(event.attributes.date.start, event.attributes.date.end);
+	events.forEach((event: any) => {
+		const dates = getDates(event.content.start, event.content.end);
 
 		dates.forEach((date) => {
 			if (!eventsByDate.has(date)) {
@@ -80,7 +75,7 @@
 	let clickedDayFormat = format(today, 'yyyy-MM-dd');
 
 	function handleDateClick(date: string) {
-		const event = eventsByDate.get(date) as CalendarEvent[];
+		const event = eventsByDate.get(date) as any[];
 
 		return event;
 	}
@@ -166,7 +161,7 @@
 										class={`relative hidden w-full rounded-r-lg bg-neutral-200 before:w-2 before:rounded-full before:bg-orange-500 before:content-[''] md:flex`}
 									>
 										<span class="line-clamp-2 w-full p-2 text-start text-base lg:text-lg">
-											{event.attributes.title}
+											{event.content.title}
 										</span>
 									</div>
 								{/each}
@@ -215,14 +210,14 @@
 				<div class="flex flex-col justify-center">
 					{#each handleDateClick(clickedDayFormat) as event}
 						<div class="flex w-full items-baseline gap-4 border-neutral-200">
-							<span class="w-1/2 text-sm sm:text-xl">{event.attributes.title}</span>
+							<span class="w-1/2 text-sm sm:text-xl">{event.content.title}</span>
 							<div class="w-1/2">
 								<div class="text-sm sm:text-xl">
-									{#if event.attributes.date.start === event.attributes.date.end}
-										<span>{format(new Date(event.attributes.date.start), 'MMMM d, yyyy')}</span>
+									{#if event.content.start === event.content.end}
+										<span>{format(new Date(event.content.start), 'MMMM d, yyyy')}</span>
 									{:else}
-										<span>{format(new Date(event.attributes.date.start), 'MMMM d, yyyy')}</span> -
-										<span>{format(new Date(event.attributes.date.end), 'MMMM d, yyyy')}</span>
+										<span>{format(new Date(event.content.start), 'MMMM d, yyyy')}</span> -
+										<span>{format(new Date(event.content.end), 'MMMM d, yyyy')}</span>
 									{/if}
 								</div>
 							</div>

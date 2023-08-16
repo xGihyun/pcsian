@@ -1,21 +1,24 @@
 <script lang="ts">
 	import { ArrowClockwise } from '../../assets/icons';
 	import { Calendar } from '../../features';
-	import type { PageData } from './$types';
 
-	export let data: PageData;
+	export let data;
+
+	type CalendarCategory = 'senior_high' | 'junior_high' | 'grade_school';
+
+	$: ({ seniorHighEvents, juniorHighEvents, gradeSchoolEvents } = data);
 
 	// Default calendar to show
-	let currentCalendar = 'Senior High';
+	let currentCalendar: CalendarCategory = 'senior_high';
 
-	function handleNavigationClick(calendar: string) {
+	function handleNavigationClick(calendar: CalendarCategory) {
 		currentCalendar = calendar;
 	}
 
-	const navigationItems = [
-		{ name: 'Grade School' },
-		{ name: 'Junior High' },
-		{ name: 'Senior High' }
+	const navigationItems: { name: string; value: CalendarCategory }[] = [
+		{ name: 'Grade School', value: 'grade_school' },
+		{ name: 'Junior High', value: 'junior_high' },
+		{ name: 'Senior High', value: 'senior_high' }
 	];
 </script>
 
@@ -24,43 +27,50 @@
 		{#each navigationItems as item, idx (idx)}
 			<li
 				class={`text-base md:text-lg ${
-					currentCalendar === item.name ? 'font-bold' : 'font-normal'
+					currentCalendar === item.value ? 'font-bold' : 'font-normal'
 				}`}
 			>
-				<button on:click={() => handleNavigationClick(item.name)} type="button">{item.name}</button>
+				<button on:click={() => handleNavigationClick(item.value)} type="button">{item.name}</button
+				>
 			</li>
 		{/each}
 	</ul>
 </nav>
 
-{#await data.streamed.gradeSchool}
-	<div class="h-screen p-10 flex justify-center">
-		<ArrowClockwise style="text-amber-500 h-40 w-40 animate-spin" />
-	</div>
-{:then events}
-	{#if currentCalendar === 'Grade School'}
-		<Calendar eventsData={events.data} />
-	{/if}
-{/await}
-{#await data.streamed.juniorHigh}
-	<div class="h-screen p-10 flex justify-center">
-		<ArrowClockwise style="text-amber-500 h-40 w-40 animate-spin" />
-	</div>
-{:then events}
-	{#if currentCalendar === 'Junior High'}
-		<Calendar eventsData={events.data} />
-	{/if}
-{/await}
-{#await data.streamed.seniorHigh}
-	<div class="h-screen p-10 flex justify-center">
-		<ArrowClockwise style="text-amber-500 h-40 w-40 animate-spin" />
-	</div>
-{:then events}
-	{#if currentCalendar === 'Senior High'}
-		<Calendar eventsData={events.data} />
-	{/if}
-{/await}
-
+{#if currentCalendar === 'grade_school'}
+	<Calendar events={gradeSchoolEvents} />
+{:else if currentCalendar === 'junior_high'}
+	<Calendar events={juniorHighEvents} />
+{:else if currentCalendar === 'senior_high'}
+	<Calendar events={seniorHighEvents} />
+{/if}
+<!-- {#await data.streamed.gradeSchool} -->
+<!-- 	<div class="h-screen p-10 flex justify-center"> -->
+<!-- 		<ArrowClockwise style="text-amber-500 h-40 w-40 animate-spin" /> -->
+<!-- 	</div> -->
+<!-- {:then events} -->
+<!-- 	{#if currentCalendar === 'Grade School'} -->
+<!-- 		<Calendar eventsData={events.data} /> -->
+<!-- 	{/if} -->
+<!-- {/await} -->
+<!-- {#await data.streamed.juniorHigh} -->
+<!-- 	<div class="h-screen p-10 flex justify-center"> -->
+<!-- 		<ArrowClockwise style="text-amber-500 h-40 w-40 animate-spin" /> -->
+<!-- 	</div> -->
+<!-- {:then events} -->
+<!-- 	{#if currentCalendar === 'Junior High'} -->
+<!-- 		<Calendar eventsData={events.data} /> -->
+<!-- 	{/if} -->
+<!-- {/await} -->
+<!-- {#await data.streamed.seniorHigh} -->
+<!-- 	<div class="h-screen p-10 flex justify-center"> -->
+<!-- 		<ArrowClockwise style="text-amber-500 h-40 w-40 animate-spin" /> -->
+<!-- 	</div> -->
+<!-- {:then events} -->
+<!-- 	{#if currentCalendar === 'Senior High'} -->
+<!-- 		<Calendar eventsData={events.data} /> -->
+<!-- 	{/if} -->
+<!-- {/await} -->
 
 <!-- Will probably reduce repetition if possible -->
 <!-- {#if currentCalendar === 'Grade School'}

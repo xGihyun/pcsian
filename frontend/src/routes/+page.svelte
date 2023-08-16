@@ -2,12 +2,11 @@
 	import { Hero, Programs } from '../components';
 	import { CurveWhiteBottom, CurveWhiteTop } from '../assets/curves';
 	import { pcsAnnex } from '../assets/images';
-	import type { PageData } from './$types';
 	import { inview } from 'svelte-inview';
 	import type { Options, ObserverEventDetails } from 'svelte-inview';
 	import '../styles/curves.css';
 
-	export let data: PageData;
+	export let data;
 
 	let isInView: boolean[] = Array(2);
 
@@ -60,7 +59,7 @@
 <!-- Academic programs and latest events -->
 <div class="relative bg-black">
 	<CurveWhiteTop />
-	<Programs latestEventsData={data.streamed.latestEvents} />
+	<Programs events={data.events} />
 	<CurveWhiteBottom />
 </div>
 

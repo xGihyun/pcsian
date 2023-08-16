@@ -3,7 +3,7 @@ import { json } from '@sveltejs/kit';
 import { CONDITION } from '../../../features/chat-bot/constants';
 import { getTokens } from '$lib/tokenizer';
 import type { ChatCompletionRequestMessage, CreateChatCompletionRequest } from 'openai';
-import type { RequestHandler } from '../$types';
+import type { RequestHandler } from './$types';
 
 export const POST: RequestHandler = async ({ request }) => {
 	try {
@@ -84,10 +84,10 @@ export const POST: RequestHandler = async ({ request }) => {
 		}
 
 		return new Response(chatResponse.body, {
-      headers: {
-        'Content-Type': 'text/event-stream'
-      }
-    });
+			headers: {
+				'Content-Type': 'text/event-stream'
+			}
+		});
 	} catch (err) {
 		console.error(err);
 		return json({ error: 'There was an error in processing the request.' }, { status: 500 });

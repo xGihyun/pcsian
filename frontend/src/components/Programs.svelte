@@ -6,9 +6,19 @@
 	import type { Options, ObserverEventDetails } from 'svelte-inview';
 	import '../styles/animations.css';
 	import { ArrowClockwise } from '../assets/icons';
-	import { bsp, confirmation, confirmation2, equalizer, kinaadman, kinaadman2, kinaadman3, mathquizbee } from '../assets/images';
+	import {
+		bsp,
+		confirmation,
+		confirmation2,
+		equalizer,
+		kinaadman,
+		kinaadman2,
+		kinaadman3,
+		mathquizbee
+	} from '../assets/images';
 
-	export let latestEventsData: Promise<{ data: LatestEvent[] }>;
+	// export let latestEventsData: Promise<{ data: LatestEvent[] }>;
+	export let events: any;
 
 	const programs = [
 		{
@@ -217,53 +227,50 @@
 		<div
 			class="flex w-full flex-col items-center justify-center gap-8 px-[10%] lg:flex-row lg:gap-16"
 		>
-			{#await latestEventsData}
-				<ArrowClockwise style="text-amber-500 h-40 w-40 animate-spin" />
-			{:then latestEvents}
-				{#each latestEvents.data as event, idx (idx)}
+			{#each events as event, idx (idx)}
+				{@const source = `https://${event.content.source.url}`}
+				<div
+					class="lg:hover:shadow-card transition-[filter,box-shadow] w-full max-w-sm flex justify-center duration-300 lg:brightness-75 lg:hover:brightness-100 lg:[&>div>div>div>a]:hover:border-white lg:[&>div>div>div>div]:hover:after:scale-x-100 lg:[&>div>div>div>p]:hover:text-white"
+				>
 					<div
-						class="lg:hover:shadow-card transition-[filter,box-shadow] w-full max-w-sm flex justify-center duration-300 lg:brightness-75 lg:hover:brightness-100 lg:[&>div>div>div>a]:hover:border-white lg:[&>div>div>div>div]:hover:after:scale-x-100 lg:[&>div>div>div>p]:hover:text-white"
+						class={`bg-default transition-transform-opacity-filter sm:h-112 h-96 w-full bg-cover bg-center duration-1000 ${
+							delayEvents[idx]
+						} ${
+							isInView[2]
+								? 'lg:translate-x-0 lg:opacity-100 lg:blur-0'
+								: 'lg:-translate-x-full lg:opacity-0 lg:blur-[2px]'
+						}`}
 					>
-						<div
-							class={`bg-default transition-transform-opacity-filter sm:h-112 h-96 w-full bg-cover bg-center duration-1000 ${
-								delayEvents[idx]
-							} ${
-								isInView[2]
-									? 'lg:translate-x-0 lg:opacity-100 lg:blur-0'
-									: 'lg:-translate-x-full lg:opacity-0 lg:blur-[2px]'
-							}`}
-						>
-							<div class="flex h-full flex-col justify-end pt-40">
-								<div class="gradient px-4 pb-4 pt-16">
-									<div
-										class="before:bg-accent-dark after:bg-accent relative text-base text-white transition-colors duration-300 before:absolute before:-bottom-1 before:left-[calc(1rem*-1)] before:h-[2px] before:w-full before:content-[''] after:absolute after:-bottom-1 after:left-[calc(1rem*-1)] after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:transition-transform after:duration-300 after:content-['']"
-									>
-										<h4 class="line-clamp-1 sm:text-xl" title={event.attributes.title}>
-											{event.attributes.title}
-										</h4>
-										<span class="text-sm text-neutral-400 lg:text-base"
-											>{format(new Date(event.attributes.date), 'MMMM d, yyyy')}</span
-										>
-									</div>
-									<p
-										class="my-4 line-clamp-3 text-sm text-neutral-200 transition-colors duration-300 lg:text-base"
-										title={event.attributes.description}
-									>
-										{event.attributes.description}
-									</p>
-									<a
-										href={event.attributes.source}
-										class="rounded-full border-[1px] border-neutral-400 px-3 py-1 text-sm text-white transition-colors duration-300 hover:bg-white hover:text-black sm:text-base"
-										type="button"
-										target="_blank"
-										rel="noreferrer">Learn More</a
+						<div class="flex h-full flex-col justify-end pt-40">
+							<div class="gradient px-4 pb-4 pt-16">
+								<div
+									class="before:bg-accent-dark after:bg-accent relative text-base text-white transition-colors duration-300 before:absolute before:-bottom-1 before:left-[calc(1rem*-1)] before:h-[2px] before:w-full before:content-[''] after:absolute after:-bottom-1 after:left-[calc(1rem*-1)] after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:transition-transform after:duration-300 after:content-['']"
+								>
+									<h4 class="line-clamp-1 sm:text-xl" title={event.content.title}>
+										{event.content.title}
+									</h4>
+									<span class="text-sm text-neutral-400 lg:text-base"
+										>{format(new Date(event.content.start), 'MMMM d, yyyy')}</span
 									>
 								</div>
+								<p
+									class="my-4 line-clamp-3 text-sm text-neutral-200 transition-colors duration-300 lg:text-base"
+									title={event.content.description}
+								>
+									{event.content.description}
+								</p>
+								<a
+									href={source}
+									class="rounded-full border-[1px] border-neutral-400 px-3 py-1 text-sm text-white transition-colors duration-300 hover:bg-white hover:text-black sm:text-base"
+									type="button"
+									target="_blank"
+									rel="noreferrer">Learn More</a
+								>
 							</div>
 						</div>
 					</div>
-				{/each}
-			{/await}
+				</div>
+			{/each}
 		</div>
 	</div>
 </div>

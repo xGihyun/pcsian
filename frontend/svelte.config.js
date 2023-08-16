@@ -9,7 +9,9 @@ const config = {
 
 	kit: {
 		adapter: adapter({ runtime: 'edge' }),
-		
+		alias: {
+			'@storyblok/svelte': './node_modules/@storyblok/svelte'
+		},
 		inlineStyleThreshold: 5000
 	}
 };
